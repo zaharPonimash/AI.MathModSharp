@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{FA33DFD5-3BCE-4B28-AEFA-D386CBDF94EC}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AI.MathMod</RootNamespace>
+    <AssemblyName>AI.MathMod</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <NoWin32Manifest>False</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\AI.MathMod.XML</DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DocumentationFile>bin\Release\AI.MathMod.xml</DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ZedGraph">
+      <HintPath>bin\Release\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algebra\Deductions Ring.cs" />
+    <Compile Include="Approximation\ApproximationError.cs" />
+    <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
+    <Compile Include="ComplexVector.cs" />
+    <Compile Include="Correlation.cs" />
+    <Compile Include="AdditionalFunctions.cs" />
+    <Compile Include="Funtions.cs" />
+    <Compile Include="Furie.cs" />
+    <Compile Include="FuzzyLogic.cs" />
+    <Compile Include="Graphiks\GraphicsView.cs" />
+    <Compile Include="Graphiks\MatrixVisual.cs" />
+    <Compile Include="Graphiks\MatrixVisual.Designer.cs">
+      <DependentUpon>MatrixVisual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphiks\VisualPlot.cs" />
+    <Compile Include="Graphiks\VisualPlot.Designer.cs">
+      <DependentUpon>VisualPlot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Matrix.cs" />
+    <Compile Include="ML\GradientDecent.cs" />
+    <Compile Include="ML\LinearRegression.cs" />
+    <Compile Include="ML\SinApproximation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signals\DCT.cs" />
+    <Compile Include="Signals\FastHilbert.cs" />
+    <Compile Include="Signals\Hilbert.cs" />
+    <Compile Include="Signals\Kepstr.cs" />
+    <Compile Include="Signals\Signal.cs" />
+    <Compile Include="Signals\Wavelet.cs" />
+    <Compile Include="Statistic.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="Сonvolution.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Combinatorics" />
+    <Folder Include="ML" />
+    <Folder Include="Graphiks" />
+    <Folder Include="Signals" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
+      <DependentUpon>MatrixVisual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphiks\VisualPlot.resx">
+      <DependentUpon>VisualPlot.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
