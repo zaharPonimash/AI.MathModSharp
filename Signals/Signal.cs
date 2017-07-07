@@ -192,7 +192,7 @@ namespace AI.MathMod.Signals
 	
 	
 	
-	public static class Filters
+	public class Filters
 	{
 		public static Vector Filter(Vector st, Vector kw)
 		{
@@ -201,7 +201,7 @@ namespace AI.MathMod.Signals
 			ComplexVector Sw = Furie.fft(newSt);
 			Sw = Sw*newKw;
 			newSt = Furie.ifft(Sw).RealToVector();
-			return newSt.CutAndZero(st.N)/newSt.N;
+			return newSt.CutAndZero(st.N);//newSt.N;
 		}
 		
 		
@@ -230,8 +230,78 @@ namespace AI.MathMod.Signals
 			return Filter(st, kw);
 		}
 		
+		public static Vector FilterRezector(Vector st, double sr1, double sr2, Vector f)
+		{
+			Vector kw = new Vector(st.N);
+			
+			kw += 1;
+			
+			for (int i = 0; i < st.N; i++)
+			{
+				if((f.Vecktor[i]>=sr1)&&(f.Vecktor[i]<=sr2)) kw.Vecktor[i] = 0;
+			}
+			
+			
+			return Filter(st, kw);
+		}
+		
+		
+		
+		
+		public Vector GetAFH(Vector f, double[] param, AFHType afh)
+		{
+				Vector kw = new Vector(f.N);
+				
+				if (afh == AFHType.Band)
+				{
+					
+					for (int i = 0; i < f.N; i++)
+					{
+						if ((f.Vecktor[i] >= param[0]) && (f.Vecktor[i] <= param[1]))
+							kw.Vecktor[i] = 1;
+					}
+					
+				}
+				
+				if (afh == AFHType.High)
+				{
+					 kw = NeuroFunc.Porog(f,param[0]);
+				}
+				
+				if (afh == AFHType.Low)
+				{
+				double srNew = f.Vecktor[f.N-1]-param[0];
+				kw = NeuroFunc.Porog(f,srNew).Revers();
+				}
+				
+				
+				if (afh == AFHType.Low)
+				{
+				kw += 1;
+			
+				for (int i = 0; i < f.N; i++) {
+					if ((f.Vecktor[i] >= param[0]) && (f.Vecktor[i] <= param[1]))
+						kw.Vecktor[i] = 0;
+				}
+				}
+				
+				return kw;
+		}
+		
+		
+		
+		
 	}
 	
+	
+	
+	public enum AFHType
+	{
+		Low,
+		High,
+		Rezector,
+		Band
+	}
 	
 	
 }
