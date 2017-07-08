@@ -94,7 +94,7 @@ namespace AI.MathMod.Signals
 				}
 				
 				
-				if (afh == AFHType.Low)
+				if (afh == AFHType.Rezector)
 				{
 				kw += 1;
 			
@@ -108,9 +108,63 @@ namespace AI.MathMod.Signals
 		}
 		
 		
-		
-		
+	
+		public Vector CreationComplexAFH(Vector f, string[] param)
+		{
+					Vector kw = new Vector(f.N)+1;
+					double[] fP;
+					
+					for (int i = 0; i < param.Length; i++)
+					{
+							if(param[i].Split(':')[0]=="rezector")
+						{
+							fP =  new double[2];
+							fP[0] = Convert.ToDouble(param[i].Split(':')[1]);
+							fP[1] = Convert.ToDouble(param[i].Split(':')[2]);
+							kw *= GetAFH(f,fP, AFHType.Rezector);
+						}
+						
+							if(param[i].Split(':')[0]=="low")
+						{
+							fP =  new double[1];
+							fP[0] = Convert.ToDouble(param[i].Split(':')[1]);
+							kw *= GetAFH(f,fP, AFHType.Low);
+						}
+						
+							if(param[i].Split(':')[0]=="high")
+						{
+							fP =  new double[1];
+							fP[0] = Convert.ToDouble(param[i].Split(':')[1]);
+							kw *= GetAFH(f,fP, AFHType.High);
+						}
+						
+							if(param[i].Split(':')[0]=="band")
+						{
+							fP =  new double[2];
+							fP[0] = Convert.ToDouble(param[i].Split(':')[1]);
+							fP[1] = Convert.ToDouble(param[i].Split(':')[2]);
+							kw *= GetAFH(f,fP, AFHType.Band);
+						}
+					}
+					
+					return kw;
+		}
+	
+	
+	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
