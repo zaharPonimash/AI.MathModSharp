@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AI.MathMod</RootNamespace>
     <AssemblyName>AI.MathMod</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <NoWin32Manifest>False</NoWin32Manifest>
     <TargetFrameworkProfile />
@@ -91,6 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Signals\DCT.cs" />
     <Compile Include="Signals\FastHilbert.cs" />
+    <Compile Include="Signals\Filters.cs" />
     <Compile Include="Signals\Hilbert.cs" />
     <Compile Include="Signals\Kepstr.cs" />
     <Compile Include="Signals\Signal.cs" />
