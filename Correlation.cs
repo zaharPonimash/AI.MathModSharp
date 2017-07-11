@@ -142,9 +142,10 @@ namespace AI.MathMod
 				
 				int window = (int)(9*pattern.N);
 				window = Functions.NextPow2(window);
-		
-				Vector input;
-				int n = vect.N-window;
+				
+				
+				Vector input, vect1 = vect.CutAndZero(Functions.NextPow2(vect.N));
+				int n = vect1.N-window;
 				List<double> DoubList = new List<double>();
 				double[] data = new double[window];
 			
@@ -152,7 +153,7 @@ namespace AI.MathMod
 					for(int i = 0; i < n; i+= window)
 					{
 						data = new double[window];
-						input = vect.CutAndZero(i+window);
+						input = vect1.CutAndZero(i+window);
 						Array.Copy(input.Vecktor,i,data,0,window);
 						input = new Vector(data);
 						DoubList.AddRange(CrossCorrelationF(input,pattern).Vecktor);
