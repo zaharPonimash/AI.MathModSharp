@@ -1525,6 +1525,14 @@
             <param name="nach"></param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.Vector.GetInterval(System.Int32,System.Int32)">
+            <summary>
+            Возвращает вектор в интервале [a;b]
+            </summary>
+            <param name="a">a - нижняя граница</param>
+            <param name="b">b - верхняя граница</param>
+            <returns>Вектор</returns>
+        </member>
         <member name="M:AI.MathMod.Vector.Copy">
             <summary>
             Копирование вектора

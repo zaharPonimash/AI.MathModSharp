@@ -503,8 +503,18 @@ namespace AI.MathMod
 		}
 	
 	
-	
-	
+		/// <summary>
+		/// Возвращает вектор в интервале [a;b]
+		/// </summary>
+		/// <param name="a">a - нижняя граница</param>
+		/// <param name="b">b - верхняя граница</param>
+		/// <returns>Вектор</returns>
+		public Vector GetInterval(int a, int b)
+		{
+			return Revers().CutAndZero(_n-a).Revers().CutAndZero(b-a); 
+		}
+		
+		
 		/// <summary>
 		/// Копирование вектора
 		/// </summary>
