@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algebra\Deductions Ring.cs" />
+    <Compile Include="Algebra\Kramer.cs" />
     <Compile Include="Approximation\ApproximationError.cs" />
     <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
     <Compile Include="ComplexVector.cs" />

@@ -36,6 +36,11 @@
             Является ли кольцо полем
             </summary>
         </member>
+        <member name="T:AI.MathMod.Algebra.Kramer">
+            <summary>
+            Description of Kramer.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Approximation.ApproximationError">
             <summary>
             Класс содержит методы для вычисления погрешности аппроксимации
@@ -427,6 +432,20 @@
             <param name="Inp">Входной вектор</param>
             <param name="betta">Угол наклона</param>
         </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Sigmoid(System.Double,System.Double)">
+            <summary>
+            Сигмоидальная однополярная активационная ф-я
+            </summary>
+            <param name="x">Входное значение</param>
+            <param name="betta">Угол наклона</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.InverseSigmoid(System.Double,System.Double)">
+            <summary>
+            Сигмоидальная однополярная активационная ф-я
+            </summary>
+            <param name="x">Входное значение</param>
+            <param name="betta">Угол наклона</param>
+        </member>
         <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.SigmoidBiplyar(AI.MathMod.Vector,System.Double)">
             <summary>
             Сигмоидальная биполярная активационная ф-я
@@ -439,7 +458,7 @@
             Пороговая активационная ф-я
             </summary>
             <param name="Inp">Входной вектор</param>
-            <param name="betta">Порог</param>
+            <param name="porog">Порог</param>
         </member>
         <member name="T:AI.MathMod.AdditionalFunctions.DistributionFunc">
             <summary>

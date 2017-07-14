@@ -603,11 +603,33 @@ namespace AI.MathMod.AdditionalFunctions
 		/// </summary>
 		/// <param name="Inp">Входной вектор</param>
 		/// <param name="betta">Угол наклона</param>
-		public static Vector Sigmoid(Vector Inp, double betta)
+		public static Vector Sigmoid(Vector Inp, double betta =1 )
 		{
 			return 1.0/(1+MathFunc.exp(Inp*(-betta)));
 		}
 		
+		
+			
+		/// <summary>
+		/// Сигмоидальная однополярная активационная ф-я
+		/// </summary>
+		/// <param name="x">Входное значение</param>
+		/// <param name="betta">Угол наклона</param>
+		public static double Sigmoid(double x, double betta =1)
+		{
+			return 1.0/(1+Math.Exp(x*(-betta)));
+		}
+		
+		
+		/// <summary>
+		/// Сигмоидальная однополярная активационная ф-я
+		/// </summary>
+		/// <param name="x">Входное значение</param>
+		/// <param name="betta">Угол наклона</param>
+		public static double InverseSigmoid(double x, double betta = 1)
+		{
+			return -Math.Log(1/x-1)/betta;
+		}
 		
 		
 		/// <summary>
@@ -615,7 +637,7 @@ namespace AI.MathMod.AdditionalFunctions
 		/// </summary>
 		/// <param name="Inp">Входной вектор</param>
 		/// <param name="betta">Угол наклона</param>
-		public static Vector SigmoidBiplyar(Vector Inp, double betta)
+		public static Vector SigmoidBiplyar(Vector Inp, double betta =1)
 		{
 			return MathFunc.tanh(Inp*betta);
 		}
@@ -624,8 +646,8 @@ namespace AI.MathMod.AdditionalFunctions
 		/// Пороговая активационная ф-я
 		/// </summary>
 		/// <param name="Inp">Входной вектор</param>
-		/// <param name="betta">Порог</param>
-		public static Vector Porog(Vector Inp, double porog)
+		/// <param name="porog">Порог</param>
+		public static Vector Porog(Vector Inp, double porog=0)
 		{
 			Vector A = new Vector(Inp.N);
 			for(int i = 0; i<Inp.N; i++)
@@ -637,19 +659,19 @@ namespace AI.MathMod.AdditionalFunctions
 		
 		
 		
-		public static Matrix Sigmoid(Matrix Inp, double betta)
+		public static Matrix Sigmoid(Matrix Inp, double betta =1)
 		{
 			return 1.0/(1+MathFunc.exp(Inp*(-betta)));
 		}
 		
 		
-		public static Matrix SigmoidBiplyar(Matrix Inp, double betta)
+		public static Matrix SigmoidBiplyar(Matrix Inp, double betta =1)
 		{
 			return MathFunc.tanh(Inp*betta);
 		}
 		
 		
-		public static Matrix Porog(Matrix Inp, double porog)
+		public static Matrix Porog(Matrix Inp, double porog = 0)
 		{
 			Matrix A = new Matrix(Inp.M,Inp.N);
 			
