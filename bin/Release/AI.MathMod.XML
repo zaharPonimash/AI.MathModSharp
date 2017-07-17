@@ -335,6 +335,14 @@
             <param name="Inp">Вектор углов(в радианах)</param>
             <returns>Вектор синусов</returns>
         </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.MathFunc.round(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Округление
+            </summary>
+            <param name="Inp">Вектор входа</param>
+            <param name="digits">до какого знака</param>
+            <returns>Вектор выхода</returns>
+        </member>
         <member name="M:AI.MathMod.AdditionalFunctions.MathFunc.cos(AI.MathMod.Vector)">
             <summary>
             Вычисление косинусов
@@ -440,6 +448,13 @@
             <param name="betta">Угол наклона</param>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.InverseSigmoid(System.Double,System.Double)">
+            <summary>
+            Сигмоидальная однополярная активационная ф-я
+            </summary>
+            <param name="x">Входное значение</param>
+            <param name="betta">Угол наклона</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.InverseSigmoid(AI.MathMod.Vector,System.Double)">
             <summary>
             Сигмоидальная однополярная активационная ф-я
             </summary>

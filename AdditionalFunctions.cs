@@ -175,6 +175,22 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
+		
+		
+		/// <summary>
+		/// Округление
+		/// </summary>
+		/// <param name="Inp">Вектор входа</param>
+		/// <param name="digits">до какого знака</param>
+		/// <returns>Вектор выхода</returns>
+		public static Vector round(Vector Inp, int digits)
+		{
+			Vector A = new Vector(Inp.N);
+			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Round(Inp.Vecktor[i], digits);
+			return A;
+		}
+		
+		
 		/// <summary>
 		/// Вычисление косинусов
 		/// </summary>
@@ -629,6 +645,16 @@ namespace AI.MathMod.AdditionalFunctions
 		public static double InverseSigmoid(double x, double betta = 1)
 		{
 			return -Math.Log(1/x-1)/betta;
+		}
+		
+		/// <summary>
+		/// Сигмоидальная однополярная активационная ф-я
+		/// </summary>
+		/// <param name="x">Входное значение</param>
+		/// <param name="betta">Угол наклона</param>
+		public static Vector InverseSigmoid(Vector x, double betta = 1)
+		{
+			return -MathFunc.ln(1/x-1)/betta;
 		}
 		
 		
