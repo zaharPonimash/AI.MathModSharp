@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using AI.MathMod.Graphiks;
 
 
 namespace AI.MathMod
@@ -203,6 +204,40 @@ namespace AI.MathMod
 		
 		
 		
+		
+		// Умножение матрицы на число	
+				
+		public static Matrix operator / (Matrix A, double k)
+		{
+			Matrix C = new Matrix(A._m,A._n);
+			
+			
+			for(int i = 0; i < A._m; i++)
+				for(int j = 0; j < A._n; j++) C._matr[i,j] = A._matr[i,j]/k;
+			
+			
+			return C;
+		}
+		
+		
+		
+			// Умножение матрицы на число	
+				
+		public static Matrix operator / (double k,Matrix A)
+		{
+			Matrix C = new Matrix(A._m,A._n);
+			
+			
+			for(int i = 0; i < A._m; i++)
+				for(int j = 0; j < A._n; j++) C._matr[i,j] = k/A._matr[i,j];
+			
+			
+			return C;
+		}
+		
+		
+		
+		
 		// Умножение матрицы на число
 				
 		public static Matrix operator * (double k, Matrix A)
@@ -222,38 +257,12 @@ namespace AI.MathMod
 		
 		
 		
-		
-		// Деление матрицы на число	
-				
-		public static Matrix operator / (Matrix A, double k)
-		{
-			Matrix C = new Matrix(A._m,A._n);
-			
-			
-			for(int i = 0; i < A._m; i++)
-				for(int j = 0; j < A._n; j++) C._matr[i,j] = A._matr[i,j]/k;
-			
-			
-			return C;
-		}
+	
 		
 		
 		
 		
 		
-		// Деление матрицы на число
-				
-		public static Matrix operator / (double k, Matrix A)
-		{
-			Matrix C = new Matrix(A._m,A._n);
-			
-			
-			for(int i = 0; i < A._m; i++)
-				for(int j = 0; j < A._n; j++) C._matr[i,j] = A._matr[i,j]/k;
-			
-			
-			return C;
-		}
 		
 		
 		// Умножение матрицы на вектор
@@ -414,8 +423,14 @@ namespace AI.MathMod
 		}
 		
 		
-		
-		
+		/// <summary>
+		/// Визуализация матриц
+		/// </summary>
+		public void Visual()
+		{
+			MatrixVisual mv = new MatrixVisual(this);
+			mv.Show();
+		}
 		
 		
 		/// <summary>

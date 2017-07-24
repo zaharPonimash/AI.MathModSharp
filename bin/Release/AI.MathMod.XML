@@ -592,6 +592,15 @@
             <param name="a">Нижний предел</param>
             <param name="b">Верхний предел</param>
         </member>
+        <member name="M:AI.MathMod.Functions.WindowFunc(AI.MathMod.Vector,System.Func{AI.MathMod.Vector,AI.MathMod.Vector},System.Int32)">
+            <summary>
+            Реализация оконных функций
+            </summary>
+            <param name="vect">входной вектор</param>
+            <param name="Function">функция</param>
+            <param name="window">окно</param>
+            <returns>Результат применения ф-и</returns>
+        </member>
         <member name="M:AI.MathMod.Functions.Integral(AI.MathMod.Vector,System.Double)">
             <summary>
             Вычисляет определенный интеграл
@@ -854,6 +863,11 @@
             Транспонирование матрицы
             </summary>
             <returns>Возвращает транспонированную матрицу</returns>
+        </member>
+        <member name="M:AI.MathMod.Matrix.Visual">
+            <summary>
+            Визуализация матриц
+            </summary>
         </member>
         <member name="M:AI.MathMod.Matrix.Pow(AI.MathMod.Matrix,System.Int32)">
             <summary>

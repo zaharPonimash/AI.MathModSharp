@@ -50,7 +50,11 @@ namespace AI.MathMod.Graphiks
 		
 		int RedInt()
 		{
+			try
+			{
 			return (int)(intensiv)/220;
+			}
+			catch{return 0;}
 		}
 		
 		
@@ -63,7 +67,10 @@ namespace AI.MathMod.Graphiks
 				for (int j = 0; j < _matr.N; j++)
 				{
 					intensiv = Math.Abs( k*_matr.Matr[i,j]);
+					try{
 					color = Color.FromArgb((int)(RedInt()*intensiv),(int)(0.2*intensiv), (int)(BiueInt()*intensiv));
+					}
+					catch{color = Color.Coral;}
 					bmp.SetPixel(i,j, color);
 				}
 			}
