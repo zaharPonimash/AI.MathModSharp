@@ -33,7 +33,11 @@ namespace AI.MathMod.Combinatorics
 		
 		
 		
-		
+		/// <summary>
+		/// Количество комбинаций
+		/// </summary>
+		/// <param name="k">Количество элементов</param>
+		/// <param name="n">Количество возможных позиций</param>
 		public static double NumberOfCombinations(int k, int n)
 		{
 			double Akn = PlacingWithoutRepetition(k,n);

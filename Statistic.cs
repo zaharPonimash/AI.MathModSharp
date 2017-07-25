@@ -268,7 +268,11 @@ namespace AI.MathMod
 		}
 		
 		
-		// Макимальное значение
+	
+		/// <summary>
+		/// Максимальное значение вектора
+		/// </summary>
+		/// <param name="vect">Вектор</param>
 		public static double MaximalValue(Vector vect)
 		{
 			double max = vect.Vecktor[0];
@@ -282,7 +286,10 @@ namespace AI.MathMod
 		}
 		
 		
-			// Минимальное значение
+		/// <summary>
+		/// Минимальное значение вектора
+		/// </summary>
+		/// <param name="vect">Вектор</param>
 		public static double MinimalValue(Vector vect)
 		{
 			

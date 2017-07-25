@@ -400,7 +400,12 @@ namespace AI.MathMod
 			return flag;
 		}
 		
-		
+		/// <summary>
+		/// Проверка равенства
+		/// </summary>
+		/// <param name="A">Вектор 1</param>
+		/// <param name="B">Вектор 2</param>
+		/// <returns>Равно ли</returns>
 		public static bool operator != (Vector A, Vector B)
 		{
 			return !(A==B);
@@ -410,7 +415,10 @@ namespace AI.MathMod
 		
 		
 	
-	
+	/// <summary>
+	/// Удаление по индексу
+	/// </summary>
+	/// <param name="elements">Индекс</param>
 	public Vector IndexDel(int index)
 	{
 		List<double> lD = new List<double>();
@@ -419,7 +427,10 @@ namespace AI.MathMod
 		return ListToVector(lD);
 	}
 	
-	
+	/// <summary>
+	/// Удаление выбранного элемента
+	/// </summary>
+	/// <param name="element">Элементы</param>
 	public Vector ElementDel(double element)
 	{
 		List<double> lD = new List<double>();
@@ -428,7 +439,10 @@ namespace AI.MathMod
 		return ListToVector(lD);
 	}
 	
-	
+	/// <summary>
+	/// Удаление выбранных элементов
+	/// </summary>
+	/// <param name="elements">Элементы</param>
 	public Vector ElementsDel(Vector elements)
 	{
 		List<double> lD = new List<double>();
@@ -443,7 +457,10 @@ namespace AI.MathMod
 	}
 	
 	
-	
+	/// <summary>
+	/// Удаление выбранных элементов
+	/// </summary>
+	/// <param name="elements">Элементы</param>
 	public Vector ElementsDel(double[] elements)
 	{
 		List<double> lD = new List<double>();
@@ -457,7 +474,10 @@ namespace AI.MathMod
 		return ListToVector(lD);
 	}
 	
-	
+	/// <summary>
+	/// Удаление выбранных элементов
+	/// </summary>
+	/// <param name="elements">Элементы</param>
 	public Vector ElementsDel(List<double> elements)
 	{
 		List<double> lD = new List<double>();
@@ -485,7 +505,17 @@ namespace AI.MathMod
 			
 		}
 	
-	
+		/// <summary>
+		/// Сохраняет вектор как текстовый файл
+		/// </summary>
+		/// <param name="path">Путь до файла</param>
+		public void SaveAsText(string path)
+		{
+			string text = ToString().Trim(' ');
+			File.WriteAllText(path, text);
+		}
+		
+		
 		
 		/// <summary>
 		/// Вставляет значение в начало
@@ -739,7 +769,7 @@ namespace AI.MathMod
 		public override string ToString()
 		{
 			string str = "";
-			foreach(double i in _vector) str += "  " + i;
+			foreach(double i in _vector) str += " " + i;
 			return str;
 		}
 		

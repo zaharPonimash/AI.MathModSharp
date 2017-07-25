@@ -50,7 +50,16 @@ namespace AI.MathMod.Graphiks
 	
 		
 		
-		
+		/// <summary>
+		/// Вывод графика
+		/// </summary>
+		/// <param name="graph">Поле для вывода</param>
+		/// <param name="y">Вектор Y</param>
+		/// <param name="x">Вектор X</param>
+		/// <param name="nameFunc">Имя ф-и</param>
+		/// <param name="nameX">Имя оси X</param>
+		/// <param name="nameY">Имя оси Y</param>
+		/// <param name="colorLine">Цвет линии</param>
 		public static void Plot(ZedGraphControl graph, Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
 		{
 			try{

@@ -30,6 +30,13 @@ namespace AI.MathMod.Algebra
 			_x.Vecktor[i] = NewDet(i)/_detA;
 		}
 		
+		
+		/// <summary>
+		/// Вывод вектора решений системы уравнений
+		/// </summary>
+		/// <param name="A">Матрица коэфициентов системы</param>
+		/// <param name="B">Вектор ответов</param>
+		/// <returns>Вектор неизвестных</returns>
 		public Vector GetAnswer(Matrix A, Vector B)
 		{
 			_a = A;

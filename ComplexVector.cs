@@ -97,7 +97,10 @@ namespace AI.MathMod
 			Init(vectorReal.Vecktor, vectorImg.Vecktor);
 		}
 		
-		
+		/// <summary>
+		/// Создает вектор на основе векторов действительной части мнимая заполнена нулями
+		/// </summary>
+		/// <param name="vectorReal">Реальная часть</param>
 		public ComplexVector(Vector vectorReal)
 		{
 			Vector vectorImg = new Vector(vectorReal.N);
@@ -158,7 +161,12 @@ namespace AI.MathMod
 		
 	#region Операции
 		
-		// Поэлементное умножение
+		/// <summary>
+		/// Поэлементное умножение
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static ComplexVector operator * (ComplexVector A, ComplexVector B)
 		{
 			int n1 = A._n;
@@ -171,7 +179,12 @@ namespace AI.MathMod
 			return C;
 		}
 		
-			// Поэлементное сложение
+		/// <summary>
+		/// Поэлементное сложение
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static	ComplexVector operator + (ComplexVector A, ComplexVector B)
 		{
 			int n1 = A._n;
@@ -185,7 +198,12 @@ namespace AI.MathMod
 		
 		
 		
-		// Поэлементное деление
+		/// <summary>
+		/// Поэлементное деление
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static ComplexVector operator / (ComplexVector A, ComplexVector B)
 		{
 			int n1 = A._n;
@@ -197,7 +215,12 @@ namespace AI.MathMod
 			return C;
 		}
 		
-		// Поэлементное вычитание
+		/// <summary>
+		/// Поэлементное вычитание
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static ComplexVector operator - (ComplexVector A, ComplexVector B)
 		{
 			int n1 = A._n;
@@ -211,7 +234,13 @@ namespace AI.MathMod
 		
 		
 		
-			// Поэлементное умножение на реальный вектор
+		
+		/// <summary>
+		/// Поэлементное умножение на реальный вектор
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static ComplexVector operator * (ComplexVector A, Vector B)
 		{
 			int n1 = A._n;
@@ -224,7 +253,12 @@ namespace AI.MathMod
 		}
 		
 		
-			// Поэлементное умножение на реальный вектор
+		/// <summary>
+		/// Поэлементное умножение на реальный вектор
+		/// </summary>
+		/// <param name="A">Первый вектор</param>
+		/// <param name="B">Второй</param>
+		/// <returns>Результат</returns>
 		public static ComplexVector operator * (Vector B, ComplexVector A)
 		{
 			int n1 = A._n;

@@ -77,6 +77,12 @@ namespace AI.MathMod.Algebra
 		
 		
 		#region Действия
+		/// <summary>
+		/// Сложение двух колец вычетов
+		/// </summary>
+		/// <param name="A">Первое</param>
+		/// <param name="B">Второе</param>
+		/// <returns>Сумма</returns>
 		public static DeductionsRing operator +(DeductionsRing A, DeductionsRing B)
 		{
 			if(A._m!=B._m)throw new ArgumentException("Модули колец не совпадают", "Сложение");
@@ -85,6 +91,12 @@ namespace AI.MathMod.Algebra
 			return C;
 		}
 		
+		/// <summary>
+		/// Разность двух колец вычетов
+		/// </summary>
+		/// <param name="A">Первое</param>
+		/// <param name="B">Второе</param>
+		/// <returns>Разность</returns>
 		public static DeductionsRing operator -(DeductionsRing A, DeductionsRing B)
 		{
 			if(A._m!=B._m)throw new ArgumentException("Модули колец не совпадают", "Вычитание");
@@ -93,6 +105,12 @@ namespace AI.MathMod.Algebra
 			return C;
 		}
 		
+		/// <summary>
+		/// Произведение двух колец вычетов
+		/// </summary>
+		/// <param name="A">Первое</param>
+		/// <param name="B">Второе</param>
+		/// <returns>Произведение</returns>
 		public static DeductionsRing operator *(DeductionsRing A, DeductionsRing B)
 		{
 			if(A._m!=B._m)throw new ArgumentException("Модули колец не совпадают", "Умножение");

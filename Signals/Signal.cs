@@ -170,7 +170,13 @@ namespace AI.MathMod.Signals
 			return Sin(t, modul,f1);
 		}
 		
-		
+		/// <summary>
+		/// Амплитудно-модулированые колебания
+		/// </summary>
+		/// <param name="t"></param>
+		/// <param name="f1"></param>
+		/// <param name="f2"></param>
+		/// <returns></returns>
 		public static Vector AmkRect(Vector t, double f1, double f2)
 		{
 			Vector modul = Rect(t,f2);
@@ -179,6 +185,14 @@ namespace AI.MathMod.Signals
 		#endregion
 		
 		#region Затухающие колебания
+		/// <summary>
+		/// Затухающие колебания
+		/// </summary>
+		/// <param name="t">Время симуляции</param>
+		/// <param name="f">частота</param>
+		/// <param name="kDamp">Коэффициент затухания</param>
+		/// <param name="A">Амплитуда(начальная)</param>
+		/// <param name="fi">Фаза</param>
 		public static Vector DampedOscillations(Vector t, double f=1, double kDamp = -0.01, double A = 1, double fi = 0)
 		{
 			return MathFunc.exp(t*kDamp)*Sin(t,A,f,fi);

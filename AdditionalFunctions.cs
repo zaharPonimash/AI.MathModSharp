@@ -347,7 +347,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 			
-			
+		/// <summary>
+		/// Вычисление синуса
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix sin(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -356,7 +359,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// e^x
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix exp(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -366,7 +372,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Гиперболический тангенс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix tanh(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -378,7 +387,10 @@ namespace AI.MathMod.AdditionalFunctions
 		
 		
 		
-		
+		/// <summary>
+		/// Косинус
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix cos(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -387,6 +399,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
+		/// <summary>
+		/// Тангенс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix tg(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -395,13 +411,19 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Котангенс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix ctg(Matrix Inp)
 		{
 			return 1.0/tg(Inp);
 		}
 		
-		
+		/// <summary>
+		/// Арксинус
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix arcsin(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -410,7 +432,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Арккосинус
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix arccos(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -420,7 +445,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Арктангенс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix arctg(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -429,7 +457,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Модуль
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix abs(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -438,7 +469,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Квадратный корень
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix sqrt(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -448,7 +482,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Десятичный логарифм
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix lg(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -458,7 +495,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Логарифм по основанию E
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix ln(Matrix Inp)
 		{
 			Matrix A = new Matrix(Inp.M, Inp.N);
@@ -467,18 +507,29 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
+		/// <summary>
+		/// Секонс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix sec(Matrix Inp)
 		{
 			return 1.0/cos(Inp);
 		}
 		
+		/// <summary>
+		/// Косеконс
+		/// </summary>
+		/// <param name="Inp">Матрица значений для преобразования</param>	
 		public static Matrix cosec(Matrix Inp)
 		{
 			return 1.0/sin(Inp);
 		}
 		
 		
-		
+		/// <summary>
+		/// Синус
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>	
 		public static ComplexVector sin(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -487,7 +538,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// e^x
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector exp(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -495,7 +549,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Гиперболический тангенс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector tanh(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -504,7 +561,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Квадратный корень
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector sqrt(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -512,7 +572,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Косинус
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector cos(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -520,7 +583,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Логарифм по основанию 10
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector lg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -528,7 +594,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Логарифм по основанию e
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector ln(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -536,7 +605,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Тангенс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector tg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -544,14 +616,20 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Котангенс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector ctg(ComplexVector Inp)
 		{
 			return 1.0/tg(Inp);
 		}
 		
 		
-		
+		/// <summary>
+		/// Арксинус
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector arcsin(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -559,6 +637,11 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
+		
+		/// <summary>
+		/// Арккосинус
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector arccos(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -566,7 +649,10 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Арктангенс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector arctg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
@@ -574,19 +660,28 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 		
-		
+		/// <summary>
+		/// Секонс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector sec(ComplexVector Inp)
 		{
 			return 1/cos(Inp);
 		}
 		
-		
+		/// <summary>
+		/// Косеконс
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static ComplexVector cosec(ComplexVector Inp)
 		{
 			return 1/sin(Inp);
 		}
 		
-		
+		/// <summary>
+		/// Модуль
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static Vector abs(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
@@ -595,7 +690,10 @@ namespace AI.MathMod.AdditionalFunctions
 		}
 		
 		
-		
+		/// <summary>
+		/// Модуль
+		/// </summary>
+		/// <param name="Inp">Комплексный вектор значений для преобразования</param>
 		public static Vector abs(ComplexVector Inp)
 		{
 			Vector A = new Vector(Inp.N);

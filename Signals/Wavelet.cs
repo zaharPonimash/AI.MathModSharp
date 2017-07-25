@@ -62,6 +62,11 @@ namespace AI.MathMod.Signals
 		
 		
 		
+		/// <summary>
+		/// Быстрое вельвет преобразование
+		/// </summary>
+		/// <param name="inp">Входной вектор</param>
+		/// <returns>Результат</returns>
 		public static Vector FWT(Vector inp)
 		{
 			Vector inpNew = inp.CutAndZero(Functions.NextPow2(inp.N));
@@ -71,7 +76,11 @@ namespace AI.MathMod.Signals
 			return new Vector(outp);
 		}
 		
-		
+		/// <summary>
+		/// Обратное быстрое вельвет преобразование
+		/// </summary>
+		/// <param name="inp">Входной вектор</param>
+		/// <returns>Результат</returns>
 		public static Vector IFWT(Vector inp)
 		{
 			Vector inpNew = inp.CutAndZero(Functions.NextPow2(inp.N));

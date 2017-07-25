@@ -216,6 +216,41 @@ namespace AI.MathMod
 			
 			}
 	
+			
+			
+				/// <summary>
+			/// Реализация оконных функций
+			/// </summary>
+			/// <param name="vect">входной вектор</param>
+			/// <param name="Function">функция</param>
+			/// <param name="window">окно</param>
+			/// <returns>Результат применения ф-и</returns>
+			public static Vector WindowFunc1(Vector vect, Func<Vector,double> Function, int window)
+			{
+			
+				
+				
+				Vector input, vect1 = vect.CutAndZero(Functions.NextPow2(vect.N));
+				int n = vect1.N-window;
+				List<double> DoubList = new List<double>();
+				double[] data = new double[window];
+			
+			
+					for(int i = 0; i < n; i++)
+					{
+						data = new double[window];
+						input = vect1.CutAndZero(i+window);
+						Array.Copy(input.Vecktor,i,data,0,window);
+						input = new Vector(data);
+						DoubList.Add(Function(input));
+						
+					
+					}
+			
+				return Vector.ListToVector(DoubList);
+			
+			}
+	
 	
 	
 	

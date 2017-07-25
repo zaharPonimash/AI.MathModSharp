@@ -17,10 +17,14 @@ namespace AI.MathMod
 	
 	
 	
-	
+	/// <summary>
+	/// Преобразование Фурье
+	/// </summary>
     public class Furie
     {
-    	
+    	/// <summary>
+    	/// Буфер для асинхронного Фурье
+    	/// </summary>
     	public ComplexVector buffer{get;set;}
     	
     	
@@ -162,7 +166,10 @@ namespace AI.MathMod
         }
         
         
-        
+        /// <summary>
+        /// Быстрое преобразование Фурье(БПФ)
+        /// </summary>
+        /// <param name="inp">Входной вектор</param>
         public static ComplexVector fft(Vector inp)
         {
         	ComplexVector cv = new ComplexVector(inp);	
@@ -177,7 +184,10 @@ namespace AI.MathMod
         
         
         
-        
+        /// <summary>
+        /// Асинхронное БПФ
+        /// </summary>
+        /// <param name="inp">Входной вектор</param>
         public void fftAs(ComplexVector inp)
         {
         	buffer = inp.Copy();
@@ -185,7 +195,10 @@ namespace AI.MathMod
         	th.Start();
         }
         
-        
+        /// <summary>
+        /// Асинхронное БПФ
+        /// </summary>
+        /// <param name="inp">Входной вектор</param>
          public void fftAs(Vector inp)
         {
          	buffer = new ComplexVector(inp.Copy());
@@ -218,6 +231,10 @@ namespace AI.MathMod
         
         
     #region ОБПФ
+   		 /// <summary>
+        /// ОБПФ
+        /// </summary>
+        /// <param name="A">Входной вектор</param>
     public static ComplexVector ifft(ComplexVector A)
     {
     	ComplexVector C = ifft1(A);
@@ -226,7 +243,10 @@ namespace AI.MathMod
     }
     
     
-    
+    	 /// <summary>
+        /// ОБПФ
+        /// </summary>
+        /// <param name="A">Входной вектор</param>
     public static ComplexVector ifft(Vector A)
     {
     	ComplexVector C = ifft1(A);
