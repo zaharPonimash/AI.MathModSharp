@@ -63,19 +63,24 @@ namespace AI.MathMod
 		
 		
 		
-		//Не 
+		///Не 
 		public static FLV operator ! (FLV a)
 		{
 				return new FLV(1.0-a._flv);
 		}
 		
-		//И
+		///И
 		public static FLV operator & (FLV a, FLV b)
 		{
 			return new FLV(a._flv*b._flv);
 		}
 		
-		//Или
+		/// <summary>
+        /// Или
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
 		public static FLV operator  | (FLV a, FLV b)
 		{
 			return new FLV(a._flv + b._flv - a._flv*b._flv);

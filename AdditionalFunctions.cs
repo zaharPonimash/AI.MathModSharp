@@ -782,19 +782,34 @@ namespace AI.MathMod.AdditionalFunctions
 		
 		
 		
-		
+		/// <summary>
+        /// Сигмоида
+        /// </summary>
+        /// <param name="Inp"></param>
+        /// <param name="betta"></param>
+        /// <returns></returns>
 		public static Matrix Sigmoid(Matrix Inp, double betta =1)
 		{
 			return 1.0/(1+MathFunc.exp(Inp*(-betta)));
 		}
 		
-		
+		/// <summary>
+        /// Сигмоида
+        /// </summary>
+        /// <param name="Inp"></param>
+        /// <param name="betta"></param>
+        /// <returns></returns>
 		public static Matrix SigmoidBiplyar(Matrix Inp, double betta =1)
 		{
 			return MathFunc.tanh(Inp*betta);
 		}
 		
-		
+		/// <summary>
+        /// Сигмоида
+        /// </summary>
+        /// <param name="Inp"></param>
+        /// <param name="porog"></param>
+        /// <returns></returns>
 		public static Matrix Porog(Matrix Inp, double porog = 0)
 		{
 			Matrix A = new Matrix(Inp.M,Inp.N);

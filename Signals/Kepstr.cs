@@ -12,10 +12,15 @@ using AI.MathMod.AdditionalFunctions;
 namespace AI.MathMod.Signals
 {
 	/// <summary>
-	/// Description of Kepstr.
+	///Кепстральный анализ
 	/// </summary>
 	public static class Kepstr
 	{
+        /// <summary>
+        /// Быстрое кепстральное преобразование
+        /// </summary>
+        /// <param name="signal">Сигнал</param>
+        /// <returns></returns>
 		public static Vector FKT(Vector signal)
 		{
 			Vector signalNew = signal.CutAndZero(Functions.NextPow2(signal.N));

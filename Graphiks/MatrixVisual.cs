@@ -18,6 +18,10 @@ namespace AI.MathMod.Graphiks
 	/// </summary>
 	public partial class MatrixVisual : Form
 	{
+        /// <summary>
+        /// Визуализация матриц
+        /// </summary>
+        /// <param name="matr"></param>
 		public MatrixVisual(Matrix matr)
 		{
 			_matr = matr;
@@ -59,7 +63,9 @@ namespace AI.MathMod.Graphiks
 		
 		
 		
-		
+		/// <summary>
+        /// Визуализация матрицы
+        /// </summary>
 		public void Visualiz()
 		{
 			for (int i = 0; i < _matr.M; i++)

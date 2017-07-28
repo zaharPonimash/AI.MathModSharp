@@ -19,6 +19,9 @@ namespace AI.MathMod.Graphiks
 	/// </summary>
 	public partial class VisualPlot : Form
 	{
+        /// <summary>
+        /// Инициализация формы
+        /// </summary>
 		public VisualPlot(Vector funcSempl)
 		{
 			InitializeComponent();
@@ -26,28 +29,43 @@ namespace AI.MathMod.Graphiks
 		}
 		
 		
-		
+		/// <summary>
+        /// Инициализация формы
+        /// </summary>
+        /// <param name="y">Вектор </param>
+        /// <param name="x"></param>
+        /// <param name="nameX"></param>
+        /// <param name="nameY"></param>
+        /// <param name="colorLine"></param>
 		public VisualPlot(Vector y, Vector x, string nameX, string nameY, Color colorLine)
 		{
 			InitializeComponent();
 			GraphicsView.Plot(zedGraphControl1, y, x, nameX, nameY, colorLine);
 		}
-		
-		public VisualPlot(Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
+
+        /// <summary>
+        /// Инициализация формы
+        /// </summary>
+        public VisualPlot(Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
 		{
 			InitializeComponent();
 			GraphicsView.Plot(zedGraphControl1, y, x, nameFunc, nameX, nameY, colorLine);
 		}
-			
-			
-		public VisualPlot(Vector y, Vector x, Color colorLine)
+
+
+        /// <summary>
+        /// Инициализация формы
+        /// </summary>
+        public VisualPlot(Vector y, Vector x, Color colorLine)
 		{
 			InitializeComponent();
 			GraphicsView.Plot(zedGraphControl1, y, x, colorLine);
 		}
-		
-		
-		public VisualPlot(Vector y, Vector x)
+
+        /// <summary>
+        /// Инициализация формы
+        /// </summary>
+        public VisualPlot(Vector y, Vector x)
 		{
 			InitializeComponent();
 			GraphicsView.Plot(zedGraphControl1, y, x);

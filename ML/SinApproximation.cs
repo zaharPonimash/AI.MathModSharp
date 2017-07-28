@@ -23,7 +23,10 @@ namespace AI.MathMod.ML
 		Thread th;
 		[NonSerialized]
 		GradientDecentDataset _gdd = new GradientDecentDataset();
-		public Vector _param;
+        /// <summary>
+        /// Параметры
+        /// </summary>
+        public Vector _param;
 		int _n;
 		[NonSerialized]
 		GradientDecent _gD;

@@ -12,14 +12,26 @@ using System;
 namespace AI.MathMod.Signals
 {
 	/// <summary>
-	/// Description of DCT.
+	/// Дискретно-косинусное преобразование
 	/// </summary>
 	public class DCT
 	{
-		
-		public Matrix _w, _w2;
-		
-		public DCT()
+
+
+        /// <summary> 
+        /// Матрица прямого преобразования
+        /// </summary>
+        public Matrix MainMatrix { get; set; }
+        /// <summary> 
+        /// Матрица обратного преобразования
+        /// </summary>
+        public Matrix InvMatrix { get; set; }
+
+
+        /// <summary>
+        /// Дискретно-косинусное преобразование
+        /// </summary>
+        public DCT()
 		{
 		}
 		
@@ -30,8 +42,8 @@ namespace AI.MathMod.Signals
 		/// <param name="countOutp">Код-во Выходов</param>
 		public DCT(int countInp, int countOutp)
 		{
-			_w = GetMatrW(countInp, countOutp);
-			_w2 = _w.Tr();
+			MainMatrix = GetMatrW(countInp, countOutp);
+			InvMatrix = MainMatrix.Tr();
 		}
 		
 		
@@ -86,7 +98,7 @@ namespace AI.MathMod.Signals
 		public Vector FDCT(Vector inp)
 		{
 			Matrix inpM = inp.ToMatrix().Tr();
-			return (_w*inpM).Tr().ToVector();
+			return (MainMatrix*inpM).Tr().ToVector();
 		}
 		
 		
@@ -99,7 +111,7 @@ namespace AI.MathMod.Signals
 		public Vector IDCT(Vector inp)
 		{
 			Matrix inpM = inp.ToMatrix().Tr();
-			return (_w2*inpM).Tr().ToVector();
+			return (InvMatrix*inpM).Tr().ToVector();
 		}
 		
 	}

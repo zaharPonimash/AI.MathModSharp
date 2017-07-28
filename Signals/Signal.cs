@@ -20,27 +20,61 @@ namespace AI.MathMod.Signals
 	{
 		
 		#region Синус
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        /// <param name="fi">Начальная фаза</param>
 		public static Vector Sin(Vector t, double A, double f, double fi)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f+fi);
 		}
-		
-		public static Vector Sin(Vector t, double A, Vector f, double fi)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        /// <param name="fi">Начальная фаза</param>
+        public static Vector Sin(Vector t, double A, Vector f, double fi)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f+fi);
 		}
-		
-		public static Vector Sin(Vector t, double A, double f, Vector fi)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        /// <param name="fi">Начальная фаза</param>
+        public static Vector Sin(Vector t, double A, double f, Vector fi)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f+fi);
 		}
-		
-		public static Vector Sin(Vector t, Vector A, double f, double fi)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        /// <param name="fi">Начальная фаза</param>
+        public static Vector Sin(Vector t, Vector A, double f, double fi)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f+fi);
 		}
-		
-		public static Vector Sin(Vector t, double A, double f)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        public static Vector Sin(Vector t, double A, double f)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f);
 		}
@@ -56,26 +90,45 @@ namespace AI.MathMod.Signals
 			double dt = 1.0/fd, df = 1/(N*dt);
 			return MathFunc.GenerateTheSequence(0,df,(N-1)*df).CutAndZero(N);
 		}
-		
-		
-		public static Vector Sin(Vector t, double A, Vector f)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        public static Vector Sin(Vector t, double A, Vector f)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f);
 		}
-		
-		
-		public static Vector Sin(Vector t, Vector A, double f)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">частота</param>
+        public static Vector Sin(Vector t, Vector A, double f)
 		{
 			return A*MathFunc.sin(t*2*Math.PI*f);
 		}
-		
-		
-		public static Vector Sin(Vector t, double f)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="f">частота</param>
+        public static Vector Sin(Vector t, double f)
 		{
 			return MathFunc.sin(t*2*Math.PI*f);
 		}
-		
-		public static Vector Sin(Vector t, Vector f)
+
+        /// <summary>
+        /// Синусоидальные колебания
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="f">частота</param>
+        public static Vector Sin(Vector t, Vector f)
 		{
 			return MathFunc.sin(t*2*Math.PI*f);
 		}
@@ -83,88 +136,195 @@ namespace AI.MathMod.Signals
 		
 		
 		#region Прямоугольный
-				
+		
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">Частота</param>
+        /// <param name="fi">Фаза</param>
+        /// <returns>Отсчеты сигнала</returns>
 		public static Vector Rect(Vector t, double A, double f, double fi)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
 		}
-		
-		
-		public static Vector Rect(Vector t, Vector A, double f, double fi)
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Вектор амплитуд</param>
+        /// <param name="f">Частота</param>
+        /// <param name="fi">Фаза</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, Vector A, double f, double fi)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
 		}
-		
-		
-		public static Vector Rect(Vector t, double A, Vector f, double fi)
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">Вектор частот</param>
+        /// <param name="fi">Фаза</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, double A, Vector f, double fi)
 		{
 			return A*NeuroFunc.Porog(Sin(t,A,1,fi),0.1);
 		}
-		
-		
-		public static Vector Rect(Vector t, double A, double f, Vector fi)
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">Частота</param>
+        /// <param name="fi">Вектор фаз</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, double A, double f, Vector fi)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
 		}
-		
-		
-		
-		public static Vector Rect(Vector t, double A, double f)
+
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">Частота</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, double A, double f)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
 		}
-		
-		public static Vector Rect(Vector t, double A, Vector f)
+
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f">Вектор частот</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, double A, Vector f)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
 		}
-		
-		public static Vector Rect(Vector t, Vector A, double f)
+
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="A">Вектор амплитуда</param>
+        /// <param name="f">Вектор частот</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, Vector A, double f)
 		{
 			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
 		}
-		
-		public static Vector Rect(Vector t, double f)
+
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="f">Частота</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, double f)
 		{
 			return NeuroFunc.Porog(Sin(t,f),0.1);
 		}
-		
-		
-		public static Vector Rect(Vector t, Vector f)
+
+        /// <summary>
+        /// Прямоугольный сигнал
+        /// </summary>
+        /// <param name="t">Вектор отсчетов времени</param>
+        /// <param name="f">Вектор частот</param>
+        /// <returns>Отсчеты сигнала</returns>
+        public static Vector Rect(Vector t, Vector f)
 		{
 			return NeuroFunc.Porog(Sin(t,f),0.1);
 		}
-		#endregion
-		
-		#region Радиоимпульс
-		public static Vector AmkRect(Vector t, double A, double f1, double fi1, double f2, double fi2, double k)
+        #endregion
+
+        #region Радиоимпульс
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f1">Несущая частота</param>
+        /// <param name="fi1">Фаза модулирующего сигала</param>
+        /// <param name="f2">Частота модулятора</param>
+        /// <param name="fi2">Фаза модулируемого сигала</param>
+        /// <param name="k">Коэффициент модуляции</param>
+        /// <returns>Вектор отсчетов</returns>
+        public static Vector AmkRect(Vector t, double A, double f1, double fi1, double f2, double fi2, double k)
 		{
 			Vector modul = Rect(t,A,f2,fi2)+k;
 			return Sin(t, modul,f1,fi1);
 		}
-		
-		
-		public static Vector AmkRect(Vector t, double A, double f1, double f2, double fi2, double k)
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f1">Несущая частота</param>
+        /// <param name="f2">Частота модулятора</param>
+        /// <param name="fi2">Фаза модулируемого сигала</param>
+        /// <param name="k">Коэффициент модуляции</param>
+        /// <returns>Вектор отсчетов</returns>
+        public static Vector AmkRect(Vector t, double A, double f1, double f2, double fi2, double k)
 		{
 			Vector modul = Rect(t,A,f2,fi2)+k;
 			return Sin(t, modul,f1);
 		}
-		
-		
-		public static Vector AmkRect(Vector t, double A, double f1, double f2, double k)
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f1">Несущая частота</param>
+        /// <param name="f2">Частота модулятора</param>
+        /// <param name="k">Коэффициент модуляции</param>
+        /// <returns>Вектор отсчетов</returns>
+        public static Vector AmkRect(Vector t, double A, double f1, double f2, double k)
 		{
 			Vector modul = Rect(t,A,f2)+k;
 			return Sin(t, modul,f1);
 		}
-		
-		
-		public static Vector AmkRectK(Vector t, double f1, double f2, double k)
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="f1">Несущая частота</param>
+        /// <param name="f2">Частота модулятора</param>
+        /// <param name="k">Коэффициент модуляции</param>
+        /// <returns>Вектор отсчетов</returns>
+        public static Vector AmkRectK(Vector t, double f1, double f2, double k)
 		{
 			Vector modul = Rect(t,f2)+k;
 			return Sin(t, modul,f1);
 		}
-		
-		public static Vector AmkRectA(Vector t, double A, double f1, double f2)
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
+        /// </summary>
+        /// <param name="t">Вектор времени</param>
+        /// <param name="A">Амплитуда</param>
+        /// <param name="f1">Несущая частота</param>
+        /// <param name="f2">Частота модулятора</param>
+        /// <returns>Вектор отсчетов</returns>
+        public static Vector AmkRectA(Vector t, double A, double f1, double f2)
 		{
 			Vector modul = Rect(t,A,f2);
 			return Sin(t, modul,f1);

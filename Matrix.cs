@@ -93,16 +93,21 @@ namespace AI.MathMod
 			_n =  n;
 			_matr = new double[m,n];
 		}
-		
-		
-#endregion		
-		#region ОПЕРАЦИИ 
-		
-		
-		
-		
-		// сложение матриц
-		public static Matrix operator + (Matrix A, Matrix B)
+
+
+        #endregion
+        #region ОПЕРАЦИИ 
+
+
+
+
+        /// <summary>
+        ///  сложение 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Matrix operator + (Matrix A, Matrix B)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 			
@@ -114,12 +119,17 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-			
-		// сложение 
-		public static Matrix operator + (Matrix A, double k)
+
+
+
+
+        /// <summary>
+        ///  сложение 
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Matrix operator + (Matrix A, double k)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 		
@@ -128,11 +138,11 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-		// сложение 
-		public static Matrix operator + (double k, Matrix A)
+
+
+
+        ///
+        public static Matrix operator + (double k, Matrix A)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 		
@@ -141,10 +151,15 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		// вычитание
-		public static Matrix operator - (Matrix A, double k)
+
+
+        /// <summary>
+        /// вычитание
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Matrix operator - (Matrix A, double k)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 		
@@ -153,11 +168,16 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-		// вычитание
-		public static Matrix operator - (double k, Matrix A)
+
+
+
+        /// <summary>
+        /// вычитание
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static Matrix operator - (double k, Matrix A)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 		
@@ -166,12 +186,17 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-			
-		// вычитание матриц
-		public static Matrix operator - (Matrix A, Matrix B)
+
+
+
+
+        /// <summary>
+        ///  вычитание матриц
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Matrix operator - (Matrix A, Matrix B)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 			
@@ -187,7 +212,7 @@ namespace AI.MathMod
 		
 		
 		
-		// Умножение матрицы на число	
+		///	
 				
 		public static Matrix operator * (Matrix A, double k)
 		{
@@ -205,8 +230,8 @@ namespace AI.MathMod
 		
 		
 		
-		// Умножение матрицы на число	
-				
+			
+		///		
 		public static Matrix operator / (Matrix A, double k)
 		{
 			Matrix C = new Matrix(A._m,A._n);
@@ -218,12 +243,17 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-			// Умножение матрицы на число	
-				
-		public static Matrix operator / (double k,Matrix A)
+
+
+
+        /// <summary>
+        ///  Умножение матрицы на число	
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+
+        public static Matrix operator / (double k,Matrix A)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 			
@@ -234,13 +264,17 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-		
-		// Умножение матрицы на число
-				
-		public static Matrix operator * (double k, Matrix A)
+
+
+
+
+        /// <summary>
+        /// Умножение вектора на матрицу
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static Matrix operator * (double k, Matrix A)
 		{
 			Matrix C = new Matrix(A._m,A._n);
 			
@@ -251,29 +285,39 @@ namespace AI.MathMod
 			
 			return C;
 		}
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		// Умножение матрицы на вектор
-		public static Matrix operator * (Matrix A, Vector B)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Умножение вектора на матрицу
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Matrix operator * (Matrix A, Vector B)
 		{
 			return A*B.ToMatrix();
 		}
-			
-		
-		//Умножение вектора на матрицу
-		public static Vector operator *(Vector B, Matrix A)
+
+
+        /// <summary>
+        /// Умножение вектора на матрицу
+        /// </summary>
+        /// <param name="B"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static Vector operator *(Vector B, Matrix A)
 		{
 			return (B.ToMatrix()*A).ToVector();
 		}
@@ -296,7 +340,12 @@ namespace AI.MathMod
 		}
 		*/
 		
-		// Умножение матриц
+		/// <summary>
+        /// Умножение матриц
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Matrix operator * (Matrix A, Matrix B)
 		{
 			Matrix C = new Matrix(A._m,B._n);

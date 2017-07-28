@@ -77,11 +77,13 @@ namespace AI.MathMod.Graphiks
 			}
 			catch{}
 		}
-		
-		
-		
-		
-		public static void Plot(ZedGraphControl graph, Vector y, Vector x, string nameX, string nameY, Color colorLine)
+
+
+
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(ZedGraphControl graph, Vector y, Vector x, string nameX, string nameY, Color colorLine)
 		{
 			try{
 			double[] y1 = y.Vecktor;
@@ -98,10 +100,12 @@ namespace AI.MathMod.Graphiks
 			}
 			catch{}
 		}
-		
-		
-		
-		public static void Plot(ZedGraphControl graph, Vector y, Vector x, Color colorLine)
+
+
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(ZedGraphControl graph, Vector y, Vector x, Color colorLine)
 		{
 			try{
 			double[] y1 = y.Vecktor;
@@ -118,11 +122,13 @@ namespace AI.MathMod.Graphiks
 			}
 			catch{}
 		}
-		
-		
-		
-		
-		public static void Plot(ZedGraphControl graph, Vector y, Vector x)
+
+
+
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(ZedGraphControl graph, Vector y, Vector x)
 		{
 			try{
 			double[] y1 = y.Vecktor;
@@ -139,35 +145,47 @@ namespace AI.MathMod.Graphiks
 			}
 			catch{}
 		}
-		
-		
-		
-		
-		public static void Plot(Vector funcSempl)
+
+
+
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(Vector funcSempl)
 		{
 			VisualPlot vp = new VisualPlot(funcSempl);
 			vp.Show();
 		}
-		
-		public static void Plot(Vector y, Vector x, string nameX, string nameY, Color colorLine)
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(Vector y, Vector x, string nameX, string nameY, Color colorLine)
 		{
 			VisualPlot vp = new VisualPlot( y,  x, nameX, nameY, colorLine);
 			vp.Show();
 		}
-		
-		public static void Plot(Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
 		{
 			VisualPlot vp = new VisualPlot(y,  x, nameFunc, nameX, nameY, colorLine);
 			vp.Show();
 		}
-		
-		public static void Plot(Vector y, Vector x, Color colorLine)
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(Vector y, Vector x, Color colorLine)
 		{
 			VisualPlot vp = new VisualPlot(y,  x,  colorLine);
 			vp.Show();
 		}
 		
-		
+		/// <summary>
+        /// График от одной переменной
+        /// </summary>
+        /// <param name="y"></param>
+        /// <param name="x"></param>
 		public static void Plot(Vector y, Vector x)
 		{
 			VisualPlot vp = new VisualPlot(y,  x);

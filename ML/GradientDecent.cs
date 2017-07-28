@@ -194,16 +194,18 @@ namespace AI.MathMod.ML
 			th = new Thread(Decent);
 			th.Start();
 		}
-		
-		
-		
-		/// <summary>
-		/// Частные производные
-		/// </summary>
-		/// <param name="param">Начальный вектор параметров(точка)</param>
-		/// <param name="function">Целевая функция(принимает вектор параметров, выдает результирующее значение)</param>
-		/// <returns>Возвращает вектор частных производных</returns>
-		Vector PartialDerivatives(Vector param, List<Vector> inp, List<Vector> ideal, Func<Vector,List<Vector>, List<Vector>, double> function)
+
+
+
+        /// <summary>
+        /// Частные производные
+        /// </summary>
+        /// <param name="param">Начальный вектор параметров(точка)</param>
+        /// <param name="function">Целевая функция(принимает вектор параметров, выдает результирующее значение)</param>
+        ///  <param name="inp"> Вектора входа</param>
+        ///   <param name="ideal"> Идеальные выходы</param>
+        /// <returns>Возвращает вектор частных производных</returns>
+        Vector PartialDerivatives(Vector param, List<Vector> inp, List<Vector> ideal, Func<Vector,List<Vector>, List<Vector>, double> function)
 		{
 			Vector partialDerivatives = new Vector(param.N);
 			double out1 = function(param,inp, ideal);

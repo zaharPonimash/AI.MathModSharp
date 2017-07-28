@@ -151,7 +151,12 @@ namespace AI.MathMod
 		
 	#region Операции
 		
-		// Поэлементное умножение
+		/// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Vector operator * (Vector A, Vector B)
 		{
 			int n1 = A._n;
@@ -164,7 +169,12 @@ namespace AI.MathMod
 			return C;
 		}
 		
-			// Поэлементное сложение
+		/// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static	Vector operator + (Vector A, Vector B)
 		{
 			int n1 = A._n;
@@ -175,63 +185,92 @@ namespace AI.MathMod
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+B._vector[i];
 			return C;
 		}
-		
-		
-		
-			// Cложение c числом
-		public static	Vector operator + (Vector A, double k)
+
+
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static	Vector operator + (Vector A, double k)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+k;
 			return C;
 		}
-		
-		
-			// Cложение c числом
-		public static	Vector operator + (double k, Vector A)
+
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static	Vector operator + (double k, Vector A)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+k;
 			return C;
 		}
-		
-		
-		
-	
-		
-		
-			// вычитание из числа
-		public static	Vector operator - (double k, Vector A)
+
+
+
+
+
+
+        /// <summary>
+        /// Вычитание
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static	Vector operator - (double k, Vector A)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
 			for(int i = 0; i<n1; i++) C._vector[i] = k - A._vector[i];
 			return C;
 		}
-		
-		
-		
-			// вычитание числа
-		public static	Vector operator - ( Vector A, double k)
+
+
+
+        /// <summary>
+        /// Вычитание
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static	Vector operator - ( Vector A, double k)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i] - k;
 			return C;
 		}
-		
-		
-		//отрицательный вектор
-		public static Vector operator - (Vector A)
+
+
+        /// <summary>
+        /// Отрицание
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static Vector operator - (Vector A)
 		{
 			return 0.0-A;
 		}
-		
-		
-		// Поэлементное деление
-		public static Vector operator / (Vector A, Vector B)
+
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Vector operator / (Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
@@ -241,9 +280,14 @@ namespace AI.MathMod
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]/B._vector[i];
 			return C;
 		}
-		
-		// Поэлементное вычитание
-		public static Vector operator - (Vector A, Vector B)
+
+        /// <summary>
+        /// Вычитание
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Vector operator - (Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
@@ -253,63 +297,93 @@ namespace AI.MathMod
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]-B._vector[i];
 			return C;
 		}
-		
-		
-		// Умножение на число
-			public static Vector operator * (double k, Vector A)
+
+
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator * (double k, Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
 			return C;
 		}
-			
-		// Умножение на число
-			public static Vector operator * (Vector A, double k)
+
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator * (Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
 			return C;
 		}
-			
-		
-			
-		// Деление на число
-			public static Vector operator / (double k, Vector A)
+
+
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator / (double k, Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k/A._vector[i];
 			return C;
 		}
-			
-		// Деление на число
-			public static Vector operator / (Vector A, double k)
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator / (Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]/k;
 			return C;
 		}
-				
-			
-			
-			
-			
-			// Возведение вектора в степень
-			public static Vector operator ^ ( Vector A, double k)
+
+
+
+
+
+        /// <summary>
+        /// Возведение в степень
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator ^ ( Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = Math.Pow(A._vector[i], k);
 			return C;
 		}
-			
-			
-			
-			// Возведение вектора в степень
-			public static Vector operator ^ ( double k,  Vector A)
+
+
+
+        /// <summary>
+        /// Возведение в степень
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Vector operator ^ ( double k,  Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
@@ -319,7 +393,12 @@ namespace AI.MathMod
 			
 			
 			
-		// Поэлементное возведение
+		/// <summary>
+        /// Возведение в степень
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Vector operator ^ (Vector A, Vector B)
 		{
 			int n1 = A._n;
@@ -330,11 +409,16 @@ namespace AI.MathMod
 			for(int i = 0; i<n1; i++) C._vector[i] = Math.Pow(A._vector[i],B._vector[i]);
 			return C;
 		}
-		
-		
-		
-			// Остаток от деления
-			public static Vector operator % (Vector A, double k)
+
+
+
+        /// <summary>
+        /// Остаток от деления
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="A"></param>
+        /// <returns></returns>
+        public static Vector operator % (Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
@@ -342,7 +426,12 @@ namespace AI.MathMod
 			return C;
 		}
 			
-				// Остаток от деления
+				/// <summary>
+                /// Остаток от деления
+                /// </summary>
+                /// <param name="k"></param>
+                /// <param name="A"></param>
+                /// <returns></returns>
 			public static Vector operator % (double k,Vector A)
 		{
 			int n = A._n;
@@ -353,7 +442,12 @@ namespace AI.MathMod
 		
 			
 			
-		// Поэлементно остаток от деления
+		/// <summary>
+        /// Остаток от деления поэлементно
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Vector operator % (Vector A, Vector B)
 		{
 			int n1 = A._n;
@@ -367,25 +461,44 @@ namespace AI.MathMod
 		
 		
 		
-		// Свертка
+		/// <summary>
+        /// Свертка
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Vector operator & (Vector A, Vector B)
 		{
 			return Convolution.DirectConvolution(A,B);
 		}
 		
-		// Корреляция
+		/// <summary>
+        /// Корреляция
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static Vector operator | (Vector A, Vector B)
 		{
 			return Correlation.CrossCorrelation(A,B);
 		}
 			
-		// Автокорреляция
+		/// <summary>
+        /// Автокорреляция
+        /// </summary>
+        /// <param name="A"></param>
+        /// <returns></returns>
 		public static Vector operator ! (Vector A)
 		{
 			return Correlation.AutoCorrelation(A);
 		}
 		
-		// равно ли
+		/// <summary>
+        /// Проверка равенства
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
 		public static bool operator == (Vector A, Vector B)
 		{
 			if(A._n != B._n) return false;
@@ -418,7 +531,7 @@ namespace AI.MathMod
 	/// <summary>
 	/// Удаление по индексу
 	/// </summary>
-	/// <param name="elements">Индекс</param>
+	/// <param name="index">Индекс</param>
 	public Vector IndexDel(int index)
 	{
 		List<double> lD = new List<double>();
@@ -772,7 +885,24 @@ namespace AI.MathMod
 			foreach(double i in _vector) str += " " + i;
 			return str;
 		}
-		
-	}
+
+        /// <summary>
+        /// Эквивалентность
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return this == (Vector)obj;
+        }
+
+        /// <summary>
+        /// Хэш-код
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+    }
 	
 }

@@ -269,157 +269,235 @@ namespace AI.MathMod
 			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B.Vecktor[i];
 			return C;
 		}
-		
-		
-		// Умножение на число
-			public static ComplexVector operator * (Complex k, ComplexVector A)
+
+
+        /// <summary>
+        /// Умножение на число
+        /// </summary>
+        /// <param name="k">комплексное число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator * (Complex k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
 			return C;
 		}
-			
-			
-			// Вычитание
-			public static ComplexVector operator - (Complex k, ComplexVector A)
+
+
+        /// <summary>
+        /// Вычитание из числа
+        /// </summary>
+        /// <param name="k">комплексное число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator - (Complex k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k-A._vector[i];
 			return C;
 		}
-			
-				// Вычитание
-			public static ComplexVector operator - (ComplexVector A,Complex k)
+
+        /// <summary>
+        /// Вычитание числа
+        /// </summary>
+        /// <param name="k">комплексное число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator - (ComplexVector A,Complex k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]-k;
 			return C;
 		}
-		
 
-			// Вычитание
-			public static ComplexVector operator - (double k, ComplexVector A)
+
+        /// <summary>
+        /// Вычитание из числа
+        /// </summary>
+        /// <param name="k">реальное число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator - (double k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k-A._vector[i];
 			return C;
 		}
-			
-				// Вычитание
-			public static ComplexVector operator - (ComplexVector A,double k)
+
+        /// <summary>
+        /// Вычитание числа
+        /// </summary>
+        /// <param name="k"> число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator - (ComplexVector A,double k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]-k;
 			return C;
-		}	
+		}
 
-			// Сложение
-			public static ComplexVector operator + (Complex k, ComplexVector A)
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator + (Complex k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k+A._vector[i];
 			return C;
 		}
-			
-				// Сложение
-			public static ComplexVector operator + (ComplexVector A,Complex k)
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator + (ComplexVector A,Complex k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]+k;
 			return C;
 		}
-		
 
-			// Сложение
-			public static ComplexVector operator + (double k, ComplexVector A)
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator + (double k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k+A._vector[i];
 			return C;
 		}
-			
-			// Сложение
-			public static ComplexVector operator + (ComplexVector A,double k)
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator + (ComplexVector A,double k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]-k;
 			return C;
-		}				
-			
-			
-			// отрицание 
-			public static ComplexVector operator - (ComplexVector A)
+		}
+
+
+        /// <summary>
+        /// Отрицание
+        /// </summary>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator - (ComplexVector A)
 			{
 				return 0.0-A;
 			}
-			
-			
-		// Умножение на число
-			public static ComplexVector operator * (ComplexVector A, Complex k)
+
+
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator * (ComplexVector A, Complex k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
 			return C;
 		}
-			
-			
-			
-		// Деление на число
-			public static ComplexVector operator / (Complex k, ComplexVector A)
+
+
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator / (Complex k, ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = k/A._vector[i];
 			return C;
 		}
-			
-		// Деление на число
-			public static ComplexVector operator / (ComplexVector A, Complex k)
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator / (ComplexVector A, Complex k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]/k;
 			return C;
 		}
-				
-			
-			
-			
-			
-			// Возведение вектора в степень
-			public static ComplexVector operator ^ ( ComplexVector A, Complex k)
+
+
+
+
+
+        /// <summary>
+        /// Возведение в степень
+        /// </summary>
+        /// <param name="k">Число</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator ^ ( ComplexVector A, Complex k)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = Complex.Pow(A._vector[i], k);
 			return C;
 		}
-			
-			
-			
-			// комплексно сопряженный вектор
-			public static ComplexVector operator ! ( ComplexVector A)
+
+
+
+        /// <summary>
+        /// Комплексно сопряженный вектор
+        /// </summary>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator ! ( ComplexVector A)
 		{
 			int n = A._n;
 			ComplexVector C = new ComplexVector(n);
 			for(int i = 0; i<n; i++) C._vector[i] = Complex.Conjugate(A._vector[i]);
 			return C;
-		}	
-			
-			
-			
-		// Поэлементное возведение
-		public static ComplexVector operator ^ (ComplexVector A, ComplexVector B)
+		}
+
+
+
+        /// <summary>
+        /// Поэлементное возведение
+        /// </summary>
+        /// <param name="B">Вектор степеней</param>
+        /// <param name="A">Комплексный вектор</param>
+        /// <returns>Комплексный вектор</returns>
+        public static ComplexVector operator ^ (ComplexVector A, ComplexVector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
