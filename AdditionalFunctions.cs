@@ -16,7 +16,7 @@ namespace AI.MathMod.AdditionalFunctions
 		
 	
 	/// <summary>
-	/// Математические ф-и для векторов и матриц
+	/// Математические функции для векторов и матриц
 	/// </summary>
 	public static class MathFunc
 	{

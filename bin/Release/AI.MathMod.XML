@@ -489,7 +489,7 @@
         </member>
         <member name="T:AI.MathMod.AdditionalFunctions.MathFunc">
             <summary>
-            Математические ф-и для векторов и матриц
+            Математические функции для векторов и матриц
             </summary>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.MathFunc.GenerateTheSequence(System.Double,System.Double,System.Double)">
