@@ -1030,13 +1030,23 @@
             <param name="window">окно</param>
             <returns>Результат применения ф-и</returns>
         </member>
-        <member name="M:AI.MathMod.Functions.WindowFunc1(AI.MathMod.Vector,System.Func{AI.MathMod.Vector,System.Double},System.Int32)">
+        <member name="M:AI.MathMod.Functions.WindowFuncDouble(AI.MathMod.Vector,System.Func{AI.MathMod.Vector,System.Double},System.Int32)">
             <summary>
             Реализация оконных функций
             </summary>
             <param name="vect">входной вектор</param>
             <param name="Function">функция</param>
             <param name="window">окно</param>
+            <returns>Результат применения ф-и</returns>
+        </member>
+        <member name="M:AI.MathMod.Functions.WindowFuncDouble(AI.MathMod.Vector,System.Func{AI.MathMod.Vector,System.Double},System.Int32,System.Int32)">
+            <summary>
+            Реализация оконных функций
+            </summary>
+            <param name="vect">входной вектор</param>
+            <param name="Function">функция</param>
+            <param name="window">окно</param>
+            <param name="stride">шаг</param>
             <returns>Результат применения ф-и</returns>
         </member>
         <member name="M:AI.MathMod.Functions.Integral(AI.MathMod.Vector,System.Double)">
@@ -1268,10 +1278,10 @@
         </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
             <summary>
-            Строит график в контроле graph, по отсчетам funcSempl
+            Строит график в контроле graph, по отсчетам funcItemClass
             </summary>
             <param name="graph">Элемент интерфейса для вывода графика</param>
-            <param name="funcSempl">Значения y</param>
+            <param name="funcItemClass">Значения y</param>
         </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>

@@ -23,14 +23,14 @@ namespace AI.MathMod.Graphiks
 	{
 		
 		/// <summary>
-		/// Строит график в контроле graph, по отсчетам funcSempl
+		/// Строит график в контроле graph, по отсчетам funcItemClass
 		/// </summary>
 		/// <param name="graph">Элемент интерфейса для вывода графика</param>
-		/// <param name="funcSempl">Значения y</param>
-		public static void Plot(ZedGraphControl graph, Vector funcSempl)
+		/// <param name="funcItemClass">Значения y</param>
+		public static void Plot(ZedGraphControl graph, Vector funcItemClass)
 		{
 			try{
-			double[] y = funcSempl.Vecktor;
+			double[] y = funcItemClass.Vecktor;
 			double[] x = MathFunc.GenerateTheSequence(0,y.Length).Vecktor;
 			
 			graph.GraphPane.CurveList.Clear();
@@ -151,9 +151,9 @@ namespace AI.MathMod.Graphiks
         /// <summary>
         /// График от одной переменной
         /// </summary>
-        public static void Plot(Vector funcSempl)
+        public static void Plot(Vector funcItemClass)
 		{
-			VisualPlot vp = new VisualPlot(funcSempl);
+			VisualPlot vp = new VisualPlot(funcItemClass);
 			vp.Show();
 		}
         /// <summary>

@@ -613,7 +613,7 @@ namespace AI.MathMod
 			
 			for (int i = 0; i < _n; i++)
 			{
-				_vector[i] = Convert.ToDouble(strVector[i]);
+				_vector[i] = Convert.ToDouble(strVector[i].Replace(".",","));
 			}
 			
 		}

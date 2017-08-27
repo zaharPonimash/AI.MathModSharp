@@ -22,10 +22,10 @@ namespace AI.MathMod.Graphiks
         /// <summary>
         /// Инициализация формы
         /// </summary>
-		public VisualPlot(Vector funcSempl)
+		public VisualPlot(Vector funcItemClass)
 		{
 			InitializeComponent();
-			GraphicsView.Plot(zedGraphControl1, funcSempl);
+			GraphicsView.Plot(zedGraphControl1, funcItemClass);
 		}
 		
 		
