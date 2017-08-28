@@ -610,11 +610,20 @@ namespace AI.MathMod
 		{
 			_n = strVector.Length;
 			_vector = new double[_n];
-			
-			for (int i = 0; i < _n; i++)
-			{
-				_vector[i] = Convert.ToDouble(strVector[i].Replace(".",","));
-			}
+
+            for (int i = 0; i < _n; i++)
+            {
+                try
+                {
+                    _vector[i] = Convert.ToDouble(strVector[i].Replace(".", ","));
+                }
+
+                catch
+                {
+                    _vector[i] = Convert.ToDouble(strVector[i].Replace(",", "."));
+                }
+            
+            }
 			
 		}
 	
