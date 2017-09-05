@@ -357,11 +357,39 @@ namespace AI.MathMod.Signals
 		{
 			return MathFunc.exp(t*kDamp)*Sin(t,A,f,fi);
 		}
-		#endregion
-		
-		
-		
-	}
+        #endregion
+
+        #region Параметры сигналов
+
+        /// <summary>
+        /// Энергия выделяемая на едичном резисторе за все время
+        /// </summary>
+        /// <param name="signal">Сигнал отсчеты</param>
+        /// <param name="fd">Частота дискретизация</param>
+        /// <returns></returns>
+        public static double Energe(Vector signal, double fd)
+        {
+            double energe = Functions.Summ(signal);
+            return energe / fd;
+        }
+
+
+        /// <summary>
+        /// Норма сигнала
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="fd"></param>
+        /// <returns></returns>
+        public static double Norm(Vector signal, double fd)
+        {
+            double norm = Energe(signal, fd);
+            return Math.Sqrt(norm);
+        }
+        #endregion
+
+
+
+    }
 	
 	
 	

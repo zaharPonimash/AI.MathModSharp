@@ -880,6 +880,15 @@
             <param name="Inp">Входной вектор</param>
             <param name="porog">Порог</param>
         </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Porog(AI.MathMod.Vector,System.Double,System.Double)">
+            <summary>
+            Ограничение сверху и снизу
+            </summary>
+            <param name="Inp">Входной вектор</param>
+            <param name="porogUp"></param>
+            <param name="porogDoun"></param>
+            <returns></returns>
+        </member>
         <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Sigmoid(AI.MathMod.Matrix,System.Double)">
             <summary>
             Сигмоида
@@ -914,6 +923,14 @@
             Функция распределения по нормальному закону 
             </summary>
             <param name="Inp">Входной вектор</param>
+            <param name="m">Мат. ожидание</param>
+            <param name="sko">СКО</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.Gauss(System.Double,System.Double,System.Double)">
+            <summary>
+            Функция вероятность принадлежности
+            </summary>
+            <param name="Inp">Входное значение</param>
             <param name="m">Мат. ожидание</param>
             <param name="sko">СКО</param>
         </member>
@@ -1283,6 +1300,13 @@
             <param name="graph">Элемент интерфейса для вывода графика</param>
             <param name="funcItemClass">Значения y</param>
         </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
+            <summary>
+            Строит график в контроле graph, по отсчетам funcItemClass
+            </summary>
+            <param name="graph">Элемент интерфейса для вывода графика</param>
+            <param name="funcItemClass">Значения y</param>
+        </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Вывод графика
@@ -1612,6 +1636,451 @@
             Загрузка матрицы
             </summary>
             <param name="path">Путь до файла</param>		
+        </member>
+        <member name="T:AI.MathMod.ML.StructClass">
+            <summary>
+            Структура для хранения класса
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.StructClass._strName">
+            <summary>
+            Имя класса
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.StructClass._centGiperSfer">
+            <summary>
+            Центр гиперсферы
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClass.StrName">
+            <summary>
+            Имя класса
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClass.CentGiperSfer">
+            <summary>
+            Центр гиперсферы
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.StructClasses">
+            <summary>
+            Структура классификатора
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClasses.Classes">
+            <summary>
+            Список классов
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Classificator">
+            <summary>
+            Классификатор
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.#ctor(System.String)">
+            <summary>
+            Классификатор
+            </summary>
+            <param name="path">Путь до файла</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.#ctor(AI.MathMod.ML.StructClasses)">
+            <summary>
+            Классивикатор
+            </summary>
+            <param name="classifikator"> Коллекция классов</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.GeneratVector(System.Drawing.Bitmap,System.Boolean)">
+            <summary>
+            Преобразование картинки в вектор
+            </summary>
+            <param name="Bmp">Картинка</param>
+            <param name="flag">Реаальный ли размер использовать?</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.GeneratBmp(AI.MathMod.Vector)">
+            <summary>
+            Преобразование вектора в картинку
+            </summary>
+            <param name="vect">Вектор</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.GetCentr(AI.MathMod.Vector[])">
+            <summary>
+            Поиск центра класса
+            </summary>
+            <param name="vectors">Точки класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.Teach1(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Обучение одного элеменнта класса
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.AddClasses(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Обучение одного элеменнта класса
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.AddClass(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавление класса в классификатор
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.Save(System.String)">
+            <summary>
+            Сохранение классификатора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.Open(System.String)">
+            <summary>
+            Загрузка классификатора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classificator.RecognizeVector(AI.MathMod.Vector)">
+            <summary>
+            Распознавание
+            </summary>
+            <param name="inp">Вектор который надо распознать</param>
+        </member>
+        <member name="T:AI.MathMod.ML.Clasterisators.CorrForel">
+            <summary>
+            Кластеризатор - Форель с корреляционной метрикой
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Clasterisators.CorrForel.Clasters">
+            <summary>
+            Кластеры
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.#ctor(AI.MathMod.Vector[])">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="viborca"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.#ctor(AI.MathMod.Vector[],System.Int32)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="viborca"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.GetGipersfer(System.Double,AI.MathMod.Vector,AI.MathMod.Vector[])">
+            <summary>
+            Проводит гиперсферу нужного радиуса из конкретной точки и на заданном множестве
+            </summary>
+            <param name="R">Радиус</param>
+            <param name="m">Центр масс</param>
+            <param name="mass">Множество точек</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.Max(AI.MathMod.Vector[],AI.MathMod.Vector)">
+            <summary>
+            Максимальная дистанция
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.AWithOutB(AI.MathMod.Vector[],AI.MathMod.Vector[])">
+            <summary>
+            Множество А\В
+            </summary>
+            <param name="A">Множество А</param>
+            <param name="B">Множество В</param>
+            <returns>А\B</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.GetCentr(AI.MathMod.Vector[])">
+            <summary>
+            Поиск центра класса
+            </summary>
+            <param name="vectors">Точки класса</param>
+            <returns></returns>
+        </member>
+        <member name="T:AI.MathMod.ML.Clasterisators.Claster">
+            <summary>
+            Структура кластера
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Clasterisators.Claster.Centr">
+            <summary>
+            центр кластера
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Clasterisators.Forel">
+            <summary>
+            Кластеризатор -- Форель
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.#ctor(AI.MathMod.Vector[])">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="viborca"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.#ctor(AI.MathMod.Vector[],System.Int32)">
+            <summary>
+            Конструктор класса
+            </summary>
+            <param name="viborca"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.GetGipersfer(System.Double,AI.MathMod.Vector,AI.MathMod.Vector[])">
+            <summary>
+            Проводит гиперсферу нужного радиуса из конкретной точки и на заданном множестве
+            </summary>
+            <param name="R">Радиус</param>
+            <param name="m">Центр масс</param>
+            <param name="mass">Множество точек</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.Max(AI.MathMod.Vector[],AI.MathMod.Vector)">
+            <summary>
+            Максимальная дистанция
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.AWithOutB(AI.MathMod.Vector[],AI.MathMod.Vector[])">
+            <summary>
+            Множество А\В
+            </summary>
+            <param name="A">Множество А</param>
+            <param name="B">Множество В</param>
+            <returns>А\B</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Clasterisators.Forel.GetCentr(AI.MathMod.Vector[])">
+            <summary>
+            Поиск центра класса
+            </summary>
+            <param name="vectors">Точки класса</param>
+            <returns></returns>
+        </member>
+        <member name="T:AI.MathMod.ML.Distance">
+            <summary>
+            Расстояния
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.StructClassCorr">
+            <summary>
+            Структура для хранения класса
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.StructClassCorr._strName">
+            <summary>
+            Имя класса
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.StructClassCorr._centGiperSfer">
+            <summary>
+            Центр гиперсферы
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClassCorr.Probability">
+            <summary>
+            Вероятность принадлежности
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClassCorr.StrName">
+            <summary>
+            Имя класса
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClassCorr.CentGiperSfer">
+            <summary>
+            Центр гиперсферы
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.StructClassesCorr">
+            <summary>
+            Структура классификатора
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.StructClassesCorr.Classes">
+            <summary>
+            Список классов
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.CorrelationClassifier">
+            <summary>
+            Классификатор
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.CorrelationClassifier.Classes">
+            <summary>
+            Классы
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.#ctor">
+            <summary>
+            Корреляционный классификатор
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.#ctor(System.String)">
+            <summary>
+            Классификатор
+            </summary>
+            <param name="path">Путь до файла</param>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.#ctor(AI.MathMod.ML.StructClassesCorr)">
+            <summary>
+            Классификатор
+            </summary>
+            <param name="classifikator"> Коллекция классов</param>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.CorrelationMetric(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Корреляционная метрика
+            </summary>
+            <param name="A">Первый вектор</param>
+            <param name="B">Второй вектор</param>
+            <returns>Коэффициент корреляции нормированный [0;1]</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.GetCentr(AI.MathMod.Vector[])">
+            <summary>
+            Поиск центра класса
+            </summary>
+            <param name="vectors">Точки класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.Teach1(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Обучение одного элеменнта класса
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.AddClasses(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Обучение одного элеменнта класса
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.AddClass(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавление класса в классификатор
+            </summary>
+            <param name="tViborka">Выборка</param>
+            <param name="nameClass">Имя класса</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.Save(System.String)">
+            <summary>
+            Сохранение классификатора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.Open(System.String)">
+            <summary>
+            Загрузка классификатора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.RecognizeVector(AI.MathMod.Vector)">
+            <summary>
+            Распознавание
+            </summary>
+            <param name="inp">Вектор который надо распознать</param>
+        </member>
+        <member name="M:AI.MathMod.ML.CorrelationClassifier.RecognizeVectorStruct(AI.MathMod.Vector)">
+            <summary>
+            Распознавание
+            </summary>
+            <param name="inp">Вектор который надо распознать</param>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.SModel">
+            <summary>
+            Модель класса
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Classifire.SModel.Probability">
+            <summary>
+            Вероятность
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Classifire.SModel.NameClass">
+            <summary>
+            Имя класса
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.SModelComponent">
+            <summary>
+            Модель компоненты вектора
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SModelComponent.#ctor">
+            <summary>
+            Стат. модель компонента модели
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SModelComponent.#ctor(System.Double,System.Double)">
+            <summary>
+            Стат. модель компонента модели
+            </summary>
+            <param name="e">Мат. ожидание</param>
+            <param name="sco">Среднеквадратичное отклонение</param>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.SimpleStatisticClasifire">
+            <summary>
+            Простой статистический классификатор, 
+            который предполагает, что у величины 
+            гауссовский з-н распределения
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.#ctor">
+            <summary>
+            Простой статистический классификатор, 
+            который предполагает, что у величины 
+            гауссовский з-н распределения
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.#ctor(System.String)">
+            <summary>
+            Простой статистический классификатор, 
+            который предполагает, что у величины 
+            гауссовский з-н распределения
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Output(AI.MathMod.Vector)">
+            <summary>
+            Выход
+            </summary>
+            <param name="input">Вектор входа</param>
+            <returns>Максимально похожая модель</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.AddModel(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавление модели
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
+            <summary>
+            Вероятности принадлежности к классу
+            </summary>
+            <param name="vect"></param>
+            <param name="sm"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Save(System.String)">
+            <summary>
+            Сохранение классификатора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Open(System.String)">
+            <summary>
+            Загрузка классификатора
+            </summary>
+            <param name="path">Путь</param>
         </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
@@ -2317,6 +2786,22 @@
             <param name="A">Амплитуда(начальная)</param>
             <param name="fi">Фаза</param>
         </member>
+        <member name="M:AI.MathMod.Signals.Signal.Energe(AI.MathMod.Vector,System.Double)">
+            <summary>
+            Энергия выделяемая на едичном резисторе за все время
+            </summary>
+            <param name="signal">Сигнал отсчеты</param>
+            <param name="fd">Частота дискретизация</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Signals.Signal.Norm(AI.MathMod.Vector,System.Double)">
+            <summary>
+            Норма сигнала
+            </summary>
+            <param name="signal"></param>
+            <param name="fd"></param>
+            <returns></returns>
+        </member>
         <member name="T:AI.MathMod.Signals.Wavelet">
             <summary>
             Description of Wavelet.
@@ -2841,6 +3326,12 @@
             Удаление выбранного элемента
             </summary>
             <param name="element">Элементы</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.IndexValue(System.Double)">
+            <summary>
+            Выдает индекс по первому вхождению значения  
+            </summary>
+            <param name="value">значение</param>
         </member>
         <member name="M:AI.MathMod.Vector.ElementsDel(AI.MathMod.Vector)">
             <summary>

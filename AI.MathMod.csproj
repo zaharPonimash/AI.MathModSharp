@@ -90,6 +90,11 @@
       <DependentUpon>VisualPlot.cs</DependentUpon>
     </Compile>
     <Compile Include="Matrix.cs" />
+    <Compile Include="ML\Classifire\Classificator.cs" />
+    <Compile Include="ML\Classifire\CorrForel.cs" />
+    <Compile Include="ML\Classifire\Forel.cs" />
+    <Compile Include="ML\Classifire\CorrelationClassifier.cs" />
+    <Compile Include="ML\Classifire\SimpleStatisticClasifir.cs" />
     <Compile Include="ML\GradientDecent.cs" />
     <Compile Include="ML\LinearRegression.cs" />
     <Compile Include="ML\SinApproximation.cs" />

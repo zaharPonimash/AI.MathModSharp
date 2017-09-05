@@ -779,16 +779,52 @@ namespace AI.MathMod.AdditionalFunctions
 				else A.Vecktor[i] = 0;
 			return A;
 		}
-		
-		
-		
-		/// <summary>
+
+
+        /// <summary>
+        /// Ограничение сверху и снизу
+        /// </summary>
+        /// <param name="Inp">Входной вектор</param>
+        /// <param name="porogUp"></param>
+        /// <param name="porogDoun"></param>
+        /// <returns></returns>
+        public static Vector Porog(Vector Inp, double porogUp = 1, double porogDoun = 0)
+        {
+            Vector A = new Vector(Inp.N);
+            for (int i = 0; i < Inp.N; i++)
+                if ((Inp.Vecktor[i] >= porogDoun)&& (Inp.Vecktor[i] <= porogUp)) A.Vecktor[i] = 1;
+                else A.Vecktor[i] = 0;
+            return A;
+        }
+
+
+        public static Vector Relu(Vector Inp, double porog = 0)
+        {
+            Vector A = new Vector(Inp.N);
+            for (int i = 0; i < Inp.N; i++)
+                if (Inp.Vecktor[i] >= porog) A.Vecktor[i] = Inp.Vecktor[i];
+                else A.Vecktor[i] = 0;
+            return A;
+        }
+
+
+        public static Vector Relu(Vector Inp, double porogUp = 1, double porogDoun = 0)
+        {
+            Vector A = new Vector(Inp.N);
+            for (int i = 0; i < Inp.N; i++)
+                if ((Inp.Vecktor[i] >= porogDoun) && (Inp.Vecktor[i] <= porogUp)) A.Vecktor[i] = Inp.Vecktor[i];
+                else A.Vecktor[i] = 0;
+            return A;
+        }
+
+
+        /// <summary>
         /// Сигмоида
         /// </summary>
         /// <param name="Inp"></param>
         /// <param name="betta"></param>
         /// <returns></returns>
-		public static Matrix Sigmoid(Matrix Inp, double betta =1)
+        public static Matrix Sigmoid(Matrix Inp, double betta =1)
 		{
 			return 1.0/(1+MathFunc.exp(Inp*(-betta)));
 		}
@@ -848,14 +884,26 @@ namespace AI.MathMod.AdditionalFunctions
 		{
 			return (1.0/(sko*Math.Sqrt(2*Math.PI)))*MathFunc.exp(((Inp-m)^2)/(-2*sko*sko));
 		}
-		
-		
-		/// <summary>
-		/// Функция распределения Пуасона 
-		/// </summary>
-		/// <param name="Inp">Входной вектор</param>
-		/// <param name="m">Мат. ожидание от 0 до +inf</param>
-		public static Vector Puasson(Vector Inp, double m)
+
+
+        /// <summary>
+        /// Функция вероятность принадлежности
+        /// </summary>
+        /// <param name="Inp">Входное значение</param>
+        /// <param name="m">Мат. ожидание</param>
+        /// <param name="sko">СКО</param>
+        public static double Gauss(double Inp, double m, double sko)
+        {
+            return (1.0 / (sko * Math.Sqrt(2 * Math.PI))) * Math.Exp(((Inp - m)* (Inp - m)) / (-2 * sko * sko));
+        }
+
+
+        /// <summary>
+        /// Функция распределения Пуасона 
+        /// </summary>
+        /// <param name="Inp">Входной вектор</param>
+        /// <param name="m">Мат. ожидание от 0 до +inf</param>
+        public static Vector Puasson(Vector Inp, double m)
 		{
 			return ((m^Inp)/MathFunc.factorial(Inp))*Math.Exp(-m);
 		}

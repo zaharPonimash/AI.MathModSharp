@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AI.MathMod.Graphiks;
+using System.Globalization;
 
 namespace AI.MathMod
 {
@@ -551,12 +552,25 @@ namespace AI.MathMod
 		lD.Remove(element);
 		return ListToVector(lD);
 	}
-	
-	/// <summary>
-	/// Удаление выбранных элементов
-	/// </summary>
-	/// <param name="elements">Элементы</param>
-	public Vector ElementsDel(Vector elements)
+        /// <summary>
+        /// Выдает индекс по первому вхождению значения  
+        /// </summary>
+        /// <param name="value">значение</param>
+        public double IndexValue(double value)
+        {
+
+            for (int i = 0; i < _n; i++)
+            {
+                if (_vector[i] == value) return (double)i;
+            }
+
+            return -1;
+        }
+        /// <summary>
+        /// Удаление выбранных элементов
+        /// </summary>
+        /// <param name="elements">Элементы</param>
+        public Vector ElementsDel(Vector elements)
 	{
 		List<double> lD = new List<double>();
 		lD.AddRange(Copy()._vector);
@@ -610,19 +624,16 @@ namespace AI.MathMod
 		{
 			_n = strVector.Length;
 			_vector = new double[_n];
+            string str;
+            NumberFormatInfo provider = new NumberFormatInfo();
+            provider.NumberDecimalSeparator = ",";
+            provider.NumberGroupSeparator = ".";
+            provider.NumberGroupSizes = new int[] { 3};
 
             for (int i = 0; i < _n; i++)
             {
-                try
-                {
-                    _vector[i] = Convert.ToDouble(strVector[i].Replace(".", ","));
-                }
-
-                catch
-                {
-                    _vector[i] = Convert.ToDouble(strVector[i].Replace(",", "."));
-                }
-            
+                str = strVector[i].Replace(".", ",");
+                _vector[i] = Convert.ToDouble(str,provider);
             }
 			
 		}

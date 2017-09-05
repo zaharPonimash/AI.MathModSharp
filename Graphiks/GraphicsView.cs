@@ -21,46 +21,71 @@ namespace AI.MathMod.Graphiks
 	/// </summary>
 	public static class GraphicsView
 	{
-		
-		/// <summary>
+
+        /// <summary>
+        /// Строит график в контроле graph, по отсчетам funcItemClass
+        /// </summary>
+        /// <param name="graph">Элемент интерфейса для вывода графика</param>
+        /// <param name="funcItemClass">Значения y</param>
+        public static void Plot(ZedGraphControl graph, Vector funcItemClass)
+        {
+            try
+            {
+                double[] y = funcItemClass.Vecktor;
+                double[] x = MathFunc.GenerateTheSequence(0, y.Length).Vecktor;
+
+                graph.GraphPane.CurveList.Clear();
+                graph.GraphPane.XAxis.Title.Text = "x";
+                graph.GraphPane.YAxis.Title.Text = "f(x)";
+                graph.GraphPane.Title.Text = "Функция";
+                graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.AddCurve("Функция", x, y, Color.Red, SymbolType.None);
+                graph.AxisChange();
+                graph.Invalidate();
+            }
+            catch { }
+        }
+
+
+
+        /// <summary>
 		/// Строит график в контроле graph, по отсчетам funcItemClass
 		/// </summary>
 		/// <param name="graph">Элемент интерфейса для вывода графика</param>
 		/// <param name="funcItemClass">Значения y</param>
-		public static void Plot(ZedGraphControl graph, Vector funcItemClass)
-		{
-			try{
-			double[] y = funcItemClass.Vecktor;
-			double[] x = MathFunc.GenerateTheSequence(0,y.Length).Vecktor;
-			
-			graph.GraphPane.CurveList.Clear();
-			graph.GraphPane.XAxis.Title.Text = "x";
-			graph.GraphPane.YAxis.Title.Text = "f(x)";
-			graph.GraphPane.Title.Text = "Функция";
-			graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
-			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
-			graph.GraphPane.AddCurve("Функция", x, y, Color.Red, SymbolType.None);
-			graph.AxisChange ();
-    		graph.Invalidate ();
-			}
-			catch{}
-		}
-		
-		
-	
-		
-		
-		/// <summary>
-		/// Вывод графика
-		/// </summary>
-		/// <param name="graph">Поле для вывода</param>
-		/// <param name="y">Вектор Y</param>
-		/// <param name="x">Вектор X</param>
-		/// <param name="nameFunc">Имя ф-и</param>
-		/// <param name="nameX">Имя оси X</param>
-		/// <param name="nameY">Имя оси Y</param>
-		/// <param name="colorLine">Цвет линии</param>
-		public static void Plot(ZedGraphControl graph, Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
+		public static void Bar(ZedGraphControl graph, Vector funcItemClass)
+        {
+            try
+            {
+                double[] y = funcItemClass.Vecktor;
+                double[] x = MathFunc.GenerateTheSequence(0, y.Length).Vecktor;
+
+                graph.GraphPane.CurveList.Clear();
+                graph.GraphPane.XAxis.Title.Text = "x";
+                graph.GraphPane.YAxis.Title.Text = "f(x)";
+                graph.GraphPane.Title.Text = "Гистограмма";
+                graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.AddBar("Гистограмма", x, y, Color.Green);
+                graph.AxisChange();
+                graph.Invalidate();
+            }
+            catch { }
+        }
+
+
+        /// <summary>
+        /// Вывод графика
+        /// </summary>
+        /// <param name="graph">Поле для вывода</param>
+        /// <param name="y">Вектор Y</param>
+        /// <param name="x">Вектор X</param>
+        /// <param name="nameFunc">Имя ф-и</param>
+        /// <param name="nameX">Имя оси X</param>
+        /// <param name="nameY">Имя оси Y</param>
+        /// <param name="colorLine">Цвет линии</param>
+        public static void Plot(ZedGraphControl graph, Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
 		{
 			try{
 			double[] y1 = y.Vecktor;
