@@ -73,7 +73,7 @@ namespace AI.MathMod.ML.Classifire
     /// гауссовский з-н распределения
     /// </summary>
     [Serializable]
-    public class SimpleStatisticClasifire 
+    public class SimpleStatisticClassifire 
     {
 
         List<SModel> models = new List<SModel>();
@@ -83,7 +83,7 @@ namespace AI.MathMod.ML.Classifire
         /// который предполагает, что у величины 
         /// гауссовский з-н распределения
         /// </summary>
-        public SimpleStatisticClasifire()
+        public SimpleStatisticClassifire()
         {
 
         }
@@ -94,7 +94,7 @@ namespace AI.MathMod.ML.Classifire
         /// гауссовский з-н распределения
         /// </summary>
         /// <param name="path">Путь</param>
-        public SimpleStatisticClasifire(string path)
+        public SimpleStatisticClassifire(string path)
         {
             Open(path);
         }
@@ -151,7 +151,7 @@ namespace AI.MathMod.ML.Classifire
         {
             for (int i = 0; i<vect.Length; i++)
             {
-                sm[i].pr = DistributionFunc.Gauss(vect[i], sm[i]._e, sm[i]._sco);
+                sm[i].pr = DistributionFunc.GaussNorm1(vect[i], sm[i]._e, sm[i]._sco);
             }
 
             sm.CalculateProb();
@@ -193,7 +193,7 @@ namespace AI.MathMod.ML.Classifire
             try
             {
 
-                
+                    
                 BinaryFormatter binFormat = new BinaryFormatter();
 
                 using (Stream fStream = new FileStream(path,

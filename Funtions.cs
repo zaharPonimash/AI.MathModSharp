@@ -266,7 +266,7 @@ namespace AI.MathMod
 
 
 
-            Vector input, vect1 = vect.CutAndZero(Functions.NextPow2(vect.N));
+            Vector input, vect1 = vect.Copy();
             int n = vect1.N - window;
             List<double> DoubList = new List<double>();
             double[] data = new double[window];

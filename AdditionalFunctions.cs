@@ -894,7 +894,18 @@ namespace AI.MathMod.AdditionalFunctions
         /// <param name="sko">СКО</param>
         public static double Gauss(double Inp, double m, double sko)
         {
-            return (1.0 / (sko * Math.Sqrt(2 * Math.PI))) * Math.Exp(((Inp - m)* (Inp - m)) / (-2 * sko * sko));
+            return (1.0 / (sko * Math.Sqrt(2 * Math.PI))) * Math.Exp(((Inp - m) * (Inp - m)) / (-2 * sko * sko));
+        }
+
+        /// <summary>
+        /// Функция вероятность принадлежности при inp = m, out = 1
+        /// </summary>
+        /// <param name="Inp">Входное значение</param>
+        /// <param name="m">Мат. ожидание</param>
+        /// <param name="sko">СКО</param>
+        public static double GaussNorm1(double Inp, double m, double sko)
+        {
+            return Math.Exp(((Inp - m) * (Inp - m)) / (-2 * sko * sko));
         }
 
 

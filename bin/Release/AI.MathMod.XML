@@ -934,6 +934,14 @@
             <param name="m">Мат. ожидание</param>
             <param name="sko">СКО</param>
         </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.GaussNorm1(System.Double,System.Double,System.Double)">
+            <summary>
+            Функция вероятность принадлежности при inp = m, out = 1
+            </summary>
+            <param name="Inp">Входное значение</param>
+            <param name="m">Мат. ожидание</param>
+            <param name="sko">СКО</param>
+        </member>
         <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.Puasson(AI.MathMod.Vector,System.Double)">
             <summary>
             Функция распределения Пуасона 
@@ -2029,21 +2037,21 @@
             <param name="e">Мат. ожидание</param>
             <param name="sco">Среднеквадратичное отклонение</param>
         </member>
-        <member name="T:AI.MathMod.ML.Classifire.SimpleStatisticClasifire">
+        <member name="T:AI.MathMod.ML.Classifire.SimpleStatisticClassifire">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
             гауссовский з-н распределения
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.#ctor">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.#ctor">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
             гауссовский з-н распределения
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.#ctor(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.#ctor(System.String)">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
@@ -2051,32 +2059,32 @@
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Output(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Output(AI.MathMod.Vector)">
             <summary>
             Выход
             </summary>
             <param name="input">Вектор входа</param>
             <returns>Максимально похожая модель</returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.AddModel(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.AddModel(AI.MathMod.Vector[],System.String)">
             <summary>
             Добавление модели
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
             <summary>
             Вероятности принадлежности к классу
             </summary>
             <param name="vect"></param>
             <param name="sm"></param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Save(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Save(System.String)">
             <summary>
             Сохранение классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClasifire.Open(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Open(System.String)">
             <summary>
             Загрузка классификатора
             </summary>
