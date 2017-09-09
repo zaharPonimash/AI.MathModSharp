@@ -20,11 +20,21 @@ namespace AI.MathMod.ML.Classifire
         /// Вероятность
         /// </summary>
         public double Probability { get; set; }
+        
         /// <summary>
         /// Имя класса
         /// </summary>
         public string NameClass { get; set; }
 
+        /// <summary>
+        /// Веса для каждого компонента
+        /// </summary>
+        public Vector Weights { get; set; }
+
+        /// <summary>
+        /// Априорная вероятность
+        /// </summary>
+        public Vector ProbabilityApriory { get; set; }
 
 
         internal void CalculateProb()
@@ -35,6 +45,20 @@ namespace AI.MathMod.ML.Classifire
 
             Probability /= Count;
         }
+
+        /// <summary>
+        /// Рассчет вероятностей с учетом весов
+        /// </summary>
+        public void CalculateProbW()
+        {
+            Probability = 0;
+            for (int i = 0; i < Count; i++)
+                Probability += Weights.Vecktor[i] * this[i].pr;
+
+            Probability /= Functions.Summ(Weights);
+        }
+
+
     }
 
     /// <summary>
@@ -73,10 +97,11 @@ namespace AI.MathMod.ML.Classifire
     /// гауссовский з-н распределения
     /// </summary>
     [Serializable]
-    public class SimpleStatisticClassifire 
+    public class SimpleStatisticClassifire : IClassifire
     {
 
         List<SModel> models = new List<SModel>();
+        public Double Porog { get; set; } 
 
         /// <summary>
         /// Простой статистический классификатор, 
@@ -85,7 +110,7 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         public SimpleStatisticClassifire()
         {
-
+            Porog = 0.5;
         }
 
         /// <summary>
@@ -97,6 +122,7 @@ namespace AI.MathMod.ML.Classifire
         public SimpleStatisticClassifire(string path)
         {
             Open(path);
+            Porog = 0.5;
         }
 
         /// <summary>
@@ -212,5 +238,25 @@ namespace AI.MathMod.ML.Classifire
 
         }
 
+
+        /// <summary>
+        /// Добавление класса\модели
+        /// </summary>
+        public void AddClass(Vector[] tViborka, string nameClass)
+        {
+            AddModel(tViborka, nameClass);
+        }
+
+
+        /// <summary>
+        /// Распознавание вектора
+        /// </summary>
+        /// <param name="inp">Вектор</param>
+        /// <returns>Имя класса</returns>
+        public string RecognizeVector(Vector inp)
+        {
+            SModel model = Output(inp);
+            return model.Probability >= Porog ? model.NameClass : "none";
+        }
     }
 }

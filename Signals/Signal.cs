@@ -369,7 +369,7 @@ namespace AI.MathMod.Signals
         /// <returns></returns>
         public static double Energe(Vector signal, double fd)
         {
-            double energe = Functions.Summ(signal);
+            double energe = Functions.Summ((signal^2));
             return energe / fd;
         }
 

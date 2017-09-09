@@ -15,7 +15,7 @@ using System.IO;
 using System.Drawing;
 using AI.MathMod.ML.Clasterisators;
 
-namespace AI.MathMod.ML
+namespace AI.MathMod.ML.Classifire
 {
 	/// <summary>
 	/// Структура для хранения класса
@@ -88,8 +88,8 @@ namespace AI.MathMod.ML
 	/// Классификатор
 	/// </summary>
 	[Serializable]
-	public class CorrelationClassifier
-	{
+	public class CorrelationClassifier : IClassifire 
+    {
         StructClassesCorr _classes;// Классификатор
         [NonSerialized]
 		StructClassCorr _class;// Текущий класс
@@ -247,40 +247,52 @@ namespace AI.MathMod.ML
 		 	}
 		 	return a;
 		}
-		 
-		 
-		 
-		/// <summary>
+
+
+
+        /// <summary>
+        /// Добавление класса в классификатор
+        /// </summary>
+        /// <param name="tViborka">Выборка</param>
+        /// <param name="nameClass">Имя класса</param>
+        /// <returns></returns>
+        public Vector AddClass1(Vector[] tViborka, string nameClass)
+        {
+            Vector a = Teach1(tViborka, nameClass);
+            _classes._classes.Add(_class);
+            return a;
+        }
+
+
+        /// <summary>
 		/// Добавление класса в классификатор
 		/// </summary>
 		/// <param name="tViborka">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
-		/// <returns></returns>
-		public Vector AddClass(Vector[] tViborka, string nameClass)
-		{
-			Vector a = Teach1(tViborka, nameClass);
-			_classes._classes.Add(_class);
-			return a;
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/// <summary>
-		/// Сохранение классификатора
-		/// </summary>
-		/// <param name="path">Путь</param>
-		public void Save(string path)
+		public void AddClass(Vector[] tViborka, string nameClass)
+        {
+            Vector a = Teach1(tViborka, nameClass);
+            _classes._classes.Add(_class);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Сохранение классификатора
+        /// </summary>
+        /// <param name="path">Путь</param>
+        public void Save(string path)
 		{
 			try{
 			StructClassesCorr clases = new StructClassesCorr();

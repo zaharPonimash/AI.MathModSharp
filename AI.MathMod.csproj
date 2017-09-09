@@ -94,6 +94,7 @@
     <Compile Include="ML\Classifire\CorrForel.cs" />
     <Compile Include="ML\Classifire\Forel.cs" />
     <Compile Include="ML\Classifire\CorrelationClassifier.cs" />
+    <Compile Include="ML\Classifire\IClassifire.cs" />
     <Compile Include="ML\Classifire\SimpleStatisticClasifir.cs" />
     <Compile Include="ML\GradientDecent.cs" />
     <Compile Include="ML\LinearRegression.cs" />
