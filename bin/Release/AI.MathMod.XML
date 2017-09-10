@@ -1645,6 +1645,37 @@
             </summary>
             <param name="path">Путь до файла</param>		
         </member>
+        <member name="T:AI.MathMod.ML.Classifire.BayesClassifier">
+            <summary>
+            Байесовский классификатор
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.BayesClassifier.AddClass(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавить класс
+            </summary>
+            <param name="tViborka">Элементы класса</param>
+            <param name="nameClass">Имя класса</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.BayesClassifier.Open(System.String)">
+            <summary>
+            Открыть к-тор
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.BayesClassifier.RecognizeVector(AI.MathMod.Vector)">
+            <summary>
+            Распознавание вектора
+            </summary>
+            <param name="inp">Вектор</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.BayesClassifier.Save(System.String)">
+            <summary>
+            Сохранение к-тора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
         <member name="T:AI.MathMod.ML.Classifire.StructClass">
             <summary>
             Структура для хранения класса
@@ -1936,6 +1967,37 @@
             </summary>
             <param name="inp">Вектор который надо распознать</param>
         </member>
+        <member name="T:AI.MathMod.ML.Classifire.kNN">
+            <summary>
+            Метод к-ближ. соседей
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.kNN.AddClass(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавить класс
+            </summary>
+            <param name="tViborka">Элементы класса</param>
+            <param name="nameClass">Имя класса</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.kNN.Open(System.String)">
+            <summary>
+            Открыть к-тор
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.kNN.RecognizeVector(AI.MathMod.Vector)">
+            <summary>
+            Распознавание вектора
+            </summary>
+            <param name="inp">Вектор</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.kNN.Save(System.String)">
+            <summary>
+            Сохранение к-тора
+            </summary>
+            <param name="path">Путь</param>
+        </member>
         <member name="T:AI.MathMod.ML.Classifire.SModel">
             <summary>
             Модель класса
@@ -2047,6 +2109,42 @@
             </summary>
             <param name="inp">Вектор</param>
             <returns>Имя класса</returns>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.StatisticClassifier">
+            <summary>
+            Более "мощный" статистический к-тор
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.SVM">
+            <summary>
+            Машина опорных векторов
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SVM.AddClass(AI.MathMod.Vector[],System.String)">
+            <summary>
+            Добавить класс
+            </summary>
+            <param name="tViborka">Элементы класса</param>
+            <param name="nameClass">Имя класса</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SVM.Open(System.String)">
+            <summary>
+            Открыть к-тор
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SVM.RecognizeVector(AI.MathMod.Vector)">
+            <summary>
+            Распознавание вектора
+            </summary>
+            <param name="inp">Вектор</param>
+            <returns>Результат</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SVM.Save(System.String)">
+            <summary>
+            Сохранение к-тора
+            </summary>
+            <param name="path">Путь</param>
         </member>
         <member name="T:AI.MathMod.ML.Clasterisators.CorrForel">
             <summary>
