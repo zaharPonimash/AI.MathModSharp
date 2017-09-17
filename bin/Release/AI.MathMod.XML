@@ -492,6 +492,22 @@
             Математические функции для векторов и матриц
             </summary>
         </member>
+        <member name="P:AI.MathMod.AdditionalFunctions.MathFunc.SqrtPi">
+            <summary>
+            Квадратный корень из ПИ
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.AdditionalFunctions.MathFunc.Sqrt2">
+            <summary>
+            Квадратный корень из 2-х
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.MathFunc.erf(System.Double)">
+            <summary>
+            Функция ошибки
+            </summary>
+            <param name="x">Аргумент</param>
+        </member>
         <member name="M:AI.MathMod.AdditionalFunctions.MathFunc.GenerateTheSequence(System.Double,System.Double,System.Double)">
             <summary>
             Генерирование последовательности
@@ -3248,6 +3264,29 @@
             </summary>
             <param name="path">Путь до файла</param>		
         </member>
+        <member name="T:AI.MathMod.Tensor3">
+            <summary>
+                Представляет тензор 3-го ранга, как базовый клас нейронной сети
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor3.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+                Заполнение тензора случайными числами
+            </summary>
+            <param name="width">ширина</param>
+            <param name="height">высота</param>
+            <param name="depth">глубина</param>
+        </member>
+        <member name="M:AI.MathMod.Tensor3.#ctor(System.Int32,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Тензор 3-го ранга
+            </summary>
+            <param name="width">Ширина</param>
+            <param name="height">Высота</param>
+            <param name="depth">Глубина</param>
+            <param name="c">Величина которой инициализируется тензор</param>
+        </member>
+        <!-- Проигнорирован некорректный комментарий XML для члена "M:AI.MathMod.Tensor3.#ctor(System.Collections.Generic.IList{System.Double})" -->
         <member name="T:AI.MathMod.Vector">
             <summary>
             Класс реализующий вектора и операции над ними

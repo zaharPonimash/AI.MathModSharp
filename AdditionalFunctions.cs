@@ -11,25 +11,63 @@ using System.Numerics;
 
 namespace AI.MathMod.AdditionalFunctions
 {
- 
-	
-		
-	
-	/// <summary>
-	/// Математические функции для векторов и матриц
-	/// </summary>
-	public static class MathFunc
-	{
-		
-		
-		/// <summary>
-		/// Генерирование последовательности
-		/// </summary>
-		/// <param name="began">Начальное значение</param>
-		/// <param name="step">Шаг</param>
-		/// <param name="end">Конечное значение</param>
-		/// <returns>Возвращает последовательность</returns>
-		public static Vector GenerateTheSequence(double began, double step, double end)
+
+
+
+
+    /// <summary>
+    /// Математические функции для векторов и матриц
+    /// </summary>
+    public static class MathFunc
+    {
+
+        /// <summary>
+        /// Квадратный корень из ПИ
+        /// </summary>
+        public static double SqrtPi
+        {
+            get { return 1.77245385091; }
+
+        }
+
+        /// <summary>
+        /// Квадратный корень из 2-х
+        /// </summary>
+        public static double Sqrt2
+        {
+            get { return 1.41421356237; }
+
+        }
+
+        /// <summary>
+        /// Функция ошибки
+        /// </summary>
+        /// <param name="x">Аргумент</param>
+        public static double erf(double x)
+        {
+           
+            double a = 8 / (3 * Math.PI) * (3 - Math.PI) / (Math.PI - 4),
+                exp1 = (-x * x * (4 / Math.PI) + a * x * x) / (1 + a * x);
+            return Math.Sign(x)*Math.Sqrt( 1-Math.Exp(exp1));
+        }
+
+        public static Vector erf(Vector Inp)
+        {
+            Vector A = new Vector(Inp.N);
+            for (int i = 0; i < Inp.N; i++) A.Vecktor[i] = erf(Inp.Vecktor[i]);
+            return A;
+        }
+
+
+
+        /// <summary>
+        /// Генерирование последовательности
+        /// </summary>
+        /// <param name="began">Начальное значение</param>
+        /// <param name="step">Шаг</param>
+        /// <param name="end">Конечное значение</param>
+        /// <returns>Возвращает последовательность</returns>
+        public static Vector GenerateTheSequence(double began, double step, double end)
 		{
 			double n = end - began;
 			int N = (n%step == 0)? (int)(n/step):(int)(n/step)+1;

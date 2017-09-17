@@ -104,6 +104,7 @@
     <Compile Include="ML\LinearRegression.cs" />
     <Compile Include="ML\SinApproximation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomUtilities.cs" />
     <Compile Include="Signals\DCT.cs" />
     <Compile Include="Signals\FastHilbert.cs" />
     <Compile Include="Signals\Filters.cs" />
@@ -112,10 +113,13 @@
     <Compile Include="Signals\Signal.cs" />
     <Compile Include="Signals\Wavelet.cs" />
     <Compile Include="Statistic.cs" />
+    <Compile Include="Tensor3.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Сonvolution.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ComputerVision\" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
