@@ -419,6 +419,32 @@
             </summary>
             <param name="path">Путь до файла</param>		
         </member>
+        <member name="T:AI.MathMod.ComputerVision.ImgConverter">
+            <summary>
+            Конвертирование изображений
+            в разные математические типы
+            и обратно
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.LoadBitmap(System.String)">
+            <summary>
+            Загрузка картинки
+            </summary>
+            <param name="fileName">Имя</param>
+            <returns>изображение</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.BmpToTensor(System.Drawing.Bitmap)">
+            <summary>
+            Преобразование изображения в тензор 3-го ранга(нормировка на 1)
+            </summary>
+            <param name="Bmp">Изображение</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.BmpToMatr(System.Drawing.Bitmap)">
+            <summary>
+            Изображение в полутоновую матрицу
+            </summary>
+            <param name="Bmp">Изображение</param>
+        </member>
         <member name="T:AI.MathMod.Correlation">
             <summary>
             Класс реализует авто- и взаимо- кореляционные функции
@@ -3614,6 +3640,13 @@
         <member name="M:AI.MathMod.Vector.CutAndZero(System.Int32)">
             <summary>
             Дополнение нулями или обрезание до нужного размера 
+            вектора.
+            </summary>
+            <param name="n">Новый размер</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.CutAndZeroB(System.Int32)">
+            <summary>
+            Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
             вектора.
             </summary>
             <param name="n">Новый размер</param>

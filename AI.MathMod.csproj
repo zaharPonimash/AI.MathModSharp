@@ -71,6 +71,7 @@
     <Compile Include="Approximation\ApproximationError.cs" />
     <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
     <Compile Include="ComplexVector.cs" />
+    <Compile Include="ComputerVision\ImgConverter.cs" />
     <Compile Include="Correlation.cs" />
     <Compile Include="AdditionalFunctions.cs" />
     <Compile Include="Funtions.cs" />
@@ -117,9 +118,7 @@
     <Compile Include="Vector.cs" />
     <Compile Include="Сonvolution.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ComputerVision\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>

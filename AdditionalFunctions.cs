@@ -866,38 +866,53 @@ namespace AI.MathMod.AdditionalFunctions
 		{
 			return 1.0/(1+MathFunc.exp(Inp*(-betta)));
 		}
-		
-		/// <summary>
+
+        /// <summary>
         /// Сигмоида
         /// </summary>
         /// <param name="Inp"></param>
         /// <param name="betta"></param>
         /// <returns></returns>
-		public static Matrix SigmoidBiplyar(Matrix Inp, double betta =1)
-		{
-			return MathFunc.tanh(Inp*betta);
-		}
-		
-		/// <summary>
+        public static Matrix SigmoidBiplyar(Matrix Inp, double betta = 1)
+        {
+            return MathFunc.tanh(Inp * betta);
+        }
+
+
+        /// <summary>
         /// Сигмоида
         /// </summary>
         /// <param name="Inp"></param>
         /// <param name="porog"></param>
         /// <returns></returns>
-		public static Matrix Porog(Matrix Inp, double porog = 0)
-		{
-			Matrix A = new Matrix(Inp.M,Inp.N);
-			
-			for(int i = 0; i<Inp.M; i++)for(int j = 0; j<Inp.N; j++)
-			{
-				if(Inp.Matr[i,j] >= porog)A.Matr[i,j] = 1;
-				else A.Matr[i,j] = 0;
-			}
-			
-			return A;
-		}
-		
-	}
+        public static Matrix Porog(Matrix Inp, double porog = 0)
+        {
+            Matrix A = new Matrix(Inp.M, Inp.N);
+
+            for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
+                {
+                    if (Inp.Matr[i, j] >= porog) A.Matr[i, j] = 1;
+                    else A.Matr[i, j] = 0;
+                }
+
+            return A;
+        }
+
+
+        public static Matrix Relu(Matrix Inp, double porog = 0)
+        {
+            Matrix A = new Matrix(Inp.M, Inp.N);
+
+            for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
+                {
+                    if (Inp.Matr[i, j] >= porog) A.Matr[i, j] = Inp.Matr[i, j];
+                    else A.Matr[i, j] = 0;
+                }
+
+            return A;
+        }
+
+    }
 	
 	
 	

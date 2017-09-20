@@ -716,46 +716,70 @@ namespace AI.MathMod
 			for(int i = 0; i < _n; i++) newVect[i] = _vector[_n-i-1];
 			return new Vector(newVect);
 		}
-		
-		
-		
-		
-		
-		
-		
-		/// <summary>
-		/// Дополнение нулями или обрезание до нужного размера 
-		/// вектора.
-		/// </summary>
-		/// <param name="n">Новый размер</param>
-		public Vector CutAndZero(int n)
-		{
-			double[] newVect = new double[n];
-			
-			if(n>_n){
-				for(int i = 0; i < _n; i++) newVect[i] = _vector[i];
-				for(int i = _n; i < n; i++) newVect[i] = 0;
-			}
-			else
-			{
-				for(int i = 0; i < n; i++) newVect[i] = _vector[i];
-			}
-			
-			return new Vector(newVect);
-		}
-		
-		
-		
-		
-		
-		/// <summary>
-		/// Сдвиг последовательности на определенное число
-		/// Пример: последовательность 1 2 3 сдвинута на 2
-		/// это 0 0 1 2 3, на 4 это 0 0 0 0 1 2 3
-		/// </summary>
-		/// <param name="valueShift"> На сколько сдвинуть</param>
-		/// <returns>возвращает вектор длинны N+valueShift</returns>
-		public Vector Shift(int valueShift)
+
+
+
+
+
+
+
+        /// <summary>
+        /// Дополнение нулями или обрезание до нужного размера 
+        /// вектора.
+        /// </summary>
+        /// <param name="n">Новый размер</param>
+        public Vector CutAndZero(int n)
+        {
+            double[] newVect = new double[n];
+
+            if (n > _n)
+            {
+                for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
+                for (int i = _n; i < n; i++) newVect[i] = 0;
+            }
+            else
+            {
+                for (int i = 0; i < n; i++) newVect[i] = _vector[i];
+            }
+
+            return new Vector(newVect);
+        }
+
+
+
+        /// <summary>
+        /// Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
+        /// вектора.
+        /// </summary>
+        /// <param name="n">Новый размер</param>
+        public Vector CutAndZeroB(int n)
+        {
+            double[] newVect = new double[n];
+
+            /*if (n > _n)
+            {
+                for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
+                for (int i = _n; i < n; i++) newVect[i] = 0;
+            }
+            else
+            {
+                for (int i = 0; i < n; i++) newVect[i] = _vector[i];
+            }
+            */
+            return new Vector(newVect);
+        }
+
+
+
+
+        /// <summary>
+        /// Сдвиг последовательности на определенное число
+        /// Пример: последовательность 1 2 3 сдвинута на 2
+        /// это 0 0 1 2 3, на 4 это 0 0 0 0 1 2 3
+        /// </summary>
+        /// <param name="valueShift"> На сколько сдвинуть</param>
+        /// <returns>возвращает вектор длинны N+valueShift</returns>
+        public Vector Shift(int valueShift)
 		{
 			int N = _n+valueShift;
 			double[] newVect = new double[N];
