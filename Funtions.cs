@@ -283,7 +283,7 @@ namespace AI.MathMod
 
             }
 
-            return Vector.ListToVector(DoubList).InterpolayrZero(stride);
+            return Vector.ListToVector(DoubList).InterpolayrZero(stride).Shift(window);
 
         }
 
