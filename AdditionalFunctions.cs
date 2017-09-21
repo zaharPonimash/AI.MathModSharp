@@ -899,6 +899,20 @@ namespace AI.MathMod.AdditionalFunctions
         }
 
 
+
+        public static Tensor3 Sigmoid(Tensor3 tensor, double betta = 1)
+        {
+              Tensor3 tensorOut = new Tensor3(tensor.Width, tensor.Height, tensor.Depth);
+
+            for (int i = 0; i < tensor.Weights.Length; i++)
+            {
+                tensorOut.Weights[i] = Sigmoid(tensor.Weights[i], betta);
+            }
+
+            return tensorOut;
+        }
+
+
         public static Matrix Relu(Matrix Inp, double porog = 0)
         {
             Matrix A = new Matrix(Inp.M, Inp.N);
@@ -949,6 +963,27 @@ namespace AI.MathMod.AdditionalFunctions
         {
             return (1.0 / (sko * Math.Sqrt(2 * Math.PI))) * Math.Exp(((Inp - m) * (Inp - m)) / (-2 * sko * sko));
         }
+
+
+
+        public static Matrix Gauss1(Matrix inp, double m, double sko)
+        {
+            Matrix matr = new Matrix(inp.M, inp.N);
+
+            for (int i = 0; i < inp.M; i++)
+            {
+                for (int j = 0; j < inp.N; j++)
+                {
+                    matr.Matr[i, j] = GaussNorm1(inp.Matr[i, j], m, sko);
+                }
+            }
+
+            return matr;
+        }
+
+
+
+
 
         /// <summary>
         /// Функция вероятность принадлежности при inp = m, out = 1

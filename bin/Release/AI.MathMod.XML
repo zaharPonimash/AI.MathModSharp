@@ -445,6 +445,16 @@
             </summary>
             <param name="Bmp">Изображение</param>
         </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.Visualiz(AI.MathMod.Matrix)">
+            <summary>
+            Визуализация матрицы
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.MatrixToBitmap(AI.MathMod.Matrix)">
+            <summary>
+            Перевод матрицы в полутоновое изображение
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Correlation">
             <summary>
             Класс реализует авто- и взаимо- кореляционные функции

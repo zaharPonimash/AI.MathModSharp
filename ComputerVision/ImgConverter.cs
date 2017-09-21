@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AI.MathMod.AdditionalFunctions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -74,9 +75,9 @@ namespace AI.MathMod.ComputerVision
             for (int i = 0; i < Bmp.Width; i++)
                 for (int j = 0; j < Bmp.Height; j++)
                 {
-                    Out.Set(i, j, 0, b[0, i, j] / 255.0);
-                    Out.Set(i, j, 1, b[1, i, j] / 255.0);
-                    Out.Set(i, j, 2, b[2, i, j] / 255.0);
+                    Out.Set(i, j, 0, b[0, j, i] / 255.0);
+                    Out.Set(i, j, 1, b[1, j, i] / 255.0);
+                    Out.Set(i, j, 2, b[2, j, i] / 255.0);
                 }
 
 
@@ -109,8 +110,122 @@ namespace AI.MathMod.ComputerVision
 
         }
 
-        
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static int BiueInt(double intensiv)
+        {
+            return 120 / ((int)intensiv + 1);
+        }
+
+        static int RedInt(double intensiv)
+        {
+            try
+            {
+                return (int)(intensiv) / 220;
+            }
+            catch { return 0; }
+        }
+
+        /// <summary>
+        /// Визуализация матрицы
+        /// </summary>
+        public static Bitmap Visualiz(Matrix matr)
+        {
+            Bitmap bmp = new Bitmap(matr.M, matr.N);
+            Color color;
+            Vector a = matr.Spagetiz();
+            double max = new Statistic(MathFunc.abs(a)).MaxValue;
+            double k = 250.0 / max;
+            double intensiv;
+
+
+            for (int i = 0; i < matr.M; i++)
+            {
+                for (int j = 0; j < matr.N; j++)
+                {
+                    intensiv = Math.Abs(k * matr.Matr[i, j]);
+                    try
+                    {
+                        color = Color.FromArgb((int)(RedInt(intensiv) * intensiv), (int)(0.2 * intensiv), (int)(BiueInt(intensiv) * intensiv));
+                    }
+                    catch { color = Color.Coral; }
+                    bmp.SetPixel(i, j, color);
+                }
+            }
+
+
+            return bmp;
+        }
+
+
+
+        /// <summary>
+        /// Перевод матрицы в полутоновое изображение
+        /// </summary>
+        public static Bitmap MatrixToBitmap(Matrix matr)
+        {
+            Bitmap bmp = new Bitmap(matr.M, matr.N);
+            Color color;
+            int intensiv;
+
+
+            for (int i = 0; i < matr.M; i++)
+            {
+                for (int j = 0; j < matr.N; j++)
+                {
+                    intensiv = (int)Math.Abs(255 * matr.Matr[i, j]);
+                    try
+                    {
+                        color = Color.FromArgb(intensiv, intensiv, intensiv);
+                    }
+                    catch { color = Color.Coral; }
+                    bmp.SetPixel(i, j, color);
+                }
+            }
+
+
+            return bmp;
+        }
+
+
+        public static Bitmap TensorToBitmap(Tensor3 tensor)
+        {
+            Bitmap bmp = new Bitmap(tensor.Width, tensor.Height);
+            Color color;
+
+
+            for (int i = 0; i < tensor.Width; i++)
+            {
+                for (int j = 0; j < tensor.Height; j++)
+                {
+
+                    try
+                    {
+                        color = Color.FromArgb((int)(255*tensor.Get(i,j,0)), (int)(255 * tensor.Get(i, j, 1)), (int)(255 * tensor.Get(i, j, 2)));
+                    }
+                    catch { color = Color.Coral; }
+                    bmp.SetPixel(i, j, color);
+                }
+            }
+
+
+            return bmp;
+        }
 
 
 

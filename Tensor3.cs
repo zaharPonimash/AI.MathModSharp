@@ -175,6 +175,56 @@ namespace AI.MathMod
             }
         }
 
+        public static Tensor3 operator +(Tensor3 A, double b)
+        {
+            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.Weights.Length; i++)
+            {
+                newTensor.Weights[i] = A.Weights[i] + b;
+            }
+
+            return newTensor;
+        }
+
+        public static Tensor3 operator+ (double b, Tensor3 A)
+        {
+            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.Weights.Length; i++)
+            {
+                newTensor.Weights[i] = A.Weights[i] + b;
+            }
+
+            return newTensor;
+        }
+
+
+
+        public static Tensor3 operator- (double b, Tensor3 A)
+        {
+            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.Weights.Length; i++)
+            {
+                newTensor.Weights[i] = b - A.Weights[i];
+            }
+
+            return newTensor;
+        }
+
+
+        public static Tensor3 operator- (Tensor3 A, double b)
+        {
+            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.Weights.Length; i++)
+            {
+                newTensor.Weights[i] = A.Weights[i] - b;
+            }
+
+            return newTensor;
+        }
         public void SetConst(double c)
         {
             for (var i = 0; i < this.Weights.Length; i++)

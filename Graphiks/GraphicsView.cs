@@ -22,6 +22,11 @@ namespace AI.MathMod.Graphiks
 	public static class GraphicsView
 	{
 
+
+
+
+
+
         /// <summary>
         /// Строит график в контроле graph, по отсчетам funcItemClass
         /// </summary>
