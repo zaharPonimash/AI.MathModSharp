@@ -197,7 +197,7 @@ namespace AI.MathMod
 			
 				
 				
-				Vector input, vect1 = vect.CutAndZero(Functions.NextPow2(vect.N));
+				Vector input, vect1 = vect.Shift(window);
 				int n = vect1.N-window;
 				List<double> DoubList = new List<double>();
 				double[] data = new double[window];
@@ -227,11 +227,13 @@ namespace AI.MathMod
 			/// <returns>Результат применения ф-и</returns>
 			public static Vector WindowFuncDouble(Vector vect, Func<Vector,double> Function, int window)
 			{
-			
-				
-				
-				Vector input, vect1 = vect.CutAndZero(Functions.NextPow2(vect.N));
+
+
+
+                Vector input, vect1 = vect.Shift(window);
+                
 				int n = vect1.N-window;
+                
 				List<double> DoubList = new List<double>();
 				double[] data = new double[window];
 			
@@ -266,7 +268,7 @@ namespace AI.MathMod
 
 
 
-            Vector input, vect1 = vect.Copy();
+            Vector input, vect1 = vect1 = vect.Shift(window);
             int n = vect1.N - window;
             List<double> DoubList = new List<double>();
             double[] data = new double[window];
@@ -283,7 +285,7 @@ namespace AI.MathMod
 
             }
 
-            return Vector.ListToVector(DoubList).InterpolayrZero(stride).Shift(window);
+            return Vector.ListToVector(DoubList).InterpolayrZero(stride);
 
         }
 
