@@ -71,6 +71,7 @@
     <Compile Include="Approximation\ApproximationError.cs" />
     <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
     <Compile Include="ComplexVector.cs" />
+    <Compile Include="ComputerVision\Filters.cs" />
     <Compile Include="ComputerVision\ImgConverter.cs" />
     <Compile Include="Correlation.cs" />
     <Compile Include="AdditionalFunctions.cs" />

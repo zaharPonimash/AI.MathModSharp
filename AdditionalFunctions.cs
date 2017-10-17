@@ -856,6 +856,21 @@ namespace AI.MathMod.AdditionalFunctions
         }
 
 
+        public static Matrix Relu(Matrix Inp, double porogUp = 1, double porogDoun = 0)
+        {
+            Matrix A = new Matrix(Inp.M, Inp.N);
+
+            for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
+                {
+                    if ((Inp.Matr[i, j] >= porogDoun) && (Inp.Matr[i, j] <= porogUp)) A.Matr[i, j] = Inp.Matr[i, j];
+                    else if (Inp.Matr[i, j] <= porogUp) A.Matr[i, j] = 0;
+                    else A.Matr[i,j] = 1;
+                }
+
+            return A;
+        }
+
+
         /// <summary>
         /// Сигмоида
         /// </summary>

@@ -128,6 +128,13 @@
             Размерность комплексного вектора
             </summary>
         </member>
+        <member name="P:AI.MathMod.ComplexVector.Item(System.Int32)">
+            <summary>
+            Доступ по индексу
+            </summary>
+            <param name="i">Индекс</param>
+            <returns>Значение вектора</returns>
+        </member>
         <member name="M:AI.MathMod.ComplexVector.#ctor">
             <summary>
             Создает вектор с нулями (0+0j) размерности 3
@@ -418,6 +425,50 @@
             Загрузка комплексного вектора
             </summary>
             <param name="path">Путь до файла</param>		
+        </member>
+        <member name="T:AI.MathMod.ComputerVision.ImgFilters">
+            <summary>
+            Фильтрация изображений
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgFilters.SpaceFilter(AI.MathMod.Matrix,AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            Пространственный фильтр полутонового изображения
+            </summary>
+            <param name="img">Матрица изображения</param>
+            <param name="filter">Матрица фильтра</param>
+            <param name="coef">Коэффициент контраста</param>
+            <param name="dx">Яркость</param>
+            <returns>Возвращает результат фильтрации</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgFilters.MedianFilter(AI.MathMod.Matrix,AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            Медианный фильтр полутонового изображения
+            </summary>
+            <param name="img">Матрица изображения</param>
+            <param name="filter">Матрица фильтра</param>
+            <param name="coef">Коэффициент контраста</param>
+            <param name="dx">Яркость</param>
+            <returns>Возвращает результат фильтрации</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgFilters.Contrast(AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            Регулировка контраста и яркости
+            </summary>
+            <param name="img">Матрица изображения</param>
+            <param name="coef">Контраст</param>
+            <param name="dx">Яркость</param>
+            <returns>Итоговое изображение</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgFilters.StdFilter(AI.MathMod.Matrix,AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            STD фильтр полутонового изображения
+            </summary>
+            <param name="img">Матрица изображения</param>
+            <param name="filter">Матрица фильтра</param>
+            <param name="coef">Коэффициент контраста</param>
+            <param name="dx">Яркость</param>
+            <returns>Возвращает результат фильтрации</returns>
         </member>
         <member name="T:AI.MathMod.ComputerVision.ImgConverter">
             <summary>
@@ -3337,6 +3388,13 @@
             <summary>
             Размерность вектора
             </summary>
+        </member>
+        <member name="P:AI.MathMod.Vector.Item(System.Int32)">
+            <summary>
+            Доступ по индексу
+            </summary>
+            <param name="i">Индекс</param>
+            <returns>Значение вектора</returns>
         </member>
         <member name="M:AI.MathMod.Vector.#ctor">
             <summary>

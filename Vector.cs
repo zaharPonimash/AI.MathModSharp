@@ -44,17 +44,29 @@ namespace AI.MathMod
 		{
 			get{return _n;}
 		}
-		
-		
-		#endregion
-		
-		
-		
-		#region Конструкторы
-		/// <summary>
-		/// Создает вектор с нулями размерности 3
-		/// </summary>
-		public Vector()
+
+        /// <summary>
+        /// Доступ по индексу
+        /// </summary>
+        /// <param name="i">Индекс</param>
+        /// <returns>Значение вектора</returns>
+        public double this[int i]
+        {
+            get { return _vector[i]; }
+            set { _vector[i] = value; }
+        }
+
+
+
+        #endregion
+
+
+
+        #region Конструкторы
+        /// <summary>
+        /// Создает вектор с нулями размерности 3
+        /// </summary>
+        public Vector()
 		{
 			_vector = new double[3];
 			_n = 3;

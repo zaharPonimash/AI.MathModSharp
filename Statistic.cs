@@ -206,12 +206,10 @@ namespace AI.MathMod
 			s = a*a+b*b;
 			
 			if(a==0&&b==0)
-			{
-				a = 0.000001;			
-				s = a*a+b*b;
-			}
+                Gauss(A);
 			
-			return b*Math.Sqrt(Math.Abs(-2*Math.Log(s)/s));
+			
+			return Math.Sqrt(Math.Abs(-2*Math.Log(s)/s))*a;
 		}
 		
 		
@@ -363,7 +361,7 @@ namespace AI.MathMod
 			Matrix C = new Matrix(n,n);
 			
 			for(int i = 0; i < n; i++)
-				for(int j = 0; j < n; j++) C.Matr[i,j] = rn.NextDouble();
+				for(int j = 0; j < n; j++) C.Matr[i,j] = Gauss(rn); 
 	
 			return C;
 		}

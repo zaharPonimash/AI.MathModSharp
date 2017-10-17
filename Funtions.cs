@@ -268,7 +268,7 @@ namespace AI.MathMod
 
 
 
-            Vector input, vect1 = vect1 = vect.Shift(window);
+            Vector input, vect1 = vect.Shift(window);
             int n = vect1.N - window;
             List<double> DoubList = new List<double>();
             double[] data = new double[window];

@@ -553,12 +553,12 @@ namespace AI.MathMod
 		{
 			string matr = string.Empty;
 			
-			for(int i = 0; i<_m; i++)
+			for(int i = 0; i<_n; i++)
 			{
-				matr += "\n\n";
-					for(int j = 0; j<_n; j++)
+				matr += "\n";
+					for(int j = 0; j<_m; j++)
 					{
-						matr += "\t" + _matr[i,j];
+						matr += "" + _matr[j,i];
 					}
 					
 			}

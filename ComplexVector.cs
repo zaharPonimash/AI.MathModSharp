@@ -44,16 +44,25 @@ namespace AI.MathMod
 		{
 			get{return _n;}
 		}
-		
-		
-		
-		
-		
-		#region Конструкторы
-		/// <summary>
-		/// Создает вектор с нулями (0+0j) размерности 3
-		/// </summary>
-		public ComplexVector()
+
+        /// <summary>
+        /// Доступ по индексу
+        /// </summary>
+        /// <param name="i">Индекс</param>
+        /// <returns>Значение вектора</returns>
+        public Complex this[int i]
+        {
+            get { return _vector[i]; }
+            set { _vector[i] = value; }
+        }
+
+
+
+        #region Конструкторы
+        /// <summary>
+        /// Создает вектор с нулями (0+0j) размерности 3
+        /// </summary>
+        public ComplexVector()
 		{
 			_vector = new Complex[3];
 		}
