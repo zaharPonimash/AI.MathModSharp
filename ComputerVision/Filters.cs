@@ -58,7 +58,9 @@ namespace AI.MathMod.ComputerVision
                 }
             }
 
-            return NeuroFunc.Relu((newMatr * coef + dx / 255.0), 1, 0);
+            newMatr = MathFunc.abs((newMatr * coef + dx / 255.0)-Statistic.ExpectedValue(newMatr.Spagetiz()));
+
+            return NeuroFunc.Relu(newMatr, 1, 0);
 
         }
 

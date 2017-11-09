@@ -8,7 +8,7 @@ namespace AI.MathMod
     ///     Представляет тензор 3-го ранга, как базовый клас нейронной сети
     /// </summary>
     [Serializable]
-    public class Tensor3
+    public class Tensor
     {
         
         public int Depth;
@@ -23,7 +23,7 @@ namespace AI.MathMod
         /// <param name="width">ширина</param>
         /// <param name="height">высота</param>
         /// <param name="depth">глубина</param>
-        public Tensor3(int width, int height, int depth)
+        public Tensor(int width, int height, int depth)
         {
             
             this.Width = width;
@@ -53,7 +53,7 @@ namespace AI.MathMod
         /// <param name="height">Высота</param>
         /// <param name="depth">Глубина</param>
         /// <param name="c">Величина которой инициализируется тензор</param>
-        public Tensor3(int width, int height, int depth, double c)
+        public Tensor(int width, int height, int depth, double c)
         {
             
             this.Width = width;
@@ -78,7 +78,7 @@ namespace AI.MathMod
         /// Инициализация с помощь интерфейса IList<double>
         /// </summary>
         /// <param name="weights">Значения</param>
-        public Tensor3(IList<double> weights)
+        public Tensor(IList<double> weights)
         {
             this.Width = 1;
             this.Height = 1;
@@ -133,14 +133,14 @@ namespace AI.MathMod
             this.WeightGradients[ix] += v;
         }
 
-        public Tensor3 CloneAndZero()
+        public Tensor CloneAndZero()
         {
-            return new Tensor3(this.Width, this.Height, this.Depth, 0.0);
+            return new Tensor(this.Width, this.Height, this.Depth, 0.0);
         }
 
-        public Tensor3 Clone()
+        public Tensor Clone()
         {
-            var Tensor3 = new Tensor3(this.Width, this.Height, this.Depth, 0.0);
+            var Tensor3 = new Tensor(this.Width, this.Height, this.Depth, 0.0);
             var n = this.Weights.Length;
 
             for (var i = 0; i < n; i++)
@@ -151,7 +151,7 @@ namespace AI.MathMod
             return Tensor3;
         }
 
-        public void AddFrom(Tensor3 Tensor3)
+        public void AddFrom(Tensor Tensor3)
         {
             for (var i = 0; i < this.Weights.Length; i++)
             {
@@ -159,7 +159,7 @@ namespace AI.MathMod
             }
         }
 
-        public void AddGradientFrom(Tensor3 Tensor3)
+        public void AddGradientFrom(Tensor Tensor3)
         {
             for (var i = 0; i < this.WeightGradients.Length; i++)
             {
@@ -167,7 +167,7 @@ namespace AI.MathMod
             }
         }
 
-        public void AddFromScaled(Tensor3 Tensor3, double a)
+        public void AddFromScaled(Tensor Tensor3, double a)
         {
             for (var i = 0; i < this.Weights.Length; i++)
             {
@@ -175,9 +175,9 @@ namespace AI.MathMod
             }
         }
 
-        public static Tensor3 operator +(Tensor3 A, double b)
+        public static Tensor operator +(Tensor A, double b)
         {
-            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.Weights.Length; i++)
             {
@@ -187,9 +187,9 @@ namespace AI.MathMod
             return newTensor;
         }
 
-        public static Tensor3 operator+ (double b, Tensor3 A)
+        public static Tensor operator+ (double b, Tensor A)
         {
-            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.Weights.Length; i++)
             {
@@ -201,9 +201,9 @@ namespace AI.MathMod
 
 
 
-        public static Tensor3 operator- (double b, Tensor3 A)
+        public static Tensor operator- (double b, Tensor A)
         {
-            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.Weights.Length; i++)
             {
@@ -214,9 +214,9 @@ namespace AI.MathMod
         }
 
 
-        public static Tensor3 operator- (Tensor3 A, double b)
+        public static Tensor operator- (Tensor A, double b)
         {
-            Tensor3 newTensor = new Tensor3(A.Width, A.Height, A.Depth);
+            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.Weights.Length; i++)
             {

@@ -54,7 +54,13 @@ namespace AI.MathMod
 		public Int32 N
 		{
 			get{return _n;}
-		}		
+		}	
+
+		public double this[int i, int j]
+		{
+			get{return _matr[i,j];}
+			set{_matr[i,j] = value;}
+		}
 			
 #endregion
 		#region Конструкторы

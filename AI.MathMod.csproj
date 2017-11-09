@@ -115,7 +115,8 @@
     <Compile Include="Signals\Signal.cs" />
     <Compile Include="Signals\Wavelet.cs" />
     <Compile Include="Statistic.cs" />
-    <Compile Include="Tensor3.cs" />
+    <Compile Include="ML\Tensor.cs" />
+    <Compile Include="Tensor.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Сonvolution.cs" />
   </ItemGroup>

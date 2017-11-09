@@ -66,9 +66,9 @@ namespace AI.MathMod.ComputerVision
         /// Преобразование изображения в тензор 3-го ранга(нормировка на 1)
         /// </summary>
         /// <param name="Bmp">Изображение</param>
-        public static Tensor3 BmpToTensor(Bitmap Bmp)
+        public static Tensor BmpToTensor(Bitmap Bmp)
         {
-            Tensor3 Out = new Tensor3(Bmp.Width, Bmp.Height, 3);
+            Tensor Out = new Tensor(Bmp.Width, Bmp.Height, 3);
 
             byte[,,] b = BaseTransformBmp(Bmp);
 
@@ -203,7 +203,7 @@ namespace AI.MathMod.ComputerVision
         }
 
 
-        public static Bitmap TensorToBitmap(Tensor3 tensor)
+        public static Bitmap TensorToBitmap(Tensor tensor)
         {
             Bitmap bmp = new Bitmap(tensor.Width, tensor.Height);
             Color color;

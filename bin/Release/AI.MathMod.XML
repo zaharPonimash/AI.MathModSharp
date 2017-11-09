@@ -3351,12 +3351,12 @@
             </summary>
             <param name="path">Путь до файла</param>		
         </member>
-        <member name="T:AI.MathMod.Tensor3">
+        <member name="T:AI.MathMod.Tensor">
             <summary>
                 Представляет тензор 3-го ранга, как базовый клас нейронной сети
             </summary>
         </member>
-        <member name="M:AI.MathMod.Tensor3.#ctor(System.Int32,System.Int32,System.Int32)">
+        <member name="M:AI.MathMod.Tensor.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
                 Заполнение тензора случайными числами
             </summary>
@@ -3364,7 +3364,7 @@
             <param name="height">высота</param>
             <param name="depth">глубина</param>
         </member>
-        <member name="M:AI.MathMod.Tensor3.#ctor(System.Int32,System.Int32,System.Int32,System.Double)">
+        <member name="M:AI.MathMod.Tensor.#ctor(System.Int32,System.Int32,System.Int32,System.Double)">
             <summary>
             Тензор 3-го ранга
             </summary>
@@ -3373,7 +3373,7 @@
             <param name="depth">Глубина</param>
             <param name="c">Величина которой инициализируется тензор</param>
         </member>
-        <!-- Проигнорирован некорректный комментарий XML для члена "M:AI.MathMod.Tensor3.#ctor(System.Collections.Generic.IList{System.Double})" -->
+        <!-- Проигнорирован некорректный комментарий XML для члена "M:AI.MathMod.Tensor.#ctor(System.Collections.Generic.IList{System.Double})" -->
         <member name="T:AI.MathMod.Vector">
             <summary>
             Класс реализующий вектора и операции над ними
@@ -3662,6 +3662,14 @@
             </summary>
             <param name="elements">Элементы</param>
         </member>
+        <member name="M:AI.MathMod.Vector.VectorsArrayToVector(AI.MathMod.Vector[])">
+            <summary>
+            Переводит массив векторов в вектор.
+            Пример: {[0 1 3 1], [9 1 2], [8 3]} -> [0 1 3 1 9 1 2 8 3]
+            </summary>
+            <param name="vectors">Массив векторов</param>
+            <returns>Вектор</returns>
+        </member>
         <member name="M:AI.MathMod.Vector.SaveAsText(System.String)">
             <summary>
             Сохраняет вектор как текстовый файл
@@ -3823,6 +3831,11 @@
         <member name="M:AI.MathMod.Convolution.СircularConvolution(AI.MathMod.ComplexVector,AI.MathMod.ComplexVector)">
             <summary>
             Круговая свертка комплексный вектор
+            </summary>
+        </member>
+        <member name="T:Old.AI.MathMod.Tensor">
+            <summary>
+            Description of Tensor.
             </summary>
         </member>
     </members>

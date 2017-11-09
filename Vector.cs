@@ -30,43 +30,43 @@ namespace AI.MathMod
 		/// <summary>
 		/// Массив типа double содержащий отсчеты вектора
 		/// </summary>
-		public Double[] Vecktor
-		{
-			get{return _vector;}
-			set{ _vector = value; _n = _vector.Length;}
+		public Double[] Vecktor {
+			get{ return _vector; }
+			set {
+				_vector = value;
+				_n = _vector.Length;
+			}
 		}
 		
 		
 		/// <summary>
 		/// Размерность вектора
 		/// </summary>
-		public Int32 N
-		{
-			get{return _n;}
+		public Int32 N {
+			get{ return _n; }
 		}
 
-        /// <summary>
-        /// Доступ по индексу
-        /// </summary>
-        /// <param name="i">Индекс</param>
-        /// <returns>Значение вектора</returns>
-        public double this[int i]
-        {
-            get { return _vector[i]; }
-            set { _vector[i] = value; }
-        }
+		/// <summary>
+		/// Доступ по индексу
+		/// </summary>
+		/// <param name="i">Индекс</param>
+		/// <returns>Значение вектора</returns>
+		public double this[int i] {
+			get { return _vector[i]; }
+			set { _vector[i] = value; }
+		}
 
 
 
-        #endregion
+		#endregion
 
 
 
-        #region Конструкторы
-        /// <summary>
-        /// Создает вектор с нулями размерности 3
-        /// </summary>
-        public Vector()
+		#region Конструкторы
+		/// <summary>
+		/// Создает вектор с нулями размерности 3
+		/// </summary>
+		public Vector()
 		{
 			_vector = new double[3];
 			_n = 3;
@@ -127,12 +127,10 @@ namespace AI.MathMod
 			
 			string[] strs;
 			
-			if (separator != '1')
-			{
+			if (separator != '1') {
 				strs = File.ReadAllText(textPath).Split(separator);
-			}
-			
-			else strs = File.ReadAllLines(textPath);
+			} else
+				strs = File.ReadAllLines(textPath);
 			
 			StrInit(strs);
 		}
@@ -162,71 +160,77 @@ namespace AI.MathMod
 		
 		
 		
-	#region Операции
+		#region Операции
 		
 		/// <summary>
-        /// Умножение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static Vector operator * (Vector A, Vector B)
+		/// Умножение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator *(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Невозможно перемножить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Перемножение");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Перемножение");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] * B._vector[i];
 			
 			return C;
 		}
 		
 		/// <summary>
-        /// Сложение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static	Vector operator + (Vector A, Vector B)
+		/// Сложение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static	Vector operator +(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Невозможно сложить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Сложение");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Сложение");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+B._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] + B._vector[i];
 			return C;
 		}
 
 
 
-        /// <summary>
-        /// Сложение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static	Vector operator + (Vector A, double k)
+		/// <summary>
+		/// Сложение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static	Vector operator +(Vector A, double k)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+k;
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] + k;
 			return C;
 		}
 
 
-        /// <summary>
-        /// Сложение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static	Vector operator + (double k, Vector A)
+		/// <summary>
+		/// Сложение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static	Vector operator +(double k, Vector A)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]+k;
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] + k;
 			return C;
 		}
 
@@ -235,292 +239,313 @@ namespace AI.MathMod
 
 
 
-        /// <summary>
-        /// Вычитание
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static	Vector operator - (double k, Vector A)
+		/// <summary>
+		/// Вычитание
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static	Vector operator -(double k, Vector A)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = k - A._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = k - A._vector[i];
 			return C;
 		}
 
 
 
-        /// <summary>
-        /// Вычитание
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static	Vector operator - ( Vector A, double k)
+		/// <summary>
+		/// Вычитание
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static	Vector operator -(Vector A, double k)
 		{
 			int n1 = A._n;
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i] - k;
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] - k;
 			return C;
 		}
 
 
-        /// <summary>
-        /// Отрицание
-        /// </summary>
-        /// <param name="A"></param>
-        /// <returns></returns>
-        public static Vector operator - (Vector A)
+		/// <summary>
+		/// Отрицание
+		/// </summary>
+		/// <param name="A"></param>
+		/// <returns></returns>
+		public static Vector operator -(Vector A)
 		{
-			return 0.0-A;
+			return 0.0 - A;
 		}
 
 
-        /// <summary>
-        /// Деление
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator / (Vector A, Vector B)
+		/// <summary>
+		/// Деление
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator /(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Невозможно деление векторов, длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Деление");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Деление");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]/B._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] / B._vector[i];
 			return C;
 		}
 
-        /// <summary>
-        /// Вычитание
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator - (Vector A, Vector B)
+		/// <summary>
+		/// Вычитание
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator -(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Вычитание");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Вычитание");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]-B._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] - B._vector[i];
 			return C;
 		}
 
 
-        /// <summary>
-        /// Умножение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator * (double k, Vector A)
+		/// <summary>
+		/// Умножение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator *(double k, Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
+			for (int i = 0; i < n; i++)
+				C._vector[i] = k * A._vector[i];
 			return C;
 		}
 
-        /// <summary>
-        /// Умножение
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator * (Vector A, double k)
+		/// <summary>
+		/// Умножение
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator *(Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = k*A._vector[i];
-			return C;
-		}
-
-
-
-        /// <summary>
-        /// Деление
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator / (double k, Vector A)
-		{
-			int n = A._n;
-			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = k/A._vector[i];
-			return C;
-		}
-
-        /// <summary>
-        /// Деление
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator / (Vector A, double k)
-		{
-			int n = A._n;
-			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]/k;
+			for (int i = 0; i < n; i++)
+				C._vector[i] = k * A._vector[i];
 			return C;
 		}
 
 
 
-
-
-        /// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator ^ ( Vector A, double k)
+		/// <summary>
+		/// Деление
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator /(double k, Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = Math.Pow(A._vector[i], k);
+			for (int i = 0; i < n; i++)
+				C._vector[i] = k / A._vector[i];
+			return C;
+		}
+
+		/// <summary>
+		/// Деление
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator /(Vector A, double k)
+		{
+			int n = A._n;
+			Vector C = new Vector(n);
+			for (int i = 0; i < n; i++)
+				C._vector[i] = A._vector[i] / k;
 			return C;
 		}
 
 
 
-        /// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator ^ ( double k,  Vector A)
+
+
+		/// <summary>
+		/// Возведение в степень
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator ^(Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = Math.Pow(k, A._vector[i]);
+			for (int i = 0; i < n; i++)
+				C._vector[i] = Math.Pow(A._vector[i], k);
+			return C;
+		}
+
+
+
+		/// <summary>
+		/// Возведение в степень
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="k"></param>
+		/// <returns></returns>
+		public static Vector operator ^(double k, Vector A)
+		{
+			int n = A._n;
+			Vector C = new Vector(n);
+			for (int i = 0; i < n; i++)
+				C._vector[i] = Math.Pow(k, A._vector[i]);
 			return C;
 		}
 			
 			
 			
 		/// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static Vector operator ^ (Vector A, Vector B)
+		/// Возведение в степень
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator ^(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Невозможно выполнить операцию A^B, длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Степень");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Степень");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = Math.Pow(A._vector[i],B._vector[i]);
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = Math.Pow(A._vector[i], B._vector[i]);
 			return C;
 		}
 
 
 
-        /// <summary>
-        /// Остаток от деления
-        /// </summary>
-        /// <param name="k"></param>
-        /// <param name="A"></param>
-        /// <returns></returns>
-        public static Vector operator % (Vector A, double k)
+		/// <summary>
+		/// Остаток от деления
+		/// </summary>
+		/// <param name="k"></param>
+		/// <param name="A"></param>
+		/// <returns></returns>
+		public static Vector operator %(Vector A, double k)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = A._vector[i]%k;
+			for (int i = 0; i < n; i++)
+				C._vector[i] = A._vector[i] % k;
 			return C;
 		}
 			
-				/// <summary>
-                /// Остаток от деления
-                /// </summary>
-                /// <param name="k"></param>
-                /// <param name="A"></param>
-                /// <returns></returns>
-			public static Vector operator % (double k,Vector A)
+		/// <summary>
+		/// Остаток от деления
+		/// </summary>
+		/// <param name="k"></param>
+		/// <param name="A"></param>
+		/// <returns></returns>
+		public static Vector operator %(double k, Vector A)
 		{
 			int n = A._n;
 			Vector C = new Vector(n);
-			for(int i = 0; i<n; i++) C._vector[i] = k%A._vector[i];
+			for (int i = 0; i < n; i++)
+				C._vector[i] = k % A._vector[i];
 			return C;
 		}
 		
 			
 			
 		/// <summary>
-        /// Остаток от деления поэлементно
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static Vector operator % (Vector A, Vector B)
+		/// Остаток от деления поэлементно
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator %(Vector A, Vector B)
 		{
 			int n1 = A._n;
 			int n2 = B._n;
 			string exceptionStr = string.Format("Длинна одного вектора {0}, а второго {1}", n1, n2);
-			if(n1!=n2)throw new ArgumentException(exceptionStr, "Остаток от деления");
+			if (n1 != n2)
+				throw new ArgumentException(exceptionStr, "Остаток от деления");
 			Vector C = new Vector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]%B._vector[i];
+			for (int i = 0; i < n1; i++)
+				C._vector[i] = A._vector[i] % B._vector[i];
 			return C;
-		}	
+		}
 		
 		
 		
 		/// <summary>
-        /// Свертка
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static Vector operator & (Vector A, Vector B)
+		/// Свертка
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator &(Vector A, Vector B)
 		{
-			return Convolution.DirectConvolution(A,B);
+			return Convolution.DirectConvolution(A, B);
 		}
 		
 		/// <summary>
-        /// Корреляция
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static Vector operator | (Vector A, Vector B)
+		/// Корреляция
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static Vector operator |(Vector A, Vector B)
 		{
-			return Correlation.CrossCorrelation(A,B);
+			return Correlation.CrossCorrelation(A, B);
 		}
 			
 		/// <summary>
-        /// Автокорреляция
-        /// </summary>
-        /// <param name="A"></param>
-        /// <returns></returns>
-		public static Vector operator ! (Vector A)
+		/// Автокорреляция
+		/// </summary>
+		/// <param name="A"></param>
+		/// <returns></returns>
+		public static Vector operator !(Vector A)
 		{
 			return Correlation.AutoCorrelation(A);
 		}
 		
 		/// <summary>
-        /// Проверка равенства
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-		public static bool operator == (Vector A, Vector B)
+		/// Проверка равенства
+		/// </summary>
+		/// <param name="A"></param>
+		/// <param name="B"></param>
+		/// <returns></returns>
+		public static bool operator ==(Vector A, Vector B)
 		{
-			if(A._n != B._n) return false;
+			if (A._n != B._n)
+				return false;
 			
 			bool flag = true;
 			
-			for(int i = 0; i<A._n; i++)
-			{
-				if(A._vector[i] != B._vector[i]){flag = false; break;}
+			for (int i = 0; i < A._n; i++) {
+				if (A._vector[i] != B._vector[i]) {
+					flag = false;
+					break;
+				}
 			}
 			
 			return flag;
@@ -532,103 +557,100 @@ namespace AI.MathMod
 		/// <param name="A">Вектор 1</param>
 		/// <param name="B">Вектор 2</param>
 		/// <returns>Равно ли</returns>
-		public static bool operator != (Vector A, Vector B)
+		public static bool operator !=(Vector A, Vector B)
 		{
-			return !(A==B);
+			return !(A == B);
 		}
 		
-	#endregion
+		#endregion
 		
 		
 	
-	/// <summary>
-	/// Удаление по индексу
-	/// </summary>
-	/// <param name="index">Индекс</param>
-	public Vector IndexDel(int index)
-	{
-		List<double> lD = new List<double>();
-		lD.AddRange(Copy()._vector);
-		lD.RemoveAt(index);
-		return ListToVector(lD);
-	}
+		/// <summary>
+		/// Удаление по индексу
+		/// </summary>
+		/// <param name="index">Индекс</param>
+		public Vector IndexDel(int index)
+		{
+			List<double> lD = new List<double>();
+			lD.AddRange(Copy()._vector);
+			lD.RemoveAt(index);
+			return ListToVector(lD);
+		}
 	
-	/// <summary>
-	/// Удаление выбранного элемента
-	/// </summary>
-	/// <param name="element">Элементы</param>
-	public Vector ElementDel(double element)
-	{
-		List<double> lD = new List<double>();
-		lD.AddRange(Copy()._vector);
-		lD.Remove(element);
-		return ListToVector(lD);
-	}
-        /// <summary>
-        /// Выдает индекс по первому вхождению значения  
-        /// </summary>
-        /// <param name="value">значение</param>
-        public double IndexValue(double value)
-        {
+		/// <summary>
+		/// Удаление выбранного элемента
+		/// </summary>
+		/// <param name="element">Элементы</param>
+		public Vector ElementDel(double element)
+		{
+			List<double> lD = new List<double>();
+			lD.AddRange(Copy()._vector);
+			lD.Remove(element);
+			return ListToVector(lD);
+		}
+		/// <summary>
+		/// Выдает индекс по первому вхождению значения  
+		/// </summary>
+		/// <param name="value">значение</param>
+		public double IndexValue(double value)
+		{
 
-            for (int i = 0; i < _n; i++)
-            {
-                if (_vector[i] == value) return (double)i;
-            }
+			for (int i = 0; i < _n; i++) {
+				if (_vector[i] == value)
+					return (double)i;
+			}
 
-            return -1;
-        }
-        /// <summary>
-        /// Удаление выбранных элементов
-        /// </summary>
-        /// <param name="elements">Элементы</param>
-        public Vector ElementsDel(Vector elements)
-	{
-		List<double> lD = new List<double>();
-		lD.AddRange(Copy()._vector);
-		
-		foreach (var element in elements.Vecktor) 
-		{
-			lD.Remove(element);	
+			return -1;
 		}
+		/// <summary>
+		/// Удаление выбранных элементов
+		/// </summary>
+		/// <param name="elements">Элементы</param>
+		public Vector ElementsDel(Vector elements)
+		{
+			List<double> lD = new List<double>();
+			lD.AddRange(Copy()._vector);
 		
-		return ListToVector(lD);
-	}
+			foreach (var element in elements.Vecktor) {
+				lD.Remove(element);	
+			}
+		
+			return ListToVector(lD);
+		}
 	
 	
-	/// <summary>
-	/// Удаление выбранных элементов
-	/// </summary>
-	/// <param name="elements">Элементы</param>
-	public Vector ElementsDel(double[] elements)
-	{
-		List<double> lD = new List<double>();
-		lD.AddRange(Copy()._vector);
-		
-		foreach (var element in elements) 
+		/// <summary>
+		/// Удаление выбранных элементов
+		/// </summary>
+		/// <param name="elements">Элементы</param>
+		public Vector ElementsDel(double[] elements)
 		{
-			lD.Remove(element);	
-		}
+			List<double> lD = new List<double>();
+			lD.AddRange(Copy()._vector);
 		
-		return ListToVector(lD);
-	}
+			foreach (var element in elements) {
+				lD.Remove(element);	
+			}
+		
+			return ListToVector(lD);
+		}
 	
-	/// <summary>
-	/// Удаление выбранных элементов
-	/// </summary>
-	/// <param name="elements">Элементы</param>
-	public Vector ElementsDel(List<double> elements)
-	{
-		List<double> lD = new List<double>();
-		lD.AddRange(Copy()._vector);
-		
-		foreach (var element in elements) 
+		/// <summary>
+		/// Удаление выбранных элементов
+		/// </summary>
+		/// <param name="elements">Элементы</param>
+		public Vector ElementsDel(List<double> elements)
 		{
-			lD.Remove(element);	
-		}
+			List<double> lD = new List<double>();
+			lD.AddRange(Copy()._vector);
 		
-		return ListToVector(lD);
-	}
+			foreach (var element in elements) {
+				lD.Remove(element);	
+			}
+		
+			return ListToVector(lD);
+		}
 	
 	
 	
@@ -636,20 +658,41 @@ namespace AI.MathMod
 		{
 			_n = strVector.Length;
 			_vector = new double[_n];
-            string str;
-            NumberFormatInfo provider = new NumberFormatInfo();
-            provider.NumberDecimalSeparator = ",";
-            provider.NumberGroupSeparator = ".";
-            provider.NumberGroupSizes = new int[] { 3};
+			string str;
+			NumberFormatInfo provider = new NumberFormatInfo();
+			provider.NumberDecimalSeparator = ",";
+			provider.NumberGroupSeparator = ".";
+			provider.NumberGroupSizes = new int[] { 3 };
 
-            for (int i = 0; i < _n; i++)
-            {
-                str = strVector[i].Replace(".", ",");
-                _vector[i] = Convert.ToDouble(str,provider);
-            }
+			for (int i = 0; i < _n; i++) {
+				str = strVector[i].Replace(".", ",");
+				_vector[i] = Convert.ToDouble(str, provider);
+			}
 			
 		}
-	
+
+		/// <summary>
+		/// Переводит массив векторов в вектор.
+		/// Пример: {[0 1 3 1], [9 1 2], [8 3]} -> [0 1 3 1 9 1 2 8 3]
+		/// </summary>
+		/// <param name="vectors">Массив векторов</param>
+		/// <returns>Вектор</returns>
+		public static Vector VectorsArrayToVector(Vector[] vectors)
+		{
+			int len = 0;
+
+			for (int i = 0; i < vectors.Length; i++)
+				len += vectors[i].N;
+
+			Vector outp = new Vector(len);
+      
+			for (int i = 0; i < vectors.Length; i++)
+				for (int j = 0; j < vectors[i].N; j++)
+					outp[i] = vectors[i][j];
+
+			return outp; 
+		}
+
 		/// <summary>
 		/// Сохраняет вектор как текстовый файл
 		/// </summary>
@@ -686,7 +729,7 @@ namespace AI.MathMod
 		/// <returns>Вектор</returns>
 		public Vector GetInterval(int a, int b)
 		{
-			return Revers().CutAndZero(_n-a).Revers().CutAndZero(b-a); 
+			return Revers().CutAndZero(_n - a).Revers().CutAndZero(b - a); 
 		}
 		
 		
@@ -698,7 +741,8 @@ namespace AI.MathMod
 		{
 			Vector A = new Vector(_n);
 			
-			for(int i = 0; i<_n; i++) A._vector[i] = _vector[i];
+			for (int i = 0; i < _n; i++)
+				A._vector[i] = _vector[i];
 			return A;
 		}
 	
@@ -725,7 +769,8 @@ namespace AI.MathMod
 		public Vector Revers()
 		{
 			double[] newVect = new double[_n];
-			for(int i = 0; i < _n; i++) newVect[i] = _vector[_n-i-1];
+			for (int i = 0; i < _n; i++)
+				newVect[i] = _vector[_n - i - 1];
 			return new Vector(newVect);
 		}
 
@@ -735,40 +780,40 @@ namespace AI.MathMod
 
 
 
-        /// <summary>
-        /// Дополнение нулями или обрезание до нужного размера 
-        /// вектора.
-        /// </summary>
-        /// <param name="n">Новый размер</param>
-        public Vector CutAndZero(int n)
-        {
-            double[] newVect = new double[n];
+		/// <summary>
+		/// Дополнение нулями или обрезание до нужного размера 
+		/// вектора.
+		/// </summary>
+		/// <param name="n">Новый размер</param>
+		public Vector CutAndZero(int n)
+		{
+			double[] newVect = new double[n];
 
-            if (n > _n)
-            {
-                for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
-                for (int i = _n; i < n; i++) newVect[i] = 0;
-            }
-            else
-            {
-                for (int i = 0; i < n; i++) newVect[i] = _vector[i];
-            }
+			if (n > _n) {
+				for (int i = 0; i < _n; i++)
+					newVect[i] = _vector[i];
+				for (int i = _n; i < n; i++)
+					newVect[i] = 0;
+			} else {
+				for (int i = 0; i < n; i++)
+					newVect[i] = _vector[i];
+			}
 
-            return new Vector(newVect);
-        }
+			return new Vector(newVect);
+		}
 
 
 
-        /// <summary>
-        /// Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
-        /// вектора.
-        /// </summary>
-        /// <param name="n">Новый размер</param>
-        public Vector CutAndZeroB(int n)
-        {
-            double[] newVect = new double[n];
+		/// <summary>
+		/// Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
+		/// вектора.
+		/// </summary>
+		/// <param name="n">Новый размер</param>
+		public Vector CutAndZeroB(int n)
+		{
+			double[] newVect = new double[n];
 
-            /*if (n > _n)
+			/*if (n > _n)
             {
                 for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
                 for (int i = _n; i < n; i++) newVect[i] = 0;
@@ -778,26 +823,28 @@ namespace AI.MathMod
                 for (int i = 0; i < n; i++) newVect[i] = _vector[i];
             }
             */
-            return new Vector(newVect);
-        }
+			return new Vector(newVect);
+		}
 
 
 
 
-        /// <summary>
-        /// Сдвиг последовательности на определенное число
-        /// Пример: последовательность 1 2 3 сдвинута на 2
-        /// это 0 0 1 2 3, на 4 это 0 0 0 0 1 2 3
-        /// </summary>
-        /// <param name="valueShift"> На сколько сдвинуть</param>
-        /// <returns>возвращает вектор длинны N+valueShift</returns>
-        public Vector Shift(int valueShift)
+		/// <summary>
+		/// Сдвиг последовательности на определенное число
+		/// Пример: последовательность 1 2 3 сдвинута на 2
+		/// это 0 0 1 2 3, на 4 это 0 0 0 0 1 2 3
+		/// </summary>
+		/// <param name="valueShift"> На сколько сдвинуть</param>
+		/// <returns>возвращает вектор длинны N+valueShift</returns>
+		public Vector Shift(int valueShift)
 		{
-			int N = _n+valueShift;
+			int N = _n + valueShift;
 			double[] newVect = new double[N];
 			
-			for(int i = 0; i<valueShift; i++) newVect[i] = 0.0;
-			for(int i = valueShift; i<N; i++) newVect[i] = _vector[i-valueShift];
+			for (int i = 0; i < valueShift; i++)
+				newVect[i] = 0.0;
+			for (int i = valueShift; i < N; i++)
+				newVect[i] = _vector[i - valueShift];
 			
 			
 			return new Vector(newVect);
@@ -813,8 +860,9 @@ namespace AI.MathMod
 		public Matrix ToMatrix()
 		{
 			//if(_n>=32760)throw new ArgumentException("размерность не позволяет преобразовать вектор в матрицу", "Преобразование");
-			double[,] matrix =  new double[1,_n];
-			for(int i = 0; i < _n; i++) matrix[0,i] = _vector[i];
+			double[,] matrix = new double[1, _n];
+			for (int i = 0; i < _n; i++)
+				matrix[0, i] = _vector[i];
 			return new Matrix(matrix);
 		}
 		
@@ -830,15 +878,16 @@ namespace AI.MathMod
 		{
 			Vector C;
 			
-			if(_n%kDecim == 0) C = new Vector(_n/kDecim);
-			else C = new Vector(_n/kDecim+1);
+			if (_n % kDecim == 0)
+				C = new Vector(_n / kDecim);
+			else
+				C = new Vector(_n / kDecim + 1);
 			
 			int k = 0;
 			
-			for(int i = 0; i<_n; i+=kDecim)
-			{
+			for (int i = 0; i < _n; i += kDecim) {
 				C._vector[k] = _vector[i];
-					k++;
+				k++;
 			}
 			
 			return C;
@@ -856,11 +905,10 @@ namespace AI.MathMod
 		/// <returns></returns>
 		public Vector InterpolayrZero(int kInterp)
 		{
-			Vector C = new Vector(_n*kInterp);
+			Vector C = new Vector(_n * kInterp);
 		
-			for(int i = 0; i<C._n; i++)
-			{
-				C._vector[i] = _vector[i/kInterp];
+			for (int i = 0; i < C._n; i++) {
+				C._vector[i] = _vector[i / kInterp];
 			}
 					
 			
@@ -879,7 +927,7 @@ namespace AI.MathMod
 		/// <param name="path">Путь</param>
 		public void Save(string path)
 		{
-			Matrix A = this.ToMatrix();
+			Matrix A = ToMatrix();
 			A.Save(path);
 		}
 		
@@ -891,7 +939,7 @@ namespace AI.MathMod
 		{
 			Matrix A = new Matrix();
 			A.Open(path);
-			this._vector = A.ToVector()._vector;
+			_vector = A.ToVector()._vector;
 		}
 		
 		
@@ -932,33 +980,34 @@ namespace AI.MathMod
 		}
 		
 		
-	  	/// <summary>
+		/// <summary>
 		/// Выводит значение элементов вектора в виде строки
 		/// </summary>
 		public override string ToString()
 		{
 			string str = "";
-			foreach(double i in _vector) str += " " + i;
+			foreach (double i in _vector)
+				str += " " + i;
 			return str;
 		}
 
-        /// <summary>
-        /// Эквивалентность
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            return this == (Vector)obj;
-        }
+		/// <summary>
+		/// Эквивалентность
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public override bool Equals(object obj)
+		{
+			return this == (Vector)obj;
+		}
 
-        /// <summary>
-        /// Хэш-код
-        /// </summary>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-    }
+		/// <summary>
+		/// Хэш-код
+		/// </summary>
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+	}
 	
 }

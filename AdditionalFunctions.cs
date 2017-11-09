@@ -846,6 +846,7 @@ namespace AI.MathMod.AdditionalFunctions
         }
 
 
+
         public static Vector Relu(Vector Inp, double porogUp = 1, double porogDoun = 0)
         {
             Vector A = new Vector(Inp.N);
@@ -915,9 +916,9 @@ namespace AI.MathMod.AdditionalFunctions
 
 
 
-        public static Tensor3 Sigmoid(Tensor3 tensor, double betta = 1)
+        public static Tensor Sigmoid(Tensor tensor, double betta = 1)
         {
-              Tensor3 tensorOut = new Tensor3(tensor.Width, tensor.Height, tensor.Depth);
+              Tensor tensorOut = new Tensor(tensor.Width, tensor.Height, tensor.Depth);
 
             for (int i = 0; i < tensor.Weights.Length; i++)
             {
@@ -936,6 +937,24 @@ namespace AI.MathMod.AdditionalFunctions
                 {
                     if (Inp.Matr[i, j] >= porog) A.Matr[i, j] = Inp.Matr[i, j];
                     else A.Matr[i, j] = 0;
+                }
+
+            return A;
+        }
+
+        public static Vector[] Relu(Vector[] Inp, double porog = 0)
+        {
+            Vector[] A = new Vector[Inp.Length];
+
+            for (int i = 0; i < A.Length; i++)
+            {
+                A[i] = new Vector(Inp[i].N);
+            }
+
+            for (int i = 0; i < Inp.Length; i++) for (int j = 0; j < Inp[i].N; j++)
+                {
+                    if (Inp[i][j] >= porog) A[i][j] = Inp[i][j];
+                    else A[i][j] = 0;
                 }
 
             return A;

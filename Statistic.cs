@@ -205,9 +205,7 @@ namespace AI.MathMod
 			b = 2*A.NextDouble()-1,
 			s = a*a+b*b;
 			
-			if(a==0&&b==0)
-                Gauss(A);
-			
+			if(s==0) Gauss(A);
 			
 			return Math.Sqrt(Math.Abs(-2*Math.Log(s)/s))*a;
 		}
