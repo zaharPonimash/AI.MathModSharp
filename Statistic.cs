@@ -205,9 +205,13 @@ namespace AI.MathMod
 			b = 2*A.NextDouble()-1,
 			s = a*a+b*b;
 			
-			if(s==0) Gauss(A);
+			if(a==0&&b==0)
+			{
+				a = 0.000001;			
+				s = a*a+b*b;
+			}
 			
-			return Math.Sqrt(Math.Abs(-2*Math.Log(s)/s))*a;
+			return b*Math.Sqrt(Math.Abs(-2*Math.Log(s)/s));
 		}
 		
 		
@@ -359,7 +363,7 @@ namespace AI.MathMod
 			Matrix C = new Matrix(n,n);
 			
 			for(int i = 0; i < n; i++)
-				for(int j = 0; j < n; j++) C.Matr[i,j] = Gauss(rn); 
+				for(int j = 0; j < n; j++) C.Matr[i,j] = rn.NextDouble();
 	
 			return C;
 		}
@@ -386,7 +390,6 @@ namespace AI.MathMod
 			double shag = (_max-_min)/nRazr;
 			Vector histogr = new Vector(nRazr), x = new Vector(nRazr);
 			
-			
 			int ht = 0; // высота столба
 			
 			for(int i = 0; i< nRazr; i++){
@@ -398,13 +401,10 @@ namespace AI.MathMod
 				histogr.Vecktor[i] = ht;
 			}
 			
-			
 			Histogramma A = new Histogramma();
 			A.X = x;
 			A.Y = histogr/_vector.N;
-			
 			return A;
-			
 		}
 		
 		

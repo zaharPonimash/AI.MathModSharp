@@ -1075,6 +1075,21 @@ namespace AI.MathMod.AdditionalFunctions
 		
 		
 		/// <summary>
+		/// Проекция вектора А на вектор B
+		/// </summary>
+		/// <param name="A">Вектор А</param>
+		/// <param name="B">Вуктор В</param>
+		/// <returns>Результат проецирования</returns>
+		static public Vector ProectionAtoB(Vector A, Vector B)
+		{
+			double k = ScalarProduct(A,B)/ScalarProduct(B,B);
+			return k*B;
+		}
+		
+		
+		
+		
+		/// <summary>
 		/// Угол между векторами
 		/// </summary>
 		/// <param name="vector">Первый вектор</param>

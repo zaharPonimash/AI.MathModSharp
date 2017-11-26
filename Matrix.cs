@@ -7,8 +7,10 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Graphiks;
 
 
@@ -597,6 +599,106 @@ namespace AI.MathMod
 			return matr;
 		}
 
+		
+		
+		
+		/// <summary>
+		/// Разложение матрицы на столбцы
+		/// </summary>
+		/// <param name="matr">Матрица</param>
+		/// <returns>Массив векторов</returns>
+		public Vector[] GetColumns(Matrix matr)
+		{
+			Vector[] columns = new Vector[matr.N];
+			
+			for (int i = 0; i < columns.Length; i++)
+			{
+				columns[i] = new Vector(matr.M);
+				for (int j = 0; j <matr.M; j++)
+					columns[i][j] = matr[j,i];
+			}
+			
+			return columns;
+		}
+		
+		
+		
+//-----------	Возможны ошибки ------------------------------------------------------	
+		
+		
+		
+		/// <summary>
+		/// QR Разложение матрицы
+		/// </summary>
+		/// <param name="input">Входная матрица</param>
+		/// <returns>Матрица Q и R (первая — Q, вторая R)</returns>
+		public Matrix[] QRDecomposition(Matrix input)
+		{
+			Vector[] av = GetColumns(input);
+			
+			
+			List<Vector> u = new List<Vector>();
+			u.Add(av[0]);
+			List<Vector> e = new List<Vector>();
+			e.Add(u[0]/ GeomFunc.NormVect(u[0]));
+			
+			int len = av.Length;
+			
+			for (int i = 1; i < len; i++) {
+
+				double[] projAcc = new double[len];
+				for (int j = 0; j < projAcc.Length; j++) {
+					projAcc[j] = 0;
+				}
+				for (int j = 0; j < i; j++) {
+					Vector proj = GeomFunc.ProectionAtoB (av[i], e[j]);
+					for (int k = 0; k < projAcc.Length; k++) {
+						projAcc[k] += proj[k];
+					}
+				}
+
+				Vector ui = new Vector(len);
+				for (int j = 0; j < ui.N; j++) 
+				{
+					ui[j] = input[j,i] - projAcc[j];
+				}
+
+				u.Add(ui);
+				e.Add(u[i]/GeomFunc.NormVect(u[i]));
+			}
+			
+			
+			Matrix q = new Matrix(len, len);
+			for (int i = 0; i < len; i++) {
+				for (int j = 0; j < len; j++) {
+					q[i,j] = e[j][i];
+				}
+			}
+
+
+			Matrix r = new Matrix(len, len);
+			for (int i = 0; i < len; i++) {
+				for (int j = 0; j < e.Count; j++) {
+					if (i >= j) {
+						r[i,j] = GeomFunc.ScalarProduct(e[j], av[i]);
+					} else {
+						r[i,j] = 0;
+					}
+				}
+			}
+
+			
+			r = r.Tr();
+			
+			Matrix[] outpMatrixs = new Matrix[2];
+			
+			outpMatrixs[0] = q;
+			outpMatrixs[1] = r;
+			
+			return outpMatrixs;
+		}
+		
+		
 		
 // -----------------------------------------------------------------
 

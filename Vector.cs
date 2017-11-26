@@ -754,6 +754,14 @@ namespace AI.MathMod
 			GraphicsView.Plot(this);
 		}
 		
+		/// <summary>
+		/// Визуализация вектора
+		/// </summary>
+		public void VisualD()
+		{
+			GraphicsView.PlotD(this);
+		}
+		
 		
 		/// <summary>
 		/// Визуализация вектора

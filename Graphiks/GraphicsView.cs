@@ -186,6 +186,16 @@ namespace AI.MathMod.Graphiks
 			VisualPlot vp = new VisualPlot(funcItemClass);
 			vp.Show();
 		}
+        
+        
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void PlotD(Vector funcItemClass)
+		{
+			VisualPlot vp = new VisualPlot(funcItemClass);
+			vp.ShowDialog();
+		}
         /// <summary>
         /// График от одной переменной
         /// </summary>
