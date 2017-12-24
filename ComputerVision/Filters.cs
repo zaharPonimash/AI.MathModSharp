@@ -36,7 +36,44 @@ namespace AI.MathMod.ComputerVision
             return NeuroFunc.Relu((newMatr * coef + dx / 255.0), 1, 0);
 
         }
+        
+        
+        
+        public static Matrix ContrastFilter(Matrix img, int x, int y)
+        {
+            int H = img.M - x, W = img.N - y;
+            Matrix newMatr = new Matrix(img.M, img.N);
 
+            for (int i = 0; i < H; i+=x)
+            {
+                for (int j = 0; j < W; j+=y)
+                {
+                	for (int k = 0; k < x; k++) {
+                		for (int z = 0; z < y; z++)
+                	
+                		newMatr.Matr[z+i, k+j] = FilterContrast(img, x, y, j, i)[z,k];
+                	}
+                }
+            }
+
+            return newMatr;
+
+        }
+
+        
+        public static Matrix FC(Matrix img)
+        {
+        	Matrix newMatr = new Matrix(img.M, img.N);
+        		
+        		for (int i = 1; i < 5; i++)
+        			newMatr += ContrastFilter(img, 4*(i+6), 4*(i+6));
+				        		
+        		newMatr += FilterContrast(img, img.N, img.M, 0, 0);
+        		
+        		return newMatr/5;
+        }
+        
+        
         /// <summary>
         /// Медианный фильтр полутонового изображения
         /// </summary>
@@ -157,7 +194,32 @@ namespace AI.MathMod.ComputerVision
             return Statistic.Sco(vect);
         }
 
+		//Элемент контрасного фильтра
+		static Matrix FilterContrast(Matrix img, int x, int y, int dx, int dy)
+        {
 
+            Vector vect;
+            Matrix matr = new Matrix(y,x);
+
+            for (int i = 0, k =0; i < y; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                	matr[i,j] = img.Matr[dy + i, dx + j];
+                }
+            }
+			
+            
+            matr = MathFunc.lg(matr*255+1);
+            vect = matr.Spagetiz();
+            double cko = 3*Statistic.Sco(vect), m = Statistic.ExpectedValue(vect);
+           
+            return NeuroFunc.Sigmoid((matr-m)/(cko+0.01), 3);
+        }
+		
+		
+		
+		
 
 
     }

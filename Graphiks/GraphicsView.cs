@@ -78,6 +78,34 @@ namespace AI.MathMod.Graphiks
             }
             catch { }
         }
+		
+		
+		
+		
+		    /// <summary>
+		/// Строит график в контроле graph, по отсчетам funcItemClass
+		/// </summary>
+		/// <param name="graph">Элемент интерфейса для вывода графика</param>
+		/// <param name="funcItemClass">Значения y</param>
+		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV)
+        {
+            try
+            {
+                double[] y = funcItemClass.Vecktor;
+                double[] x = xV.Vecktor;
+
+                graph.GraphPane.CurveList.Clear();
+                graph.GraphPane.XAxis.Title.Text = "x";
+                graph.GraphPane.YAxis.Title.Text = "f(x)";
+                graph.GraphPane.Title.Text = "Гистограмма";
+                graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.AddBar("Гистограмма", x, y, Color.Green);
+                graph.AxisChange();
+                graph.Invalidate();
+            }
+            catch { }
+        }
 
 
         /// <summary>

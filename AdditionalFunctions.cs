@@ -927,6 +927,20 @@ namespace AI.MathMod.AdditionalFunctions
 
             return tensorOut;
         }
+        
+        
+        
+         public static Tensor Log10(Tensor tensor)
+        {
+              Tensor tensorOut = new Tensor(tensor.Width, tensor.Height, tensor.Depth);
+
+            for (int i = 0; i < tensor.Weights.Length; i++)
+            {
+                tensorOut.Weights[i] = Math.Log10(tensor.Weights[i]);
+            }
+
+            return tensorOut;
+        }
 
 
         public static Matrix Relu(Matrix Inp, double porog = 0)

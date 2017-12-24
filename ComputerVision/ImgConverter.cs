@@ -188,9 +188,10 @@ namespace AI.MathMod.ComputerVision
             {
                 for (int j = 0; j < matr.N; j++)
                 {
-                    intensiv = (int)Math.Abs(255 * matr.Matr[i, j]);
+                    
                     try
                     {
+                    	intensiv = (int)Math.Abs(255 * matr.Matr[i, j]);
                         color = Color.FromArgb(intensiv, intensiv, intensiv);
                     }
                     catch { color = Color.Coral; }

@@ -1426,6 +1426,13 @@
             <param name="graph">Элемент интерфейса для вывода графика</param>
             <param name="funcItemClass">Значения y</param>
         </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Строит график в контроле graph, по отсчетам funcItemClass
+            </summary>
+            <param name="graph">Элемент интерфейса для вывода графика</param>
+            <param name="funcItemClass">Значения y</param>
+        </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Вывод графика
@@ -2513,75 +2520,6 @@
         <member name="P:AI.MathMod.ML.GradientDecent.Itterations">
             <summary>
             Кол-во иттераций, по умолчанию 30
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.LinearAutocoder">
-            <summary>
-            Линейный автокодировщик
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.LinearRegressionModel">
-            <summary>
-            Модель для линейной регрессии хранит k и b   
-            f(x) = k*x+b;
-            </summary>
-        </member>
-        <member name="P:AI.MathMod.ML.LinearRegressionModel.k">
-            <summary>
-            Тангенс угла наклона
-            </summary>
-        </member>
-        <member name="P:AI.MathMod.ML.LinearRegressionModel.b">
-            <summary>
-            Смещение относительно (0;0)
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.LinearRegression">
-            <summary>
-            Линейная регрессия
-            </summary>
-        </member>
-        <member name="M:AI.MathMod.ML.LinearRegression.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Обучающая выборка
-            </summary>
-            <param name="X">Вектор X(независимая переменная)</param>
-            <param name="Y">Вектор Y(зависимая переменная)</param>
-        </member>
-        <member name="M:AI.MathMod.ML.LinearRegression.ToString">
-            <summary>
-            Вывод в строку
-            </summary>
-            <returns>Строка типа: f(x) = k*x+(b)</returns>
-        </member>
-        <member name="P:AI.MathMod.ML.LinearRegression.Lrm">
-            <summary>
-            Парамметры линейной регрессии
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.ILayer">
-            <summary>
-            Слой нейронной сети
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.FullConLayerBase">
-            <summary>
-            Полносвязный слой
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.Net">
-            <summary>
-            Нейронная сеть
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.LinearLayer">
-            <summary>
-            Линейный слой
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.PCA">
-            <summary>
-            Description of PCA.
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.SinApproximation">
@@ -3742,6 +3680,12 @@
             <summary>
             Визуализация вектора
             </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.AddSimmetr">
+            <summary>
+            Добавление отраженного вектора
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:AI.MathMod.Vector.VisualD">
             <summary>

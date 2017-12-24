@@ -200,7 +200,46 @@ namespace AI.MathMod
         }
 
 
-
+		
+		public static Tensor operator * (Tensor A, double k)
+		{
+			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+		
+			for(int i = 0; i < A.Weights.Length; i++)
+				 C.Weights[i] = A.Weights[i]*k;
+			
+			return C;
+		}
+        
+		
+		public static Tensor operator - (Tensor A, double k)
+		{
+			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+		
+			for(int i = 0; i < A.Weights.Length; i++)
+				 C.Weights[i] = A.Weights[i]-k;
+			
+			return C;
+		}
+		
+		
+		public static Tensor operator / (Tensor A, double k)
+		{
+			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+		
+			for(int i = 0; i < A.Weights.Length; i++)
+				 C.Weights[i] = A.Weights[i]/k;
+			
+			return C;
+		}
+        
+		
+		public Vector ToVector()
+		{
+			return new Vector(Weights);
+		}
+		
+		
         public static Tensor operator- (double b, Tensor A)
         {
             Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
@@ -214,17 +253,6 @@ namespace AI.MathMod
         }
 
 
-        public static Tensor operator- (Tensor A, double b)
-        {
-            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
-
-            for (int i = 0; i < A.Weights.Length; i++)
-            {
-                newTensor.Weights[i] = A.Weights[i] - b;
-            }
-
-            return newTensor;
-        }
         public void SetConst(double c)
         {
             for (var i = 0; i < this.Weights.Length; i++)

@@ -754,6 +754,25 @@ namespace AI.MathMod
 			GraphicsView.Plot(this);
 		}
 		
+		
+		/// <summary>
+		/// Добавление отраженного вектора
+		/// </summary>
+		/// <returns></returns>
+		public Vector AddSimmetr()
+		{
+			int n2 = 2*_n;
+			Vector newVector = new Vector(n2);
+			
+			for (int i = 0; i < _n; i++)
+				newVector[i] = _vector[i];
+			
+			for (int i = _n; i < n2; i++)
+				newVector[i] = _vector[n2-i-1];
+			
+			return newVector;
+		}
+		
 		/// <summary>
 		/// Визуализация вектора
 		/// </summary>

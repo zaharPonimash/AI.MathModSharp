@@ -27,7 +27,9 @@ namespace AI.MathMod.Signals
 		public static Vector Filter(Vector st, Vector kw)
 		{
 			Vector newSt = st.CutAndZero(Functions.NextPow2(st.N));
-			Vector newKw = kw.CutAndZero(newSt.N);
+			Vector newKw = kw.CutAndZero(newSt.N/2);
+			newKw = newKw.AddSimmetr();
+			//newKw.Visual();
 			ComplexVector Sw = Furie.fft(newSt);
 			Sw = Sw*newKw;
 			newSt = Furie.ifft(Sw).RealToVector();
@@ -44,8 +46,9 @@ namespace AI.MathMod.Signals
         /// <returns>Фильтрованный сигнал</returns>
         public static Vector FilterLow(Vector st, double sr, Vector f)
 		{
-			double srNew = f.Vecktor[f.N-1]-sr;
+        	double srNew = Statistic.MaximalValue(f)-sr;
 			Vector kw = NeuroFunc.Porog(f,srNew).Revers();
+			//kw.Visual();
 			return Filter(st, kw);
 		}
 
@@ -61,7 +64,7 @@ namespace AI.MathMod.Signals
         /// <returns>Фильтрованный сигнал</returns>
         public static Vector FilterBand(Vector st, double sr1, double sr2, Vector f)
 		{
-			double srNew = f.Vecktor[f.N-1]-sr2;
+			double srNew = Statistic.MaximalValue(f)-sr2;
 			Vector kw = NeuroFunc.Porog(f,srNew).Revers();
 			Vector kw2 = NeuroFunc.Porog(f,sr1);
 			kw *= kw2;
@@ -101,6 +104,7 @@ namespace AI.MathMod.Signals
 				if((f.Vecktor[i]>=sr1)&&(f.Vecktor[i]<=sr2)) kw.Vecktor[i] = 0;
 			}
 			
+			//kw.Visual(f);
 			
 			return Filter(st, kw);
 		}

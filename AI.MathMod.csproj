@@ -39,6 +39,7 @@
     <Optimize>true</Optimize>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>TRACE</DefineConstants>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <DocumentationFile>bin\Release\AI.MathMod.xml</DocumentationFile>
@@ -103,12 +104,6 @@
     <Compile Include="ML\Classifire\StatisticClassifier.cs" />
     <Compile Include="ML\Classifire\SVM.cs" />
     <Compile Include="ML\GradientDecent.cs" />
-    <Compile Include="ML\LinearAutocoder.cs" />
-    <Compile Include="ML\LinearRegression.cs" />
-    <Compile Include="ML\NeuronNetwork\Base.cs" />
-    <Compile Include="ML\NeuronNetwork\BipolyarSigm.cs" />
-    <Compile Include="ML\NeuronNetwork\LinearLayer.cs" />
-    <Compile Include="ML\PCA.cs" />
     <Compile Include="ML\SinApproximation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtilities.cs" />
@@ -124,9 +119,7 @@
     <Compile Include="Vector.cs" />
     <Compile Include="Сonvolution.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ML\NeuronNetwork" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
