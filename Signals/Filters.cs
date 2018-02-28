@@ -7,6 +7,7 @@
  * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
 using System;
+using System.Numerics;
 using AI.MathMod.AdditionalFunctions;
 
 namespace AI.MathMod.Signals
@@ -34,6 +35,37 @@ namespace AI.MathMod.Signals
 			Sw = Sw*newKw;
 			newSt = Furie.ifft(Sw).RealToVector();
 			return newSt.CutAndZero(st.N);//newSt.N;
+		}
+		
+		
+		
+		
+		/// <summary>
+        /// Реализация колебательного контура
+        /// </summary>
+        /// <param name="st">Вектор сигнала</param>
+        /// <param name="Q">Добротность</param>
+        /// <param name="f0">Резонансная частота</param>
+        /// <param name="fd">Частота дискретизации</param>
+        /// <returns>Фильтрованный сигнал</returns>
+		public static Vector FilterKontur(Vector st, double Q, double f0, int fd)
+		{
+			Vector newSt = st.CutAndZero(Functions.NextPow2(st.N));
+			Complex j = new Complex(0, 1);
+			ComplexVector Sw = Furie.fft(st);
+			ComplexVector kw = new ComplexVector(Sw.N);
+			Vector f = Signal.Frequency(kw.N, fd);
+			
+			for (int i = 1; i < f.N/2; i++)
+				kw[i] =  1.0/(1+j*Q*(f[i]/f0 - f0/f[i]));
+			
+			for (int i = f.N/2; i < f.N-1; i++)
+				kw[i] =  1.0/(1+j*Q*(f[i]/(2*f0) - (2*f0)/f[i]));
+			
+			
+			Sw = Sw*kw;
+			newSt = Furie.ifft(Sw).RealToVector();
+			return newSt.CutAndZero(st.N);
 		}
 
 

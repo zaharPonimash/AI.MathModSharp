@@ -2691,6 +2691,16 @@
             <param name="kw">АЧХ</param>
             <returns>Фильтрованный сигнал</returns>
         </member>
+        <member name="M:AI.MathMod.Signals.Filters.FilterKontur(AI.MathMod.Vector,System.Double,System.Double,System.Int32)">
+            <summary>
+            Реализация колебательного контура
+            </summary>
+            <param name="st">Вектор сигнала</param>
+            <param name="Q">Добротность</param>
+            <param name="f0">Резонансная частота</param>
+            <param name="fd">Частота дискретизации</param>
+            <returns>Фильтрованный сигнал</returns>
+        </member>
         <member name="M:AI.MathMod.Signals.Filters.FilterLow(AI.MathMod.Vector,System.Double,AI.MathMod.Vector)">
             <summary>
             ФНЧ
