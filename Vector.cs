@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Graphiks;
 using System.Globalization;
 
@@ -18,11 +19,10 @@ namespace AI.MathMod
 	/// Класс реализующий вектора и операции над ними
 	/// </summary>
 	[Serializable]
-	public class Vector
+	public class Vector : IMathStruct
 	{
 		
-		
-		#region поля и свойства
+		#region Поля и свойства
 		double[] _vector;
 		int _n;
 		
@@ -59,8 +59,6 @@ namespace AI.MathMod
 
 
 		#endregion
-
-
 
 		#region Конструкторы
 		/// <summary>
@@ -152,14 +150,7 @@ namespace AI.MathMod
 		
 		
 		#endregion
-		
-		
-		
-		
-		
-		
-		
-		
+				
 		#region Операции
 		
 		/// <summary>
@@ -564,7 +555,7 @@ namespace AI.MathMod
 		
 		#endregion
 		
-		
+		#region Функции
 	
 		/// <summary>
 		/// Удаление по индексу
@@ -597,7 +588,7 @@ namespace AI.MathMod
 		{
 
 			for (int i = 0; i < _n; i++) {
-				if (_vector[i] == value)
+				if (Math.Abs(_vector[i] - value) < value/1e+7)
 					return (double)i;
 			}
 
@@ -618,6 +609,34 @@ namespace AI.MathMod
 		
 			return ListToVector(lD);
 		}
+		
+		
+		public Vector PhaseUnwrap()
+		{
+			var outp = new Vector(_n);
+			Vector dif = Functions.Diff(this);
+			//Vector difSign = MathFunc.sign(dif);
+			//difSign *= -1;
+			//dif = MathFunc.abs(dif);
+			
+			double treshHold = 1.8*Math.PI;
+			
+				for (int i = 1; i < dif.N; i++) 
+				{
+					
+			      
+					for (int j = i; j < dif.N; j++)
+					if(dif[i] > treshHold)
+							outp[j] = Vecktor[j-1]+dif[i];
+					
+				if(dif[i] <= treshHold) outp[i] = Vecktor[i];
+					dif = Functions.Diff(outp);
+				}
+				
+				return outp;
+			}
+			
+		
 	
 	
 		/// <summary>
@@ -944,8 +963,38 @@ namespace AI.MathMod
 		
 		
 		
+		/// <summary>
+		/// Проверяет все ли элементы вектора нулевые
+		/// </summary>
+		/// <returns>true если все, false иначе</returns>
+		public bool Is0()
+		{
+			bool is0 = true;
+			
+			for (int i = 0; i < _n; i++) {
+				if (Math.Abs(_vector[i]) > 1e-300)
+					is0 = false;
+			}
+			
+			return is0;
+		}
 		
-		
+		/// <summary>
+		/// Проверяет нулевых элементов больше "n"
+		/// </summary>
+		/// <param name="n"></param>
+		/// <returns>true если больше, false иначе</returns>
+		public bool Is0(int n)
+		{
+			int count =0 ;
+			
+			for (int i = 0; i < _n; i++) {
+				if (Math.Abs(_vector[i]) < 1e-300)
+					count++;
+			}
+			
+			return count > n;
+		}
 		
 		
 		/// <summary>
@@ -1035,6 +1084,80 @@ namespace AI.MathMod
 		{
 			return base.GetHashCode();
 		}
+		
+		/// <summary>
+		/// Проигрывание вектора
+		/// </summary>
+		/// <param name="fd">Частота дискретизации</param>
+		public void PlayVector(int fd)
+		{
+			Sound sn = new Sound();
+			sn.PlayVector(this, fd);
+		}
+		
+		#endregion
+		
+		
+		
+		#region Статические методы
+		
+		/// <summary>
+		/// Конкатенация векторов
+		/// </summary>
+		/// <param name="vectors">Вектора</param>
+		/// <returns></returns>
+		public static Vector Concatinate(Vector[] vectors)
+		{
+			int n = 0;
+			
+			for (int i = 0; i < vectors.Length; i++)
+				n += vectors[i].N;
+			
+			Vector resultVector = new Vector(n);
+			
+			for (int i = 0, k = 0; i < vectors.Length; i++) {
+				for (int j = 0; j < vectors[i].N; j++) {
+					resultVector[k++] = vectors[i][j];
+				}
+			}
+			
+			return resultVector;
+		}
+		
+		
+		/// <summary>
+		/// Усреднение по ансамблю
+		/// </summary>
+		/// <param name="vectors">Ансамбль векторов</param>
+		/// <returns>Средний вектор</returns>
+		public static Vector Mean(Vector[] vectors)
+		{
+			Vector result = new Vector(vectors[0].N);
+			
+			for (int i = 0; i < vectors.Length; i++)
+			{
+				result += vectors[i];
+			}
+			
+			return result/vectors.Length;
+		}
+		
+		/// <summary>
+		/// Загрузка звукового файла как вектор
+		/// </summary>
+		/// <param name="pathToWavFile">Путь до файла</param>
+		/// <param name="fd">Возвращаемый параметр, частота дискретизации</param>
+		/// <returns>Вектор</returns>
+		public static Vector VectorFromWav(string pathToWavFile, out int fd)
+		{
+			var sn = new Sound();
+			var outp = sn.SoundLoad(pathToWavFile);
+			fd = sn.sampleRate;
+			return outp;
+		}
+		
+		
+		#endregion
 	}
 	
 }

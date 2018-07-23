@@ -88,7 +88,7 @@ namespace AI.MathMod.Signals
 		public static Vector Frequency(int N, double fd)
 		{
 			double dt = 1.0/fd, df = 1/(N*dt);
-			return MathFunc.GenerateTheSequence(0,df,(N-1)*df).CutAndZero(N);
+			return MathFunc.GenerateTheSequence(0,df,(N)*df).CutAndZero(N);
 		}
 
         /// <summary>
@@ -372,7 +372,43 @@ namespace AI.MathMod.Signals
             double energe = Functions.Summ((signal^2));
             return energe / fd;
         }
-
+		
+        /// <summary>
+        /// Передискретизация сигнала
+        /// (повышение частоты дискретизации в целое число раз)
+        /// </summary>
+        /// <param name="inp">Входной вектор</param>
+        /// <param name="fd">Старая частота дискретизации</param>
+        /// <param name="newfd">Новая частота дикретизации</param>
+        /// <returns>Вектор тойже длительности, что и входной,
+		/// но с более высокой частотой дискретизации</returns>
+        public static Vector Perediscr(Vector inp, int fd, int newfd)
+		{
+			int k = newfd/fd;
+			ComplexVector inputSpectr = Furie.fft(inp);
+			int len = inp.N*(k-1), lenFull = inp.N*k;
+			int i = 0;
+			ComplexVector cV = new ComplexVector(lenFull);
+			
+			for (int end = inp.N/2; i < end; i++) 
+			{
+				cV[i] = inputSpectr[i];
+			}
+			
+			for (int j = 0, end = lenFull-inp.N/2; i < end; i++)
+			{
+				cV[i] = new System.Numerics.Complex(0,0);
+			}
+			
+			for (int j = inp.N/2; i < lenFull; i++)
+			{
+				cV[i] = inputSpectr[j];
+			}
+			
+			
+			return Furie.ifft(cV).RealToVector();
+		} 
+       
 
         /// <summary>
         /// Норма сигнала

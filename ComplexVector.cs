@@ -18,14 +18,14 @@ namespace AI.MathMod
 	/// Класс реализует работу с комплексными векторами
 	/// </summary>
 	[Serializable]
-	public class ComplexVector
+	public class ComplexVector : IMathStruct
 	{
 		Complex[] _vector;
 		int _n;
 		
 		
 		
-		
+		#region Свойства
 		
 		/// <summary>
 		/// Массив типа Complex содержащий отсчеты вектора
@@ -55,10 +55,9 @@ namespace AI.MathMod
             get { return _vector[i]; }
             set { _vector[i] = value; }
         }
-
-
-
-        #region Конструкторы
+		#endregion
+		
+    	#region Конструкторы
         /// <summary>
         /// Создает вектор с нулями (0+0j) размерности 3
         /// </summary>
@@ -116,12 +115,11 @@ namespace AI.MathMod
 			Init(vectorReal.Vecktor, vectorImg.Vecktor);
 		}
 		
-		#endregion
+		#endregion	
 		
-		
-		
-		
-		
+		#region Операции
+
+			
 		void Init(double[] vectorReal, double[] vectorImg)
 		{
 		int n1 = vectorImg.Length;
@@ -161,15 +159,14 @@ namespace AI.MathMod
 			
 			return new ComplexVector(newVect);
 		}
-		
-		
-		
-		
-		
-		
-		
-	#region Операции
-		
+
+
+
+
+
+
+
+	
 		/// <summary>
 		/// Поэлементное умножение
 		/// </summary>
@@ -546,7 +543,8 @@ namespace AI.MathMod
 		
 	#endregion
 		
-		
+		#region Функции
+	
 	
 		/// <summary>
 		/// Копирование вектора
@@ -638,7 +636,7 @@ namespace AI.MathMod
 		{
 			Vector A = new Vector(_n);
 			
-			for(int i = 0; i<_n; i++) A.Vecktor[i] = _vector[i].Phase;
+			for(int i = 0; i<_n; i++) A[i] = _vector[i].Phase;
 			
 			return A;
 		}
@@ -805,10 +803,7 @@ namespace AI.MathMod
 			}
 			
 		}
-		
-		
-		
-		
+		#endregion	
 		
 	}
 	

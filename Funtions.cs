@@ -137,14 +137,13 @@ namespace AI.MathMod
 	/// <returns></returns>
 	public static Vector Integral(Vector A)
 	{
-		
-		
-		Vector B = new Vector(A.N), C;
+		Vector B = new Vector(A.N);
+		double sum = 0;
 		
 		for(int i = 0; i<B.N; i++)
 		{
-			C = A.CutAndZero(i+1);
-			B.Vecktor[i] = Summ(C);
+			sum += A[i];
+			B[i] = sum;
 		}
 			
 		return B;

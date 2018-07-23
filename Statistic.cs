@@ -465,12 +465,33 @@ namespace AI.MathMod
 			int n2 = Y.N;
 			string exceptionStr = string.Format("Невозможно выполнить ковариацию, длинна одного вектора {0}, а второго {1}", n1, n2);
 			if(n1!=n2)throw new ArgumentException(exceptionStr, "Ковариация");
-			double Mx = ExpectedValue(X), 
-			My = ExpectedValue(Y);
-			return ExpectedValue((X-Mx)*(Y-My));
+			double Mx = 0, My = 0, cov = 0;
+			
+			for(int i = 0; i < X.N; i++){
+				Mx += X[i];
+				My += Y[i];
+			}
+			
+			Mx /= n1;
+			My /= n1;
+			
+			for(int i = 0; i < X.N; i++)
+				cov += (X[i]-Mx)*(Y[i]-My);
+			
+			cov /= n1;
+			
+			return cov;
 		}
 		
 		
+		
+		
+		public static double Pirson(Vector histY, Vector histX, Func<Vector, Vector> teoritecalDistrib)
+		{
+			Vector summ = ((histY - teoritecalDistrib(histX))^2)/teoritecalDistrib(histX);
+			double hi2 =  histY.N*Functions.Summ(summ);
+			return hi2;
+		}
 		
 		
 		/// <summary>
@@ -481,9 +502,30 @@ namespace AI.MathMod
 		/// <returns>Возвращает коэф. кор.</returns>
 		public static double CorrelationCoefficient(Vector X, Vector Y)
 		{
-			double cov = Cov(X, Y);
-			cov /= (Sco(X)*Sco(Y));
-			return cov;
+			int n = X.N;
+			
+			double Mx = 0, My = 0, cor = 0, k = (n-1.0)/(double)n, Dx = 0, Dy =0, dx, dy;
+			
+			for(int i = 0; i < X.N; i++){
+				Mx += X[i];
+				My += Y[i];
+			}
+			
+			Mx /= n;
+			My /= n;
+			
+			
+			for(int i = 0; i < X.N; i++){
+				cor += (X[i]-Mx)*(Y[i]-My);
+				dx = X[i]-Mx;
+				dy = Y[i]-My;
+				Dx += dx*dx;
+				Dy += dy*dy;
+			}
+			
+			cor = k*cor/Math.Sqrt(Dx*Dy);
+			
+			return cor;
 		}
 		
 		

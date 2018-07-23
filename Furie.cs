@@ -359,6 +359,32 @@ namespace AI.MathMod
 		return Out/N;
 	}
 	
+	
+	public static Matrix TimeFrTransform(Vector vect, int lenFr = 1000)
+	{
+		int lenTime = vect.N/lenFr;
+		Vector[] vects = new Vector[lenTime];
+		double[,] matr = new double[lenFr,lenTime];
+		
+		for (int i = 0; i < lenTime; i++)
+		{
+			vects[i] = vect.GetInterval(i*lenFr, (i+1)*lenFr);
+		}
+		
+		for (int i = 0; i < lenTime; i++)
+		{
+			vects[i] = Furie.fft(vects[i]).MagnitudeToVector()/lenFr;
+			
+			for (int j = 0; j < lenFr; j++)
+			{
+				matr[j,i] = vects[i][j];
+			}
+		}
+		
+		return new Matrix(matr);
+	}
+	
+	
     }
 }
 

@@ -187,6 +187,10 @@ namespace AI.MathMod
             return newTensor;
         }
 
+        
+        
+        
+        
         public static Tensor operator+ (double b, Tensor A)
         {
             Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
@@ -233,6 +237,18 @@ namespace AI.MathMod
 			return C;
 		}
         
+		
+		
+		public Tensor Normalise()
+		{
+			Vector vec = new Vector(Weights);
+			
+			Statistic stat = new Statistic(vec);
+			
+			Tensor Out = (this-stat.MinValue)/(stat.MaxValue-stat.MinValue);
+			
+			return Out;
+		}
 		
 		public Vector ToVector()
 		{

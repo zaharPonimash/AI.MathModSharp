@@ -106,6 +106,28 @@ namespace AI.MathMod.Graphiks
             }
             catch { }
         }
+		
+		
+		
+		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV, string name, string xN, string yN)
+        {
+            try
+            {
+                double[] y = funcItemClass.Vecktor;
+                double[] x = xV.Vecktor;
+
+                graph.GraphPane.CurveList.Clear();
+                graph.GraphPane.XAxis.Title.Text = xN;
+                graph.GraphPane.YAxis.Title.Text = yN;
+                graph.GraphPane.Title.Text = name;
+                graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.AddBar("Гистограмма", x, y, Color.Green);
+                graph.AxisChange();
+                graph.Invalidate();
+            }
+            catch { }
+        }
 
 
         /// <summary>
@@ -130,6 +152,37 @@ namespace AI.MathMod.Graphiks
 			graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
 			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
 			graph.GraphPane.AddCurve(nameFunc, x1, y1, colorLine, SymbolType.None);
+			graph.AxisChange ();
+    		graph.Invalidate ();
+			}
+			catch{}
+		}
+		 
+        
+        /// <summary>
+        /// Вывод графика
+        /// </summary>
+        /// <param name="graph">Поле для вывода</param>
+        /// <param name="y">Вектор Y</param>
+        /// <param name="x">Вектор X</param>
+        /// <param name="nameFunc">Имя ф-и</param>
+        /// <param name="nameX">Имя оси X</param>
+        /// <param name="nameY">Имя оси Y</param>
+        /// <param name="colorLine">Цвет линии</param>
+        public static void Scatter(ZedGraphControl graph, Vector y, Vector x, string nameFunc, string nameX, string nameY, Color colorLine)
+		{
+			try{
+			double[] y1 = y.Vecktor;
+			double[] x1 = x.Vecktor;
+			graph.GraphPane.CurveList.Clear();
+			graph.GraphPane.XAxis.Title.Text = nameX;
+			graph.GraphPane.YAxis.Title.Text = nameY;
+			graph.GraphPane.Title.Text = nameFunc;
+			graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+			LineItem myCurve = graph.GraphPane.AddCurve(nameFunc, x1, y1, colorLine, SymbolType.Circle);
+			myCurve.Symbol.Fill = new Fill(colorLine);
+			myCurve.Line.IsVisible = false;
 			graph.AxisChange ();
     		graph.Invalidate ();
 			}

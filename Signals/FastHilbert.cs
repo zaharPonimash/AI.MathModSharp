@@ -90,5 +90,22 @@ namespace AI.MathMod.Signals
 				return Functions.Diff(GetAnalSig(st).PhaseToVector());
 			}
 			
+			
+			
+			public static Vector OgibNew(Vector t,Vector st, double f0)
+			{
+				ComplexVector cV = new ComplexVector(t.N);
+				
+				for (int i = 0; i < t.N; i++) 
+				{
+					cV[i] = Complex.Exp(-new Complex(0,1)*Math.PI*2*f0*t[i]);
+				}
+				
+				ComplexVector newSt = st*cV;
+				
+				
+				return newSt.RealToVector()+newSt.ImgToVector();
+				
+			}
 	}
 }

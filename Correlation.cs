@@ -43,7 +43,7 @@ namespace AI.MathMod
 					Statistic stat = new Statistic(A);
 					Statistic stat2 = new Statistic(B);
 					
-					return C/(stat.SCO*stat2.SCO);
+					return C/(stat.SCO*stat2.SCO*A.N);
 				}
 				
 				
@@ -57,7 +57,7 @@ namespace AI.MathMod
 				/// <returns>Возвращает отсчеты ВКФ</returns>
 				public static Vector CrossCorrelationF(Vector A, Vector B)
 				{ 
-					int N = (A.N>B.N)? Functions.NextPow2(A.N): Functions.NextPow2(B.N);
+					int N = (A.N>B.N)? Functions.NextPow2(2*A.N): Functions.NextPow2(2*B.N);
 					Vector newA, newB;
 					
 						newA = A.CutAndZero(N);
@@ -66,7 +66,7 @@ namespace AI.MathMod
 					ComplexVector SwA = Furie.fft(newA);
 					ComplexVector SwB = Furie.fft(newB);
 					
-					return Furie.ifft(SwA*SwB).RealToVector()/Math.Sqrt(Statistic.Dispers(newA)*Statistic.Dispers(newB))/newA.N;
+					return Furie.ifft(SwA*SwB).RealToVector()/Math.Sqrt(Statistic.Dispers(newA)*Statistic.Dispers(newB))/newA.N/2;
 				}
 				
 				/// <summary>

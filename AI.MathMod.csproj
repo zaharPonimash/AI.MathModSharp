@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <PropertyGroup>
-    <ProjectGuid>{FA33DFD5-3BCE-4B28-AEFA-D386CBDF94EC}</ProjectGuid>
+    <ProjectGuid>{DF41FBB8-CBF9-4E1A-BB07-30D678991734}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -69,17 +69,24 @@
   <ItemGroup>
     <Compile Include="Algebra\Deductions Ring.cs" />
     <Compile Include="Algebra\Kramer.cs" />
+    <Compile Include="AlgorAnalise\CorrelationAnalise.cs" />
+    <Compile Include="AlgorAnalise\SimilarityOfBases.cs" />
     <Compile Include="Approximation\ApproximationError.cs" />
     <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
     <Compile Include="ComplexVector.cs" />
     <Compile Include="ComputerVision\Filters.cs" />
     <Compile Include="ComputerVision\ImgConverter.cs" />
+    <Compile Include="ComputerVision\Retinex.cs" />
     <Compile Include="Correlation.cs" />
     <Compile Include="AdditionalFunctions.cs" />
     <Compile Include="Funtions.cs" />
     <Compile Include="Furie.cs" />
     <Compile Include="FuzzyLogic.cs" />
     <Compile Include="Graphiks\GraphicsView.cs" />
+    <Compile Include="Graphiks\MatrixOut.cs" />
+    <Compile Include="Graphiks\MatrixOut.Designer.cs">
+      <DependentUpon>MatrixOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphiks\MatrixVisual.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +99,8 @@
     <Compile Include="Graphiks\VisualPlot.Designer.cs">
       <DependentUpon>VisualPlot.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMathStruct.cs" />
+    <Compile Include="InformationBlock.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="ML\Classifire\BayesClassifier.cs" />
     <Compile Include="ML\Classifire\Classificator.cs" />
@@ -100,10 +109,25 @@
     <Compile Include="ML\Classifire\CorrelationClassifier.cs" />
     <Compile Include="ML\Classifire\IClassifire.cs" />
     <Compile Include="ML\Classifire\kNN.cs" />
-    <Compile Include="ML\Classifire\SimpleStatisticClasifir.cs" />
+    <Compile Include="ML\Classifire\SimpleFLClassifier.cs" />
     <Compile Include="ML\Classifire\StatisticClassifier.cs" />
     <Compile Include="ML\Classifire\SVM.cs" />
     <Compile Include="ML\GradientDecent.cs" />
+    <Compile Include="ML\HMM\HMMWords.cs" />
+    <Compile Include="ML\LinearAutocoder.cs" />
+    <Compile Include="ML\LinearRegression.cs" />
+    <Compile Include="ML\NeuronNetwork\Base.cs" />
+    <Compile Include="ML\NeuronNetwork\BipolyarSigm.cs" />
+    <Compile Include="ML\NeuronNetwork\CapsuleLayer.cs" />
+    <Compile Include="ML\NeuronNetwork\CapsuleRelu.cs" />
+    <Compile Include="ML\NeuronNetwork\CapsuleSig.cs" />
+    <Compile Include="ML\NeuronNetwork\Convolution.cs" />
+    <Compile Include="ML\NeuronNetwork\Deconvolution.cs" />
+    <Compile Include="ML\NeuronNetwork\LinearLayer.cs" />
+    <Compile Include="ML\NeuronNetwork\Sigmoid.cs" />
+    <Compile Include="ML\NeuronNetwork\Softmax.cs" />
+    <Compile Include="ML\PCA.cs" />
+    <Compile Include="ML\Simplex.cs" />
     <Compile Include="ML\SinApproximation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtilities.cs" />
@@ -114,13 +138,20 @@
     <Compile Include="Signals\Kepstr.cs" />
     <Compile Include="Signals\Signal.cs" />
     <Compile Include="Signals\Wavelet.cs" />
+    <Compile Include="Sound.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="Tensor.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="Сonvolution.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="ML\HMM" />
+    <Folder Include="AlgorAnalise" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Graphiks\MatrixOut.resx">
+      <DependentUpon>MatrixOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
     </EmbeddedResource>

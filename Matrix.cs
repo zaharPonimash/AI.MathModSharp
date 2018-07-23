@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Graphiks;
 
@@ -21,7 +22,7 @@ namespace AI.MathMod
 	/// </summary>
 	/// 
 	[Serializable]
-	public class Matrix
+	public class Matrix : IMathStruct
 	{
 		#region Поля
 		double[,] _matr; // Матрица
@@ -542,10 +543,10 @@ namespace AI.MathMod
 				Vector vect = new Vector(_m*_n);
 				int index = 0;
 				
-				for(int i = 0; i<_m; i++)
-				 for(int j = 0; j<_n; j++)
+				for(int i = 0; i<_n; i++)
+				 for(int j = 0; j<_m; j++)
 					{
-					vect.Vecktor[index] = Matr[i,j];
+					vect.Vecktor[index] = Matr[j,i];
 					index++;
 				    }
 				
@@ -607,7 +608,7 @@ namespace AI.MathMod
 		/// </summary>
 		/// <param name="matr">Матрица</param>
 		/// <returns>Массив векторов</returns>
-		public Vector[] GetColumns(Matrix matr)
+		public static Vector[] GetColumns(Matrix matr)
 		{
 			Vector[] columns = new Vector[matr.N];
 			
@@ -619,6 +620,20 @@ namespace AI.MathMod
 			}
 			
 			return columns;
+		}
+		
+		
+		public Matrix Round(int n)
+		{
+			Matrix matr = new Matrix(_m,_n);
+			
+			for (int i = 0; i < _m; i++) {
+				for (int j = 0; j < _n; j++) {
+					matr[i,j] = Math.Round(_matr[i,j], n);
+				}
+			}
+			
+			return matr;
 		}
 		
 		
@@ -733,8 +748,79 @@ namespace AI.MathMod
 				
 		
 		
+		/// <summary>
+		/// Альтернативная матрица
+		/// </summary>
+		/// <param name="functions">Функции</param>
+		/// <param name="values">Значения</param>
+		/// <returns>Возвращает альтернативную матрицу</returns>
+		public static Matrix AlternativMatrix(Func<double, double>[] functions, Vector values)
+		{
+			Matrix matr = new Matrix(values.N, functions.Length);
+			
+			for (int i = 0; i < values.N; i++)
+			{
+				for (int j = 0; j < functions.Length; j++) 
+				{
+					matr[i,j] = functions[j](values[i]);
+				}	
+			}
+			
+			return matr;
+		}
 		
 		
+		
+		/// <summary>
+		/// Ортогональная матрица
+		/// </summary>
+		/// <param name="functions">Порождающая функция</param>
+		/// <param name="values">Значения</param>
+		/// <returns>Возвращает альтернативную матрицу</returns>
+		public static Matrix OrtogonalMatrix(Func<int, double, double> functions, Vector values, int count)
+		{
+			Matrix matr = new Matrix(values.N, count);
+			
+			for (int i = 0; i < values.N; i++)
+			{
+				for (int j = 0; j < count; j++) 
+				{
+					matr[i,j] = functions(j, values[i]);
+				}	
+			}
+			
+			return matr;
+		}
+		
+		
+		
+		public void MatrixShow()
+		{
+			MatrixOut mOut = new MatrixOut(this);
+			mOut.Show();
+		}
+		
+		
+		/// <summary>
+		/// Метод создает матрицу с коэфициентами попарной корреляции векторов
+		/// </summary>
+		/// <param name="vectors">Вектора</param>
+		/// <returns>Корреляционная матрица</returns>
+		public static Matrix CorrelationMatrixNorm(Vector[] vectors)
+		{
+			Matrix corelationMatrix = new Matrix(vectors.Length, vectors.Length);
+			
+			
+			for (int i = 0; i < vectors.Length; i++) {
+				for (int j = 0; j < vectors.Length; j++) {
+					if(i == j) corelationMatrix[i,j] = 1;
+					else
+						corelationMatrix[i,j] = Statistic.CorrelationCoefficient(vectors[i], vectors[j]);
+				}
+			}
+			
+			return corelationMatrix;
+		}
 		
 		/// <summary>
 		/// Загрузка матрицы

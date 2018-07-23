@@ -208,7 +208,8 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector sin(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Sin(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++)
+				A.Vecktor[i] = Math.Sin(Inp.Vecktor[i]);
 			return A;
 		}
 		
@@ -368,6 +369,14 @@ namespace AI.MathMod.AdditionalFunctions
 		{
 			Vector A = new Vector(Inp.N);
 			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Tanh(Inp.Vecktor[i]);
+			return A;
+		}
+			
+			
+		public static Vector sign(Vector Inp)
+		{
+			Vector A = new Vector(Inp.N);
+			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Sign(Inp.Vecktor[i]);
 			return A;
 		}
 			
@@ -1140,6 +1149,28 @@ namespace AI.MathMod.AdditionalFunctions
 		static public double DistanceFromAToB(Vector pointA, Vector pointB)
 		{
 			return NormVect(VectorFromAToB(pointA, pointB));
+		}
+		
+		
+		/// <summary>
+		/// Поворот вектора на заданные углы
+		/// </summary>
+		static public Vector VectorRotate(Vector inp, double angl, int indAx1, int indAx2)
+		{
+			Matrix rotateMatr = new Matrix(inp.N, inp.N);
+			
+			for(int i = 0; i<inp.N; i++)
+				rotateMatr[i,i] = 1;
+			
+			rotateMatr[indAx1, indAx1] = Math.Cos(angl);
+			rotateMatr[indAx2, indAx2] = Math.Cos(angl);
+			rotateMatr[indAx1, indAx2] = -Math.Sin(angl);
+			rotateMatr[indAx1, indAx1] = Math.Sin(angl);
+			
+			Matrix vectorInp = inp.ToMatrix().Tr();
+			
+			return (rotateMatr*vectorInp).Tr().ToVector();
+				
 		}
 		
 	}

@@ -23,12 +23,9 @@ namespace AI.MathMod.Signals
         /// <returns></returns>
 		public static Vector FKT(Vector signal)
 		{
-			Vector signalNew = signal.CutAndZero(Functions.NextPow2(signal.N));
-			ComplexVector spectr = Furie.fft(signalNew);
-			Vector ampSpectLog = MathFunc.lg(spectr.MagnitudeToVector()^2);
-			DCT dct = new DCT(signalNew.N, signal.N);
-			Vector outp = dct.FDCT(ampSpectLog);
-			return outp;
+			ComplexVector spectr = Furie.fft(signal);
+			Vector  Aspectr = MathFunc.ln(spectr.MagnitudeToVector()^2);
+			return Furie.fft(Aspectr).RealToVector()/Aspectr.N;
 		}
 	}
 }

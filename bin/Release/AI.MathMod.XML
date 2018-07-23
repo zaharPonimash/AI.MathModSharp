@@ -73,6 +73,16 @@
             <param name="B">Вектор ответов</param>
             <returns>Вектор неизвестных</returns>
         </member>
+        <member name="T:AI.MathMod.AlgorAnalise.CorrelationAnalise">
+            <summary>
+            Корреляционный анализ (проверка ортогональности)
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.AlgorAnalise.SimilarityOfBases">
+            <summary>
+            Description of SimilarityOfBases.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Approximation.ApproximationError">
             <summary>
             Класс содержит методы для вычисления погрешности аппроксимации
@@ -116,6 +126,11 @@
         <member name="T:AI.MathMod.ComplexVector">
             <summary>
             Класс реализует работу с комплексными векторами
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.IMathStruct">
+            <summary>
+            Интерфейс математической структуры
             </summary>
         </member>
         <member name="M:AI.MathMod.ComplexVector.#ctor">
@@ -504,6 +519,11 @@
         <member name="M:AI.MathMod.ComputerVision.ImgConverter.MatrixToBitmap(AI.MathMod.Matrix)">
             <summary>
             Перевод матрицы в полутоновое изображение
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ComputerVision.Retinex">
+            <summary>
+            Description of Retinex.
             </summary>
         </member>
         <member name="T:AI.MathMod.Correlation">
@@ -1103,6 +1123,11 @@
             <param name="pointB">координаты точки Б</param>
             <returns>Возвращает растояние</returns>
         </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.GeomFunc.VectorRotate(AI.MathMod.Vector,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Поворот вектора на заданные углы
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Functions">
             <summary>
             Математические фукции
@@ -1445,6 +1470,18 @@
             <param name="nameY">Имя оси Y</param>
             <param name="colorLine">Цвет линии</param>
         </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Scatter(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            Вывод графика
+            </summary>
+            <param name="graph">Поле для вывода</param>
+            <param name="y">Вектор Y</param>
+            <param name="x">Вектор X</param>
+            <param name="nameFunc">Имя ф-и</param>
+            <param name="nameX">Имя оси X</param>
+            <param name="nameY">Имя оси Y</param>
+            <param name="colorLine">Цвет линии</param>
+        </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
             <summary>
             График от одной переменной
@@ -1491,6 +1528,29 @@
             </summary>
             <param name="y"></param>
             <param name="x"></param>
+        </member>
+        <member name="T:AI.MathMod.Graphiks.MatrixOut">
+            <summary>
+            Description of MatrixOut.
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Graphiks.MatrixOut.components">
+            <summary>
+            Designer variable used to keep track of non-visual components.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.MatrixOut.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources used by the form.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.MatrixOut.InitializeComponent">
+            <summary>
+            This method is required for Windows Forms designer support.
+            Do not change the method contents inside the source code editor. The Forms designer might
+            not be able to load this method if it was changed manually.
+            </summary>
         </member>
         <member name="T:AI.MathMod.Graphiks.MatrixVisual">
             <summary>
@@ -1577,6 +1637,36 @@
             This method is required for Windows Forms designer support.
             Do not change the method contents inside the source code editor. The Forms designer might
             not be able to load this method if it was changed manually.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.InformationBlock">
+            <summary>
+            Информационный блок, основной тип данных МАС
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.TextInform">
+            <summary>
+            Текстовая информация
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.ImageInform">
+            <summary>
+            Графическая информация
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.SingnalInform">
+            <summary>
+            Информация в векторном виде
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.MatrixInform">
+            <summary>
+            Информация в матричном виде
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.TensorInform">
+            <summary>
+            Информация в тензорном виде
             </summary>
         </member>
         <member name="T:AI.MathMod.Matrix">
@@ -1760,6 +1850,29 @@
             Сохранение матрицы
             </summary>
             <param name="path">Путь до файла</param>
+        </member>
+        <member name="M:AI.MathMod.Matrix.AlternativMatrix(System.Func{System.Double,System.Double}[],AI.MathMod.Vector)">
+            <summary>
+            Альтернативная матрица
+            </summary>
+            <param name="functions">Функции</param>
+            <param name="values">Значения</param>
+            <returns>Возвращает альтернативную матрицу</returns>
+        </member>
+        <member name="M:AI.MathMod.Matrix.OrtogonalMatrix(System.Func{System.Int32,System.Double,System.Double},AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Ортогональная матрица
+            </summary>
+            <param name="functions">Порождающая функция</param>
+            <param name="values">Значения</param>
+            <returns>Возвращает альтернативную матрицу</returns>
+        </member>
+        <member name="M:AI.MathMod.Matrix.CorrelationMatrixNorm(AI.MathMod.Vector[])">
+            <summary>
+            Метод создает матрицу с коэфициентами попарной корреляции векторов
+            </summary>
+            <param name="vectors">Вектора</param>
+            <returns>Корреляционная матрица</returns>
         </member>
         <member name="M:AI.MathMod.Matrix.Open(System.String)">
             <summary>
@@ -2254,7 +2367,12 @@
             Модель класса
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SModel.CalculateProbW">
+        <member name="M:AI.MathMod.ML.Classifire.SModel.#ctor">
+            <summary>
+            Задание модели по умолчанию
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.SModel.CalculateProb">
             <summary>
             Рассчет вероятностей с учетом весов
             </summary>
@@ -2296,21 +2414,21 @@
             <param name="e">Мат. ожидание</param>
             <param name="sco">Среднеквадратичное отклонение</param>
         </member>
-        <member name="T:AI.MathMod.ML.Classifire.SimpleStatisticClassifire">
+        <member name="T:AI.MathMod.ML.Classifire.SimpleFLClassifier">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
             гауссовский з-н распределения
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.#ctor">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.#ctor">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
             гауссовский з-н распределения
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.#ctor(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.#ctor(System.String)">
             <summary>
             Простой статистический классификатор, 
             который предполагает, что у величины 
@@ -2318,43 +2436,43 @@
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Output(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.Output(AI.MathMod.Vector)">
             <summary>
             Выход
             </summary>
-            <param name="input">Вектор входа</param>
+            <param name="inp">Вектор входа</param>
             <returns>Максимально похожая модель</returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.AddModel(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.AddModel(AI.MathMod.Vector[],System.String)">
             <summary>
             Добавление модели
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
             <summary>
             Вероятности принадлежности к классу
             </summary>
             <param name="vect"></param>
             <param name="sm"></param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Save(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.Save(System.String)">
             <summary>
             Сохранение классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.Open(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.Open(System.String)">
             <summary>
             Загрузка классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.AddClass(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.AddClass(AI.MathMod.Vector[],System.String)">
             <summary>
             Добавление класса\модели
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.SimpleStatisticClassifire.RecognizeVector(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.RecognizeVector(AI.MathMod.Vector)">
             <summary>
             Распознавание вектора
             </summary>
@@ -2520,6 +2638,196 @@
         <member name="P:AI.MathMod.ML.GradientDecent.Itterations">
             <summary>
             Кол-во иттераций, по умолчанию 30
+            </summary>
+        </member>
+        <member name="T:HiMaMo.HMM">
+            <summary>
+            Скрытая марковская модель
+            </summary>
+        </member>
+        <member name="M:HiMaMo.HMM.Train(System.String)">
+            <summary>
+            Обучение
+            </summary>
+            <param name="TrainText">Тренировочный текст</param>
+        </member>
+        <member name="M:HiMaMo.HMM.GetMax(System.Double[0:,0:])">
+            <summary>
+            Максимальное значение в матрице
+            </summary>
+            <param name="matrix">Матрица</param>
+            <returns>Максимальное значение</returns>
+        </member>
+        <member name="M:HiMaMo.HMM.Generate(System.Int32,System.String)">
+            <summary>
+            Генерация текста
+            </summary>
+            <param name="num">Сколько слов</param>
+            <param name="begin">Первое слово</param>
+            <returns>Сгенерированный текст</returns>
+        </member>
+        <member name="M:HiMaMo.HMM.GetInd(System.String)">
+            <summary>
+            Поиск индекса
+            </summary>
+            <param name="stateName">Имя состояния</param>
+            <returns></returns>
+        </member>
+        <member name="M:HiMaMo.HMM.GetWords(System.String[])">
+            <summary>
+             Получение слов
+            </summary>
+            <param name="strs">Строки входа</param>
+            <returns></returns>
+        </member>
+        <member name="T:AI.MathMod.ML.LinearAutocoder">
+            <summary>
+            Линейный автокодировщик
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.LinearRegressionModel">
+            <summary>
+            Модель для линейной регрессии хранит k и b   
+            f(x) = k*x+b;
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.LinearRegressionModel.k">
+            <summary>
+            Тангенс угла наклона
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.LinearRegressionModel.b">
+            <summary>
+            Смещение относительно (0;0)
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.LinearRegression">
+            <summary>
+            Линейная регрессия
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearRegression.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Обучающая выборка
+            </summary>
+            <param name="X">Вектор X(независимая переменная)</param>
+            <param name="Y">Вектор Y(зависимая переменная)</param>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearRegression.ToString">
+            <summary>
+            Вывод в строку
+            </summary>
+            <returns>Строка типа: f(x) = k*x+(b)</returns>
+        </member>
+        <member name="P:AI.MathMod.ML.LinearRegression.Lrm">
+            <summary>
+            Парамметры линейной регрессии
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.ILayer">
+            <summary>
+            Слой нейронной сети
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.FullConLayerBase">
+            <summary>
+            Полносвязный слой
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Net">
+            <summary>
+            Нейронная сеть
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Save(System.String)">
+            <summary>
+            Сохранение матрицы
+            </summary>
+            <param name="path">Путь до файла</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Open(System.String)">
+            <summary>
+            Загрузка матрицы
+            </summary>
+            <param name="path">Путь до файла</param>		
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer">
+            <summary>
+            Description of CasuleLayer.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Capsule">
+            <summary>
+            Капсула
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Capsule.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Капсула 
+            </summary>
+            <param name="isi">Индекс начала</param>
+            <param name="iei">Индекс окончание</param>
+            <param name="nc">Количество нейронов в капсуле</param>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleRelu">
+            <summary>
+            Description of CapsulePRelu.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleSig">
+            <summary>
+            Сигмоидальный капсульный слой
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Convolution">
+            <summary>
+            Description of Convolution.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Deconvolution">
+            <summary>
+            Description of Deconvolution.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.LinearLayer">
+            <summary>
+            Линейный слой
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Sigmoid">
+            <summary>
+            Description of Sigmoid.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.Softmax">
+            <summary>
+            Description of Sofmax.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.PCA">
+            <summary>
+            Description of PCA.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Simplex">
+            <summary>
+            Симплекс-метод
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Simplex.Run">
+            <summary>
+            Запуск метода
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:AI.MathMod.ML.Simplex.CalculatedTable">
+            <summary>
+            Итоговая матрица
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Simplex.Cost">
+            <summary>
+            Выигрыш от стратегии
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.SinApproximation">
@@ -3080,6 +3388,17 @@
             <param name="fd">Частота дискретизация</param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.Signals.Signal.Perediscr(AI.MathMod.Vector,System.Int32,System.Int32)">
+            <summary>
+            Передискретизация сигнала
+            (повышение частоты дискретизации в целое число раз)
+            </summary>
+            <param name="inp">Входной вектор</param>
+            <param name="fd">Старая частота дискретизации</param>
+            <param name="newfd">Новая частота дикретизации</param>
+            <returns>Вектор тойже длительности, что и входной,
+            но с более высокой частотой дискретизации</returns>
+        </member>
         <member name="M:AI.MathMod.Signals.Signal.Norm(AI.MathMod.Vector,System.Double)">
             <summary>
             Норма сигнала
@@ -3106,6 +3425,11 @@
             </summary>
             <param name="inp">Входной вектор</param>
             <returns>Результат</returns>
+        </member>
+        <member name="T:AI.MathMod.Sound">
+            <summary>
+            Description of Sound.
+            </summary>
         </member>
         <member name="T:AI.MathMod.Statistic">
             <summary>
@@ -3754,6 +4078,19 @@
             <param name="kInterp">коэффициент интерполяции</param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.Vector.Is0">
+            <summary>
+            Проверяет все ли элементы вектора нулевые
+            </summary>
+            <returns>true если все, false иначе</returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.Is0(System.Int32)">
+            <summary>
+            Проверяет нулевых элементов больше "n"
+            </summary>
+            <param name="n"></param>
+            <returns>true если больше, false иначе</returns>
+        </member>
         <member name="M:AI.MathMod.Vector.Save(System.String)">
             <summary>
             Сохранение вектора
@@ -3801,6 +4138,34 @@
             <summary>
             Хэш-код
             </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.PlayVector(System.Int32)">
+            <summary>
+            Проигрывание вектора
+            </summary>
+            <param name="fd">Частота дискретизации</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.Concatinate(AI.MathMod.Vector[])">
+            <summary>
+            Конкатенация векторов
+            </summary>
+            <param name="vectors">Вектора</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.Mean(AI.MathMod.Vector[])">
+            <summary>
+            Усреднение по ансамблю
+            </summary>
+            <param name="vectors">Ансамбль векторов</param>
+            <returns>Средний вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.VectorFromWav(System.String,System.Int32@)">
+            <summary>
+            Загрузка звукового файла как вектор
+            </summary>
+            <param name="pathToWavFile">Путь до файла</param>
+            <param name="fd">Возвращаемый параметр, частота дискретизации</param>
+            <returns>Вектор</returns>
         </member>
         <member name="P:AI.MathMod.Vector.Vecktor">
             <summary>
