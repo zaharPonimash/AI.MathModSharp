@@ -441,6 +441,20 @@
             <param name="i">Индекс</param>
             <returns>Значение вектора</returns>
         </member>
+        <member name="T:AI.MathMod.ComputerVision.FeaturesInBinaryImg">
+            <summary>
+            Description of FeaturesInBinaryImg.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.FeaturesInBinaryImg.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Фичи из матрицы изобр
+            </summary>
+            <param name="isRot">Сохранить оригенальный поворот</param>
+            <param name="isScale">Сохранить оригенальный масштаб</param>
+            <param name="isMove">Сохранить оригенальное смещение</param>
+            <param name="nGarm">Количество гармоник, кол-во точек в 2 раза больше</param>
+        </member>
         <member name="T:AI.MathMod.ComputerVision.ImgFilters">
             <summary>
             Фильтрация изображений
