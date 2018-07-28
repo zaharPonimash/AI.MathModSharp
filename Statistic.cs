@@ -232,6 +232,21 @@ namespace AI.MathMod
 		
 		
 		
+		/// <summary>
+		/// Генератор случайных чисел с нормальным распределением
+		/// </summary>
+		/// <param name="n">Длинна вектора</param>
+		/// <param name="rnd">Генератор случайных чисел</param>
+		/// <returns>Возвращает вектор случайных чисел</returns>
+		public static Vector randNorm(int n, Random rnd)
+		{
+			Vector vect = new Vector(n);
+			for(int i = 0; i<n; i++) vect.Vecktor[i] = Gauss(rnd);
+			return vect;
+		}
+		
+		
+		
 		
 		// Минимальное и макимальное значения
 		void MaxMinValue()

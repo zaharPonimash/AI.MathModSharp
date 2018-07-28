@@ -117,13 +117,15 @@
     <Compile Include="ML\HMM\HMMWords.cs" />
     <Compile Include="ML\LinearAutocoder.cs" />
     <Compile Include="ML\LinearRegression.cs" />
-    <Compile Include="ML\NeuronNetwork\Base.cs" />
+    <Compile Include="ML\NeuronNetwork\Net.cs" />
     <Compile Include="ML\NeuronNetwork\BipolyarSigm.cs" />
     <Compile Include="ML\NeuronNetwork\CapsuleLayer.cs" />
     <Compile Include="ML\NeuronNetwork\CapsuleRelu.cs" />
     <Compile Include="ML\NeuronNetwork\CapsuleSig.cs" />
     <Compile Include="ML\NeuronNetwork\Convolution.cs" />
     <Compile Include="ML\NeuronNetwork\Deconvolution.cs" />
+    <Compile Include="ML\NeuronNetwork\FullyconnLayer.cs" />
+    <Compile Include="ML\NeuronNetwork\ILayer.cs" />
     <Compile Include="ML\NeuronNetwork\LinearLayer.cs" />
     <Compile Include="ML\NeuronNetwork\Sigmoid.cs" />
     <Compile Include="ML\NeuronNetwork\Softmax.cs" />

@@ -2738,16 +2738,6 @@
             Парамметры линейной регрессии
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.ILayer">
-            <summary>
-            Слой нейронной сети
-            </summary>
-        </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.FullConLayerBase">
-            <summary>
-            Полносвязный слой
-            </summary>
-        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.Net">
             <summary>
             Нейронная сеть
@@ -2764,6 +2754,26 @@
             Загрузка матрицы
             </summary>
             <param name="path">Путь до файла</param>		
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.Net.LerningRate">
+            <summary>
+            Скорость обучения (исправить)
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.Net.Moment">
+            <summary>
+            Инерционность обучения
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.FullConLayerBase">
+            <summary>
+            Полносвязный слой
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.ILayer">
+            <summary>
+            Слой нейронной сети
+            </summary>
         </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer">
             <summary>
@@ -3517,6 +3527,14 @@
             Генератор случайных чисел с нормальным распределением
             </summary>
             <param name="n">Длинна вектора</param>
+            <returns>Возвращает вектор случайных чисел</returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.randNorm(System.Int32,System.Random)">
+            <summary>
+            Генератор случайных чисел с нормальным распределением
+            </summary>
+            <param name="n">Длинна вектора</param>
+            <param name="rnd">Генератор случайных чисел</param>
             <returns>Возвращает вектор случайных чисел</returns>
         </member>
         <member name="M:AI.MathMod.Statistic.rand(System.Int32,System.Int32)">
