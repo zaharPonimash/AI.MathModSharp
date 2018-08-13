@@ -30,11 +30,11 @@ namespace AI.MathMod.Graphiks
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 			mtr = matr;
-			Show();
+			ShowMatrix();
 		}
 		
 		
-		void Show()
+		void ShowMatrix()
 		{
 			dataGridView1.ColumnCount = mtr.N;
 			dataGridView1.RowCount = mtr.M;

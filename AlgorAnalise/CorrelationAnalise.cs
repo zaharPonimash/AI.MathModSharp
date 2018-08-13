@@ -15,15 +15,26 @@ namespace AI.MathMod.AlgorAnalise
 	/// </summary>
 	public class CorrelationAnalise
 	{
+		/// <summary>
+		/// Нормированная корреляционная матрица
+		/// </summary>
 		public Matrix CorMatrNorm{get; protected set;}
 		
+		
+		/// <summary>
+		/// Корреляционный анализ
+		/// </summary>
+		/// <param name="matrix">Матрица перехода</param>
 		public CorrelationAnalise(Matrix matrix)
 		{
 			Vector[] vectsCol = Matrix.GetColumns(matrix);
 			CorMatrNorm = Matrix.CorrelationMatrixNorm(vectsCol);
 		}
 		
-		
+		/// <summary>
+		/// Средний коэффициент ортогональности
+		/// </summary>
+		/// <returns></returns>
 		public double MeanOrtog()
 		{
 			double mean = 0;

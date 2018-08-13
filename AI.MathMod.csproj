@@ -113,10 +113,13 @@
     <Compile Include="ML\Classifire\SimpleFLClassifier.cs" />
     <Compile Include="ML\Classifire\StatisticClassifier.cs" />
     <Compile Include="ML\Classifire\SVM.cs" />
+    <Compile Include="ML\Datasets\ExtensionOfFeatureSpace.cs" />
+    <Compile Include="ML\Datasets\Mnist.cs" />
+    <Compile Include="ML\Datasets\VectorIntDataset.cs" />
     <Compile Include="ML\GradientDecent.cs" />
     <Compile Include="ML\HMM\HMMWords.cs" />
     <Compile Include="ML\LinearAutocoder.cs" />
-    <Compile Include="ML\LinearRegression.cs" />
+    <Compile Include="ML\NeuronNetwork\MenegerNNW.cs" />
     <Compile Include="ML\NeuronNetwork\Net.cs" />
     <Compile Include="ML\NeuronNetwork\BipolyarSigm.cs" />
     <Compile Include="ML\NeuronNetwork\CapsuleLayer.cs" />
@@ -130,8 +133,17 @@
     <Compile Include="ML\NeuronNetwork\Sigmoid.cs" />
     <Compile Include="ML\NeuronNetwork\Softmax.cs" />
     <Compile Include="ML\PCA.cs" />
+    <Compile Include="ML\Regression\ExpMean.cs" />
+    <Compile Include="ML\Regression\LinearRegression.cs" />
+    <Compile Include="ML\Regression\MultipleRegression.cs" />
+    <Compile Include="ML\Regression\MultipleRegressionNNW.cs" />
+    <Compile Include="ML\Regression\PolinomialRegressionNNW.cs" />
+    <Compile Include="ML\Regression\PolynomialRegression.cs" />
+    <Compile Include="ML\Regression\RBFGauss.cs" />
+    <Compile Include="ML\Regression\RegressionLagrang.cs" />
+    <Compile Include="ML\Regression\SinApproximation.cs" />
+    <Compile Include="ML\Regression\SincRegression.cs" />
     <Compile Include="ML\Simplex.cs" />
-    <Compile Include="ML\SinApproximation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtilities.cs" />
     <Compile Include="Signals\DCT.cs" />
@@ -150,6 +162,8 @@
   <ItemGroup>
     <Folder Include="ML\HMM" />
     <Folder Include="AlgorAnalise" />
+    <Folder Include="ML\Datasets" />
+    <Folder Include="ML\Regression" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixOut.resx">

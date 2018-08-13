@@ -568,6 +568,17 @@ namespace AI.MathMod
 			lD.RemoveAt(index);
 			return ListToVector(lD);
 		}
+		
+		public Vector Round(int num)
+		{
+			Vector outp = new Vector(_n);
+			
+			for (int i = 0; i < _n; i++) {
+				outp[i] = Math.Round(_vector[i], num);
+			}
+			
+			return outp;
+		}
 	
 		/// <summary>
 		/// Удаление выбранного элемента
@@ -1064,7 +1075,7 @@ namespace AI.MathMod
 			string str = "";
 			foreach (double i in _vector)
 				str += " " + i;
-			return str;
+			return str.Trim();
 		}
 
 		/// <summary>

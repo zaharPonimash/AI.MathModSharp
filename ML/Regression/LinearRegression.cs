@@ -8,7 +8,7 @@
  */
 using System;
 
-namespace AI.MathMod.ML
+namespace AI.MathMod.ML.Regression
 {
 	
 	/// <summary>
@@ -69,6 +69,30 @@ namespace AI.MathMod.ML
 			return String.Format("f(x) ={0}*x+({1})", Lrm.k, Lrm.b);
 		}
 		
+		/// <summary>
+		/// Прогнозирование с помощью линейной модели
+		/// </summary>
+		/// <param name="x">Независимая переменная</param>
+		/// <returns>Зависимая переменная</returns>
+		public double Predict(double x)
+		{
+			return Lrm.k*x+Lrm.b;
+		}
+		
+		/// <summary>
+		/// Прогнозирование с помощью линейной модели
+		/// </summary>
+		/// <param name="X">Вектор независимых переменных</param>
+		/// <returns>Вектор зависимых переменных</returns>
+		public Vector Predict(Vector X)
+		{
+			Vector outp = new Vector(X.N);
+			
+			for (int i = 0; i < X.N; i++)
+				outp[i] = Predict(X[i]);
+			
+			return outp;
+		}
 		
 		
 	}

@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 
-namespace AI.MathMod.ML
+namespace AI.MathMod.ML.Regression
 {
 	/// <summary>
 	/// Аппроксимация данных синусоидами

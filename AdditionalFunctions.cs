@@ -51,6 +51,11 @@ namespace AI.MathMod.AdditionalFunctions
             return Math.Sign(x)*Math.Sqrt( 1-Math.Exp(exp1));
         }
 
+        /// <summary>
+        /// Функция ошибок
+        /// </summary>
+        /// <param name="Inp">Входной вектор</param>
+        /// <returns></returns>
         public static Vector erf(Vector Inp)
         {
             Vector A = new Vector(Inp.N);
@@ -372,7 +377,11 @@ namespace AI.MathMod.AdditionalFunctions
 			return A;
 		}
 			
-			
+		/// <summary>
+		/// Определение знака
+		/// </summary>
+		/// <param name="Inp">Входной вектор</param>
+		/// <returns></returns>
 		public static Vector sign(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
@@ -844,7 +853,12 @@ namespace AI.MathMod.AdditionalFunctions
             return A;
         }
 
-
+		/// <summary>
+		/// Релу
+		/// </summary>
+		/// <param name="Inp"></param>
+		/// <param name="porog"></param>
+		/// <returns></returns>
         public static Vector Relu(Vector Inp, double porog = 0)
         {
             Vector A = new Vector(Inp.N);

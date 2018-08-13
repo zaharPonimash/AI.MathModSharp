@@ -60,7 +60,11 @@ namespace AI.MathMod.ComputerVision
 
         }
 
-        
+        /// <summary>
+        /// Алгоритм локального контрастирования
+        /// </summary>
+        /// <param name="img">Изображение</param>
+        /// <returns></returns>
         public static Matrix FC(Matrix img)
         {
         	Matrix newMatr = new Matrix(img.M, img.N);
@@ -201,7 +205,7 @@ namespace AI.MathMod.ComputerVision
             Vector vect;
             Matrix matr = new Matrix(y,x);
 
-            for (int i = 0, k =0; i < y; i++)
+            for (int i = 0; i < y; i++)
             {
                 for (int j = 0; j < x; j++)
                 {

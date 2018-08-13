@@ -40,7 +40,7 @@ namespace AI.MathMod.Algebra
 		public Vector GetAnswer(Matrix A, Vector B)
 		{
 			_a = A;
-			_detA = _a.Determ();
+			_detA = _a.Determinant();
 			_b = B;
 			_x = new Vector(_b.N);
 			
@@ -60,7 +60,7 @@ namespace AI.MathMod.Algebra
 				newA.Matr[i,index] = _b.Vecktor[i];
 			}
 			
-			return newA.Determ();
+			return newA.Determinant();
 		}	
 	}
 }

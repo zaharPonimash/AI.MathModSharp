@@ -27,5 +27,19 @@ namespace AI.MathMod.Signals
 			Vector  Aspectr = MathFunc.ln(spectr.MagnitudeToVector()^2);
 			return Furie.fft(Aspectr).RealToVector()/Aspectr.N;
 		}
+		
+		
+		
+		/// <summary>
+        /// Быстрое кепстральное преобразование
+        /// </summary>
+        /// <param name="signal">Сигнал</param>
+        /// <returns></returns>
+		public static Vector FKT(ComplexVector signal)
+		{
+			ComplexVector spectr = Furie.fft(signal);
+			Vector  Aspectr = MathFunc.ln(spectr.MagnitudeToVector()^2);
+			return Furie.fft(Aspectr).RealToVector()/Aspectr.N;
+		}
 	}
 }

@@ -159,6 +159,30 @@ namespace AI.MathMod.Graphiks
 		}
 		 
         
+        public static void ScatterPlot(ZedGraphControl graph, Vector ySc, Vector yPl, Vector x, string nameFunc, string nameX, string nameY, Color colorLine, Color colorC)
+        {
+        	try{
+			double[] y1 = ySc.Vecktor;
+			double[] y2 = yPl.Vecktor;
+			double[] x1 = x.Vecktor;
+			graph.GraphPane.CurveList.Clear();
+			graph.GraphPane.XAxis.Title.Text = nameX;
+			graph.GraphPane.YAxis.Title.Text = nameY;
+			graph.GraphPane.Title.Text = nameFunc;
+			graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+			LineItem myCurve1 = graph.GraphPane.AddCurve(nameFunc, x1, y2, colorLine, SymbolType.None);
+			myCurve1.Line.Width = 5f;
+			LineItem myCurve = graph.GraphPane.AddCurve(nameFunc, x1, y1, colorC, SymbolType.Circle);
+			myCurve.Symbol.Fill = new Fill(colorC);
+			myCurve.Line.IsVisible = false;	
+			myCurve.Symbol.Size = 1;
+			graph.AxisChange ();
+    		graph.Invalidate ();
+			}
+			catch{}
+        }
+        
         /// <summary>
         /// Вывод графика
         /// </summary>

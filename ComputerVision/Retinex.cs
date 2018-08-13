@@ -18,11 +18,19 @@ namespace AI.MathMod.ComputerVision
 	/// </summary>
 	public class Retinex
 	{
+		/// <summary>
+		/// Ретинекс
+		/// </summary>
 		public Retinex()
 		{
 		}
 		
-		
+		/// <summary>
+		/// Запуск алгоритма
+		/// </summary>
+		/// <param name="input">Тензор цветного изображения</param>
+		/// <param name="sigma"></param>
+		/// <returns></returns>
 		public static Tensor Run(Tensor input, double sigma =3)
 		{
 			Tensor inp = Run1(input, sigma);

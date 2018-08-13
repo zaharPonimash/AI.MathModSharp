@@ -792,7 +792,94 @@ namespace AI.MathMod
 			return matr;
 		}
 		
+		public double Determinant()
+        {
+            double result = 1.0;
+            Matrix matrix = Copy();
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = i; j < M; j++)
+                {
+                    if (matrix[j, i] != 0)
+                    {
+                        matrix.Swap(i, j, 1);
+                        break;
+                    }
+                    else if(j + 1 == M)
+                    {
+                        i++;
+                        goto go;
+                    }
+                }
+                Vector a = matrix.GetVector(i, 1);
+                a *= 1.0 / a[i];
+                for (int j = i + 1; j < M; j++)
+                {
+                    double c = matrix[j, i];
+                    for (int k = i; k < N; k++)
+                        matrix[j, k] -= a[k] * c;
+                }
+            go: { }
+            }
+            for (int i = 0; i < M; i++)
+                result *= matrix[i, i];
+                return result;
+        }
+
 		
+		public Vector GetVector(int index, int dimension)
+        {
+            Vector result;
+            switch (dimension)
+            {
+                case 0:
+                    result = new Vector(M);
+                    for (int i = 0; i < M; i++)
+                        result[i] = Matr[i, index];
+                    return result;
+                case 1:
+                    result = new Vector(N);
+                    for (int i = 0; i < N; i++)
+                        result[i] = Matr[index, i];
+                    return result;
+            }
+            return null;
+        }
+		
+
+
+ /// <summary>
+        /// Заменяет строки/столбцы
+        /// </summary>
+        /// <param name="i"></param>
+        /// <param name="j"></param>
+        /// <param name="dimension"></param>
+        public void Swap(int i, int j, int dimension)
+        {
+            if (i != j)
+            {
+                double c;
+                switch (dimension)
+                {
+                    case 0:
+                        for (int k = 0; k < M; k++)
+                        {
+                            c = Matr[k, i];
+                            Matr[k, i] = Matr[k, j];
+                            Matr[k, j] = c;
+                        }
+                        break;
+                    case 1:
+                        for (int k = 0; k < N; k++)
+                        {
+                            c = Matr[i, k];
+                            Matr[i, k] = Matr[j, k];
+                            Matr[j, k] = c;
+                        }
+                        break;
+                }
+            }
+        }
 		
 		public void MatrixShow()
 		{

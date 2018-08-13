@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace AI.MathMod.AlgorAnalise
 {
 	/// <summary>
-	/// Description of SimilarityOfBases.
+	/// Проверка схожести двух базисов
 	/// </summary>
 	public class SimilarityOfBases
 	{
@@ -22,7 +22,11 @@ namespace AI.MathMod.AlgorAnalise
 		List<Vector> bases2 = new List<Vector>();
 		Vector sim, maxSim;
 		
-		
+		/// <summary>
+		/// Проверка схожести двух базисов
+		/// </summary>
+		/// <param name="bas1">Базис №1</param>
+		/// <param name="bas2">Базис №2</param>
 		public SimilarityOfBases(Matrix bas1, Matrix bas2)
 		{
 			bases1.AddRange( Matrix.GetColumns(bas1));
@@ -32,7 +36,10 @@ namespace AI.MathMod.AlgorAnalise
 		}
 		
 		
-		
+		/// <summary>
+		/// Вероятность что базисы не связаны (случайны)
+		/// </summary>
+		/// <returns></returns>
 		public double ProbRandBasis()
 		{
 					

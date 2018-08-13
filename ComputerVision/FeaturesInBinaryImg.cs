@@ -9,6 +9,7 @@
 using System;
 using System.Numerics;
 using System.Collections.Generic;
+using AI.MathMod.Signals;
 
 namespace AI.MathMod.ComputerVision
 {
@@ -37,11 +38,37 @@ namespace AI.MathMod.ComputerVision
 			n = nGarm;
 		}
 		
-		
+		/// <summary>
+		/// Генерация вектора частотных признаков из матрицы изображения
+		/// </summary>
+		/// <param name="img">Матрица изображения</param>
+		/// <returns>Коэф. ряда фурье после преобразований</returns>
 		public Vector MatrixFeatures(Matrix img)
 		{
 			GenVectorPoint(img);
 			return GenFeature();
+		}
+		
+		
+		public Vector KepstrFeatures(Matrix img)
+		{
+			GenVectorPoint(img);
+			return Kepstral();
+		}
+		
+		public Vector GetPoints(Matrix img)
+		{
+			GenVectorPoint(img);
+			Vector real = points.MagnitudeToVector().CutAndZero(n);
+			Vector im = points.MagnitudeToVector().CutAndZero(n);
+			
+			real /= Statistic.MaximalValue(real);
+			im /= Statistic.MaximalValue(im);
+			
+			real -= Statistic.ExpectedValue(real);
+			im -= Statistic.ExpectedValue(im);
+			
+			return  Vector.Concatinate(new Vector[]{ real, im});
 		}
 		
 		// Генерация вектора фич
@@ -78,7 +105,7 @@ namespace AI.MathMod.ComputerVision
 			Vector modules = cV.MagnitudeToVector();
 			Vector phases = cV.PhaseToVector();
 			
-			return Vector.Concatinate(new Vector[]{modules, phases});
+			return phases;//Vector.Concatinate(new Vector[]{modules, phases});
 			
 		}
 		
@@ -102,6 +129,13 @@ namespace AI.MathMod.ComputerVision
 				points[i] = pointList[i];
 			}
 		
+		}
+		
+		
+		
+		Vector Kepstral()
+		{
+			return Kepstr.FKT(points).CutAndZero(n);
 		}
 	}
 }
