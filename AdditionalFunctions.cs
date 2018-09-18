@@ -1061,10 +1061,27 @@ namespace AI.MathMod.AdditionalFunctions
         /// </summary>
         /// <param name="Inp">Входное значение</param>
         /// <param name="m">Мат. ожидание</param>
-        /// <param name="sko">СКО</param>
-        public static double GaussNorm1(double Inp, double m, double sko)
+        /// <param name="std">СКО</param>
+        public static double GaussNorm1(double Inp, double m, double std)
         {
-            return Math.Exp(((Inp - m) * (Inp - m)) / (-2 * sko * sko));
+            return Math.Exp(((Inp - m) * (Inp - m)) / (-2 * std * std));
+        }
+        
+        /// <summary>
+        /// Функция вероятность принадлежности при inp = m, out = 1
+        /// </summary>
+        /// <param name="Inp">Входной вектор</param>
+        /// <param name="m">Мат. ожидание</param>
+        /// <param name="std">СКО</param>
+        public static Vector GaussNorm1(Vector Inp, double m, double std)
+        {
+        	Vector vect = new Vector(Inp.N);
+        	
+        	for (int i = 0; i < vect.N; i++) {
+        		vect[i] = GaussNorm1(Inp[i], m, std);
+        	}
+        	
+        	return vect;
         }
 
 

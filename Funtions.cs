@@ -56,7 +56,24 @@ namespace AI.MathMod
 		
 		return summ;
 	}
-
+	
+	
+	/// <summary>
+	/// Поэлементная сумма
+	/// </summary>
+	/// <param name="vectors">Массив векторов</param>
+	/// <returns>Результирующий вектор</returns>
+	public static Vector Summ(Vector[] vectors)
+	{
+		Vector vect = vectors[0].Copy();
+		
+		for (int i = 0; i < vectors.Length; i++)
+		{
+			vect += vectors[i];
+		}
+		
+		return vect;
+	}
 
 		
 	/// <summary>

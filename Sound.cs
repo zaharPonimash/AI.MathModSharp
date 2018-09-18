@@ -102,7 +102,7 @@ namespace AI.MathMod
 			vector /= max;
 			
 			for (int i = 0; i < vector.N; i++) {
-				br.Write((Int16)(vector[i]*32000));
+				br.Write((Int32)(vector[i]*32000));
 			}
 			
 			br.Close();

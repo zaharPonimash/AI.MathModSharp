@@ -8,6 +8,7 @@
  */
 using System;
 using AI.MathMod.AdditionalFunctions;
+using AI.MathMod.ML.Regression;
 
 namespace AI.MathMod.ML.Datasets
 {
@@ -141,5 +142,24 @@ namespace AI.MathMod.ML.Datasets
 			
 			return outp;
 		}
+		
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="dataset"></param>
+		/// <returns></returns>
+		public static Vector ImportanceSign(Vector[] dataset)
+		{
+			Vector dispers = Statistic.EnsembleDispersion(dataset);
+			double m = Statistic.ExpectedValue(dispers);
+			double std = Statistic.Sco(dispers);
+			Vector Y = DistributionFunc.GaussNorm1(dispers, m, std);
+			Vector X = MathFunc.GenerateTheSequence(0, 1, Y.N);
+			var regr = new RBFGauss(X, Y, 25);
+			return  regr.Predict(X);
+		}
+		
 	}
+	
 }

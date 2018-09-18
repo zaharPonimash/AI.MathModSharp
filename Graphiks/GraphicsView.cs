@@ -206,6 +206,7 @@ namespace AI.MathMod.Graphiks
 			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
 			LineItem myCurve = graph.GraphPane.AddCurve(nameFunc, x1, y1, colorLine, SymbolType.Circle);
 			myCurve.Symbol.Fill = new Fill(colorLine);
+			myCurve.Symbol.Size = 3;
 			myCurve.Line.IsVisible = false;
 			graph.AxisChange ();
     		graph.Invalidate ();
@@ -317,6 +318,18 @@ namespace AI.MathMod.Graphiks
 			VisualPlot vp = new VisualPlot(y,  x, nameFunc, nameX, nameY, colorLine);
 			vp.Show();
 		}
+        
+        
+        /// <summary>
+        /// График от одной переменной
+        /// </summary>
+        public static void Plot(Vector y, Vector x, Descrintion desc)
+		{
+			VisualPlot vp = new VisualPlot(y,  x, desc);
+			vp.Show();
+		}
+        
+        
         /// <summary>
         /// График от одной переменной
         /// </summary>

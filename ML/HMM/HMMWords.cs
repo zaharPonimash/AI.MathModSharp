@@ -9,19 +9,20 @@
 using System;
 using System.Collections.Generic;
 
-namespace HiMaMo
+namespace AI.MathMod.HMM
 {
 	/// <summary>
 	/// Скрытая марковская модель
 	/// </summary>
-	public class HMM
+	public class HiMaMoWords
 	{
 		
-		public double[,] stateMatrix, stateAlter;
+		public Matrix stateMatrix, stateAlter;
 		string[] stateNames;
 		double len;
+		Random rnd = new Random();
 		
-		public HMM()
+		public HiMaMoWords()
 		{
 			
 		}
@@ -33,13 +34,13 @@ namespace HiMaMo
 		public void Train(string TrainText)
 		{
 			
-			
+			double[,] _stateMatrix, _stateAlter;
 			string[] trainText = TrainText.ToLower().Split();
 			stateNames = GetWords(trainText);
 			
 			
-			stateMatrix = new double[stateNames.Length,stateNames.Length];
-			stateAlter = new double[stateNames.Length,stateNames.Length];
+			_stateMatrix = new double[stateNames.Length,stateNames.Length];
+			_stateAlter = new double[stateNames.Length,stateNames.Length];
 			len = stateNames.Length*stateNames.Length;
 			
 			
@@ -51,24 +52,26 @@ namespace HiMaMo
 						if (trainText[i] == stateNames[j]
 					    &&trainText[i+1] == stateNames[k])
 						{
-							stateMatrix[j, k]++;
-							stateAlter[j, k] ++;
+							_stateMatrix[j, k]++;
+							_stateAlter[j, k] ++;
 											break;
 						}
 				}
 			}
 			
 			
-			double max = GetMax(stateAlter);
+			double max = GetMax(_stateAlter);
 			
 			for (int j = 0; j < stateNames.Length; j++)
 					for (int k = 0; k < stateNames.Length; k++)
 			{
-				stateMatrix[j, k] /= trainText.Length;
-				stateAlter[j, k] /= max;
-				stateAlter[j, k] = (1 - stateAlter[j, k])*0.9999;
+				_stateMatrix[j, k] /= trainText.Length;
+				_stateAlter[j, k] /= max;
+				_stateAlter[j, k] = (1 - _stateAlter[j, k])*0.9999;
 			}
 			
+			stateAlter = new Matrix(_stateAlter);
+			stateMatrix = new Matrix(_stateMatrix);
 		}
 		
 		
@@ -101,7 +104,6 @@ namespace HiMaMo
 		/// <returns>Сгенерированный текст</returns>
 		public string Generate(int num, string begin)
 		{
-			Random rnd = new Random();
 			String[] chs = new string[num];
 			int ch;
 			chs[0] = begin;

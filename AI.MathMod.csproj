@@ -72,17 +72,24 @@
     <Compile Include="AlgorAnalise\CorrelationAnalise.cs" />
     <Compile Include="AlgorAnalise\SimilarityOfBases.cs" />
     <Compile Include="Approximation\ApproximationError.cs" />
+    <Compile Include="Approximation\LagrangeAppr.cs" />
+    <Compile Include="Approximation\RBFAppr.cs" />
     <Compile Include="Combinatorics\CombinatoricsBaseFunction.cs" />
     <Compile Include="ComplexVector.cs" />
+    <Compile Include="ComputerVision\BinaryImageMarking.cs" />
+    <Compile Include="ComputerVision\BinaryImg.cs" />
+    <Compile Include="ComputerVision\CalculateBinaryEl.cs" />
     <Compile Include="ComputerVision\FeaturesInBinaryImg.cs" />
     <Compile Include="ComputerVision\Filters.cs" />
     <Compile Include="ComputerVision\ImgConverter.cs" />
+    <Compile Include="ComputerVision\ObjectGenerate.cs" />
     <Compile Include="ComputerVision\Retinex.cs" />
     <Compile Include="Correlation.cs" />
     <Compile Include="AdditionalFunctions.cs" />
     <Compile Include="Funtions.cs" />
     <Compile Include="Furie.cs" />
     <Compile Include="FuzzyLogic.cs" />
+    <Compile Include="Graphiks\Descrintion.cs" />
     <Compile Include="Graphiks\GraphicsView.cs" />
     <Compile Include="Graphiks\MatrixOut.cs" />
     <Compile Include="Graphiks\MatrixOut.Designer.cs">
@@ -114,6 +121,7 @@
     <Compile Include="ML\Classifire\StatisticClassifier.cs" />
     <Compile Include="ML\Classifire\SVM.cs" />
     <Compile Include="ML\Datasets\ExtensionOfFeatureSpace.cs" />
+    <Compile Include="ML\Datasets\LatticeIntDataset.cs" />
     <Compile Include="ML\Datasets\Mnist.cs" />
     <Compile Include="ML\Datasets\VectorIntDataset.cs" />
     <Compile Include="ML\GradientDecent.cs" />
@@ -154,6 +162,13 @@
     <Compile Include="Signals\Signal.cs" />
     <Compile Include="Signals\Wavelet.cs" />
     <Compile Include="Sound.cs" />
+    <Compile Include="SparseData\Cell1D.cs" />
+    <Compile Include="SparseData\Cell2D.cs" />
+    <Compile Include="SparseData\ICell.cs" />
+    <Compile Include="SparseData\ILattice.cs" />
+    <Compile Include="SparseData\Latis2DDouble.cs" />
+    <Compile Include="SparseData\Lattice1D.cs" />
+    <Compile Include="SparseData\Lattice1DDouble.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="Tensor.cs" />
     <Compile Include="Vector.cs" />
@@ -164,6 +179,7 @@
     <Folder Include="AlgorAnalise" />
     <Folder Include="ML\Datasets" />
     <Folder Include="ML\Regression" />
+    <Folder Include="SparseData" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixOut.resx">

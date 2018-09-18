@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using AI.MathMod.AdditionalFunctions;
 
 
 namespace AI.MathMod
@@ -509,6 +510,10 @@ namespace AI.MathMod
 		}
 		
 		
+		
+		
+		
+		
 		/// <summary>
 		/// Коэфициент корреляции
 		/// </summary>
@@ -542,6 +547,90 @@ namespace AI.MathMod
 			
 			return cor;
 		}
+		
+		
+		/// <summary>
+		/// Усреднение по выборке(ансамблю)
+		/// </summary>
+		/// <param name="vectors">Выборка</param>
+		/// <returns>Средний вектор</returns>
+		public static Vector MeanVector(Vector[] vectors)
+		{
+			Vector output = Functions.Summ(vectors);
+			output /= vectors.Length;
+			return output;
+		}
+		
+		/// <summary>
+		/// Среднее геометрическое 
+		/// </summary>
+		public static double MeanGeom(Vector vect)
+		{
+			int numMinus = 0;
+			
+			for (int i = 0; i < vect.N; i++)
+			{
+				if(vect[i] < 0) numMinus++;
+			}
+			
+			Vector res = MathFunc.ln(MathFunc.abs(vect));
+			double summ = Functions.Summ(res);
+			summ /= vect.N;
+			
+			switch (numMinus % 2) {
+				case 1:
+					return -Math.Exp(summ);
+				default:
+					return Math.Exp(summ);
+			}
+			
+		}
+		
+		
+		/// <summary>
+		/// Среднее гармоническое
+		/// </summary>
+		/// <returns></returns>
+		public static double MeanGarmonic(Vector vect)
+		{
+			Vector res = 1/vect;
+			double summ = Functions.Summ(res);
+			return vect.N/summ;
+		}
+		
+		
+		/// <summary>
+		/// Среднeквадратичное значение
+		/// </summary>
+		/// <returns></returns>
+		public static double RMS(Vector vect)
+		{
+			Vector res = vect^2;
+			double summ = Functions.Summ(res);
+			return Math.Sqrt(summ/vect.N);
+		}
+		
+		
+		/// <summary>
+		/// Дисперсия по ансамлю
+		/// </summary>
+		/// <param name="ensemble">Ансамбль векторов</param>
+		public static Vector EnsembleDispersion(Vector[] ensemble)
+		{
+			Vector res = new Vector(ensemble[0].N);
+			Vector mean = MeanVector(ensemble);
+			
+			for (int i = 0; i < ensemble.Length; i++) 
+			{
+				res += (ensemble[i]-mean)^2;
+			}
+			
+			res /= ensemble.Length-1;
+			
+			return res;
+		}
+		
+		
 		
 		
 		

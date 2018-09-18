@@ -134,6 +134,16 @@
             <param name="approcs">Аппроксимированный</param>
             <returns></returns>
         </member>
+        <member name="T:AI.MathMod.Approximation.LagrangeAppr">
+            <summary>
+            Description of RBFAppr.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.Approximation.RBFAppr">
+            <summary>
+            Description of RBFAppr.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Combinatorics.CombinatoricsBaseFunction">
             <summary>
             Базовые функции коммбинарики
@@ -471,6 +481,71 @@
             <param name="i">Индекс</param>
             <returns>Значение вектора</returns>
         </member>
+        <member name="T:AI.MathMod.ComputerVision.BinaryImageMarking">
+            <summary>
+            Description of BinaryImageMarking.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImageMarking.#ctor">
+            <summary>
+            Маркирование бинарных изображений
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImageMarking.Marking(System.Drawing.Bitmap)">
+            <summary>
+            Маркирование
+            </summary>
+            <param name="bm">Изображение</param>
+            <returns>Регионы</returns>
+        </member>
+        <member name="T:AI.MathMod.ComputerVision.BinaryImg">
+            <summary>
+            Description of BinaryImg.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ComputerVision.CalculateBinaryEl">
+            <summary>
+            Подсчет объектов
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.#ctor">
+            <summary>
+            Подсчет объектов
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.CalculateBinElements(System.Drawing.Bitmap)">
+            <summary>
+            Подсчет объектов
+            </summary>
+            <param name="bmp">Изображение</param>
+            <returns>Кол-во объектов</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.FilterI(System.Int32,System.Int32)">
+            <summary>
+            Проход одного шага по фильтрам внутренних углов, с подсчетом углов
+            </summary>
+            <param name="dx">Смещение по x</param>
+            <param name="dy">Смещение по y</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.FilterE(System.Int32,System.Int32)">
+            <summary>
+            Проход одного шага по фильтрам внешних углов, с подсчетом углов
+            </summary>
+            <param name="dx">Смещение по x</param>
+            <param name="dy">Смещение по y</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.Filter(System.Int32,System.Int32)">
+            <summary>
+            Проход одного шага по внешним и внутренним углам
+            </summary>
+            <param name="dx">Смещение х</param>
+            <param name="dy">Смещение у</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.Mascs">
+            <summary>
+            Создание масок для фильтров внеш. и внутр. углов
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ComputerVision.FeaturesInBinaryImg">
             <summary>
             Description of FeaturesInBinaryImg.
@@ -578,6 +653,17 @@
             <summary>
             Перевод матрицы в полутоновое изображение
             </summary>
+        </member>
+        <member name="T:AI.MathMod.ComputerVision.ObjectGenerate">
+            <summary>
+            Description of ObjectGenerate.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ObjectGenerate.Generate(System.Int32)">
+            <summary>
+            Генерация изображения
+            </summary>
+            <returns>Вывод изображения</returns>
         </member>
         <member name="T:AI.MathMod.ComputerVision.Retinex">
             <summary>
@@ -1156,7 +1242,15 @@
             </summary>
             <param name="Inp">Входное значение</param>
             <param name="m">Мат. ожидание</param>
-            <param name="sko">СКО</param>
+            <param name="std">СКО</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.GaussNorm1(AI.MathMod.Vector,System.Double,System.Double)">
+            <summary>
+            Функция вероятность принадлежности при inp = m, out = 1
+            </summary>
+            <param name="Inp">Входной вектор</param>
+            <param name="m">Мат. ожидание</param>
+            <param name="std">СКО</param>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.Puasson(AI.MathMod.Vector,System.Double)">
             <summary>
@@ -1237,6 +1331,13 @@
             <summary>
             Суммирование всех элементов массива типа double
             </summary>
+        </member>
+        <member name="M:AI.MathMod.Functions.Summ(AI.MathMod.Vector[])">
+            <summary>
+            Поэлементная сумма
+            </summary>
+            <param name="vectors">Массив векторов</param>
+            <returns>Результирующий вектор</returns>
         </member>
         <member name="M:AI.MathMod.Functions.Summ(AI.MathMod.Vector)">
             <summary>
@@ -1525,6 +1626,11 @@
             Нечеткая логическая переменная
             </summary>
         </member>
+        <member name="T:AI.MathMod.Graphiks.Descrintion">
+            <summary>
+            Description of Descrintion.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Graphiks.GraphicsView">
             <summary>
             Description of GraphicsView.
@@ -1606,6 +1712,11 @@
             </summary>
         </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            График от одной переменной
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Descrintion)">
             <summary>
             График от одной переменной
             </summary>
@@ -2621,6 +2732,60 @@
             Расширение пространства признаков
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.ImportanceSign(AI.MathMod.Vector[])">
+            <summary>
+            
+            </summary>
+            <param name="dataset"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AI.MathMod.ML.Datasets.LatticeClass">
+            <summary>
+            Представляет структуру вектор-класс
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Datasets.LatticeClass.InpLat">
+            <summary>
+            Вектор для классификации
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.Datasets.LatticeClass.ClassMark">
+            <summary>
+            Метка класса
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Datasets.LatticeIntDataset">
+            <summary>
+            Датасет
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.#ctor(System.String)">
+            <summary>
+            Загрузка датасета из файла
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.#ctor">
+            <summary>
+            Загрузка датасета из файла
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.GetRandomData">
+            <summary>
+            Случайный представитель датасета
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.GetRandomDataDel">
+            <summary>
+            Случайный представитель датасета
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.Save(System.String)">
+            <summary>
+            Сохранение датасета
+            </summary>
+            <param name="path">Путь до датасета</param>
+        </member>
         <member name="T:AI.MathMod.ML.Datasets.Mnist">
             <summary>
             Description of Mnist.
@@ -2788,25 +2953,25 @@
             Кол-во иттераций, по умолчанию 30
             </summary>
         </member>
-        <member name="T:HiMaMo.HMM">
+        <member name="T:AI.MathMod.HMM.HiMaMoWords">
             <summary>
             Скрытая марковская модель
             </summary>
         </member>
-        <member name="M:HiMaMo.HMM.Train(System.String)">
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.Train(System.String)">
             <summary>
             Обучение
             </summary>
             <param name="TrainText">Тренировочный текст</param>
         </member>
-        <member name="M:HiMaMo.HMM.GetMax(System.Double[0:,0:])">
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.GetMax(System.Double[0:,0:])">
             <summary>
             Максимальное значение в матрице
             </summary>
             <param name="matrix">Матрица</param>
             <returns>Максимальное значение</returns>
         </member>
-        <member name="M:HiMaMo.HMM.Generate(System.Int32,System.String)">
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.Generate(System.Int32,System.String)">
             <summary>
             Генерация текста
             </summary>
@@ -2814,14 +2979,14 @@
             <param name="begin">Первое слово</param>
             <returns>Сгенерированный текст</returns>
         </member>
-        <member name="M:HiMaMo.HMM.GetInd(System.String)">
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.GetInd(System.String)">
             <summary>
             Поиск индекса
             </summary>
             <param name="stateName">Имя состояния</param>
             <returns></returns>
         </member>
-        <member name="M:HiMaMo.HMM.GetWords(System.String[])">
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.GetWords(System.String[])">
             <summary>
              Получение слов
             </summary>
@@ -3736,6 +3901,57 @@
             Description of Sound.
             </summary>
         </member>
+        <member name="T:AI.MathMod.SparseData.Cell1D`1">
+            <summary>
+            Description of Cell.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.SparseData.ICell`1">
+            <summary>
+            Description of ICell.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.SparseData.Cell2D`1">
+            <summary>
+            Description of Cell2D.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.SparseData.ILattice`1">
+            <summary>
+            Description of ILattice.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.SparseData.Latis2DDouble">
+            <summary>
+            Description of Latis2DDouble.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.SparseData.Lattice1D`1">
+            <summary>
+            Description of Lattice1D.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1D`1.op_Multiply(AI.MathMod.SparseData.Lattice1D{`0},AI.MathMod.Matrix)">
+            <summary>
+            Умножение решетки матрицу 
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AI.MathMod.SparseData.Lattice1DDouble">
+            <summary>
+            Description of Lattice1DDouble.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1DDouble.op_Multiply(AI.MathMod.SparseData.Lattice1DDouble,AI.MathMod.Matrix)">
+            <summary>
+            Умножение решетки матрицу 
+            </summary>
+            <param name="A"></param>
+            <param name="B"></param>
+            <returns></returns>
+        </member>
         <member name="T:AI.MathMod.Statistic">
             <summary>
             Класс содержит методы для статистического анализа.
@@ -3920,6 +4136,36 @@
             <param name="X">Вектор X</param>
             <param name="Y">Вектор Y</param>
             <returns>Возвращает коэф. кор.</returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MeanVector(AI.MathMod.Vector[])">
+            <summary>
+            Усреднение по выборке(ансамблю)
+            </summary>
+            <param name="vectors">Выборка</param>
+            <returns>Средний вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MeanGeom(AI.MathMod.Vector)">
+            <summary>
+            Среднее геометрическое 
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MeanGarmonic(AI.MathMod.Vector)">
+            <summary>
+            Среднее гармоническое
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.RMS(AI.MathMod.Vector)">
+            <summary>
+            Среднeквадратичное значение
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.EnsembleDispersion(AI.MathMod.Vector[])">
+            <summary>
+            Дисперсия по ансамлю
+            </summary>
+            <param name="ensemble">Ансамбль векторов</param>
         </member>
         <member name="P:AI.MathMod.Statistic.SCO">
             <summary>
@@ -4339,7 +4585,7 @@
             Визуализация вектора
             </summary>
         </member>
-        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector,AI.MathMod.Graphiks.Descrintion)">
             <summary>
             Визуализация вектора
             </summary>

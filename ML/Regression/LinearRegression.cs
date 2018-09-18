@@ -55,7 +55,8 @@ namespace AI.MathMod.ML.Regression
 		public LinearRegression(Vector X, Vector Y)
 		{
 			Lrm = new LinearRegressionModel();
-			Lrm.k = Statistic.Cov(X,Y)/Statistic.Dispers(X);
+			double d = Statistic.Dispers(X);
+			Lrm.k = Statistic.Cov(X,Y)/(d == 0? 1e-9: d);
 			Lrm.b = Statistic.ExpectedValue(Y)-Lrm.k*Statistic.ExpectedValue(X);
 		}
 		

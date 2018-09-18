@@ -815,9 +815,9 @@ namespace AI.MathMod
 		/// <summary>
 		/// Визуализация вектора
 		/// </summary>
-		public void Visual(Vector xVector)
+		public void Visual(Vector xVector, Descrintion desc)
 		{
-			GraphicsView.Plot(this, xVector);
+			GraphicsView.Plot(this, xVector, desc);
 		}
 		
 		/// <summary>

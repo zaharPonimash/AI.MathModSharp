@@ -41,7 +41,7 @@ namespace AI.MathMod.Graphiks
 			
 			for (int i = 0; i < mtr.N; i++) {
 				for (int j = 0; j < mtr.M; j++) {
-					dataGridView1[i,j].Value =  mtr[i,j];
+					dataGridView1[i,j].Value =  mtr[j,i];
 				}
 			}
 		}
