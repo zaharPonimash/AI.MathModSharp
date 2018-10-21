@@ -39,6 +39,7 @@ namespace AI.MathMod.ML.Regression
 			m = X[0].N;
 			_x = X;
 			_y = Y;
+			//Xadd1();
 			GenA();
 			GenB();
 			GenParam();
@@ -53,7 +54,7 @@ namespace AI.MathMod.ML.Regression
 			for (int i = 0; i < m; i++) 
 				for (int j = 0; j < m; j++) {
 					
-				c = 0;
+				    c = 0;
 					
 					for (int k = 0; k < n; k++)
 						c+= _x[k][i]*_x[k][j];
@@ -63,6 +64,18 @@ namespace AI.MathMod.ML.Regression
 			
 			//A.Visual();
 		}
+		
+		
+		void Xadd1()
+		{
+			for (int i = 0; i < _x.Length; i++)
+			{
+				_x[i] = _x[i].Shift(1);
+				_x[i][0] = 1;
+			}
+		
+		}
+		
 		
 		// Вектор ответа
 		void GenB()
@@ -75,9 +88,9 @@ namespace AI.MathMod.ML.Regression
 				c = 0;
 				
 				for (int j = 0; j < n; j++)
-					c += _x[j][i]*_y[i];
+					c += _x[j][i]*_y[j];
 			
-				B[i] = -c;
+				B[i] = c;
 			}
 			
 			//B.Visual();
@@ -88,7 +101,7 @@ namespace AI.MathMod.ML.Regression
 		{
 			Kramer kram = new Kramer();
 			_param = kram.GetAnswer(A, B);
-			_param = _param.Revers();
+			//_param = _param.Revers();
 			//_param.Visual();
 		}
 		

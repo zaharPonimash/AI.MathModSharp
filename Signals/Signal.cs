@@ -373,6 +373,98 @@ namespace AI.MathMod.Signals
             return energe / fd;
         }
 		
+        
+        
+        
+                
+        
+        public static Vector LFMRect(double f, int f0, int fd, double time)
+        {
+        	Vector[] v = new Vector[(int)(f*time+0.99)];
+        	Vector v1 = OneLFM(f,f0,fd), v0 = new Vector(v1.N);// ZeroLFM(f,f0,fd);
+        	
+        	for(int i = 0; i<v.Length; i++)
+        		if(i%2 == 0) v[i] = v1;
+        		else v[i] = v0;
+        		
+        	return Vector.Concatinate(v);
+        }
+        
+        
+        public static Vector LFMRectNP(double f, int f0, int fd, double time)
+        {
+        	Vector[] v = new Vector[(int)(f*time+0.99)];
+        	Vector v1 = OneLFM(f,f0,fd);
+        	
+        	for(int i = 0; i<v.Length; i++)
+        		v[i] = v1;
+        		
+        		
+        	return Vector.Concatinate(v);
+        }
+
+		static Vector OneLFM(double f, int f0, int fd)
+        {
+        	double dt = 1.0/fd, time = 1.0/f;
+        	Vector t = MathFunc.GenerateTheSequence(0, dt, time/2);
+        	Vector outp = new Vector(t.N);
+        	double arg;
+        	
+        	for (int i = 0; i < t.N; i++) {
+        		
+        		arg = 2*Math.PI*(f0*t[i]+(f0)*f*t[i]*t[i]);
+        		outp[i] = Math.Cos(arg);
+        	}
+        	
+        	return outp;
+        }
+		
+		
+		
+		public static Vector LFM(double df, double f0, double fd, double time)
+        {
+        	double dt = 1.0/fd;
+        	Vector t = MathFunc.GenerateTheSequence(0, dt, time);
+        	var outp = new Vector(t.N);
+        	double arg;
+        	
+        	for (int i = 0; i < t.N; i++) {
+        		
+        		arg = 2*Math.PI*(f0*t[i]+(df/time)*t[i]*t[i]);
+        		outp[i] = Math.Cos(arg);
+        	}
+        	
+        	return outp;
+        }
+		
+		
+		static Vector ZeroLFM(double f, int f0, int fd)
+        {
+        	double dt = 1.0/fd, time = 1.0/f;
+        	Vector t = MathFunc.GenerateTheSequence(0, dt, time/2);
+        	Vector outp = new Vector(t.N);
+        	double arg;
+        	
+        	for (int i = 0; i < t.N; i++) {
+        		
+        		arg = 2*Math.PI*(f0*t[i]);
+        		outp[i] = Math.Cos(arg);
+        	}
+        	
+        	return outp;
+        }
+        
+        
+        
+        
+        public static Vector LPhMRect(double f, int f0, int fd, double time)
+        {
+        	double dt = 1.0/fd;
+        	Vector t = MathFunc.GenerateTheSequence(0, dt, time);
+        	Vector sig = Rect(t, f);
+        	return MathFunc.sin(2*Math.PI*(f0*t+sig*t^2));
+        }
+        
         /// <summary>
         /// Передискретизация сигнала
         /// (повышение частоты дискретизации в целое число раз)

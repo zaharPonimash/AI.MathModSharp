@@ -115,23 +115,23 @@ namespace AI.MathMod.ML.Classifire
         List<SModel> models = new List<SModel>();
         public Double Porog { get; set; } 
         
-        Vector FeaturisDetect(Vector vec)
-        {
-        	return Furie.fft(vec).MagnitudeToVector().CutAndZero(vec.N/2);
-        }
-
-        
-        Vector[] FeaturisDetect(Vector[] vects)
-        {
-        	Vector[] vects2 = new Vector[vects.Length];
-        	
-        	for (int i = 0; i < vects.Length; i++)
-        	{
-        		vects2[i] = FeaturisDetect(vects[i]);
-        	}
-        	
-        	return vects2;
-        }
+//        Vector FeaturisDetect(Vector vec)
+//        {
+//        	return Furie.fft(vec).MagnitudeToVector().CutAndZero(vec.N/2);
+//        }
+//
+//        
+//        Vector[] FeaturisDetect(Vector[] vects)
+//        {
+//        	Vector[] vects2 = new Vector[vects.Length];
+//        	
+//        	for (int i = 0; i < vects.Length; i++)
+//        	{
+//        		vects2[i] = FeaturisDetect(vects[i]);
+//        	}
+//        	
+//        	return vects2;
+//        }
         
         
         /// <summary>
@@ -180,7 +180,7 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         public void AddModel(Vector[] vec, string name)
         {
-        	Vector[] vectors = FeaturisDetect(vec);
+        	Vector[] vectors = vec;
         	
             Vector[] components = new Vector[vectors[0].N];
             SModel sMode = new SModel();
@@ -210,7 +210,7 @@ namespace AI.MathMod.ML.Classifire
         	{
         		for (int j = 0; j < models.Count; j++)
         		{
-        			models[i].Weights += GW(models[j], models[j]);
+        			models[i].Weights += GW(models[i], models[j]);
         		}
         		
         		models[i].Weights /= models.Count;
@@ -318,7 +318,7 @@ namespace AI.MathMod.ML.Classifire
         /// <returns>Имя класса</returns>
         public string RecognizeVector(Vector inp)
         {
-        	Vector input = FeaturisDetect(inp);
+        	Vector input = inp;
         	
             SModel model = Output(input);
             return model.Probability >= Porog ? model.NameClass : "none";

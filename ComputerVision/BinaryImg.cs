@@ -44,7 +44,7 @@ namespace AI.MathMod.ComputerVision
 		public BinaryImg(Bitmap bm)
 		{
 			Matrix matr = ImgConverter.BmpToMatr(bm);
-			matr = NeuroFunc.Porog(matr, 0.5);
+			matr = NeuroFunc.Porog(matr, 0.85);
 			ToBools(matr);
 			M = matr.M;
 			N = matr.N;

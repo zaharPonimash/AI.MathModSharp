@@ -172,11 +172,18 @@ namespace AI.MathMod.Graphiks
 			graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
 			graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
 			LineItem myCurve1 = graph.GraphPane.AddCurve(nameFunc, x1, y2, colorLine, SymbolType.None);
-			myCurve1.Line.Width = 5f;
+			myCurve1.Line.Width = 3f;
 			LineItem myCurve = graph.GraphPane.AddCurve(nameFunc, x1, y1, colorC, SymbolType.Circle);
 			myCurve.Symbol.Fill = new Fill(colorC);
 			myCurve.Line.IsVisible = false;	
-			myCurve.Symbol.Size = 1;
+			
+			if(x.N < 20)
+			myCurve.Symbol.Size = (int)(100.0/x.N);
+			else if(x.N < 2000)
+				myCurve.Symbol.Size = (int)(100.0/Math.Sqrt(x.N));
+			else 
+				myCurve.Symbol.Size = 2;
+			
 			graph.AxisChange ();
     		graph.Invalidate ();
 			}

@@ -1481,15 +1481,14 @@
             Преобразование Фурье
             </summary>
         </member>
-        <member name="M:AI.MathMod.Furie.w(System.Int32,System.Int32)">
+        <member name="M:AI.MathMod.Furie.FFT(AI.MathMod.Vector)">
             <summary>
-            Вычисление поворачивающего модуля e^(-i*2*PI*k/N)
+            Быстрое Фурье
             </summary>
-            <param name="k"></param>
-            <param name="N"></param>
+            <param name="inp"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.Furie.w1(System.Int32,System.Int32)">
+        <member name="M:AI.MathMod.Furie.Rotate(System.Int32,System.Int32)">
             <summary>
             Вычисление поворачивающего модуля e^(-i*2*PI*k/N)
             </summary>
@@ -1508,15 +1507,8 @@
             <summary>
             Возвращает спектр сигнала
             </summary>
-            <param name="x">Массив значений сигнала. Количество значений должно быть степенью 2</param>
+            <param name="inp">Массив значений сигнала. Количество значений должно быть степенью 2</param>
             <returns>Массив со значениями спектра сигнала</returns>
-        </member>
-        <member name="M:AI.MathMod.Furie.nfft(System.Numerics.Complex[])">
-            <summary>
-            Центровка массива значений полученных в fft (спектральная составляющая при нулевой частоте будет в центре массива)
-            </summary>
-            <param name="X">Массив значений полученный в fft</param>
-            <returns></returns>
         </member>
         <member name="M:AI.MathMod.Furie.fft(AI.MathMod.ComplexVector)">
             <summary>
@@ -1528,18 +1520,6 @@
         <member name="M:AI.MathMod.Furie.fft(AI.MathMod.Vector)">
             <summary>
             Быстрое преобразование Фурье(БПФ)
-            </summary>
-            <param name="inp">Входной вектор</param>
-        </member>
-        <member name="M:AI.MathMod.Furie.fftAs(AI.MathMod.ComplexVector)">
-            <summary>
-            Асинхронное БПФ
-            </summary>
-            <param name="inp">Входной вектор</param>
-        </member>
-        <member name="M:AI.MathMod.Furie.fftAs(AI.MathMod.Vector)">
-            <summary>
-            Асинхронное БПФ
             </summary>
             <param name="inp">Входной вектор</param>
         </member>
@@ -1586,9 +1566,9 @@
             </summary>
             <param name="x">Входной действительный вектор</param>
         </member>
-        <member name="P:AI.MathMod.Furie.buffer">
+        <member name="P:AI.MathMod.Furie.rotateCoef">
             <summary>
-            Буфер для асинхронного Фурье
+            Вектор поворота
             </summary>
         </member>
         <member name="T:AI.MathMod.FLV">
@@ -3605,6 +3585,11 @@
             <param name="signal">Сигнал</param>
             <returns></returns>
         </member>
+        <member name="T:AI.MathMod.Signals.OptimalFilter">
+            <summary>
+            Description of OptimalFilter.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Signals.Signal">
             <summary>
             Description of Signal.
@@ -3881,6 +3866,13 @@
             <summary>
             Description of Wavelet.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.Signals.Wavelet.SerchPatern(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Поиск патернов в сигнале
+            </summary>
+            <param name="sig">Сигнал</param>
+            <returns>Максимумы патернов</returns>
         </member>
         <member name="M:AI.MathMod.Signals.Wavelet.FWT(AI.MathMod.Vector)">
             <summary>
@@ -4166,6 +4158,19 @@
             Дисперсия по ансамлю
             </summary>
             <param name="ensemble">Ансамбль векторов</param>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MaxEns(AI.MathMod.Vector[])">
+            <summary>
+            Максимум по ансамлю
+            </summary>
+            <param name="ensemble">Ансамбль векторов</param>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MaxEnergeVector(AI.MathMod.Vector[])">
+            <summary>
+            Возвращает вектор с максимальной энергией
+            </summary>
+            <param name="ens">Ансамбль векторов</param>
+            <returns>Вектор с максимальной энергией</returns>
         </member>
         <member name="P:AI.MathMod.Statistic.SCO">
             <summary>
@@ -4570,6 +4575,11 @@
             <returns>Возвращает копию</returns>
         </member>
         <member name="M:AI.MathMod.Vector.Visual">
+            <summary>
+            Визуализация вектора
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector)">
             <summary>
             Визуализация вектора
             </summary>

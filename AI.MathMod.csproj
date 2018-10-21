@@ -159,6 +159,7 @@
     <Compile Include="Signals\Filters.cs" />
     <Compile Include="Signals\Hilbert.cs" />
     <Compile Include="Signals\Kepstr.cs" />
+    <Compile Include="Signals\OptimalFilter.cs" />
     <Compile Include="Signals\Signal.cs" />
     <Compile Include="Signals\Wavelet.cs" />
     <Compile Include="Sound.cs" />

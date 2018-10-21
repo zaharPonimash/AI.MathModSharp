@@ -10,6 +10,7 @@
 using System;
 using System.Numerics;
 using System.Threading;
+using System.Collections.Generic;
 
 
 namespace AI.MathMod
@@ -23,10 +24,125 @@ namespace AI.MathMod
     public class Furie
     {
     	/// <summary>
-    	/// Буфер для асинхронного Фурье
+    	/// Вектор поворота
     	/// </summary>
-    	public ComplexVector buffer{get;set;}
+    	public ComplexVector rotateCoef{get;set;}
+    	Dictionary<double, Complex> dic = new Dictionary<double, Complex>();
     	
+    	Complex rot;
+    	
+    	public int _n;
+    	int _l = 0;
+    	int[] deepC;
+    	double log2;
+    	int pow2;
+    	
+    	
+    	
+    	public Furie(int n)
+    	{
+    		_n = Functions.NextPow2(n);
+//    		rotateCoef = new ComplexVector(_n*2);
+//    		log2 = Math.Log(2);
+//    		pow2 = (int)(Math.Log(_n)/log2);
+//    		int newn = _n;
+//    		deepC = new int[pow2+2];
+//    		deepC[0] = _n/2;
+//    		
+//    		while(newn != 0)
+//    		{
+//    			
+//    			newn /= 2;
+//    			
+//    			for(int i = 0; i<newn; i++)
+//    			{
+//    				double key = Math.Round((float)(i)/(float)newn,3);
+//    				if(!dic.ContainsKey(key))	dic.Add(key, Rotate(i,newn));
+//    				
+//    			}
+//    		}
+//    		
+    		//rotateCoef.RealToVector().Visual();
+    		
+    	}
+    	
+    	
+    	/// <summary>
+    	/// Быстрое Фурье
+    	/// </summary>
+    	/// <param name="inp"></param>
+    	/// <returns></returns>
+    	public ComplexVector FFT(Vector inp)
+    	{
+    		var compInp = new Complex[_n];
+    		
+    		for (int i = 0; i < inp.N; i++)
+    		{
+    			compInp[i] = new Complex(inp[i],0);
+    		}
+    		
+    		return new ComplexVector(FFT(compInp));
+    	}
+    	
+    	public Vector RealIFFT(ComplexVector cInp)
+    	{
+    		return IFFT(cInp).RealToVector()/_n;
+    	}
+    	
+    	public Vector RealIFFT2(ComplexVector cInp)
+    	{
+    		return IFFT(cInp).RealToVector();
+    	}
+    	
+    	Complex GetRot(int l, int i)
+    	{
+    		return rotateCoef[deepC[l]+i];
+    	}
+    	
+    	
+    	Complex[] FFT(Complex[] inp)
+    	{
+    		Complex[] X;
+            int N = inp.Length;
+            if (N == 2)
+            {
+                X = new Complex[2];
+                X[0] = inp[0] + inp[1];
+                X[1] = inp[0] - inp[1];
+            }
+            
+            else
+            {
+            	
+            	
+                Complex[] x_even = new Complex[N / 2];
+                Complex[] x_odd = new Complex[N / 2];
+                for (int i = 0; i < N / 2; i++)
+                {
+                    x_even[i] = inp[2 * i];
+                    x_odd[i] = inp[2 * i + 1];
+                }
+                Complex[] X_even = FFT(x_even);
+                Complex[] X_odd = FFT(x_odd);
+                X = new Complex[N];
+                
+                for (int i = 0; i < N / 2; i++)
+                {
+                	rot = Rotate(i, N);
+                	X[i] = X_even[i] +  rot* X_odd[i];
+                    X[i + N / 2] = X_even[i] - rot* X_odd[i];
+                }
+            }
+//            dic[Math.Round((float)(i)/(float)N,3)]
+            
+            return X;
+    	}
+    	
+    	public ComplexVector IFFT(ComplexVector inp)
+        {
+        	ComplexVector cV = !inp.CutAndZero(_n); // Комплексно-сопряженный вектор
+        	return new ComplexVector(FFT(cV.Vecktor));
+        }
     	
     #region БПФ
     
@@ -36,7 +152,7 @@ namespace AI.MathMod
         /// <param name="k"></param>
         /// <param name="N"></param>
         /// <returns></returns>
-        public static Complex w(int k, int N)
+        public static Complex Rotate(int k, int N)
         {
         
             if (k % N == 0) return 1;
@@ -46,20 +162,7 @@ namespace AI.MathMod
         
         
         
-         /// <summary>
-        /// Вычисление поворачивающего модуля e^(-i*2*PI*k/N)
-        /// </summary>
-        /// <param name="k"></param>
-        /// <param name="N"></param>
-        /// <returns></returns>
-        public static Complex w1(int k, int N)
-        {
-        
-            if (k % N == 0) return 1;
-            double arg = 2 * Math.PI * k / N;
-            return new Complex(Math.Cos(arg), Math.Sin(arg));
-        }
-        
+  
         
         /// <summary>
         /// Возвращает спектр сигнала
@@ -90,8 +193,8 @@ namespace AI.MathMod
                 X = new Complex[N];
                 for (int i = 0; i < N / 2; i++)
                 {
-                    X[i] = X_even[i] + w(i, N) * X_odd[i];
-                    X[i + N / 2] = X_even[i] - w(i, N) * X_odd[i];
+                    X[i] = X_even[i] + Rotate(i, N) * X_odd[i];
+                    X[i + N / 2] = X_even[i] - Rotate(i, N) * X_odd[i];
                 }
             }
             return X;
@@ -102,55 +205,30 @@ namespace AI.MathMod
         /// <summary>
         /// Возвращает спектр сигнала
         /// </summary>
-        /// <param name="x">Массив значений сигнала. Количество значений должно быть степенью 2</param>
+        /// <param name="inp">Массив значений сигнала. Количество значений должно быть степенью 2</param>
         /// <returns>Массив со значениями спектра сигнала</returns>
-        public static Complex[] ifft(Complex[] x)
+        public static Complex[] ifft(Complex[] inp)
         {
-            Complex[] X;
-            int N = x.Length;
-            if (N == 2)
-            {
-                X = new Complex[2];
-                X[0] = x[0] + x[1];
-                X[1] = x[0] - x[1];
-            }
-            else
-            {
-                Complex[] x_even = new Complex[N / 2];
-                Complex[] x_odd = new Complex[N / 2];
-                for (int i = 0; i < N / 2; i++)
-                {
-                    x_even[i] = x[2 * i];
-                    x_odd[i] = x[2 * i + 1];
-                }
-                Complex[] X_even = ifft(x_even);
-                Complex[] X_odd = ifft(x_odd);
-                X = new Complex[N];
-                for (int i = 0; i < N / 2; i++)
-                {
-                    X[i] = X_even[i] + w1(i, N) * X_odd[i];
-                    X[i + N / 2] = X_even[i] - w1(i, N) * X_odd[i];
-                }
-            }
-            return X;
+        	ComplexVector cV = !new ComplexVector(inp); // Комплексно-сопряженный вектор
+        	return fft(cV.Vecktor);
         }
-        /// <summary>
-        /// Центровка массива значений полученных в fft (спектральная составляющая при нулевой частоте будет в центре массива)
-        /// </summary>
-        /// <param name="X">Массив значений полученный в fft</param>
-        /// <returns></returns>
-        public static Complex[] nfft(Complex[] X)
-        {
-            int N = X.Length;
-            Complex[] X_n = new Complex[N];
-            for (int i = 0; i < N / 2; i++)
-            {
-                X_n[i] = X[N / 2 + i];
-                X_n[N / 2 + i] = X[i];
-            }
-            return X_n;
-        }
-        
+//        /// <summary>
+//        /// Центровка массива значений полученных в fft (спектральная составляющая при нулевой частоте будет в центре массива)
+//        /// </summary>
+//        /// <param name="X">Массив значений полученный в fft</param>
+//        /// <returns></returns>
+//        public static Complex[] nfft(Complex[] X)
+//        {
+//            int N = X.Length;
+//            Complex[] X_n = new Complex[N];
+//            for (int i = 0; i < N / 2; i++)
+//            {
+//                X_n[i] = X[N / 2 + i];
+//                X_n[N / 2 + i] = X[i];
+//            }
+//            return X_n;
+//        }
+//        
         
         
         
@@ -177,34 +255,13 @@ namespace AI.MathMod
         }
         
         
-        void fftThC()
-        {
-        	buffer = fft(buffer);
-        }
+     
         
         
         
-        /// <summary>
-        /// Асинхронное БПФ
-        /// </summary>
-        /// <param name="inp">Входной вектор</param>
-        public void fftAs(ComplexVector inp)
-        {
-        	buffer = inp.Copy();
-        	Thread th = new Thread(fftThC);
-        	th.Start();
-        }
+     
         
-        /// <summary>
-        /// Асинхронное БПФ
-        /// </summary>
-        /// <param name="inp">Входной вектор</param>
-         public void fftAs(Vector inp)
-        {
-         	buffer = new ComplexVector(inp.Copy());
-        	Thread th = new Thread(fftThC);
-        	th.Start();
-        }
+   
         
         
           /// <summary>

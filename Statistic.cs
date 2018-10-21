@@ -494,7 +494,7 @@ namespace AI.MathMod
 			for(int i = 0; i < X.N; i++)
 				cov += (X[i]-Mx)*(Y[i]-My);
 			
-			cov /= n1;
+			cov /= n1-1;
 			
 			return cov;
 		}
@@ -524,7 +524,7 @@ namespace AI.MathMod
 		{
 			int n = X.N;
 			
-			double Mx = 0, My = 0, cor = 0, k = (n-1.0)/(double)n, Dx = 0, Dy =0, dx, dy;
+			double Mx = 0, My = 0, cor = 0, Dx = 0, Dy =0, dx, dy;
 			
 			for(int i = 0; i < X.N; i++){
 				Mx += X[i];
@@ -543,7 +543,7 @@ namespace AI.MathMod
 				Dy += dy*dy;
 			}
 			
-			cor = k*cor/Math.Sqrt(Dx*Dy);
+			cor = cor/Math.Sqrt(Dx*Dy);
 			
 			return cor;
 		}
@@ -632,8 +632,48 @@ namespace AI.MathMod
 		
 		
 		
+		/// <summary>
+		/// Максимум по ансамлю
+		/// </summary>
+		/// <param name="ensemble">Ансамбль векторов</param>
+		public static Vector MaxEns(Vector[] ensemble)
+		{
+			Vector res = new Vector(ensemble[0].N);
+			
+			for (int i = 0; i < ensemble[0].N; i++) 
+			{
+				res[i] = ensemble[0][i];
+				
+				for (int j = 1; j < ensemble.Length; j++) 
+				{
+					if (ensemble[j][i] > res[i]) {
+						res[i] = ensemble[j][i];
+					}	
+				}	
+			}
+			
+			return res;
+		}
 		
-		
+		/// <summary>
+		/// Возвращает вектор с максимальной энергией
+		/// </summary>
+		/// <param name="ens">Ансамбль векторов</param>
+		/// <returns>Вектор с максимальной энергией</returns>
+		public static Vector MaxEnergeVector(Vector[] ens)
+		{
+			Vector res = new Vector(ens.Length);
+			
+			for (int i = 0; i < res.N; i++) 
+			{
+				res[i] = GeomFunc.NormVect(ens[i]);
+			}
+			
+			double max = MaximalValue(res);
+			int ind = (int)res.IndexValue(max);
+			
+			return ens[ind].Copy();
+		}
 		
 	}
 	

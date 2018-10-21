@@ -12,6 +12,7 @@ using System.IO;
 using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Graphiks;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace AI.MathMod
 {
@@ -126,7 +127,7 @@ namespace AI.MathMod
 			string[] strs;
 			
 			if (separator != '1') {
-				strs = File.ReadAllText(textPath).Split(separator);
+				strs = File.ReadAllText(textPath).Replace("\0", "").Split(separator);
 			} else
 				strs = File.ReadAllLines(textPath);
 			
@@ -695,8 +696,12 @@ namespace AI.MathMod
 			provider.NumberGroupSizes = new int[] { 3 };
 
 			for (int i = 0; i < _n; i++) {
+				try
+				{
 				str = strVector[i].Replace(".", ",");
 				_vector[i] = Convert.ToDouble(str, provider);
+				}
+				catch{MessageBox.Show("Error on"+i+" index");}
 			}
 			
 		}
@@ -782,6 +787,14 @@ namespace AI.MathMod
 		public void Visual()
 		{
 			GraphicsView.Plot(this);
+		}
+		
+		/// <summary>
+		/// Визуализация вектора
+		/// </summary>
+		public void Visual(Vector x)
+		{
+			GraphicsView.Plot(this,x);
 		}
 		
 		
