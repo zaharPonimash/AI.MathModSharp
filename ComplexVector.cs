@@ -595,7 +595,19 @@ namespace AI.MathMod
 		}
 		
 		
-		
+		 /// <summary>
+        /// Центровка массива значений полученных при преобразовании Фурье
+        /// </summary>
+        public ComplexVector FurCentr()
+        {
+            Complex[] centr = new Complex[N];
+            for (int i = 0; i < N / 2; i++)
+            {
+                centr[i] = this[N / 2 + i];
+                centr[N / 2 + i] = this[i];
+            }
+            return new ComplexVector(centr);
+        }
 		
 		
 		/// <summary>

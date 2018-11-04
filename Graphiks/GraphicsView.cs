@@ -356,5 +356,33 @@ namespace AI.MathMod.Graphiks
 			VisualPlot vp = new VisualPlot(y,  x);
 			vp.Show();
 		}
+		
+		
+		public static void ScattersVis(ZedGraphControl graph, Vector[] xy, Color[] colors, string nameX, string nameY)
+		{
+			int n = xy.Length/2;
+			
+			try
+			{
+				graph.GraphPane.CurveList.Clear();
+				graph.GraphPane.XAxis.Title.Text = nameX;
+				graph.GraphPane.YAxis.Title.Text = nameY;
+				graph.GraphPane.Title.Text = nameY;
+				graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+				graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+			
+				for (int i = 0, k = 0; i < n; i++) 
+				{
+					LineItem myCurve = graph.GraphPane.AddCurve(nameY, xy[k++].Vecktor, xy[k++].Vecktor, colors[i%n], SymbolType.Circle);
+					myCurve.Symbol.Fill = new Fill(colors[i%n]);
+					myCurve.Symbol.Size = 3;
+					myCurve.Line.IsVisible = false;
+				}
+			
+				graph.AxisChange ();
+    			graph.Invalidate ();
+			}
+			catch{}
+		}
 	}
 }

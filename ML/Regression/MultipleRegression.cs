@@ -101,8 +101,7 @@ namespace AI.MathMod.ML.Regression
 		{
 			Kramer kram = new Kramer();
 			_param = kram.GetAnswer(A, B);
-			//_param = _param.Revers();
-			//_param.Visual();
+			_param.Visual();
 		}
 		
 		/// <summary>

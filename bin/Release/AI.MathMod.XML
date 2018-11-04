@@ -409,6 +409,11 @@
             <param name="valueShift"> На сколько сдвинуть</param>
             <returns>возвращает вектор длинны N+valueShift</returns>
         </member>
+        <member name="M:AI.MathMod.ComplexVector.FurCentr">
+            <summary>
+            Центровка массива значений полученных при преобразовании Фурье
+            </summary>
+        </member>
         <member name="M:AI.MathMod.ComplexVector.ImgToVector">
             <summary>
             Возвращает вектор мнимой части комплексного вектора
@@ -2051,6 +2056,20 @@
             <param name="values">Значения</param>
             <returns>Возвращает альтернативную матрицу</returns>
         </member>
+        <member name="M:AI.MathMod.Matrix.Determinant">
+            <summary>
+            Рассчет определителя матрицы
+            </summary>
+            <returns>Определитель</returns>
+        </member>
+        <member name="M:AI.MathMod.Matrix.GetVector(System.Int32,System.Int32)">
+            <summary>
+            Возвращает вектор с нужного среза, нужный индекс
+            </summary>
+            <param name="index">Индеск</param>
+            <param name="dimension">Срез/размерность</param>
+            <returns>Вектор</returns>
+        </member>
         <member name="M:AI.MathMod.Matrix.Swap(System.Int32,System.Int32,System.Int32)">
             <summary>
             Заменяет строки/столбцы
@@ -2808,6 +2827,13 @@
             </summary>
             <param name="path">Путь до датасета</param>
         </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.DataVisual(System.Int32)">
+            <summary>
+            Данные для визуализации
+            </summary>
+            <param name="n">Число классов</param>
+            <returns></returns>
+        </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
             Класс для хранения обучающей выборки для градиентного спуска
@@ -3345,6 +3371,11 @@
             Выигрыш от стратегии
             </summary>
         </member>
+        <member name="T:AI.MathMod.NonLinearDynamic.PhasePortrait">
+            <summary>
+            Description of PhasePortrait.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Signals.DCT">
             <summary>
             Дискретно-косинусное преобразование
@@ -3642,6 +3673,14 @@
         <member name="M:AI.MathMod.Signals.Signal.Frequency(System.Int32,System.Double)">
             <summary>
             Массив частот
+            </summary>
+            <param name="N">Кол-во значений</param>
+            <param name="fd">Частота дискретизации</param>
+            <returns>Вектор частот</returns>
+        </member>
+        <member name="M:AI.MathMod.Signals.Signal.FrequencyCentr(System.Int32,System.Double)">
+            <summary>
+            Центрированный массив частот 
             </summary>
             <param name="N">Кол-во значений</param>
             <param name="fd">Частота дискретизации</param>

@@ -90,6 +90,19 @@ namespace AI.MathMod.Signals
 			double dt = 1.0/fd, df = 1/(N*dt);
 			return MathFunc.GenerateTheSequence(0,df,(N)*df).CutAndZero(N);
 		}
+		
+		
+		/// <summary>
+		/// Центрированный массив частот 
+		/// </summary>
+		/// <param name="N">Кол-во значений</param>
+		/// <param name="fd">Частота дискретизации</param>
+		/// <returns>Вектор частот</returns>
+		public static Vector FrequencyCentr(int N, double fd)
+		{
+			double dt = 1.0/fd, df = 1/(N*dt);
+			return MathFunc.GenerateTheSequence((-N/2.0)*df,df,(N/2.0)*df).CutAndZero(N);
+		}
 
         /// <summary>
         /// Синусоидальные колебания

@@ -152,6 +152,7 @@
     <Compile Include="ML\Regression\SinApproximation.cs" />
     <Compile Include="ML\Regression\SincRegression.cs" />
     <Compile Include="ML\Simplex.cs" />
+    <Compile Include="NonLinearDynamic\PhasePortrait.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtilities.cs" />
     <Compile Include="Signals\DCT.cs" />
@@ -181,6 +182,7 @@
     <Folder Include="ML\Datasets" />
     <Folder Include="ML\Regression" />
     <Folder Include="SparseData" />
+    <Folder Include="NonLinearDynamic" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Graphiks\MatrixOut.resx">

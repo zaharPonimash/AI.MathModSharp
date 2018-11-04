@@ -792,6 +792,10 @@ namespace AI.MathMod
 			return matr;
 		}
 		
+		/// <summary>
+		/// Рассчет определителя матрицы
+		/// </summary>
+		/// <returns>Определитель</returns>
 		public double Determinant()
         {
             double result = 1.0;
@@ -826,7 +830,12 @@ namespace AI.MathMod
                 return result;
         }
 
-		
+		/// <summary>
+		/// Возвращает вектор с нужного среза, нужный индекс
+		/// </summary>
+		/// <param name="index">Индеск</param>
+		/// <param name="dimension">Срез/размерность</param>
+		/// <returns>Вектор</returns>
 		public Vector GetVector(int index, int dimension)
         {
             Vector result;
@@ -848,7 +857,7 @@ namespace AI.MathMod
 		
 
 
- /// <summary>
+ 		/// <summary>
         /// Заменяет строки/столбцы
         /// </summary>
         /// <param name="i"></param>

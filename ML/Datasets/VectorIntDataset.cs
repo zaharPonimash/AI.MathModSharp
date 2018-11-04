@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AI.MathMod.ML.NeuronNetwork;
 
 namespace AI.MathMod.ML.Datasets
 {
@@ -40,6 +41,7 @@ namespace AI.MathMod.ML.Datasets
 	public class VectorIntDataset : List<VectorClass>
 	{
 		Random rnd = new Random();
+		
 	
 		/// <summary>
 		/// Загрузка датасета из файла
@@ -88,6 +90,62 @@ namespace AI.MathMod.ML.Datasets
 			File.WriteAllLines(path, content);
  		}
 		
+		
+		/// <summary>
+		/// Данные для визуализации
+		/// </summary>
+		/// <param name="n">Число классов</param>
+		/// <returns></returns>
+		public Vector[] DataVisual(int n)
+		{
+			
+			Net net = new Net();
+			
+			
+			net.Add(new LinearLayer(this[0].InpVector.N, 2));
+			net.Add(new Softmax(n));
+			
+			net.LerningRate = 0.0001;
+			
+			
+			MenegerNNW mnnw = new MenegerNNW(net, this);
+			mnnw.Train(2);
+			
+			Vector[] vects = new Vector[2*n];
+			Vector nnwOut;
+		
+			List<double>[] x = new List<double>[n];
+			List<double>[] y = new List<double>[n];
+			
+			for (int i = 0; i < n; i++) 
+			{
+				x[i] = new List<double>();
+				y[i] = new List<double>();
+			}
+			
+			
+			for (int i = 0; i < Count; i++)
+			{
+				for (int j = 0; j < n; j++)
+				{
+					nnwOut = net._layers[0].Output(this[i].InpVector);
+					if(this[i].ClassMark == j)
+					{
+						x[j].Add(nnwOut[0]);
+						y[j].Add(nnwOut[1]);
+					}
+						
+				}
+			}
+			
+			for (int i = 0, k = 0; i < n; i++)
+			{
+				vects[k++] = Vector.ListToVector(x[i]);
+				vects[k++] = Vector.ListToVector(y[i]);
+			}
+			
+			return vects;
+		}
 		
 	}
 }
