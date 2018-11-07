@@ -367,13 +367,13 @@ namespace AI.MathMod.Graphiks
 				graph.GraphPane.CurveList.Clear();
 				graph.GraphPane.XAxis.Title.Text = nameX;
 				graph.GraphPane.YAxis.Title.Text = nameY;
-				graph.GraphPane.Title.Text = nameY;
+				graph.GraphPane.Title.Text = "R^n -> R^2";
 				graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
 				graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
 			
 				for (int i = 0, k = 0; i < n; i++) 
 				{
-					LineItem myCurve = graph.GraphPane.AddCurve(nameY, xy[k++].Vecktor, xy[k++].Vecktor, colors[i%n], SymbolType.Circle);
+					LineItem myCurve = graph.GraphPane.AddCurve("Class #"+i, xy[k++].Vecktor, xy[k++].Vecktor, colors[i%n], SymbolType.Circle);
 					myCurve.Symbol.Fill = new Fill(colors[i%n]);
 					myCurve.Symbol.Size = 3;
 					myCurve.Line.IsVisible = false;

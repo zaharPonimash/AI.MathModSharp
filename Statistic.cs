@@ -367,6 +367,23 @@ namespace AI.MathMod
 		}
 		
 		
+		/// <summary>
+		/// Cоздает матрицу с нормально распределенными значениями
+		/// размерности m на n
+		/// </summary>
+		/// <param name="m">Количество строк</param>
+		/// <param name="n">Количество столбцов</param>
+		public static Matrix randNorm(int m, int n, Random rnd)
+		{
+			Matrix C = new Matrix(m,n);
+			
+			for(int i = 0; i < m; i++)
+				for(int j = 0; j < n; j++) C.Matr[i,j] = Gauss(rnd);
+	
+			return C;
+		}
+		
+		
 		
 		
 		/// <summary>

@@ -986,6 +986,17 @@ namespace AI.MathMod
 		}
 		
 		
+		/// <summary>
+		/// Добавляет 1 в начало
+		/// </summary>
+		public Vector AddOne()
+		{
+			Vector C = Shift(1);
+			C[0] = 1;
+			return C;
+		}
+		
+		
 		
 		/// <summary>
 		/// Проверяет все ли элементы вектора нулевые

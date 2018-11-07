@@ -35,6 +35,8 @@ namespace AI.MathMod.ML.NeuronNetwork
 		
 		void Train();
 		
+		void WGenerate(Random rnd);
+		
 		void SetParam(int inp, int outp);		
 	}
 }

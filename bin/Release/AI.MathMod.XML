@@ -1775,6 +1775,29 @@
             not be able to load this method if it was changed manually.
             </summary>
         </member>
+        <member name="T:AI.MathMod.Graphiks.VisualData">
+            <summary>
+            Description of VisualData.
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Graphiks.VisualData.components">
+            <summary>
+            Designer variable used to keep track of non-visual components.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.VisualData.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources used by the form.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.VisualData.InitializeComponent">
+            <summary>
+            This method is required for Windows Forms designer support.
+            Do not change the method contents inside the source code editor. The Forms designer might
+            not be able to load this method if it was changed manually.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Graphiks.VisualPlot">
             <summary>
             Description of VisualPlot.
@@ -3048,6 +3071,13 @@
             <param name="vidTest">Датасет</param>
             <returns>Вероятность верного ответа</returns>
         </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.MenegerNNW.TestStr(AI.MathMod.ML.Datasets.VectorIntDataset,System.Int32)">
+            <summary>
+            Тестирование
+            </summary>
+            <param name="vidTest">Датасет</param>
+            <returns>Вероятность верного ответа</returns>
+        </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.MenegerNNW.Output(AI.MathMod.Vector)">
             <summary>
             Выход сети
@@ -4106,6 +4136,14 @@
             <param name="m">Количество строк</param>
             <param name="n">Количество столбцов</param>
         </member>
+        <member name="M:AI.MathMod.Statistic.randNorm(System.Int32,System.Int32,System.Random)">
+            <summary>
+            Cоздает матрицу с нормально распределенными значениями
+            размерности m на n
+            </summary>
+            <param name="m">Количество строк</param>
+            <param name="n">Количество столбцов</param>
+        </member>
         <member name="M:AI.MathMod.Statistic.randNorm(System.Int16)">
             <summary>
             Cоздает матрицу с нормально распределенными значениями
@@ -4685,6 +4723,11 @@
             </summary>
             <param name="kInterp">коэффициент интерполяции</param>
             <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.AddOne">
+            <summary>
+            Добавляет 1 в начало
+            </summary>
         </member>
         <member name="M:AI.MathMod.Vector.Is0">
             <summary>

@@ -103,6 +103,39 @@ namespace AI.MathMod.ML.NeuronNetwork
 			return corr/vidTest.Count;
 		}
 		
+		
+		
+		/// <summary>
+		/// Тестирование
+		/// </summary>
+		/// <param name="vidTest">Датасет</param>
+		/// <returns>Вероятность верного ответа</returns>
+		public string TestStr(VectorIntDataset vidTest, int n)
+		{
+			double[] corr = new double[n];
+			double[] N = new double[n];
+			int index;
+			string str = string.Empty;
+			
+			for (int i = 0; i < vidTest.Count; i++) 
+			{
+				index = vidTest[i].ClassMark;
+				if(index == GetClass(vidTest[i].InpVector))
+					corr[index]++;
+				
+				N[index]++;
+				
+			}
+			
+			for (int i = 0; i < n; i++)
+			{
+				str += "Pressision "+i+": "+(corr[i]/N[i]*100) +"%\n";
+			}
+			
+			
+			return str;
+		}
+		
 		/// <summary>
 		/// Выход сети
 		/// </summary>

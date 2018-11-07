@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AI.MathMod.Graphiks;
 using AI.MathMod.ML.NeuronNetwork;
 
 namespace AI.MathMod.ML.Datasets
@@ -99,7 +100,9 @@ namespace AI.MathMod.ML.Datasets
 		public Vector[] DataVisual(int n)
 		{
 			
-			Net net = new Net();
+			
+			
+			Net net = new Net(rnd);
 			
 			
 			net.Add(new LinearLayer(this[0].InpVector.N, 2));
@@ -109,7 +112,7 @@ namespace AI.MathMod.ML.Datasets
 			
 			
 			MenegerNNW mnnw = new MenegerNNW(net, this);
-			mnnw.Train(2);
+			mnnw.Train(40);
 			
 			Vector[] vects = new Vector[2*n];
 			Vector nnwOut;
@@ -145,6 +148,13 @@ namespace AI.MathMod.ML.Datasets
 			}
 			
 			return vects;
+		}
+		
+		
+		public void Visualis()
+		{
+			VisualData vd = new VisualData(this);
+			vd.Show();
 		}
 		
 	}

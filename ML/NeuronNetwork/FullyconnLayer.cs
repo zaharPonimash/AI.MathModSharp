@@ -49,7 +49,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 			SizeOut = outp;
 			norm = 0.9/(double)(inp);
 			moment = 0;
-			W = Statistic.randNorm(inp, outp)/inp;
+			W = 0.0001*Statistic.randNorm(inp, outp)/inp;
 			Last = new Matrix(inp, outp);
 		}
 		
@@ -105,7 +105,10 @@ namespace AI.MathMod.ML.NeuronNetwork
 		
 		
 	
-		
+		public void WGenerate(Random rnd)
+		{
+			W = 0.0001*Statistic.randNorm(W.M, W.N, rnd)/W.N;
+		}
 		
 		
 		public virtual void Delt(Vector ideal)

@@ -101,6 +101,10 @@
     <Compile Include="Graphiks\MatrixVisual.Designer.cs">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphiks\VisualData.cs" />
+    <Compile Include="Graphiks\VisualData.Designer.cs">
+      <DependentUpon>VisualData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphiks\VisualPlot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphiks\VisualData.resx">
+      <DependentUpon>VisualData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphiks\VisualPlot.resx">
       <DependentUpon>VisualPlot.cs</DependentUpon>

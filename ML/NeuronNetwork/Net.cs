@@ -21,6 +21,8 @@ namespace AI.MathMod.ML.NeuronNetwork
 	{
 		public List<ILayer> _layers = new List<ILayer>();
 		int countNeuronsForLastLayer;
+		Random _rnd = new Random();
+		
 		
 		/// <summary>
 		/// Скорость обучения (исправить)
@@ -65,6 +67,13 @@ namespace AI.MathMod.ML.NeuronNetwork
 			
 		}
 		
+		
+		// Создание сети
+		public Net(Random rnd)
+		{
+			_rnd = rnd;
+		}
+		
 		public Net(string path)
 		{
 			Open(path);
@@ -73,12 +82,17 @@ namespace AI.MathMod.ML.NeuronNetwork
 		
 		public void Add(ILayer layer)
 		{
-			if(_layers.Count == 0||layer is CapsuleLinearLayer) _layers.Add(layer);
+			if(_layers.Count == 0||layer is CapsuleLinearLayer)
+			{
+				_layers.Add(layer);
+				_layers[0].WGenerate(_rnd);
+			}
 			else
 			{
 				int inp = _layers[_layers.Count-1].SizeOut;
 				layer.SetParam(inp, layer.SizeOut);
 				_layers.Add(layer);
+				_layers[_layers.Count-1].WGenerate(_rnd);
 			}
 			
 			
