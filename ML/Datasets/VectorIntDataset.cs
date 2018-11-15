@@ -150,11 +150,44 @@ namespace AI.MathMod.ML.Datasets
 			return vects;
 		}
 		
-		
+		/// <summary>
+		/// Визуализация датасета
+		/// </summary>
 		public void Visualis()
 		{
 			VisualData vd = new VisualData(this);
 			vd.Show();
+		}
+		
+		/// <summary>
+		/// Корреляционная матрица признаков
+		/// </summary>
+		/// <returns>Нормированная кор. матрица</returns>
+		public Matrix CorrMatrFeatures()
+		{
+			Vector[] vects = new Vector[Count];
+			
+			for (int i = 0; i < vects.Length; i++)
+			{
+				vects[i] = this[i].InpVector.Copy();
+			}
+			
+			
+			Vector[] vects2 = new Vector[vects[0].N];
+			
+			for (int i = 0; i < vects2.Length; i++)
+			{
+				vects2[i] = new Vector(vects.Length);
+				
+				
+				for (int j = 0; j < vects.Length; j++)
+				{
+					vects2[i][j] = vects[j][i];
+				}
+			}
+			
+			
+			return Matrix.CorrelationMatrixNorm(vects2);
 		}
 		
 	}

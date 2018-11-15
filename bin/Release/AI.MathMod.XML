@@ -2857,6 +2857,17 @@
             <param name="n">Число классов</param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.Visualis">
+            <summary>
+            Визуализация датасета
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.CorrMatrFeatures">
+            <summary>
+            Корреляционная матрица признаков
+            </summary>
+            <returns>Нормированная кор. матрица</returns>
+        </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
             Класс для хранения обучающей выборки для градиентного спуска
@@ -4817,6 +4828,19 @@
             <param name="pathToWavFile">Путь до файла</param>
             <param name="fd">Возвращаемый параметр, частота дискретизации</param>
             <returns>Вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.LoadAsBinary(System.String)">
+            <summary>
+            Загрузка вектора из массива double
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.SaveAsBinary(System.String,AI.MathMod.Vector)">
+            <summary>
+            Сохранение в массив double
+            </summary>
+            <param name="path">Путь до файла</param>
+            <param name="vect">Вектор</param>
         </member>
         <member name="P:AI.MathMod.Vector.Vecktor">
             <summary>

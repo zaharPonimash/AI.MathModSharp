@@ -129,7 +129,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 			
 			for (int i = 0; i < n; i++)
 			{
-				str += "Pressision "+i+": "+(corr[i]/N[i]*100) +"%\n";
+				str += "Preсision "+i+": "+(corr[i]/N[i]*100) +"%\n";
 			}
 			
 			

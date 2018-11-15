@@ -1192,6 +1192,54 @@ namespace AI.MathMod
 		}
 		
 		
+		
+		/// <summary>
+		/// Загрузка вектора из массива double
+		/// </summary>
+		/// <param name="path">Путь</param>
+		public static Vector LoadAsBinary(string path)
+		{
+            Vector vect = new Vector();
+            int len;
+
+            using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+            	len = (int)(fs.Length/8);
+            	BinaryReader br = new BinaryReader(fs);
+            	vect = new Vector(len);
+            	
+                for (int i = 0; i < len; i++)
+                {
+                	vect[i] = br.ReadDouble();
+                }
+
+            }
+
+        
+            return vect;
+		}
+		
+		
+		
+		/// <summary>
+		/// Сохранение в массив double
+		/// </summary>
+		/// <param name="path">Путь до файла</param>
+		/// <param name="vect">Вектор</param>
+		public static void SaveAsBinary(string path, Vector vect)
+		{
+			
+			using(FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+			{
+				for (int i = 0; i < vect.N; i++)
+				{
+					fs.Write(BitConverter.GetBytes(vect[i]), 0, 8);
+				}
+				
+			}
+		}
+		
+		
 		#endregion
 	}
 	
