@@ -1856,6 +1856,16 @@
             Информационный блок, основной тип данных МАС
             </summary>
         </member>
+        <member name="F:AI.MathMod.InformationBlock.namedVar">
+            <summary>
+            Именованные переменные
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.InformationBlock.mainVar">
+            <summary>
+            Основная переменная
+            </summary>
+        </member>
         <member name="P:AI.MathMod.InformationBlock.TextInform">
             <summary>
             Текстовая информация
@@ -1879,6 +1889,11 @@
         <member name="P:AI.MathMod.InformationBlock.TensorInform">
             <summary>
             Информация в тензорном виде
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.InformationBlock.Flag">
+            <summary>
+            Найден ли ответ
             </summary>
         </member>
         <member name="T:AI.MathMod.Matrix">
@@ -2505,6 +2520,13 @@
             <param name="vectors">Точки класса</param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.ML.Classifire.CorrelationClassifier.Recognition(AI.MathMod.Vector[])">
+            <summary>
+            Распознавание набора векторов
+            </summary>
+            <param name="vects">Вектора</param>
+            <returns>Вектор меток</returns>
+        </member>
         <member name="M:AI.MathMod.ML.Classifire.CorrelationClassifier.Teach1(AI.MathMod.Vector[],System.String)">
             <summary>
             Обучение одного элеменнта класса
@@ -2595,6 +2617,11 @@
             Сохранение к-тора
             </summary>
             <param name="path">Путь</param>
+        </member>
+        <member name="T:AI.MathMod.ML.Classifire.LogisticRegression">
+            <summary>
+            Description of LogisticRegression.
+            </summary>
         </member>
         <member name="T:AI.MathMod.ML.Classifire.SModel">
             <summary>
@@ -2867,6 +2894,17 @@
             Корреляционная матрица признаков
             </summary>
             <returns>Нормированная кор. матрица</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.DispMeanResult">
+            <summary>
+            Получение вектора дисперсии и среднего вектора
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.Normalise">
+            <summary>
+            Нормализация датасета
+            </summary>
+            <returns>Датасет</returns>
         </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
@@ -3196,6 +3234,11 @@
         <member name="T:AI.MathMod.ML.PCA">
             <summary>
             Description of PCA.
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.ML.Regression.CosRegression">
+            <summary>
+            Description of PolynomialRegression.
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.Regression.ExpMean">
@@ -4260,6 +4303,29 @@
             <param name="ens">Ансамбль векторов</param>
             <returns>Вектор с максимальной энергией</returns>
         </member>
+        <member name="M:AI.MathMod.Statistic.SimpleMeanFreq(AI.MathMod.Vector,System.Double)">
+            <summary>
+            Средняя частота (не нормированная, зависит от кол-ва точек)
+            </summary>
+            <param name="signal">Сигнал</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.MeanFreq(AI.MathMod.Vector,System.Double,System.Double)">
+            <summary>
+            Средняя частота сигнала
+            </summary>
+            <param name="signal">Сигнал</param>
+            <param name="fd">Частота дискретизации</param>
+            <returns>Средняя частота [Гц]</returns>
+        </member>
+        <member name="M:AI.MathMod.Statistic.DivFreq(AI.MathMod.Vector)">
+            <summary>
+            Изменение частоты
+            </summary>
+            <param name="signal">Сигнал</param>
+            <param name="fd">Частота дискретизации</param>
+            <returns>Дивиация средней частоты</returns>
+        </member>
         <member name="P:AI.MathMod.Statistic.SCO">
             <summary>
             Среднеквадратичное отклонение
@@ -4626,14 +4692,6 @@
             </summary>
             <param name="elements">Элементы</param>
         </member>
-        <member name="M:AI.MathMod.Vector.VectorsArrayToVector(AI.MathMod.Vector[])">
-            <summary>
-            Переводит массив векторов в вектор.
-            Пример: {[0 1 3 1], [9 1 2], [8 3]} -> [0 1 3 1 9 1 2 8 3]
-            </summary>
-            <param name="vectors">Массив векторов</param>
-            <returns>Вектор</returns>
-        </member>
         <member name="M:AI.MathMod.Vector.SaveAsText(System.String)">
             <summary>
             Сохраняет вектор как текстовый файл
@@ -4807,12 +4865,100 @@
             </summary>
             <param name="fd">Частота дискретизации</param>
         </member>
+        <member name="M:AI.MathMod.Vector.TransformVector(System.Func{System.Double,System.Double})">
+            <summary>
+            Преобразование вектора
+            </summary>
+            <param name="transformFunc">Функция преобразования</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.Max">
+            <summary>
+            Максимальное значение
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Min">
+            <summary>
+            Минимальное значение
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Extend">
+            <summary>
+            Мат. ожидание
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Sum">
+            <summary>
+            Сумма
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Dispers">
+            <summary>
+            Дисперсия
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Std">
+            <summary>
+            СКО
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Norm">
+            <summary>
+            Норма вектора
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Normalise">
+            <summary>
+            Нормализация ско = 1, мат. ожидание 0
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Vector.Normalise(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Нормализация по ансамблю ско = 1, мат. ожидание 0
+            </summary>
+        </member>
         <member name="M:AI.MathMod.Vector.Concatinate(AI.MathMod.Vector[])">
             <summary>
             Конкатенация векторов
             </summary>
             <param name="vectors">Вектора</param>
             <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.Seq0(System.Double,System.Double)">
+            <summary>
+            Последовательность начиная с нуля
+            </summary>
+            <param name="step">Шаг</param>
+            <param name="end">Конечное значение</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.Time0(System.Double,System.Double)">
+            <summary>
+            Массив отсчетов времени
+            </summary>
+            <param name="fd">Частота дискретизации</param>
+            <param name="t">Время (сек)</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.GetWindows(AI.MathMod.Vector,System.Int32,System.Int32)">
+            <summary>
+            Разбивка на окна
+            </summary>
+            <param name="inp">Вход</param>
+            <param name="w">Длинна окна</param>
+            <param name="step">шаг</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.GetWindowsWithFunc(System.Func{AI.MathMod.Vector,AI.MathMod.Vector},AI.MathMod.Vector,System.Int32,System.Int32)">
+            <summary>
+            Разбивка на окна
+            </summary>
+            <param name="transformer">Функция для трансформации векторов</param>
+            <param name="inp">Вход</param>
+            <param name="w">Длинна окна</param>
+            <param name="step">шаг</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.ScaleData(AI.MathMod.Vector[])">
+            <summary>
+            Масштабирование данных
+            </summary>
+            <param name="data">Данные</param>
         </member>
         <member name="M:AI.MathMod.Vector.Mean(AI.MathMod.Vector[])">
             <summary>
@@ -4823,7 +4969,7 @@
         </member>
         <member name="M:AI.MathMod.Vector.VectorFromWav(System.String,System.Int32@)">
             <summary>
-            Загрузка звукового файла как вектор
+            Загрузка звукового файла как вектора
             </summary>
             <param name="pathToWavFile">Путь до файла</param>
             <param name="fd">Возвращаемый параметр, частота дискретизации</param>

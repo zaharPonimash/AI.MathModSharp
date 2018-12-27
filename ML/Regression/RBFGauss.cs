@@ -19,7 +19,7 @@ namespace AI.MathMod.ML.Regression
 	public class RBFGauss
 	{
 		Matrix A;
-		Vector param;
+		public Vector param;
 		
 		int len, len05, n;
 		Vector newX, newY;

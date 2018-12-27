@@ -56,7 +56,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
@@ -121,6 +123,7 @@
     <Compile Include="ML\Classifire\CorrelationClassifier.cs" />
     <Compile Include="ML\Classifire\IClassifire.cs" />
     <Compile Include="ML\Classifire\kNN.cs" />
+    <Compile Include="ML\Classifire\LogisticRegression.cs" />
     <Compile Include="ML\Classifire\SimpleFLClassifier.cs" />
     <Compile Include="ML\Classifire\StatisticClassifier.cs" />
     <Compile Include="ML\Classifire\SVM.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="ML\NeuronNetwork\Sigmoid.cs" />
     <Compile Include="ML\NeuronNetwork\Softmax.cs" />
     <Compile Include="ML\PCA.cs" />
+    <Compile Include="ML\Regression\CosR.cs" />
     <Compile Include="ML\Regression\ExpMean.cs" />
     <Compile Include="ML\Regression\LinearRegression.cs" />
     <Compile Include="ML\Regression\MultipleRegression.cs" />

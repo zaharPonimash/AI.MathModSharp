@@ -37,7 +37,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 			{
 				for (int i = 0; i < _layers.Count; i++)
 				{
-					(_layers[0] as FullConLayerBase).norm = value;
+					(_layers[i] as FullConLayerBase).norm = value;
 				}
 			}
 		}
@@ -55,7 +55,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 			{
 				for (int i = 0; i < _layers.Count; i++)
 				{
-					(_layers[0] as FullConLayerBase).moment = value;
+					(_layers[i] as FullConLayerBase).moment = value;
 				}
 			}
 		}

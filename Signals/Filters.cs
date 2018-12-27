@@ -235,9 +235,42 @@ namespace AI.MathMod.Signals
 					}
 					
 					return kw;
+		
 		}
 	
 	
+		
+		
+		public static Vector ExpAv(Vector inp, double oldPart = 0.99)
+		{
+			Vector outp = new Vector(inp.N);
+			outp[0] = inp[0];
+			double newPart = 1 - oldPart;
+			
+			for (int i = 1; i < inp.N; i++) 
+			{
+				outp[i] = oldPart*outp[i-1] + newPart*inp[i];
+			}
+			
+			return outp;
+		}
+		
+		public static Vector GetEnvelope(Vector inp, int dec = 1)
+		{
+			Vector inp2 = MathFunc.abs(inp);
+			inp2 = Filters.ExpAv(inp2, 0.9999);
+			
+			Vector outp = new Vector(inp.N/dec);
+			
+			for(int i = 0, k = 0, max = outp.N-dec+1; i<max; i+=dec)
+			{
+				outp[k++] = inp2[i];
+			}
+			
+			
+			return outp;
+		}
+		
 	
 	}
 	

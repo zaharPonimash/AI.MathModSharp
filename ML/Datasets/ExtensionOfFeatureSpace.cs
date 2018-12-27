@@ -63,6 +63,23 @@ namespace AI.MathMod.ML.Datasets
 		}
 		
 		
+		public static Vector Sin(double x, int n = 2)
+		{
+			Vector outp = new Vector(n);
+			
+				for (int i = 0; i <= n; i++)
+					outp[i] = Math.Sin(x*i);
+			
+			return outp;
+		}
+		
+		
+		public static Vector SinCos(double x, int n = 2)
+		{
+			return Vector.Concatinate(new Vector[]{Sin(x, n), Cos(x,n), new Vector(new double[]{x})});
+		}
+		
+		
 		public static Vector Cos(Vector inp, int n = 2)
 		{
 			Vector[] vectors = new Vector[n+1];

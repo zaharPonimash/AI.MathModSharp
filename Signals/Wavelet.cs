@@ -51,7 +51,7 @@ namespace AI.MathMod.Signals
 			Vector res = Statistic.MaxEns(output);
 			double mean = 1;//Statistic.MaximalValue(res);
 			
-			return NeuroFunc.Porog(NeuroFunc.Sigmoid(8*(res-0.2))^2,0.7);
+			return res;//NeuroFunc.Porog(NeuroFunc.Sigmoid(8*(res-0.2))^2,0.7);
 		}
 		
 		

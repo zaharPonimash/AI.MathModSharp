@@ -197,8 +197,22 @@ namespace AI.MathMod.ML.Classifire
 		
 		
 		
-		
-		
+		/// <summary>
+		/// Распознавание набора векторов
+		/// </summary>
+		/// <param name="vects">Вектора</param>
+		/// <returns>Вектор меток</returns>
+		public Vector Recognition(Vector[] vects)
+		{
+			Vector rec = new Vector(vects.Length);
+			
+			for (int i = 0; i < vects.Length; i++) 
+			{
+				rec[i] = Convert.ToDouble(RecognizeVector(vects[i]));
+			}
+			
+			return rec;
+		}
 		
 		
 		

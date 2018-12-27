@@ -109,7 +109,7 @@ namespace AI.MathMod.Graphiks
 		
 		
 		
-		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV, string name, string xN, string yN)
+		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV, string name, string xN, string yN, Color col)
         {
             try
             {
@@ -122,7 +122,7 @@ namespace AI.MathMod.Graphiks
                 graph.GraphPane.Title.Text = name;
                 graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
                 graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
-                graph.GraphPane.AddBar("Гистограмма", x, y, Color.Green);
+                graph.GraphPane.AddBar("Гистограмма", x, y, col);
                 graph.AxisChange();
                 graph.Invalidate();
             }

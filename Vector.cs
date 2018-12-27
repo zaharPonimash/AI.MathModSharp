@@ -7,6 +7,7 @@
  * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using AI.MathMod.AdditionalFunctions;
@@ -707,28 +708,6 @@ namespace AI.MathMod
 		}
 
 		/// <summary>
-		/// Переводит массив векторов в вектор.
-		/// Пример: {[0 1 3 1], [9 1 2], [8 3]} -> [0 1 3 1 9 1 2 8 3]
-		/// </summary>
-		/// <param name="vectors">Массив векторов</param>
-		/// <returns>Вектор</returns>
-		public static Vector VectorsArrayToVector(Vector[] vectors)
-		{
-			int len = 0;
-
-			for (int i = 0; i < vectors.Length; i++)
-				len += vectors[i].N;
-
-			Vector outp = new Vector(len);
-      
-			for (int i = 0; i < vectors.Length; i++)
-				for (int j = 0; j < vectors[i].N; j++)
-					outp[i] = vectors[i][j];
-
-			return outp; 
-		}
-
-		/// <summary>
 		/// Сохраняет вектор как текстовый файл
 		/// </summary>
 		/// <param name="path">Путь до файла</param>
@@ -764,7 +743,11 @@ namespace AI.MathMod
 		/// <returns>Вектор</returns>
 		public Vector GetInterval(int a, int b)
 		{
-			return Revers().CutAndZero(_n - a).Revers().CutAndZero(b - a); 
+			double[] interval = new double[b-a];
+			
+			Array.Copy(_vector, a, interval, 0, b-a);
+			
+			return new Vector(interval);
 		}
 		
 		
@@ -1130,9 +1113,101 @@ namespace AI.MathMod
 			sn.PlayVector(this, fd);
 		}
 		
+		
+		/// <summary>
+		/// Преобразование вектора
+		/// </summary>
+		/// <param name="transformFunc">Функция преобразования</param>
+		public Vector TransformVector(Func<double, double> transformFunc)
+		{
+			Vector output = new Vector(_n);
+			
+			for (int i = 0; i < _n; i++) 
+			{
+				output[i] = transformFunc(_vector[i]);
+			}		
+			
+			return output;
+		}
+		
 		#endregion
 		
+		#region Статистика
 		
+		/// <summary>
+		/// Максимальное значение
+		/// </summary>
+		public double Max()
+		{
+			return _vector.Max();
+		}
+		
+		/// <summary>
+		/// Минимальное значение
+		/// </summary>
+		public double Min()
+		{
+			return _vector.Min();
+		}
+		
+		/// <summary>
+		/// Мат. ожидание
+		/// </summary>
+		public double Extend()
+		{
+			return Statistic.ExpectedValue(this);
+		}
+		
+		/// <summary>
+		/// Сумма
+		/// </summary>
+		public double Sum()
+		{
+			return _vector.Sum();
+		}
+		
+		/// <summary>
+		/// Дисперсия
+		/// </summary>
+		public double Dispers()
+		{
+			return Statistic.Dispers(this);
+		}
+		
+		
+		/// <summary>
+		/// СКО
+		/// </summary>
+		public double Std()
+		{
+			return Statistic.Sco(this);
+		}
+		
+		/// <summary>
+		/// Норма вектора
+		/// </summary>
+		public double Norm()
+		{
+			return GeomFunc.NormVect(this);
+		}
+		
+		/// <summary>
+		/// Нормализация ско = 1, мат. ожидание 0
+		/// </summary>
+		public Vector Normalise()
+		{
+			return (Copy()-Extend())/Std();
+		}
+		
+		/// <summary>
+		/// Нормализация по ансамблю ско = 1, мат. ожидание 0
+		/// </summary>
+		public Vector Normalise(Vector mean, Vector std)
+		{
+			return (Copy()-mean)/std;
+		}
+		
+		#endregion
 		
 		#region Статические методы
 		
@@ -1159,6 +1234,92 @@ namespace AI.MathMod
 			return resultVector;
 		}
 		
+		/// <summary>
+		/// Последовательность начиная с нуля
+		/// </summary>
+		/// <param name="step">Шаг</param>
+		/// <param name="end">Конечное значение</param>
+		public static Vector Seq0(double step, double end)
+		{
+			return MathFunc.GenerateTheSequence(0, step, end);
+		}
+		
+		/// <summary>
+		/// Массив отсчетов времени
+		/// </summary>
+		/// <param name="fd">Частота дискретизации</param>
+		/// <param name="t">Время (сек)</param>
+		public static Vector Time0(double fd, double t)
+		{
+			double step = 1.0/fd;
+			double end = t*fd;
+			return Seq0(step, end);
+		}
+		
+		
+		/// <summary>
+		/// Разбивка на окна
+		/// </summary>
+		/// <param name="inp">Вход</param>
+		/// <param name="w">Длинна окна</param>
+		/// <param name="step">шаг</param>
+		public static Vector[] GetWindows(Vector inp, int w, int step = 2)
+		{
+			
+			var list = new List<Vector>();
+			
+			for (int i = 0; i < inp._n-w; i+=step) 
+			{
+				list.Add(inp.GetInterval(i, i+w));
+			}
+			
+			return list.ToArray();
+		}
+		
+		
+		/// <summary>
+		/// Разбивка на окна
+		/// </summary>
+		/// <param name="transformer">Функция для трансформации векторов</param>
+		/// <param name="inp">Вход</param>
+		/// <param name="w">Длинна окна</param>
+		/// <param name="step">шаг</param>
+		public static Vector[] GetWindowsWithFunc(Func<Vector , Vector> transformer, Vector inp, int w, int step = 2)
+		{
+			var list = new List<Vector>();
+			var vect = new Vector();
+			
+			for (int i = 0; i < inp._n-w; i+=step) 
+			{
+				vect = inp.GetInterval(i, i+w);
+				vect = transformer(vect);
+				list.Add(vect);
+			}
+			
+			return list.ToArray();
+		}
+		
+	
+		/// <summary>
+		/// Масштабирование данных
+		/// </summary>
+		/// <param name="data">Данные</param>
+		public static Vector[] ScaleData(Vector[] data)
+		{
+			Vector mean = Statistic.MeanVector(data);
+			Vector std = Statistic.EnsembleDispersion(data);
+			std = MathFunc.sqrt(std);
+			Vector[] vects = new Vector[data.Length];
+			
+			
+			for (int i = 0; i < data.Length; i++) 
+			{
+				vects[i] = data[i]-mean;
+				vects[i] /= std;
+			}
+			
+			return vects;
+		}
 		
 		/// <summary>
 		/// Усреднение по ансамблю
@@ -1177,8 +1338,10 @@ namespace AI.MathMod
 			return result/vectors.Length;
 		}
 		
+		
+		
 		/// <summary>
-		/// Загрузка звукового файла как вектор
+		/// Загрузка звукового файла как вектора
 		/// </summary>
 		/// <param name="pathToWavFile">Путь до файла</param>
 		/// <param name="fd">Возвращаемый параметр, частота дискретизации</param>
@@ -1193,12 +1356,12 @@ namespace AI.MathMod
 		
 		
 		
-		/// <summary>
-		/// Загрузка вектора из массива double
-		/// </summary>
-		/// <param name="path">Путь</param>
-		public static Vector LoadAsBinary(string path)
-		{
+	/// <summary>
+	/// Загрузка вектора из массива double
+	/// </summary>
+	/// <param name="path">Путь</param>
+	public static Vector LoadAsBinary(string path)
+	{
             Vector vect = new Vector();
             int len;
 
@@ -1241,6 +1404,11 @@ namespace AI.MathMod
 		
 		
 		#endregion
+		
+		
+		
+		
+		
 	}
 	
 }

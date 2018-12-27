@@ -692,6 +692,65 @@ namespace AI.MathMod
 			return ens[ind].Copy();
 		}
 		
+		/// <summary>
+		/// Средняя частота (не нормированная, зависит от кол-ва точек)
+		/// </summary>
+		/// <param name="signal">Сигнал</param>
+		/// <returns></returns>
+		public static double SimpleMeanFreq(Vector signal, double oldPart = 0.001)
+		{
+
+			Vector signal2 = Signals.Filters.ExpAv(signal, oldPart);
+			signal2-=Statistic.ExpectedValue(signal2);
+			Vector signalQR = signal2^2;
+			Vector signalDQR = Functions.Diff(signal2)^2;
+			
+			double mq1 = 0, mq2 = 0;
+			
+			for(int i = 0; i < signalQR.N; i++)
+			{
+				mq1 += signalQR[i];
+				mq2 += signalDQR[i];
+			}
+			
+			return Math.Sqrt(mq2/mq1);
+			
+		}
+		
+		/// <summary>
+		/// Средняя частота сигнала
+		/// </summary>
+		/// <param name="signal">Сигнал</param>
+		/// <param name="fd">Частота дискретизации</param>
+		/// <returns>Средняя частота [Гц]</returns>
+		public static double MeanFreq(Vector signal, double fd, double oldPart = 0.001)
+		{
+
+			double k = fd/(2*Math.PI);
+			double W = SimpleMeanFreq(signal, oldPart);
+			
+			return Math.Round(k*W,3);
+			
+		}
+		
+		/// <summary>
+		/// Изменение частоты
+		/// </summary>
+		/// <param name="signal">Сигнал</param>
+		/// <param name="fd">Частота дискретизации</param>
+		/// <returns>Дивиация средней частоты</returns>
+		public static double DivFreq(Vector signal)
+		{
+			Vector dif = Functions.Diff(signal);
+			
+			return SimpleMeanFreq(dif)/SimpleMeanFreq(signal);
+		}
+		
+		
+		
+		
+		
+		
 	}
 	
 	

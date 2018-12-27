@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Graphiks;
 using AI.MathMod.ML.NeuronNetwork;
 
@@ -42,7 +43,7 @@ namespace AI.MathMod.ML.Datasets
 	public class VectorIntDataset : List<VectorClass>
 	{
 		Random rnd = new Random();
-		
+		public Vector mean, disp;
 	
 		/// <summary>
 		/// Загрузка датасета из файла
@@ -108,7 +109,8 @@ namespace AI.MathMod.ML.Datasets
 			net.Add(new LinearLayer(this[0].InpVector.N, 2));
 			net.Add(new Softmax(n));
 			
-			net.LerningRate = 0.0001;
+			net.LerningRate = 0.01;
+			net.Moment = 0;
 			
 			
 			MenegerNNW mnnw = new MenegerNNW(net, this);
@@ -190,5 +192,90 @@ namespace AI.MathMod.ML.Datasets
 			return Matrix.CorrelationMatrixNorm(vects2);
 		}
 		
+		
+		/// <summary>
+		/// Получение вектора дисперсии и среднего вектора
+		/// </summary>
+	    public void DispMeanResult()
+		{
+			Vector[] vects = new Vector[Count];
+			
+			for (int i = 0; i < vects.Length; i++)
+			{
+				vects[i] = this[i].InpVector;
+			}
+			
+			mean = Statistic.MeanVector(vects);
+			disp = Statistic.EnsembleDispersion(vects);
+		}
+	    
+	    
+	    /// <summary>
+	    /// Нормализация датасета
+	    /// </summary>
+	    /// <returns>Датасет</returns>
+	    public VectorIntDataset Normalise()
+	    {
+	    	
+	    	DispMeanResult();
+	    	
+	    	VectorIntDataset vid = new VectorIntDataset();
+	    	Vector sco = MathFunc.sqrt(disp);
+	    	
+	    	for (int i = 0; i < Count; i++) 
+	    	{
+	    		vid.Add(new VectorClass
+	    		        (
+	    		        	(this[i].InpVector-mean)/sco,
+	    		        	this[i].ClassMark
+	    		        )
+	    		       );
+	    	}
+	    	
+	    	return vid;
+	    }
+	    
+	    
+	    public VectorIntDataset GetDatasetDelSim(double simCoef = 0.9)
+	    {
+	    	VectorIntDataset vid = new VectorIntDataset();
+	    	List<int> simIndex = new List<int>();
+	    	VectorClass[] vc;
+	    	
+	    	for (int i = 0; i < Count-1; i++) 
+	    	{
+	    		for (int j = i+1; j < Count; j++) 
+	    		{
+	    			if(this[i].ClassMark != this[j].ClassMark)
+	    				if(Statistic.CorrelationCoefficient(this[i].InpVector, this[j].InpVector)>simCoef)
+	    					if(IsNotSerch(simIndex, j)) simIndex.Add(j);
+	    		}
+	    		
+	    	}
+	    	
+	    	
+	    	vc = new VectorClass[Count-simIndex.Count];
+	    	
+	    	for (int i = 0, k = 0; i < Count; i++)
+	    	{
+	    		if(IsNotSerch(simIndex, i)) 
+	    			vc[k++] = this[i];
+	    	}
+	    	
+	    	vid.AddRange(vc);
+	    	
+	    	return vid;
+	    }
+	    
+	    
+	    public static bool IsNotSerch(List<int> simIndex, int i)
+	    {
+	   		 	for (int j = 0; j < simIndex.Count; j++)
+	    		{
+	    			if(i == simIndex[j]) return false;
+	    		}
+	   		 	
+	   		 	return true;
+	    }
 	}
 }

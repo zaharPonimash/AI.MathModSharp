@@ -31,6 +31,7 @@ namespace AI.MathMod.Approximation
 			Y = y.Copy();
 			sig = (max-min)/x.N;
 			Param();
+			param.SaveAsText("params.txt");
 		}
 		
 		
