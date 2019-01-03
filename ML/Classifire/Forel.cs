@@ -16,11 +16,7 @@ using System.Collections.Generic;
 namespace AI.MathMod.ML
 {
 	
-	
-	
-	/// <summary>
-	/// Пространство имен кластеризатора
-	/// </summary>
+
 	namespace Clasterisators
 	{
 		
@@ -31,21 +27,23 @@ namespace AI.MathMod.ML
 		{
 			
 			Vector _centr;
-			Vector[] _viborka;
+			Vector[] _dataset;
 			
 		
 			
 			
 			
-			
-			public Vector[] Viborka
+			/// <summary>
+			/// Выборка
+			/// </summary>
+			public Vector[] Dataset
 			{
-				get{return _viborka;}
-				set{_viborka = value;}
+				get{return _dataset;}
+				set{_dataset = value;}
 			} 
 			
 			/// <summary>
-			/// центр кластера
+			/// Центр кластера
 			/// </summary>
 			public Vector Centr
 			{
@@ -60,21 +58,22 @@ namespace AI.MathMod.ML
 		
 		
 		/// <summary>
-		/// Кластеризатор -- Форель
+		/// Кластеризатор Форель
 		/// </summary>
 		public class Forel
 		{
 			
-			Vector[] _viborca, _vibNeClaster, _nowVib; // Выборка
+			Vector[] _dataset, _datasetNotClasteris, _nowDataset; // Выборка
 			List<Claster> _clasters = new List<Claster>(); // Кластеры в выборке
 			Claster _claster = new Claster(); 
 			double R0 = 0,Rn = 0;
 			Vector _mainCentr;
-			bool flag = true;
 			Random rng = new Random();
 			
 			
-			
+			/// <summary>
+			/// Массив кластеров
+			/// </summary>
 			public Claster[] Clasters
 			{
 				get{return _clasters.ToArray();}
@@ -89,42 +88,41 @@ namespace AI.MathMod.ML
 			/// <summary>
 			/// Конструктор класса
 			/// </summary>
-			/// <param name="viborca"></param>
-			public Forel(Vector[] viborca)
+			public Forel(Vector[] dataset)
 			{
 				Vector _old = new Vector(), _new= new Vector(); // Центры гиперсфер
 					
-				_vibNeClaster = _viborca = viborca; // Загрузка выборки
-				_old =  _mainCentr = GetCentr(_viborca); // Получение центра
-				Rn = R0 = Max(_viborca, _mainCentr);// Начальный радиус гиперсферы
+				_datasetNotClasteris = _dataset = dataset; // Загрузка выборки
+				_old =  _mainCentr = GetCentr(_dataset); // Получение центра
+				Rn = R0 = Max(_dataset, _mainCentr);// Начальный радиус гиперсферы
 				
 				
 				
 				
 				// Кластеризация
-				while(_vibNeClaster.Length != 0)
+				while(_datasetNotClasteris.Length != 0)
 				{
 					Rn = 0.9*R0; // Уменьшение радиуса гиперсферы
-					_nowVib = GetGipersfer(Rn,_vibNeClaster[rng.Next(_vibNeClaster.Length)],_vibNeClaster); // обводка гиперсферой
-					_new = GetCentr(_nowVib);// новый центр
+					_nowDataset = GetGipersfer(Rn,_datasetNotClasteris[rng.Next(_datasetNotClasteris.Length)],_datasetNotClasteris); // обводка гиперсферой
+					_new = GetCentr(_nowDataset);// новый центр
 					
 					//Центр кластера
 					while(_old != _new)
 					{
 						Rn *= 0.9; //Уменьшение радиуса гиперсферы
 						_old = _new; // сохранение старого радиуса
-						_nowVib = GetGipersfer(Rn,_old,_vibNeClaster);	// обводка гиперсферой	
+						_nowDataset = GetGipersfer(Rn,_old,_datasetNotClasteris);	// обводка гиперсферой	
 						try{
-						_new = GetCentr(_nowVib);// новый центр
+						_new = GetCentr(_nowDataset);// новый центр
 						}
 						catch{break;}
 					}
 					
 					_claster = new Claster();// Новый кластер
 					_claster.Centr = _new;// Добавление центра
-					_claster.Viborka = _nowVib;// выборка
+					_claster.Dataset = _nowDataset;// выборка
 					_clasters.Add(_claster);// Добавление кластера в коллекцию
-					_vibNeClaster = AWithOutB(_vibNeClaster, _nowVib); // Удаление кластеризированных данных
+					_datasetNotClasteris = AWithOutB(_datasetNotClasteris, _nowDataset); // Удаление кластеризированных данных
 					
 				}
 				
@@ -138,39 +136,40 @@ namespace AI.MathMod.ML
 			/// <summary>
 			/// Конструктор класса
 			/// </summary>
-			/// <param name="viborca"></param>
-			public Forel(Vector[] viborca, int minR)
+			/// <param name="dataset">Выборка</param>
+			/// <param name="minR">Минимальный радиус</param>
+			public Forel(Vector[] dataset, int minR)
 			{
 				Vector _old = new Vector(), _new= new Vector(); // Центры гиперсфер
 					
-				_vibNeClaster = _viborca = viborca; // Загрузка выборки
-				_old =  _mainCentr = GetCentr(_viborca); // Получение центра
-				Rn = R0 = Max(_viborca, _mainCentr);// Начальный радиус гиперсферы
+				_datasetNotClasteris = _dataset = dataset ; // Загрузка выборки
+				_old =  _mainCentr = GetCentr(_dataset); // Получение центра
+				Rn = R0 = Max(_dataset, _mainCentr);// Начальный радиус гиперсферы
 				
 				
 				
 				
 				// Кластеризация
-				while(_vibNeClaster.Length != 0)
+				while(_datasetNotClasteris.Length != 0)
 				{
 					Rn = 0.9*R0; // Уменьшение радиуса гиперсферы
-					_nowVib = GetGipersfer(Rn,_vibNeClaster[0],_vibNeClaster); // обводка гиперсферой
-					_new = GetCentr(_nowVib);// новый центр
+					_nowDataset = GetGipersfer(Rn,_datasetNotClasteris[0],_datasetNotClasteris); // обводка гиперсферой
+					_new = GetCentr(_nowDataset);// новый центр
 					
 					//Центр кластера
 					while((_old != _new)&&(Rn>=minR))
 					{
 						Rn *= 0.9; //Уменьшение радиуса гиперсферы
 						_old = _new; // сохранение старого радиуса
-						_nowVib = GetGipersfer(Rn,_old,_vibNeClaster);	// обводка гиперсферой					
-						_new = GetCentr(_nowVib);// новый центр
+						_nowDataset = GetGipersfer(Rn,_old,_datasetNotClasteris);	// обводка гиперсферой					
+						_new = GetCentr(_nowDataset);// новый центр
 					}
 					
 					_claster = new Claster();// Новый кластер
 					_claster.Centr = _new;// Добавление центра
-					_claster.Viborka = _nowVib;// выборка
+					_claster.Dataset = _nowDataset;// выборка
 					_clasters.Add(_claster);// Добавление кластера в коллекцию
-					_vibNeClaster = AWithOutB(_vibNeClaster, _nowVib); // Удаление кластеризированных данных
+					_datasetNotClasteris = AWithOutB(_datasetNotClasteris, _nowDataset); // Удаление кластеризированных данных
 					
 				}
 				
@@ -290,12 +289,23 @@ namespace AI.MathMod.ML
 	/// </summary>
 	public static class Distance
 	{
-		
+		/// <summary>
+		/// Матхэтенское расстояние (L1)
+		/// </summary>
+		/// <param name="a"></param>
+		/// <param name="b"></param>
+		/// <returns></returns>
 		static public double ManhattanDistance(Vector a, Vector b)
 		{			
 			return Functions.Summ(MathFunc.abs(a-b));
 		}
-
+	
+	/// <summary>
+	/// Корреляционная метрика
+	/// </summary>
+	/// <param name="a"></param>
+	/// <param name="b"></param>
+	/// <returns></returns>
         static public double CorrDist(Vector a, Vector b)
         {
             double coef = Statistic.CorrelationCoefficient(a,b);

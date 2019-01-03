@@ -17,6 +17,12 @@ namespace AI.MathMod.ML.Datasets
 	/// </summary>
 	public static class ExtensionOfFeatureSpace
 	{
+		/// <summary>
+		/// Раширение пространства признаков полиномиальной ф-ей
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="n">степень полинома</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector Polinomial(double x, int n = 2)
 		{
 			Vector outp = new Vector(n+1);
@@ -35,7 +41,12 @@ namespace AI.MathMod.ML.Datasets
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Раширение пространства признаков полиномиальной ф-ей
+		/// </summary>
+		/// <param name="inp">Вход</param>
+		/// <param name="n">степень полинома</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector Polinomial(Vector inp, int n = 2)
 		{
 			Vector[] vectors = new Vector[n+1];
@@ -51,7 +62,12 @@ namespace AI.MathMod.ML.Datasets
 			return Vector.Concatinate(vectors);
 		}
 		
-		
+		/// <summary>
+		/// Раширение пространства признаков косинусами
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="n">Число гармоник</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector Cos(double x, int n = 2)
 		{
 			Vector outp = new Vector(n+1);
@@ -62,7 +78,12 @@ namespace AI.MathMod.ML.Datasets
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Раширение пространства признаков синусами 
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="n">Число гармоник</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector Sin(double x, int n = 2)
 		{
 			Vector outp = new Vector(n);
@@ -73,13 +94,23 @@ namespace AI.MathMod.ML.Datasets
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Раширение пространства признаков синусами и косинусами
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="n">Число гармоник</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector SinCos(double x, int n = 2)
 		{
 			return Vector.Concatinate(new Vector[]{Sin(x, n), Cos(x,n), new Vector(new double[]{x})});
 		}
 		
-		
+		/// <summary>
+		/// Раширение пространства признаков косинусами
+		/// </summary>
+		/// <param name="inp">Вход</param>
+		/// <param name="n">Число гармоник</param>
+		/// <returns>Новый вектор</returns>
 		public static Vector Cos(Vector inp, int n = 2)
 		{
 			Vector[] vectors = new Vector[n+1];
@@ -97,18 +128,13 @@ namespace AI.MathMod.ML.Datasets
 		
 		
 		
-		public static Vector BigDim(double x, int nPolinom = 3, int nCos = 3)
-		{
-			Vector vect = Cos(x, nCos);
-			return Polinomial(vect, nPolinom);
-		}
 		
-		public static Vector BigDim(Vector x, int nPolinom = 3, int nCos = 3)
-		{
-			Vector vect = Cos(x, nCos);
-			return Polinomial(vect, nPolinom);
-		}
-		
+		/// <summary>
+		/// Расширение пространства с помощью полиномиальных ф-й и потом косинусов
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="nPolinom">Степень полинома</param>
+		/// <param name="nCos">Кол-во косинусов</param>
 		public static Vector PoliCos(Vector x, int nPolinom = 3, int nCos = 3)
 		{
 			Vector[] vects = new Vector[2];
@@ -118,6 +144,12 @@ namespace AI.MathMod.ML.Datasets
 			return Vector.Concatinate(vects);
 		}
 		
+		/// <summary>
+		/// Расширение пространства с помощью полиномиальных ф-й и потом косинусов
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="nPolinom">Степень полинома</param>
+		/// <param name="nCos">Кол-во косинусов</param>
 		public static Vector PoliCos(double x, int nPolinom = 3, int nCos = 3)
 		{
 			Vector[] vects = new Vector[2];
@@ -127,15 +159,21 @@ namespace AI.MathMod.ML.Datasets
 			return Vector.Concatinate(vects);
 		}
 		
-		
-		public static Vector GaussRBF(double x, Vector centers, double sigm = 1)
+		/// <summary>
+		/// Радиально-базисная ф-я Гаусса
+		/// </summary>
+		/// <param name="x">Вход</param>
+		/// <param name="centers">Массив центров</param>
+		/// <param name="std">СКО</param>
+		/// <returns>Вектор значений от 0 до 1</returns>
+		public static Vector GaussRBF(double x, Vector centers, double std = 1)
 		{
 			Vector outp = new Vector(centers.N);
 			double r = 0;
 			
 			for (int i = 0; i < centers.N; i++)
 			{
-				r = Math.Pow((centers[i]-x), 2)/(2*sigm*sigm);
+				r = Math.Pow((centers[i]-x), 2)/(2*std*std);
 				outp[i] = Math.Exp(-r);
 			}
 			
@@ -144,7 +182,12 @@ namespace AI.MathMod.ML.Datasets
 		
 		
 		
-		
+		/// <summary>
+		/// Синус Котельникова sin(x)/x
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="centers"></param>
+		/// <returns></returns>
 		public static Vector Sinc(double x, Vector centers)
 		{
 			Vector outp = new Vector(centers.N);
@@ -170,7 +213,7 @@ namespace AI.MathMod.ML.Datasets
 		{
 			Vector dispers = Statistic.EnsembleDispersion(dataset);
 			double m = Statistic.ExpectedValue(dispers);
-			double std = Statistic.Sco(dispers);
+			double std = Statistic.Std(dispers);
 			Vector Y = DistributionFunc.GaussNorm1(dispers, m, std);
 			Vector X = MathFunc.GenerateTheSequence(0, 1, Y.N);
 			var regr = new RBFGauss(X, Y, 25);

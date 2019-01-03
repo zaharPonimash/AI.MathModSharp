@@ -19,12 +19,21 @@ namespace AI.MathMod.ML.Regression
 	public class RBFGauss
 	{
 		Matrix A;
+		/// <summary>
+		/// Параметры
+		/// </summary>
 		public Vector param;
 		
 		int len, len05, n;
 		Vector newX, newY;
 		double sigma, max, min;
 		
+		/// <summary>
+		/// Регрессия
+		/// </summary>
+		/// <param name="X">Вектор входа</param>
+		/// <param name="Y">Вектор выхода</param>
+		/// <param name="nRBF">Кол-во ядер</param>
 		public RBFGauss(Vector X, Vector Y, int nRBF)
 		{
 			
@@ -71,7 +80,10 @@ namespace AI.MathMod.ML.Regression
 			param = kram.GetAnswer(A, newY);
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="inp">Значение незав. переменной</param>
 		public double Predict(double inp)
 		{
 			Vector X = ExtensionOfFeatureSpace.GaussRBF(inp, newX, sigma);
@@ -79,7 +91,10 @@ namespace AI.MathMod.ML.Regression
 		}
 		
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="vect">Значения незав. переменных</param>
 		public Vector Predict(Vector vect)
 		{
 			Vector outp = new Vector(vect.N);

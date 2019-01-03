@@ -17,7 +17,9 @@ namespace AI.MathMod.ComputerVision
 	/// </summary>
 	public class CalculateBinaryEl
 	{
-		
+		/// <summary>
+		/// Изображение
+		/// </summary>
 		public BinaryImg img;
 		bool[][,] masksE = new bool[4][,];
 		bool[][,] masksI = new bool[4][,];

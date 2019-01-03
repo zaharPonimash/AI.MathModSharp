@@ -82,11 +82,12 @@ namespace AI.MathMod.Graphiks
 		
 		
 		
-		    /// <summary>
+		   /// <summary>
 		/// Строит график в контроле graph, по отсчетам funcItemClass
 		/// </summary>
 		/// <param name="graph">Элемент интерфейса для вывода графика</param>
 		/// <param name="funcItemClass">Значения y</param>
+		 /// <param name="xV">Значение по Y</param>
 		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV)
         {
             try
@@ -108,7 +109,16 @@ namespace AI.MathMod.Graphiks
         }
 		
 		
-		
+		/// <summary>
+		/// Строит график из столбцов в контроле graph, по отсчетам funcItemClass
+		/// </summary>
+		/// <param name="graph">Элемент интерфейса для вывода графика</param>
+		/// <param name="funcItemClass">Значения y</param>
+		/// <param name="xV">Значения х</param>
+		/// <param name="name">Имя</param>
+		/// <param name="xN">Имя Х</param>
+		/// <param name="yN">Имя Y</param>
+		/// <param name="col">Цвет</param>
 		public static void Bar(ZedGraphControl graph, Vector funcItemClass, Vector xV, string name, string xN, string yN, Color col)
         {
             try
@@ -158,7 +168,18 @@ namespace AI.MathMod.Graphiks
 			catch{}
 		}
 		 
-        
+        /// <summary>
+        /// Скатерограмма и график
+        /// </summary>
+        /// <param name="graph"></param>
+        /// <param name="ySc"></param>
+        /// <param name="yPl"></param>
+        /// <param name="x"></param>
+        /// <param name="nameFunc"></param>
+        /// <param name="nameX"></param>
+        /// <param name="nameY"></param>
+        /// <param name="colorLine"></param>
+        /// <param name="colorC"></param>
         public static void ScatterPlot(ZedGraphControl graph, Vector ySc, Vector yPl, Vector x, string nameFunc, string nameX, string nameY, Color colorLine, Color colorC)
         {
         	try{
@@ -330,7 +351,7 @@ namespace AI.MathMod.Graphiks
         /// <summary>
         /// График от одной переменной
         /// </summary>
-        public static void Plot(Vector y, Vector x, Descrintion desc)
+        public static void Plot(Vector y, Vector x, Description desc)
 		{
 			VisualPlot vp = new VisualPlot(y,  x, desc);
 			vp.Show();
@@ -357,7 +378,14 @@ namespace AI.MathMod.Graphiks
 			vp.Show();
 		}
 		
-		
+		/// <summary>
+		/// Визуализация точек
+		/// </summary>
+		/// <param name="graph"></param>
+		/// <param name="xy"></param>
+		/// <param name="colors"></param>
+		/// <param name="nameX"></param>
+		/// <param name="nameY"></param>
 		public static void ScattersVis(ZedGraphControl graph, Vector[] xy, Color[] colors, string nameX, string nameY)
 		{
 			int n = xy.Length/2;

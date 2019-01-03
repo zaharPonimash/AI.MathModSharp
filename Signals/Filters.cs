@@ -79,7 +79,7 @@ namespace AI.MathMod.Signals
         public static Vector FilterLow(Vector st, double sr, Vector f)
 		{
         	double srNew = Statistic.MaximalValue(f)-sr;
-			Vector kw = NeuroFunc.Porog(f,srNew).Revers();
+			Vector kw = NeuroFunc.Threshold(f,srNew).Revers();
 			//kw.Visual();
 			return Filter(st, kw);
 		}
@@ -97,8 +97,8 @@ namespace AI.MathMod.Signals
         public static Vector FilterBand(Vector st, double sr1, double sr2, Vector f)
 		{
 			double srNew = Statistic.MaximalValue(f)-sr2;
-			Vector kw = NeuroFunc.Porog(f,srNew).Revers();
-			Vector kw2 = NeuroFunc.Porog(f,sr1);
+			Vector kw = NeuroFunc.Threshold(f,srNew).Revers();
+			Vector kw2 = NeuroFunc.Threshold(f,sr1);
 			kw *= kw2;
 			return Filter(st, kw);
 		}
@@ -112,7 +112,7 @@ namespace AI.MathMod.Signals
         /// <returns>Фильтрованный сигнал</returns>
         public static Vector FilterHigh(Vector st, double sr, Vector f)
 		{
-			Vector kw = NeuroFunc.Porog(f,sr);
+			Vector kw = NeuroFunc.Threshold(f,sr);
 			return Filter(st, kw);
 		}
 		
@@ -166,13 +166,13 @@ namespace AI.MathMod.Signals
 				
 				if (afh == AFHType.High)
 				{
-					 kw = NeuroFunc.Porog(f,param[0]);
+					 kw = NeuroFunc.Threshold(f,param[0]);
 				}
 				
 				if (afh == AFHType.Low)
 				{
 				double srNew = f.Vecktor[f.N-1]-param[0];
-				kw = NeuroFunc.Porog(f,srNew).Revers();
+				kw = NeuroFunc.Threshold(f,srNew).Revers();
 				}
 				
 				
@@ -240,7 +240,12 @@ namespace AI.MathMod.Signals
 	
 	
 		
-		
+		/// <summary>
+		/// Эспоненциональное скользящее среднее
+		/// </summary>
+		/// <param name="inp">Вход</param>
+		/// <param name="oldPart">Коэффициент сглаживания</param>
+		/// <returns></returns>
 		public static Vector ExpAv(Vector inp, double oldPart = 0.99)
 		{
 			Vector outp = new Vector(inp.N);
@@ -255,6 +260,11 @@ namespace AI.MathMod.Signals
 			return outp;
 		}
 		
+		/// <summary>
+		/// Получение огибающей
+		/// </summary>
+		/// <param name="inp"></param>
+		/// <param name="dec">Прореживание</param>
 		public static Vector GetEnvelope(Vector inp, int dec = 1)
 		{
 			Vector inp2 = MathFunc.abs(inp);

@@ -14,9 +14,9 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
         /// Добавить класс
         /// </summary>
-        /// <param name="tViborka">Элементы класса</param>
+        /// <param name="tDataset">Элементы класса</param>
         /// <param name="nameClass">Имя класса</param>
-        public void AddClass(Vector[] tViborka, string nameClass)
+        public void AddClass(Vector[] tDataset, string nameClass)
         {
             throw new NotImplementedException();
         }

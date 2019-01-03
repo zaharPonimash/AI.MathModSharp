@@ -59,7 +59,10 @@ namespace AI.MathMod.ML.Classifire
 	[Serializable]
 	public class StructClasses 
 	{
-		public List<StructClass> _classes = new List<StructClass>(); // набор классов
+		/// <summary>
+		/// Коллекция классов
+		/// </summary>
+		public List<StructClass> _classes = new List<StructClass>();
 		
         /// <summary>
         /// Список классов
@@ -83,7 +86,7 @@ namespace AI.MathMod.ML.Classifire
 	/// Классификатор
 	/// </summary>
 	[Serializable]
-	public class Classificator : IClassifire
+	public class Classifier : IClassifire
     {
 		[NonSerialized]
 		StructClass _class;// Текущий класс
@@ -91,6 +94,9 @@ namespace AI.MathMod.ML.Classifire
 		[NonSerialized]
 		Forel _forel;
 		
+		/// <summary>
+		/// Массив классов
+		/// </summary>
 		public StructClasses Classes
 		{
 				get{return _classes;}
@@ -98,8 +104,10 @@ namespace AI.MathMod.ML.Classifire
 		}
 		
 		
-		
-		public Classificator()
+		/// <summary>
+		/// Классификатор
+		/// </summary>
+		public Classifier()
 		{
 			_classes = new StructClasses();
 		}
@@ -111,7 +119,7 @@ namespace AI.MathMod.ML.Classifire
 		/// Классификатор
 		/// </summary>
 		/// <param name="path">Путь до файла</param>
-		public Classificator(string path)
+		public Classifier(string path)
 		{
 			_classes = new StructClasses();
 			Open(path);
@@ -123,7 +131,7 @@ namespace AI.MathMod.ML.Classifire
 		/// Классивикатор
 		/// </summary>
 		/// <param name="classifikator"> Коллекция классов</param>
-		public Classificator(StructClasses classifikator)
+		public Classifier(StructClasses classifikator)
 		{
 			_classes = classifikator;
 		}
@@ -209,9 +217,8 @@ namespace AI.MathMod.ML.Classifire
         {
             Bitmap fotoBmp = new Bitmap( 60, 60); 
 
-            int W = 60;
-            int H = 60;
-            int N = 3600;
+		const int W = 60;
+		const int H = 60;
          
             int color;
             
@@ -277,13 +284,13 @@ namespace AI.MathMod.ML.Classifire
 		/// <summary>
 		/// Обучение одного элеменнта класса
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
 		/// <returns></returns>
-		 Vector Teach1(Vector[] tViborka, string nameClass)
+		 Vector Teach1(Vector[] tDataset, string nameClass)
 		{
 		 	_class = new StructClass();
-		 	Vector a  = GetCentr(tViborka);
+		 	Vector a  = GetCentr(tDataset);
 		 	_class._centGiperSfer = a;
 		 	_class._strName = nameClass;
 		 	return a;
@@ -295,17 +302,17 @@ namespace AI.MathMod.ML.Classifire
 		 /// <summary>
 		/// Обучение одного элеменнта класса
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
 		/// <returns></returns>
-		public Vector AddClasses(Vector[] tViborka, string nameClass)
+		public Vector AddClasses(Vector[] tDataset, string nameClass)
 		{
 		 	_class = new StructClass();
-		 	Vector a  = GetCentr(tViborka);
+		 	Vector a  = GetCentr(tDataset);
 		 	
 		 	Claster[] clasters;
 		 	
-		 	_forel = new Forel(tViborka);
+		 	_forel = new Forel(tDataset);
 		 	clasters = _forel.Clasters;
 		 	
 		 	
@@ -324,12 +331,12 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
         /// Добавление класса в классификатор
         /// </summary>
-        /// <param name="tViborka">Выборка</param>
+        /// <param name="tDataset">Выборка</param>
         /// <param name="nameClass">Имя класса</param>
         /// <returns></returns>
-        public Vector AddClass1(Vector[] tViborka, string nameClass)
+        public Vector AddClass1(Vector[] tDataset, string nameClass)
         {
-            Vector a = Teach1(tViborka, nameClass);
+            Vector a = Teach1(tDataset, nameClass);
             _classes._classes.Add(_class);
             return a;
         }
@@ -339,12 +346,12 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
 		/// Добавление класса в классификатор
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
 		/// <returns></returns>
-		public void AddClass(Vector[] tViborka, string nameClass)
+		public void AddClass(Vector[] tDataset, string nameClass)
         {
-            Vector a = Teach1(tViborka, nameClass);
+            Vector a = Teach1(tDataset, nameClass);
             _classes._classes.Add(_class);
         }
 

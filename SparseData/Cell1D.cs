@@ -17,8 +17,14 @@ namespace AI.MathMod.SparseData
 	{
 		#region ICell implementation
 
+	/// <summary>
+	/// Значение
+	/// </summary>
 	public T Value {get; set;}
 
+	/// <summary>
+	/// Коорд.
+	/// </summary>
 	public int[] Coordinats {
 		get 
 		{
@@ -29,13 +35,19 @@ namespace AI.MathMod.SparseData
 			coordinate = value[0];
 		}
 	}
-	
+	/// <summary>
+	/// Коорд.
+	/// </summary>
 	public int coordinate;
 
 	#endregion
-
+		/// <summary>
+		/// одномерная клетка
+		/// </summary>
 		public Cell1D(){}
-	
+		/// <summary>
+		/// одномерная клетка
+		/// </summary>
 		public Cell1D(T val, int position)
 		{
 			Value = val;

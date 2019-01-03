@@ -571,6 +571,11 @@ namespace AI.MathMod
 			return ListToVector(lD);
 		}
 		
+		/// <summary>
+		/// Округление
+		/// </summary>
+		/// <param name="num"></param>
+		/// <returns></returns>
 		public Vector Round(int num)
 		{
 			Vector outp = new Vector(_n);
@@ -623,7 +628,10 @@ namespace AI.MathMod
 			return ListToVector(lD);
 		}
 		
-		
+		/// <summary>
+		/// Устранение разрыров фазы(метод не работает)
+		/// </summary>
+		/// <returns></returns>
 		public Vector PhaseUnwrap()
 		{
 			var outp = new Vector(_n);
@@ -811,7 +819,7 @@ namespace AI.MathMod
 		/// <summary>
 		/// Визуализация вектора
 		/// </summary>
-		public void Visual(Vector xVector, Descrintion desc)
+		public void Visual(Vector xVector, Description desc)
 		{
 			GraphicsView.Plot(this, xVector, desc);
 		}
@@ -1180,7 +1188,7 @@ namespace AI.MathMod
 		/// </summary>
 		public double Std()
 		{
-			return Statistic.Sco(this);
+			return Statistic.Std(this);
 		}
 		
 		/// <summary>
@@ -1252,7 +1260,7 @@ namespace AI.MathMod
 		public static Vector Time0(double fd, double t)
 		{
 			double step = 1.0/fd;
-			double end = t*fd;
+			double end = t;
 			return Seq0(step, end);
 		}
 		

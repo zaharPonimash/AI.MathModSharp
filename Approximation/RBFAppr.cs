@@ -14,15 +14,21 @@ using AI.MathMod.ML.Datasets;
 namespace AI.MathMod.Approximation
 {
 	/// <summary>
-	/// Description of RBFAppr.
+	/// Аппроксимация радиально-базисными ф-ями
 	/// </summary>
 	public class RBFAppr
 	{
-		
+		/// <summary>
+		/// Новый вектор иксов, больше точек
+		/// </summary>
 		public Vector newX;
 		double min, max, sig;
 		Vector Y, X, param;
 		
+		
+		/// <summary>
+		/// Аппроксимация радиально-базисными ф-ями
+		/// </summary>
 		public RBFAppr(Vector x, Vector y)
 		{
 			min = x[0];
@@ -33,7 +39,11 @@ namespace AI.MathMod.Approximation
 			Param();
 		}
 		
-		
+		/// <summary>
+		/// Расчет одного значения
+		/// </summary>
+		/// <param name="inp">Независимая переменная</param>
+		/// <returns>Прогноз</returns>
 		public double Predict(double inp)
 		{
 			Vector data = ExtensionOfFeatureSpace.GaussRBF(inp, X, sig);
@@ -41,7 +51,11 @@ namespace AI.MathMod.Approximation
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Перерасчет интервала значения
+		/// </summary>
+		/// <param name="step">Шаг</param>
+		/// <returns>Прогноз</returns>
 		public Vector Prediction(double step)
 		{
 			newX = MathFunc.GenerateTheSequence(min, step, max);

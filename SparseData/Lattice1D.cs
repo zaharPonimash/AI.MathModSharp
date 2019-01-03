@@ -16,11 +16,18 @@ namespace AI.MathMod.SparseData
 	/// </summary>
 	public class Lattice1D<T> : ILattice<T>, IMathStruct
 	{
-
+		/// <summary>
+		/// Ячейки
+		/// </summary>
 		public List<Cell1D<T>> Cells {get; set;}
-	
+		/// <summary>
+		/// Одномерная решетка
+		/// </summary>
 		public Lattice1D(){}
-
+		
+		/// <summary>
+		/// Одномерная решетка
+		/// </summary>
 		public Lattice1D(Cell1D<T>[] cells)
 		{
 			Cells = new List<Cell1D<T>>();
@@ -54,7 +61,9 @@ namespace AI.MathMod.SparseData
 		
 		
 		
-		
+		/// <summary>
+		/// Одномерная решетка в строку
+		/// </summary>
 		public override string ToString()
 		{
 			Cells.Sort( (a,b) => a.coordinate.CompareTo(b.coordinate)*(-1)); // Сортировка по позициям

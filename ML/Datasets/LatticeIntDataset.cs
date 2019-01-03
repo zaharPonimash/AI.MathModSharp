@@ -27,13 +27,22 @@ namespace AI.MathMod.ML.Datasets
 		/// </summary>
 		public Int32 ClassMark{get; set;}
 		
-		
+		/// <summary>
+		/// Пример решетка/метка
+		/// </summary>
+		/// <param name="vector">Вектор</param>
+		/// <param name="mark">Метка</param>
 		public LatticeClass(Vector vector, int mark)
 		{
 			InpLat = new Lattice1DDouble(vector);
 			ClassMark = mark;
 		}
 		
+		/// <summary>
+		/// Пример решетка/метка
+		/// </summary>
+		/// <param name="lat">Одномерная решетка</param>
+		/// <param name="mark">Метка</param>
 		public LatticeClass(Lattice1DDouble lat, int mark)
 		{
 			InpLat = lat;
@@ -114,7 +123,9 @@ namespace AI.MathMod.ML.Datasets
 			File.WriteAllLines(path, content);
  		}
 		
-		
+		/// <summary>
+		/// Массив решеток
+		/// </summary>
 		public Lattice1DDouble[] GetLat()
 		{
 			Lattice1DDouble[] outp = new Lattice1DDouble[Count];
@@ -125,6 +136,10 @@ namespace AI.MathMod.ML.Datasets
 			return outp;
 		}
 		
+		
+		/// <summary>
+		/// Массив меток
+		/// </summary>
 		public int[] GetInts()
 		{
 			int[] outp = new int[Count];

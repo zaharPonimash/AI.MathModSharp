@@ -18,6 +18,11 @@ namespace AI.MathMod.Graphiks
 	/// </summary>
 	public partial class VisualData : Form
 	{
+		
+		/// <summary>
+		/// Форма для визуализации данных
+		/// </summary>
+		/// <param name="vid">Выборка где вектору сопоставлена метка класса</param>
 		public VisualData(VectorIntDataset vid)
 		{
 			InitializeComponent();

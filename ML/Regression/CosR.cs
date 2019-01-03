@@ -19,16 +19,22 @@ namespace AI.MathMod.ML.Regression
 	{
 		
 		MultipleRegression mR;
-		int _nPoly;
+		int _cos;
 		
-		public CosRegression(Vector inp, Vector outp, int nPoly = 3)
+		/// <summary>
+		/// Регрессия по косинусам
+		/// </summary>
+		/// <param name="inp">Вектор входа</param>
+		/// <param name="outp">Вектор входа</param>
+		/// <param name="cos"></param>
+		public CosRegression(Vector inp, Vector outp, int cos = 3)
 		{
-			_nPoly = nPoly;
+			_cos = cos;
 			Vector[] vects = new Vector[inp.N];
 			
 			for (int i = 0; i < inp.N; i++)
 			{
-				vects[i] = ExtensionOfFeatureSpace.SinCos(inp[i], nPoly);
+				vects[i] = ExtensionOfFeatureSpace.SinCos(inp[i], cos);
 				vects[i] = vects[i].AddOne();
 			}
 			
@@ -36,14 +42,20 @@ namespace AI.MathMod.ML.Regression
 		}
 		
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="inp">Значение незав. переменной</param>
 		public double Predict(double inp)
 		{
-			Vector X = ExtensionOfFeatureSpace.SinCos(inp, _nPoly);
+			Vector X = ExtensionOfFeatureSpace.SinCos(inp, _cos);
 			return mR.Predict(X.AddOne());
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="vect">Значения незав. переменных</param>
 		public Vector Predict(Vector vect)
 		{
 			Vector outp = new Vector(vect.N);

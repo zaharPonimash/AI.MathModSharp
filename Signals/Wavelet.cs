@@ -15,13 +15,17 @@ using AI.MathMod.AdditionalFunctions;
 namespace AI.MathMod.Signals
 {
 	/// <summary>
-	/// Description of Wavelet.
+	/// Вейвлеты
 	/// </summary>
 	public class Wavelet
 	{
 		
 		PerentWavelet _pw;
 		
+		/// <summary>
+		/// Непрерывное вейвлет преобразование
+		/// </summary>
+		/// <param name="pw">Порождение вейвлетов</param>
 		public Wavelet(PerentWavelet pw)
 		{
 			_pw = pw;
@@ -34,24 +38,23 @@ namespace AI.MathMod.Signals
 		/// </summary>
 		/// <param name="sig">Сигнал</param>
 		/// <returns>Максимумы патернов</returns>
-		public Vector SerchPatern(Vector sig, int v = 0)
+		public Vector SerchPatern(Vector sig)
 		{
 			ComplexVector spectr = _pw.fur.FFT(sig-Statistic.ExpectedValue(sig));
 			Vector[] output = new Vector[_pw.waveletSpectrs.Length];
-			double sco = Statistic.Sco(sig);
+			double std = Statistic.Std(sig);
 			
 			
 			for (int i = 0; i < output.Length; i++) 
 			{
 				output[i] = _pw.fur.RealIFFT(_pw.waveletSpectrs[i]*spectr);
-				output[i] /= sco*_pw.sco[i];
+				output[i] /= std*_pw.std[i];
 				output[i] *= 6*_pw.scals[i];
 			}
 			
 			Vector res = Statistic.MaxEns(output);
-			double mean = 1;//Statistic.MaximalValue(res);
 			
-			return res;//NeuroFunc.Porog(NeuroFunc.Sigmoid(8*(res-0.2))^2,0.7);
+			return res;
 		}
 		
 		
@@ -131,16 +134,34 @@ namespace AI.MathMod.Signals
 		
 	}
 	
-	
+	/// <summary>
+	/// Ф-я порождения вейвлетов
+	/// </summary>
 	public class PerentWavelet
 	{
-		
+		/// <summary>
+		/// Спектры ф-й
+		/// </summary>
 		public ComplexVector[] waveletSpectrs;
+		/// <summary>
+		/// Фурье
+		/// </summary>
 		public Furie fur;
-		public Vector sco;
+		/// <summary>
+		/// Вектор СКО
+		/// </summary>
+		public Vector std;
+		/// <summary>
+		/// Масштабы
+		/// </summary>
 		public Vector scals;
 		
-		
+		/// <summary>
+		/// Порождения вейвлетов
+		/// </summary>
+		/// <param name="wavelet">Порождающая функция</param>
+		/// <param name="scales">Масштабы</param>
+		/// <param name="n">Размерность входа</param>
 		public PerentWavelet(Func<double, Vector> wavelet, Vector scales, int n)
 		{
 			fur = new Furie(n);
@@ -148,7 +169,7 @@ namespace AI.MathMod.Signals
 			
 			waveletSpectrs = new ComplexVector[scales.N];
 			Vector wavReal;
-			sco = new Vector(scales.N);
+			std = new Vector(scales.N);
 			
 			for (int i = 0; i < waveletSpectrs.Length; i++) 
 			{
@@ -157,7 +178,7 @@ namespace AI.MathMod.Signals
 				//wavReal *= scales[i];
 				waveletSpectrs[i] = fur.FFT(wavReal);
 				waveletSpectrs[i] /= wavReal.N;
-				sco[i] = Statistic.Sco(wavReal);
+				std[i] = Statistic.Std(wavReal);
 			}
 			
 		}

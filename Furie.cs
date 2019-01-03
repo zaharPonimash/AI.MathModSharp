@@ -30,40 +30,18 @@ namespace AI.MathMod
     	Dictionary<double, Complex> dic = new Dictionary<double, Complex>();
     	
     	Complex rot;
-    	
+    	/// <summary>
+    	/// Кол-во
+    	/// </summary>
     	public int _n;
-    	int _l = 0;
-    	int[] deepC;
-    	double log2;
-    	int pow2;
     	
     	
-    	
+    	/// <summary>
+    	/// Фурье
+    	/// </summary>
     	public Furie(int n)
     	{
-    		_n = Functions.NextPow2(n);
-//    		rotateCoef = new ComplexVector(_n*2);
-//    		log2 = Math.Log(2);
-//    		pow2 = (int)(Math.Log(_n)/log2);
-//    		int newn = _n;
-//    		deepC = new int[pow2+2];
-//    		deepC[0] = _n/2;
-//    		
-//    		while(newn != 0)
-//    		{
-//    			
-//    			newn /= 2;
-//    			
-//    			for(int i = 0; i<newn; i++)
-//    			{
-//    				double key = Math.Round((float)(i)/(float)newn,3);
-//    				if(!dic.ContainsKey(key))	dic.Add(key, Rotate(i,newn));
-//    				
-//    			}
-//    		}
-//    		
-    		//rotateCoef.RealToVector().Visual();
-    		
+    		_n = Functions.NextPow2(n);    		
     	}
     	
     	
@@ -84,20 +62,26 @@ namespace AI.MathMod
     		return new ComplexVector(FFT(compInp));
     	}
     	
+    	/// <summary>
+    	/// Реальная часть ОБПФ
+    	/// </summary>
+    	/// <param name="cInp">Комплексный вектор</param>
     	public Vector RealIFFT(ComplexVector cInp)
     	{
     		return IFFT(cInp).RealToVector()/_n;
     	}
     	
+    	/// <summary>
+    	/// Реальная часть БПФ(не нормировано на кол-во)
+    	/// </summary>
+    	/// <param name="cInp">Комплексный вектор</param>
     	public Vector RealIFFT2(ComplexVector cInp)
     	{
     		return IFFT(cInp).RealToVector();
     	}
     	
-    	Complex GetRot(int l, int i)
-    	{
-    		return rotateCoef[deepC[l]+i];
-    	}
+    	
+    	
     	
     	
     	Complex[] FFT(Complex[] inp)
@@ -133,11 +117,14 @@ namespace AI.MathMod
                     X[i + N / 2] = X_even[i] - rot* X_odd[i];
                 }
             }
-//            dic[Math.Round((float)(i)/(float)N,3)]
             
             return X;
     	}
     	
+    	/// <summary>
+    	/// ОБПФ
+    	/// </summary>
+    	/// <param name="inp">Вход</param>
     	public ComplexVector IFFT(ComplexVector inp)
         {
         	ComplexVector cV = !inp.CutAndZero(_n); // Комплексно-сопряженный вектор
@@ -212,23 +199,6 @@ namespace AI.MathMod
         	ComplexVector cV = !new ComplexVector(inp); // Комплексно-сопряженный вектор
         	return fft(cV.Vecktor);
         }
-//        /// <summary>
-//        /// Центровка массива значений полученных в fft (спектральная составляющая при нулевой частоте будет в центре массива)
-//        /// </summary>
-//        /// <param name="X">Массив значений полученный в fft</param>
-//        /// <returns></returns>
-//        public static Complex[] nfft(Complex[] X)
-//        {
-//            int N = X.Length;
-//            Complex[] X_n = new Complex[N];
-//            for (int i = 0; i < N / 2; i++)
-//            {
-//                X_n[i] = X[N / 2 + i];
-//                X_n[N / 2 + i] = X[i];
-//            }
-//            return X_n;
-//        }
-//        
         
         
         
@@ -416,7 +386,11 @@ namespace AI.MathMod
 		return Out/N;
 	}
 	
-	
+	/// <summary>
+	/// Чачтотно-временное преобразование
+	/// </summary>
+	/// <param name="vect">Вектор</param>
+	/// <param name="lenFr">Размер фрейма</param>
 	public static Matrix TimeFrTransform(Vector vect, int lenFr = 1000)
 	{
 		int lenTime = vect.N/lenFr;

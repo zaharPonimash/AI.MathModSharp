@@ -58,7 +58,10 @@ namespace AI.MathMod
 		{
 			get{return _n;}
 		}	
-
+		
+		/// <summary>
+		/// Элемент матрицы
+		/// </summary>
 		public double this[int i, int j]
 		{
 			get{return _matr[i,j];}
@@ -622,7 +625,10 @@ namespace AI.MathMod
 			return columns;
 		}
 		
-		
+		/// <summary>
+		/// Округление значений
+		/// </summary>
+		/// <param name="n">До какого знака</param>
 		public Matrix Round(int n)
 		{
 			Matrix matr = new Matrix(_m,_n);
@@ -776,7 +782,8 @@ namespace AI.MathMod
 		/// </summary>
 		/// <param name="functions">Порождающая функция</param>
 		/// <param name="values">Значения</param>
-		/// <returns>Возвращает альтернативную матрицу</returns>
+		/// <param name="count">Число выходов</param>
+		/// <returns>Возвращает ортогональную матрицу</returns>
 		public static Matrix OrtogonalMatrix(Func<int, double, double> functions, Vector values, int count)
 		{
 			Matrix matr = new Matrix(values.N, count);
@@ -889,7 +896,9 @@ namespace AI.MathMod
                 }
             }
         }
-		
+		/// <summary>
+		/// Вывод значений матрицы в таблицу(отдельную форму)
+		/// </summary>
 		public void MatrixShow()
 		{
 			MatrixOut mOut = new MatrixOut(this);

@@ -20,7 +20,9 @@ namespace AI.MathMod.ML.Regression
 		
 		MultipleRegressionNNW mR;
 		int _nPoly;
-		
+		/// <summary>
+		/// Полиноминаяльная регрессия нейросеть
+		/// </summary>
 		public PolinomialRegressionNNW(Vector inp, Vector outp, int nPoly = 3)
 		{
 			_nPoly = nPoly;
@@ -32,20 +34,28 @@ namespace AI.MathMod.ML.Regression
 			mR = new MultipleRegressionNNW(vects, outp);
 		}
 		
-		
+		/// <summary>
+		/// Обучение
+		/// </summary>
 		public void Train(double ep = 1)
 		{
 			mR.Train(ep);
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="inp">Значение незав. переменной</param>
 		public double Predict(double inp)
 		{
 			Vector X = ExtensionOfFeatureSpace.Polinomial(inp, _nPoly);
 			return mR.Predict(X);
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="vect">Значения незав. переменных</param>
 		public Vector Predict(Vector vect)
 		{
 			Vector outp = new Vector(vect.N);

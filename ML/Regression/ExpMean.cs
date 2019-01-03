@@ -18,7 +18,11 @@ namespace AI.MathMod.ML.Regression
 		Vector _inp;
 		double old, _oldPart;
 		
-		
+		/// <summary>
+		/// Прогнозирование на основе скользящего среднего
+		/// </summary>
+		/// <param name="inp">Вход</param>
+		/// <param name="oldPart">Старая часть(коэф. сглаживания)</param>
 		public ExpMean(Vector inp, double oldPart = 0.9)
 		{
 			_inp = inp;
@@ -26,13 +30,18 @@ namespace AI.MathMod.ML.Regression
 			GetOld();
 		}
 		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
 		public double Predict(double lastSempl)
 		{
 			old = old*_oldPart+(1-_oldPart)*lastSempl;
 			return old;
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
 		public Vector Predict(int n)
 		{
 			Vector vect = new Vector(n);

@@ -16,12 +16,22 @@ namespace AI.MathMod.HMM
 	/// </summary>
 	public class HiMaMoWords
 	{
-		
-		public Matrix stateMatrix, stateAlter;
+		/// <summary>
+		/// Матрица состояний
+		/// </summary>
+		public Matrix stateMatrix;
+		/// <summary>
+		/// Матрица состояний
+		/// </summary>
+		public Matrix stateAlter;
 		string[] stateNames;
 		double len;
 		Random rnd = new Random();
 		
+		
+		/// <summary>
+		/// Скрытая марковская модель
+		/// </summary>
 		public HiMaMoWords()
 		{
 			

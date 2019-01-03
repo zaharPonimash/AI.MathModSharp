@@ -55,18 +55,32 @@ namespace AI.MathMod
 		/// </summary>
 		public string mainVar;		
 		
-		
+		/// <summary>
+		/// Вывод в строку
+		/// </summary>
+		/// <returns></returns>
 		public override string ToString()
 		{
 			return mainVar +" = "+namedVar[mainVar].Doub;
 		}
 	}
 	
-	
+	/// <summary>
+	/// Переменная инф. блока
+	/// </summary>
 	public class Var
 	{
+		/// <summary>
+		/// Строка
+		/// </summary>
 		public string Str;
+		/// <summary>
+		/// Целочисленное
+		/// </summary>
 		public int Int;
+		/// <summary>
+		/// С плав. запятой
+		/// </summary>
 		public double Doub;
 	}
 }

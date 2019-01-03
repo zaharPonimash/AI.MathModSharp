@@ -38,7 +38,13 @@ namespace AI.MathMod.ComputerVision
         }
         
         
-        
+        /// <summary>
+        /// Контрастирование
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public static Matrix ContrastFilter(Matrix img, int x, int y)
         {
             int H = img.M - x, W = img.N - y;
@@ -195,7 +201,7 @@ namespace AI.MathMod.ComputerVision
                 }
             }
 
-            return Statistic.Sco(vect);
+            return Statistic.Std(vect);
         }
 
 		//Элемент контрасного фильтра
@@ -216,7 +222,7 @@ namespace AI.MathMod.ComputerVision
             
             matr = MathFunc.lg(matr*255+1);
             vect = matr.Spagetiz();
-            double cko = 3*Statistic.Sco(vect), m = Statistic.ExpectedValue(vect);
+            double cko = 3*Statistic.Std(vect), m = Statistic.ExpectedValue(vect);
            
             return NeuroFunc.Sigmoid((matr-m)/(cko+0.01), 3);
         }

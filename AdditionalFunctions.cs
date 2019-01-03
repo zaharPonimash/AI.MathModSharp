@@ -826,12 +826,12 @@ namespace AI.MathMod.AdditionalFunctions
 		/// Пороговая активационная ф-я
 		/// </summary>
 		/// <param name="Inp">Входной вектор</param>
-		/// <param name="porog">Порог</param>
-		public static Vector Porog(Vector Inp, double porog=0)
+		/// <param name="threshold">Порог</param>
+		public static Vector Threshold(Vector Inp, double threshold=0)
 		{
 			Vector A = new Vector(Inp.N);
 			for(int i = 0; i<Inp.N; i++)
-				if(Inp.Vecktor[i] >= porog)A.Vecktor[i] = 1;
+				if(Inp.Vecktor[i] >= threshold)A.Vecktor[i] = 1;
 				else A.Vecktor[i] = 0;
 			return A;
 		}
@@ -841,14 +841,14 @@ namespace AI.MathMod.AdditionalFunctions
         /// Ограничение сверху и снизу
         /// </summary>
         /// <param name="Inp">Входной вектор</param>
-        /// <param name="porogUp"></param>
-        /// <param name="porogDoun"></param>
+        /// <param name="thresholdUp"></param>
+        /// <param name="thresholdDoun"></param>
         /// <returns></returns>
-        public static Vector Porog(Vector Inp, double porogUp = 1, double porogDoun = 0)
+        public static Vector Threshold(Vector Inp, double thresholdUp = 1, double thresholdDoun = 0)
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if ((Inp.Vecktor[i] >= porogDoun)&& (Inp.Vecktor[i] <= porogUp)) A.Vecktor[i] = 1;
+                if ((Inp.Vecktor[i] >= thresholdDoun)&& (Inp.Vecktor[i] <= thresholdUp)) A.Vecktor[i] = 1;
                 else A.Vecktor[i] = 0;
             return A;
         }
@@ -857,37 +857,47 @@ namespace AI.MathMod.AdditionalFunctions
 		/// Релу
 		/// </summary>
 		/// <param name="Inp"></param>
-		/// <param name="porog"></param>
+		/// <param name="threshold"></param>
 		/// <returns></returns>
-        public static Vector Relu(Vector Inp, double porog = 0)
+        public static Vector Relu(Vector Inp, double threshold = 0)
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if (Inp.Vecktor[i] >= porog) A.Vecktor[i] = Inp.Vecktor[i];
+                if (Inp.Vecktor[i] >= threshold) A.Vecktor[i] = Inp.Vecktor[i];
                 else A.Vecktor[i] = 0;
             return A;
         }
 
 
-
-        public static Vector Relu(Vector Inp, double porogUp = 1, double porogDoun = 0)
+	/// <summary>
+	/// Активация Релу
+	/// </summary>
+	/// <param name="Inp">Вход</param>
+	/// <param name="thresholdUp">Верхний порог</param>
+	/// <param name="thresholdDoun">Нижний порог</param>
+        public static Vector Relu(Vector Inp, double thresholdUp , double thresholdDoun = 0)
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if ((Inp.Vecktor[i] >= porogDoun) && (Inp.Vecktor[i] <= porogUp)) A.Vecktor[i] = Inp.Vecktor[i];
+                if ((Inp.Vecktor[i] >= thresholdDoun) && (Inp.Vecktor[i] <= thresholdUp)) A.Vecktor[i] = Inp.Vecktor[i];
                 else A.Vecktor[i] = 0;
             return A;
         }
 
-
-        public static Matrix Relu(Matrix Inp, double porogUp = 1, double porogDoun = 0)
+	/// <summary>
+	/// Активация Релу
+	/// </summary>
+	/// <param name="Inp">Вход</param>
+	/// <param name="thresholdUp">Верхний порог</param>
+	/// <param name="thresholdDoun">Нижний порог</param>
+        public static Matrix Relu(Matrix Inp, double thresholdUp, double thresholdDoun = 0)
         {
             Matrix A = new Matrix(Inp.M, Inp.N);
 
             for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
                 {
-                    if ((Inp.Matr[i, j] >= porogDoun) && (Inp.Matr[i, j] <= porogUp)) A.Matr[i, j] = Inp.Matr[i, j];
-                    else if (Inp.Matr[i, j] <= porogUp) A.Matr[i, j] = 0;
+                    if ((Inp.Matr[i, j] >= thresholdDoun) && (Inp.Matr[i, j] <= thresholdUp)) A.Matr[i, j] = Inp.Matr[i, j];
+                    else if (Inp.Matr[i, j] <= thresholdUp) A.Matr[i, j] = 0;
                     else A.Matr[i,j] = 1;
                 }
 
@@ -922,15 +932,15 @@ namespace AI.MathMod.AdditionalFunctions
         /// Сигмоида
         /// </summary>
         /// <param name="Inp"></param>
-        /// <param name="porog"></param>
+        /// <param name="threshold"></param>
         /// <returns></returns>
-        public static Matrix Porog(Matrix Inp, double porog = 0)
+        public static Matrix Threshold(Matrix Inp, double threshold = 0)
         {
             Matrix A = new Matrix(Inp.M, Inp.N);
 
             for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
                 {
-                    if (Inp.Matr[i, j] >= porog) A.Matr[i, j] = 1;
+                    if (Inp.Matr[i, j] >= threshold) A.Matr[i, j] = 1;
                     else A.Matr[i, j] = 0;
                 }
 
@@ -938,48 +948,64 @@ namespace AI.MathMod.AdditionalFunctions
         }
 
 
-
+	/// <summary>
+	/// Сигмоида
+	/// </summary>
+	/// <param name="tensor">Тензор входа</param>
+	/// <param name="betta">Коэфициент наклона</param>
         public static Tensor Sigmoid(Tensor tensor, double betta = 1)
         {
               Tensor tensorOut = new Tensor(tensor.Width, tensor.Height, tensor.Depth);
 
-            for (int i = 0; i < tensor.Weights.Length; i++)
+            for (int i = 0; i < tensor.DataInTensor.Length; i++)
             {
-                tensorOut.Weights[i] = Sigmoid(tensor.Weights[i], betta);
+                tensorOut.DataInTensor[i] = Sigmoid(tensor.DataInTensor[i], betta);
             }
 
             return tensorOut;
         }
         
         
-        
+        /// <summary>
+        /// Логарифм по основанию 10
+        /// </summary>
+        /// <param name="tensor">Тензор входа</param>
          public static Tensor Log10(Tensor tensor)
         {
               Tensor tensorOut = new Tensor(tensor.Width, tensor.Height, tensor.Depth);
 
-            for (int i = 0; i < tensor.Weights.Length; i++)
+            for (int i = 0; i < tensor.DataInTensor.Length; i++)
             {
-                tensorOut.Weights[i] = Math.Log10(tensor.Weights[i]);
+                tensorOut.DataInTensor[i] = Math.Log10(tensor.DataInTensor[i]);
             }
 
             return tensorOut;
         }
 
-
-        public static Matrix Relu(Matrix Inp, double porog = 0)
+	/// <summary>
+	/// Активация Релу
+	/// </summary>
+	/// <param name="Inp">Вход</param>
+	/// <param name="threshold">Нижний порог</param>
+        public static Matrix Relu(Matrix Inp, double threshold = 0)
         {
             Matrix A = new Matrix(Inp.M, Inp.N);
 
             for (int i = 0; i < Inp.M; i++) for (int j = 0; j < Inp.N; j++)
                 {
-                    if (Inp.Matr[i, j] >= porog) A.Matr[i, j] = Inp.Matr[i, j];
+                    if (Inp.Matr[i, j] >= threshold) A.Matr[i, j] = Inp.Matr[i, j];
                     else A.Matr[i, j] = 0;
                 }
 
             return A;
         }
-
-        public static Vector[] Relu(Vector[] Inp, double porog = 0)
+	
+       	/// <summary>
+	/// Активация Релу
+	/// </summary>
+	/// <param name="Inp">Вход</param>
+	/// <param name="threshold">Нижний порог</param>
+        public static Vector[] Relu(Vector[] Inp, double threshold = 0)
         {
             Vector[] A = new Vector[Inp.Length];
 
@@ -990,7 +1016,7 @@ namespace AI.MathMod.AdditionalFunctions
 
             for (int i = 0; i < Inp.Length; i++) for (int j = 0; j < Inp[i].N; j++)
                 {
-                    if (Inp[i][j] >= porog) A[i][j] = Inp[i][j];
+                    if (Inp[i][j] >= threshold) A[i][j] = Inp[i][j];
                     else A[i][j] = 0;
                 }
 
@@ -1036,7 +1062,13 @@ namespace AI.MathMod.AdditionalFunctions
         }
 
 
-
+	/// <summary>
+	/// Функция Гаусса при x=m -> G(x) = 1
+	/// </summary>
+	/// <param name="inp"></param>
+	/// <param name="m"></param>
+	/// <param name="sko"></param>
+	/// <returns></returns>
         public static Matrix Gauss1(Matrix inp, double m, double sko)
         {
             Matrix matr = new Matrix(inp.M, inp.N);

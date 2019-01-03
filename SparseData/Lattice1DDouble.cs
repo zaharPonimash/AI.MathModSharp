@@ -16,13 +16,19 @@ namespace AI.MathMod.SparseData
 	/// </summary>
 	public class Lattice1DDouble: Lattice1D<double>
 	{
+		/// <summary>
+		/// Одномерная решетка double
+		/// </summary>
+		/// <param name="cels"></param>
 		public Lattice1DDouble(Cell1D<double>[] cels)
 		{
 			Cells = new List<Cell1D<double>>();
 			Cells.AddRange(cels);
 		}
 		
-		
+		/// <summary>
+		/// Одномерная решетка double
+		/// </summary>
 		public Lattice1DDouble(Vector vect)
 		{
 			Cells = new List<Cell1D<double>>();

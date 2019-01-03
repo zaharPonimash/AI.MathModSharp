@@ -78,8 +78,17 @@ namespace AI.MathMod.ML.Classifire
     [Serializable]
     public class SModelComponent
     {
+    	/// <summary>
+    	/// Мат. ожидаине
+    	/// </summary>
         public double _e = 0;
-        public double _sco = 1;
+        /// <summary>
+    	/// СКО
+    	/// </summary>
+        public double _std = 1;
+        /// <summary>
+        /// Вероятность
+        /// </summary>
         public double pr = 0;
 
         /// <summary>
@@ -95,10 +104,10 @@ namespace AI.MathMod.ML.Classifire
         /// Стат. модель компонента модели
         /// </summary>
         /// <param name="e">Мат. ожидание</param>
-        /// <param name="sco">Среднеквадратичное отклонение</param>
-        public SModelComponent(double e, double sco)
+        /// <param name="std">Среднеквадратичное отклонение</param>
+        public SModelComponent(double e, double std)
         {
-            _sco = sco;
+            _std = std;
             _e = e;
         }
     }
@@ -113,26 +122,12 @@ namespace AI.MathMod.ML.Classifire
     {
 
         List<SModel> models = new List<SModel>();
-        public Double Porog { get; set; } 
+        /// <summary>
+        /// Порог
+        /// </summary>
+        public Double Threshold { get; set; } 
         
-//        Vector FeaturisDetect(Vector vec)
-//        {
-//        	return Furie.fft(vec).MagnitudeToVector().CutAndZero(vec.N/2);
-//        }
-//
-//        
-//        Vector[] FeaturisDetect(Vector[] vects)
-//        {
-//        	Vector[] vects2 = new Vector[vects.Length];
-//        	
-//        	for (int i = 0; i < vects.Length; i++)
-//        	{
-//        		vects2[i] = FeaturisDetect(vects[i]);
-//        	}
-//        	
-//        	return vects2;
-//        }
-        
+
         
         /// <summary>
         /// Простой статистический классификатор, 
@@ -141,7 +136,7 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         public SimpleFLClassifier()
         {
-            Porog = 0.5;
+            Threshold = 0.5;
         }
 
         /// <summary>
@@ -153,7 +148,7 @@ namespace AI.MathMod.ML.Classifire
         public SimpleFLClassifier(string path)
         {
             Open(path);
-            Porog = 0.5;
+            Threshold = 0.5;
         }
 
         /// <summary>
@@ -195,7 +190,7 @@ namespace AI.MathMod.ML.Classifire
                     components[i].Vecktor[j] = vectors[j].Vecktor[i];
                 }
 
-                sMode.Add(new SModelComponent(Statistic.ExpectedValue(components[i]), Statistic.Sco(components[i])));
+                sMode.Add(new SModelComponent(Statistic.ExpectedValue(components[i]), Statistic.Std(components[i])));
             }
 			
             sMode.Weights = new Vector(sMode.Count)+0.0001;
@@ -203,7 +198,9 @@ namespace AI.MathMod.ML.Classifire
         }
         
         
-        
+       /// <summary>
+       /// Весовые коэффициенты
+       /// </summary>
         public void GetWeights()
         {
         	for (int i = 0; i < models.Count; i++)
@@ -240,7 +237,7 @@ namespace AI.MathMod.ML.Classifire
         {
             for (int i = 0; i<vect.Length; i++)
             {
-                sm[i].pr = DistributionFunc.GaussNorm1(vect[i], sm[i]._e, sm[i]._sco);
+                sm[i].pr = DistributionFunc.GaussNorm1(vect[i], sm[i]._e, sm[i]._std);
             }
 
             sm.CalculateProb();
@@ -305,9 +302,9 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
         /// Добавление класса\модели
         /// </summary>
-        public void AddClass(Vector[] tViborka, string nameClass)
+        public void AddClass(Vector[] tDataset, string nameClass)
         {
-            AddModel(tViborka, nameClass);
+            AddModel(tDataset, nameClass);
         }
 
 
@@ -321,7 +318,7 @@ namespace AI.MathMod.ML.Classifire
         	Vector input = inp;
         	
             SModel model = Output(input);
-            return model.Probability >= Porog ? model.NameClass : "none";
+            return model.Probability >= Threshold ? model.NameClass : "none";
         }
     }
 }

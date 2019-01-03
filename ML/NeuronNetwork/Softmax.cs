@@ -11,18 +11,25 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class Softmax : FullConLayerBase
 	{
+		/// <summary>
+		/// Софтмакс
+		/// </summary>
 		public Softmax(int inp, int outp)
 		{
 			SetParam(inp, outp);
 		}
-		
+		/// <summary>
+		/// Софтмакс
+		/// </summary>
 		public Softmax(int neuronCount)
 		{
 			OutputLayer = new Vector(neuronCount);
 			SizeOut = neuronCount;
 		}
 		
-		
+		/// <summary>
+		/// Ф-я активации
+		/// </summary>
 		public override Vector FActivation(Vector inp)
 		{
 			Vector oupt = MathFunc.exp(inp);

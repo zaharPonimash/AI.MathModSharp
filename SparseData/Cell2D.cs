@@ -16,16 +16,31 @@ namespace AI.MathMod.SparseData
 	public class Cell2D<T> : ICell<T>
 	{
 		#region ICell implementation
-
+		/// <summary>
+		/// Значение клетки
+		/// </summary>
 		public T Value {get; set;}
-
-		public int[] Coordinats {get; set;}
 		
+		/// <summary>
+		/// Координаты
+		/// </summary>
+		public int[] Coordinats {get; set;}
+		/// <summary>
+		/// Коорд. X
+		/// </summary>
 		public int X{get;set;}
+		/// <summary>
+		/// Коорд. Y
+		/// </summary>
 		public int Y{get; set;}
 
 	#endregion
-
+		/// <summary>
+		/// Клетка решетки
+		/// </summary>
+		/// <param name="x"> Коорд. X</param>
+		/// <param name="y">Коорд. Y</param>
+		/// <param name="value">Значение клетки</param>
 		public Cell2D(int x, int y, T value)
 		{
 			X = x;

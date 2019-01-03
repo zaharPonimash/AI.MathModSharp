@@ -12,27 +12,72 @@ namespace AI.MathMod
 	/// </summary>
 	public class Sound
 	{
-		
+		/// <summary>
+		/// ID
+		/// </summary>
 		public	int chunkID;
+		/// <summary>
+		/// Размер файла
+		/// </summary>
 		public	int fileSize;
+		/// <summary>
+		/// Тип
+		/// </summary>
 		public	int riffType;
+		/// <summary>
+		/// 
+		/// </summary>
 		public	int fmtID;
+		/// <summary>
+		/// 
+		/// </summary>
 		public	int fmtSize;
+		/// <summary>
+		/// 
+		/// </summary>
 		public	int fmtCode;
+		/// <summary>
+		/// Каналы (число)
+		/// </summary>
 		public	int channels;
+		/// <summary>
+		/// Частота дискретизации
+		/// </summary>
 		public	int sampleRate;
+		/// <summary>
+		/// средний битрейт
+		/// </summary>
 		public	int fmtAvgBPS;
+		/// <summary>
+		/// 
+		/// </summary>
 		public	int fmtBlockAlign;
+		/// <summary>
+		/// 
+		/// </summary>
 		public	int bitDepth;
+		/// <summary>
+		/// 
+		/// </summary>
 		public int dataID;
+		/// <summary>
+		/// 
+		/// </summary>
 		public int dataSize;
 		
+		/// <summary>
+		/// Звук
+		/// </summary>
 		public Sound()
 		{
 		}
 		
 		
-		
+		/// <summary>
+		/// Загрузка звука
+		/// </summary>
+		/// <param name="path">Путь до файла</param>
+		/// <returns></returns>
 		public Vector SoundLoad(string path)
 		{
 				
@@ -78,7 +123,12 @@ namespace AI.MathMod
 		}
 		
 		
-		
+		/// <summary>
+		/// Сохранение вектора как звука
+		/// </summary>
+		/// <param name="path"></param>
+		/// <param name="vector"></param>
+		/// <param name="fd"></param>
 		public void SaveVector(string path, Vector vector, int fd)
 		{
 			File.Delete(path);
@@ -110,7 +160,11 @@ namespace AI.MathMod
 		}
 		
 		
-		
+		/// <summary>
+		/// Вопроизведение
+		/// </summary>
+		/// <param name="vector"></param>
+		/// <param name="fd"></param>
 		public void PlayVector(Vector vector, int fd)
 		{
 			SaveVector("ss", vector, fd);

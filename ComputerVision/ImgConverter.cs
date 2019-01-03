@@ -203,7 +203,11 @@ namespace AI.MathMod.ComputerVision
             return bmp;
         }
 
-
+	/// <summary>
+	/// Тензор в картинку
+	/// </summary>
+	/// <param name="tensor">Тензор</param>
+	/// <returns>Bitmap</returns>
         public static Bitmap TensorToBitmap(Tensor tensor)
         {
             Bitmap bmp = new Bitmap(tensor.Width, tensor.Height);

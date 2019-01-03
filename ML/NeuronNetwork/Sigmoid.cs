@@ -17,23 +17,38 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class Sigmoid:FullConLayerBase
 	{
+		/// <summary>
+		/// Слой с исгмоидальной активацией
+		/// </summary>
+		/// <param name="inp">Кол-во входов</param>
+		/// <param name="outp">Кол-во выходов(нейронов)</param>
 		public Sigmoid(int inp, int outp)
 		{
 			SetParam(inp, outp);
 		}
 		
+		/// <summary>
+		/// Слой с исгмоидальной активацией
+		/// </summary>
+		/// <param name="neuronCount">Кол-во нейронов</param>
 		public Sigmoid(int neuronCount)
 		{
 			OutputLayer = new Vector(neuronCount);
 			SizeOut = neuronCount;
 		}
 		
+		/// <summary>
+		/// Функция активации
+		/// </summary>
+		/// <param name="inp">Выход линейного слоя</param>
 		public override Vector FActivation(Vector inp)
 		{
 			return NeuroFunc.Sigmoid(inp);
 		}
 		
-		
+		/// <summary>
+		/// Производная функции активации
+		/// </summary>
 		public override Vector DfDy()
 		{
 			Vector A = FActivation(OutputLayer);

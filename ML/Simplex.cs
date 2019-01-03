@@ -37,7 +37,10 @@ namespace AI.MathMod.ML
         Vector grad, resultVector;
         List<int> basis; //список базисных переменных
  		
-        
+        /// <summary>
+        /// Симплекс-метод
+        /// </summary>
+        /// <param name="source">Матрица входа</param>
         public Simplex(Matrix source)
         {
             m =source.M;
@@ -196,7 +199,10 @@ namespace AI.MathMod.ML
 			return output;
         }
         
-        
+        	/// <summary>
+        	/// Вывод строки
+        	/// </summary>
+        	/// <returns></returns>
 		public override string ToString()
 		{
 			try
@@ -210,6 +216,10 @@ namespace AI.MathMod.ML
 			}
 		}
 		
+		/// <summary>
+        	/// Вывод строки
+        	/// </summary>
+        	/// <returns></returns>
 		public string ToString(int num)
 		{
 			try

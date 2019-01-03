@@ -16,6 +16,9 @@ namespace AI.MathMod.ML.NeuronNetwork
 	/// </summary>
 	public class MenegerNNW
 	{
+		/// <summary>
+		/// Нейросеть
+		/// </summary>
 		public Net _net;
 		VectorIntDataset _vid;
 		
@@ -108,8 +111,6 @@ namespace AI.MathMod.ML.NeuronNetwork
 		/// <summary>
 		/// Тестирование
 		/// </summary>
-		/// <param name="vidTest">Датасет</param>
-		/// <returns>Вероятность верного ответа</returns>
 		public string TestStr(VectorIntDataset vidTest, int n)
 		{
 			double[] corr = new double[n];

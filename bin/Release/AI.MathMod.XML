@@ -134,15 +134,63 @@
             <param name="approcs">Аппроксимированный</param>
             <returns></returns>
         </member>
-        <member name="T:AI.MathMod.Approximation.LagrangeAppr">
+        <member name="T:AI.MathMod.Approximation.PolyAppr">
             <summary>
-            Description of RBFAppr.
+            Полиномиальная аппроксимация
             </summary>
+        </member>
+        <member name="F:AI.MathMod.Approximation.PolyAppr.newX">
+            <summary>
+            Новый вектор иксов, больше точек
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Approximation.PolyAppr.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Полиномиальная аппроксимация
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Approximation.PolyAppr.Predict(System.Double)">
+            <summary>
+            Расчет одного значения
+            </summary>
+            <param name="inp">Независимая переменная</param>
+            <returns>Прогноз</returns>
+        </member>
+        <member name="M:AI.MathMod.Approximation.PolyAppr.Prediction(System.Double)">
+            <summary>
+            Перерасчет интервала значения
+            </summary>
+            <param name="step">Шаг</param>
+            <returns>Прогноз</returns>
         </member>
         <member name="T:AI.MathMod.Approximation.RBFAppr">
             <summary>
-            Description of RBFAppr.
+            Аппроксимация радиально-базисными ф-ями
             </summary>
+        </member>
+        <member name="F:AI.MathMod.Approximation.RBFAppr.newX">
+            <summary>
+            Новый вектор иксов, больше точек
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Approximation.RBFAppr.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Аппроксимация радиально-базисными ф-ями
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Approximation.RBFAppr.Predict(System.Double)">
+            <summary>
+            Расчет одного значения
+            </summary>
+            <param name="inp">Независимая переменная</param>
+            <returns>Прогноз</returns>
+        </member>
+        <member name="M:AI.MathMod.Approximation.RBFAppr.Prediction(System.Double)">
+            <summary>
+            Перерасчет интервала значения
+            </summary>
+            <param name="step">Шаг</param>
+            <returns>Прогноз</returns>
         </member>
         <member name="T:AI.MathMod.Combinatorics.CombinatoricsBaseFunction">
             <summary>
@@ -508,9 +556,51 @@
             Description of BinaryImg.
             </summary>
         </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImg.#ctor(AI.MathMod.Matrix)">
+            <summary>
+            Бинарное изображение
+            </summary>
+            <param name="matr">Матрица серого</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImg.#ctor(System.Drawing.Bitmap)">
+            <summary>
+            Бинарное изображение
+            </summary>
+            <param name="bm">Изображение</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImg.ToMatrixInvers">
+            <summary>
+            Бинарное в матрицу
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.BinaryImg.ToBmp">
+            <summary>
+            Бинарное в Bitmap
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ComputerVision.BinaryImg.M">
+            <summary>
+            Ширина
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ComputerVision.BinaryImg.N">
+            <summary>
+            Высота
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ComputerVision.BinaryImg.Item(System.Int32,System.Int32)">
+            <summary>
+            Вывод индекса
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ComputerVision.CalculateBinaryEl">
             <summary>
             Подсчет объектов
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ComputerVision.CalculateBinaryEl.img">
+            <summary>
+            Изображение
             </summary>
         </member>
         <member name="M:AI.MathMod.ComputerVision.CalculateBinaryEl.#ctor">
@@ -572,6 +662,18 @@
             <param name="img">Матрица изображения</param>
             <returns>Коэф. ряда фурье после преобразований</returns>
         </member>
+        <member name="M:AI.MathMod.ComputerVision.FeaturesInBinaryImg.KepstrFeatures(AI.MathMod.Matrix)">
+            <summary>
+            Кепстральные коэффициенты
+            </summary>
+            <param name="img">Изображение</param>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.FeaturesInBinaryImg.GetPoints(AI.MathMod.Matrix)">
+            <summary>
+            Выдает точки
+            </summary>
+            <param name="img">Матрица серого изображения</param>
+        </member>
         <member name="T:AI.MathMod.ComputerVision.ImgFilters">
             <summary>
             Фильтрация изображений
@@ -586,6 +688,15 @@
             <param name="coef">Коэффициент контраста</param>
             <param name="dx">Яркость</param>
             <returns>Возвращает результат фильтрации</returns>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgFilters.ContrastFilter(AI.MathMod.Matrix,System.Int32,System.Int32)">
+            <summary>
+            Контрастирование
+            </summary>
+            <param name="img"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
         </member>
         <member name="M:AI.MathMod.ComputerVision.ImgFilters.FC(AI.MathMod.Matrix)">
             <summary>
@@ -659,10 +770,24 @@
             Перевод матрицы в полутоновое изображение
             </summary>
         </member>
+        <member name="M:AI.MathMod.ComputerVision.ImgConverter.TensorToBitmap(AI.MathMod.Tensor)">
+            <summary>
+            Тензор в картинку
+            </summary>
+            <param name="tensor">Тензор</param>
+            <returns>Bitmap</returns>
+        </member>
         <member name="T:AI.MathMod.ComputerVision.ObjectGenerate">
             <summary>
             Description of ObjectGenerate.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ComputerVision.ObjectGenerate.#ctor(System.Int32,System.Int32)">
+            <summary>
+             Генерация объектов
+            </summary>
+            <param name="w">Ширина холста</param>
+            <param name="h">Высота холста</param>
         </member>
         <member name="M:AI.MathMod.ComputerVision.ObjectGenerate.Generate(System.Int32)">
             <summary>
@@ -680,12 +805,11 @@
             Ретинекс
             </summary>
         </member>
-        <member name="M:AI.MathMod.ComputerVision.Retinex.Run(AI.MathMod.Tensor,System.Double)">
+        <member name="M:AI.MathMod.ComputerVision.Retinex.Retin(System.Drawing.Bitmap)">
             <summary>
-            Запуск алгоритма
+            Ретинекс
             </summary>
-            <param name="input">Тензор цветного изображения</param>
-            <param name="sigma"></param>
+            <param name="bm">Картинка</param>
             <returns></returns>
         </member>
         <member name="T:AI.MathMod.Correlation">
@@ -1172,20 +1296,20 @@
             <param name="Inp">Входной вектор</param>
             <param name="betta">Угол наклона</param>
         </member>
-        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Porog(AI.MathMod.Vector,System.Double)">
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Threshold(AI.MathMod.Vector,System.Double)">
             <summary>
             Пороговая активационная ф-я
             </summary>
             <param name="Inp">Входной вектор</param>
-            <param name="porog">Порог</param>
+            <param name="threshold">Порог</param>
         </member>
-        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Porog(AI.MathMod.Vector,System.Double,System.Double)">
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Threshold(AI.MathMod.Vector,System.Double,System.Double)">
             <summary>
             Ограничение сверху и снизу
             </summary>
             <param name="Inp">Входной вектор</param>
-            <param name="porogUp"></param>
-            <param name="porogDoun"></param>
+            <param name="thresholdUp"></param>
+            <param name="thresholdDoun"></param>
             <returns></returns>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Relu(AI.MathMod.Vector,System.Double)">
@@ -1193,8 +1317,24 @@
             Релу
             </summary>
             <param name="Inp"></param>
-            <param name="porog"></param>
+            <param name="threshold"></param>
             <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Relu(AI.MathMod.Vector,System.Double,System.Double)">
+            <summary>
+            Активация Релу
+            </summary>
+            <param name="Inp">Вход</param>
+            <param name="thresholdUp">Верхний порог</param>
+            <param name="thresholdDoun">Нижний порог</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Relu(AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            Активация Релу
+            </summary>
+            <param name="Inp">Вход</param>
+            <param name="thresholdUp">Верхний порог</param>
+            <param name="thresholdDoun">Нижний порог</param>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Sigmoid(AI.MathMod.Matrix,System.Double)">
             <summary>
@@ -1212,13 +1352,40 @@
             <param name="betta"></param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Porog(AI.MathMod.Matrix,System.Double)">
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Threshold(AI.MathMod.Matrix,System.Double)">
             <summary>
             Сигмоида
             </summary>
             <param name="Inp"></param>
-            <param name="porog"></param>
+            <param name="threshold"></param>
             <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Sigmoid(AI.MathMod.Tensor,System.Double)">
+            <summary>
+            Сигмоида
+            </summary>
+            <param name="tensor">Тензор входа</param>
+            <param name="betta">Коэфициент наклона</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Log10(AI.MathMod.Tensor)">
+            <summary>
+            Логарифм по основанию 10
+            </summary>
+            <param name="tensor">Тензор входа</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Relu(AI.MathMod.Matrix,System.Double)">
+            <summary>
+            Активация Релу
+            </summary>
+            <param name="Inp">Вход</param>
+            <param name="threshold">Нижний порог</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.NeuroFunc.Relu(AI.MathMod.Vector[],System.Double)">
+            <summary>
+            Активация Релу
+            </summary>
+            <param name="Inp">Вход</param>
+            <param name="threshold">Нижний порог</param>
         </member>
         <member name="T:AI.MathMod.AdditionalFunctions.DistributionFunc">
             <summary>
@@ -1240,6 +1407,15 @@
             <param name="Inp">Входное значение</param>
             <param name="m">Мат. ожидание</param>
             <param name="sko">СКО</param>
+        </member>
+        <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.Gauss1(AI.MathMod.Matrix,System.Double,System.Double)">
+            <summary>
+            Функция Гаусса при x=m -> G(x) = 1
+            </summary>
+            <param name="inp"></param>
+            <param name="m"></param>
+            <param name="sko"></param>
+            <returns></returns>
         </member>
         <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.GaussNorm1(System.Double,System.Double,System.Double)">
             <summary>
@@ -1486,12 +1662,40 @@
             Преобразование Фурье
             </summary>
         </member>
+        <member name="F:AI.MathMod.Furie._n">
+            <summary>
+            Кол-во
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Furie.#ctor(System.Int32)">
+            <summary>
+            Фурье
+            </summary>
+        </member>
         <member name="M:AI.MathMod.Furie.FFT(AI.MathMod.Vector)">
             <summary>
             Быстрое Фурье
             </summary>
             <param name="inp"></param>
             <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Furie.RealIFFT(AI.MathMod.ComplexVector)">
+            <summary>
+            Реальная часть ОБПФ
+            </summary>
+            <param name="cInp">Комплексный вектор</param>
+        </member>
+        <member name="M:AI.MathMod.Furie.RealIFFT2(AI.MathMod.ComplexVector)">
+            <summary>
+            Реальная часть БПФ(не нормировано на кол-во)
+            </summary>
+            <param name="cInp">Комплексный вектор</param>
+        </member>
+        <member name="M:AI.MathMod.Furie.IFFT(AI.MathMod.ComplexVector)">
+            <summary>
+            ОБПФ
+            </summary>
+            <param name="inp">Вход</param>
         </member>
         <member name="M:AI.MathMod.Furie.Rotate(System.Int32,System.Int32)">
             <summary>
@@ -1571,6 +1775,13 @@
             </summary>
             <param name="x">Входной действительный вектор</param>
         </member>
+        <member name="M:AI.MathMod.Furie.TimeFrTransform(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Чачтотно-временное преобразование
+            </summary>
+            <param name="vect">Вектор</param>
+            <param name="lenFr">Размер фрейма</param>
+        </member>
         <member name="P:AI.MathMod.Furie.rotateCoef">
             <summary>
             Вектор поворота
@@ -1611,10 +1822,33 @@
             Нечеткая логическая переменная
             </summary>
         </member>
-        <member name="T:AI.MathMod.Graphiks.Descrintion">
+        <member name="T:AI.MathMod.Graphiks.Description">
             <summary>
-            Description of Descrintion.
+            Описание для графика
             </summary>
+        </member>
+        <member name="F:AI.MathMod.Graphiks.Description.X">
+            <summary>
+            Название оси X
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Graphiks.Description.Y">
+            <summary>
+            Название оси Y
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Graphiks.Description.Name">
+            <summary>
+            Название графика
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.Description.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Описание графика
+            </summary>
+            <param name="xL">Название оси X</param>
+            <param name="yL">Название оси Y</param>
+            <param name="name">Название графика</param>
         </member>
         <member name="T:AI.MathMod.Graphiks.GraphicsView">
             <summary>
@@ -1641,6 +1875,19 @@
             </summary>
             <param name="graph">Элемент интерфейса для вывода графика</param>
             <param name="funcItemClass">Значения y</param>
+            <param name="xV">Значение по Y</param>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+            <summary>
+            Строит график из столбцов в контроле graph, по отсчетам funcItemClass
+            </summary>
+            <param name="graph">Элемент интерфейса для вывода графика</param>
+            <param name="funcItemClass">Значения y</param>
+            <param name="xV">Значения х</param>
+            <param name="name">Имя</param>
+            <param name="xN">Имя Х</param>
+            <param name="yN">Имя Y</param>
+            <param name="col">Цвет</param>
         </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
@@ -1653,6 +1900,20 @@
             <param name="nameX">Имя оси X</param>
             <param name="nameY">Имя оси Y</param>
             <param name="colorLine">Цвет линии</param>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.ScatterPlot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Скатерограмма и график
+            </summary>
+            <param name="graph"></param>
+            <param name="ySc"></param>
+            <param name="yPl"></param>
+            <param name="x"></param>
+            <param name="nameFunc"></param>
+            <param name="nameX"></param>
+            <param name="nameY"></param>
+            <param name="colorLine"></param>
+            <param name="colorC"></param>
         </member>
         <member name="M:AI.MathMod.Graphiks.GraphicsView.Scatter(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
@@ -1701,7 +1962,7 @@
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Descrintion)">
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
             <summary>
             График от одной переменной
             </summary>
@@ -1718,10 +1979,26 @@
             <param name="y"></param>
             <param name="x"></param>
         </member>
+        <member name="M:AI.MathMod.Graphiks.GraphicsView.ScattersVis(ZedGraph.ZedGraphControl,AI.MathMod.Vector[],System.Drawing.Color[],System.String,System.String)">
+            <summary>
+            Визуализация точек
+            </summary>
+            <param name="graph"></param>
+            <param name="xy"></param>
+            <param name="colors"></param>
+            <param name="nameX"></param>
+            <param name="nameY"></param>
+        </member>
         <member name="T:AI.MathMod.Graphiks.MatrixOut">
             <summary>
             Description of MatrixOut.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.MatrixOut.#ctor(AI.MathMod.Matrix)">
+            <summary>
+            Отображение Матрицы
+            </summary>
+            <param name="matr">Матрица</param>
         </member>
         <member name="F:AI.MathMod.Graphiks.MatrixOut.components">
             <summary>
@@ -1780,6 +2057,12 @@
             Description of VisualData.
             </summary>
         </member>
+        <member name="M:AI.MathMod.Graphiks.VisualData.#ctor(AI.MathMod.ML.Datasets.VectorIntDataset)">
+            <summary>
+            Форма для визуализации данных
+            </summary>
+            <param name="vid">Выборка где вектору сопоставлена метка класса</param>
+        </member>
         <member name="F:AI.MathMod.Graphiks.VisualData.components">
             <summary>
             Designer variable used to keep track of non-visual components.
@@ -1817,6 +2100,14 @@
             <param name="nameX"></param>
             <param name="nameY"></param>
             <param name="colorLine"></param>
+        </member>
+        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
+            <summary>
+            Отображение графика
+            </summary>
+            <param name="y">Y</param>
+            <param name="x">X</param>
+            <param name="desc">Описание</param>
         </member>
         <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
@@ -1866,6 +2157,12 @@
             Основная переменная
             </summary>
         </member>
+        <member name="M:AI.MathMod.InformationBlock.ToString">
+            <summary>
+            Вывод в строку
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:AI.MathMod.InformationBlock.TextInform">
             <summary>
             Текстовая информация
@@ -1894,6 +2191,26 @@
         <member name="P:AI.MathMod.InformationBlock.Flag">
             <summary>
             Найден ли ответ
+            </summary>
+        </member>
+        <member name="T:AI.MathMod.Var">
+            <summary>
+            Переменная инф. блока
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Var.Str">
+            <summary>
+            Строка
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Var.Int">
+            <summary>
+            Целочисленное
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Var.Doub">
+            <summary>
+            С плав. запятой
             </summary>
         </member>
         <member name="T:AI.MathMod.Matrix">
@@ -2065,6 +2382,12 @@
             <param name="matr">Матрица</param>
             <returns>Массив векторов</returns>
         </member>
+        <member name="M:AI.MathMod.Matrix.Round(System.Int32)">
+            <summary>
+            Округление значений
+            </summary>
+            <param name="n">До какого знака</param>
+        </member>
         <member name="M:AI.MathMod.Matrix.QRDecomposition(AI.MathMod.Matrix)">
             <summary>
             QR Разложение матрицы
@@ -2092,7 +2415,8 @@
             </summary>
             <param name="functions">Порождающая функция</param>
             <param name="values">Значения</param>
-            <returns>Возвращает альтернативную матрицу</returns>
+            <param name="count">Число выходов</param>
+            <returns>Возвращает ортогональную матрицу</returns>
         </member>
         <member name="M:AI.MathMod.Matrix.Determinant">
             <summary>
@@ -2115,6 +2439,11 @@
             <param name="i"></param>
             <param name="j"></param>
             <param name="dimension"></param>
+        </member>
+        <member name="M:AI.MathMod.Matrix.MatrixShow">
+            <summary>
+            Вывод значений матрицы в таблицу(отдельную форму)
+            </summary>
         </member>
         <member name="M:AI.MathMod.Matrix.CorrelationMatrixNorm(AI.MathMod.Vector[])">
             <summary>
@@ -2144,6 +2473,11 @@
             Количество столбцов
             </summary>
         </member>
+        <member name="P:AI.MathMod.Matrix.Item(System.Int32,System.Int32)">
+            <summary>
+            Элемент матрицы
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.Classifire.BayesClassifier">
             <summary>
             Байесовский классификатор
@@ -2158,7 +2492,7 @@
             <summary>
             Добавление класса
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
         </member>
         <member name="M:AI.MathMod.ML.Classifire.IClassifire.Save(System.String)">
@@ -2183,7 +2517,7 @@
             <summary>
             Добавить класс
             </summary>
-            <param name="tViborka">Элементы класса</param>
+            <param name="tDataset">Элементы класса</param>
             <param name="nameClass">Имя класса</param>
         </member>
         <member name="M:AI.MathMod.ML.Classifire.BayesClassifier.Open(System.String)">
@@ -2235,29 +2569,39 @@
             Структура классификатора
             </summary>
         </member>
+        <member name="F:AI.MathMod.ML.Classifire.StructClasses._classes">
+            <summary>
+            Коллекция классов
+            </summary>
+        </member>
         <member name="P:AI.MathMod.ML.Classifire.StructClasses.Classes">
             <summary>
             Список классов
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.Classifire.Classificator">
+        <member name="T:AI.MathMod.ML.Classifire.Classifier">
             <summary>
             Классификатор
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.#ctor(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.#ctor">
+            <summary>
+            Классификатор
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.#ctor(System.String)">
             <summary>
             Классификатор
             </summary>
             <param name="path">Путь до файла</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.#ctor(AI.MathMod.ML.Classifire.StructClasses)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.#ctor(AI.MathMod.ML.Classifire.StructClasses)">
             <summary>
             Классивикатор
             </summary>
             <param name="classifikator"> Коллекция классов</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.GeneratVector(System.Drawing.Bitmap,System.Boolean)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.GeneratVector(System.Drawing.Bitmap,System.Boolean)">
             <summary>
             Преобразование картинки в вектор
             </summary>
@@ -2265,69 +2609,74 @@
             <param name="flag">Реаальный ли размер использовать?</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.GeneratBmp(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.GeneratBmp(AI.MathMod.Vector)">
             <summary>
             Преобразование вектора в картинку
             </summary>
             <param name="vect">Вектор</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.GetCentr(AI.MathMod.Vector[])">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.GetCentr(AI.MathMod.Vector[])">
             <summary>
             Поиск центра класса
             </summary>
             <param name="vectors">Точки класса</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.Teach1(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.Teach1(AI.MathMod.Vector[],System.String)">
             <summary>
             Обучение одного элеменнта класса
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.AddClasses(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.AddClasses(AI.MathMod.Vector[],System.String)">
             <summary>
             Обучение одного элеменнта класса
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.AddClass1(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.AddClass1(AI.MathMod.Vector[],System.String)">
             <summary>
             Добавление класса в классификатор
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.AddClass(AI.MathMod.Vector[],System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.AddClass(AI.MathMod.Vector[],System.String)">
             <summary>
             Добавление класса в классификатор
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.Save(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.Save(System.String)">
             <summary>
             Сохранение классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.Open(System.String)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.Open(System.String)">
             <summary>
             Загрузка классификатора
             </summary>
             <param name="path">Путь</param>
         </member>
-        <member name="M:AI.MathMod.ML.Classifire.Classificator.RecognizeVector(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.ML.Classifire.Classifier.RecognizeVector(AI.MathMod.Vector)">
             <summary>
             Распознавание
             </summary>
             <param name="inp">Вектор который надо распознать</param>
+        </member>
+        <member name="P:AI.MathMod.ML.Classifire.Classifier.Classes">
+            <summary>
+            Массив классов
+            </summary>
         </member>
         <member name="T:AI.MathMod.ML.Clasterisators.CorrForel">
             <summary>
@@ -2336,15 +2685,13 @@
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.#ctor(AI.MathMod.Vector[])">
             <summary>
-            Конструктор класса
+            Корреляционный форель
             </summary>
-            <param name="viborca"></param>
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.#ctor(AI.MathMod.Vector[],System.Int32)">
             <summary>
-            Конструктор класса
+            Корреляционный форель
             </summary>
-            <param name="viborca"></param>
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.CorrForel.GetGipersfer(System.Double,AI.MathMod.Vector,AI.MathMod.Vector[])">
             <summary>
@@ -2386,27 +2733,32 @@
             Структура кластера
             </summary>
         </member>
+        <member name="P:AI.MathMod.ML.Clasterisators.Claster.Dataset">
+            <summary>
+            Выборка
+            </summary>
+        </member>
         <member name="P:AI.MathMod.ML.Clasterisators.Claster.Centr">
             <summary>
-            центр кластера
+            Центр кластера
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.Clasterisators.Forel">
             <summary>
-            Кластеризатор -- Форель
+            Кластеризатор Форель
             </summary>
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.Forel.#ctor(AI.MathMod.Vector[])">
             <summary>
             Конструктор класса
             </summary>
-            <param name="viborca"></param>
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.Forel.#ctor(AI.MathMod.Vector[],System.Int32)">
             <summary>
             Конструктор класса
             </summary>
-            <param name="viborca"></param>
+            <param name="dataset">Выборка</param>
+            <param name="minR">Минимальный радиус</param>
         </member>
         <member name="M:AI.MathMod.ML.Clasterisators.Forel.GetGipersfer(System.Double,AI.MathMod.Vector,AI.MathMod.Vector[])">
             <summary>
@@ -2438,10 +2790,31 @@
             <param name="vectors">Точки класса</param>
             <returns></returns>
         </member>
+        <member name="P:AI.MathMod.ML.Clasterisators.Forel.Clasters">
+            <summary>
+            Массив кластеров
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.Distance">
             <summary>
             Расстояния
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Distance.ManhattanDistance(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Матхэтенское расстояние (L1)
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Distance.CorrDist(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Корреляционная метрика
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
         </member>
         <member name="T:AI.MathMod.ML.Classifire.StructClassCorr">
             <summary>
@@ -2476,6 +2849,11 @@
         <member name="T:AI.MathMod.ML.Classifire.StructClassesCorr">
             <summary>
             Структура классификатора
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.Classifire.StructClassesCorr._classes">
+            <summary>
+            Список классов
             </summary>
         </member>
         <member name="P:AI.MathMod.ML.Classifire.StructClassesCorr.Classes">
@@ -2531,7 +2909,7 @@
             <summary>
             Обучение одного элеменнта класса
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
@@ -2539,7 +2917,7 @@
             <summary>
             Обучение одного элеменнта класса
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
@@ -2547,7 +2925,7 @@
             <summary>
             Добавление класса в классификатор
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
             <returns></returns>
         </member>
@@ -2555,7 +2933,7 @@
             <summary>
             Добавление класса в классификатор
             </summary>
-            <param name="tViborka">Выборка</param>
+            <param name="tDataset">Выборка</param>
             <param name="nameClass">Имя класса</param>
         </member>
         <member name="M:AI.MathMod.ML.Classifire.CorrelationClassifier.Save(System.String)">
@@ -2596,7 +2974,7 @@
             <summary>
             Добавить класс
             </summary>
-            <param name="tViborka">Элементы класса</param>
+            <param name="tDataset">Элементы класса</param>
             <param name="nameClass">Имя класса</param>
         </member>
         <member name="M:AI.MathMod.ML.Classifire.kNN.Open(System.String)">
@@ -2620,8 +2998,39 @@
         </member>
         <member name="T:AI.MathMod.ML.Classifire.LogisticRegression">
             <summary>
-            Description of LogisticRegression.
+            Логистическая регрессия
             </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.Classifire.LogisticRegression.t">
+            <summary>
+            Вектор замены
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.LogisticRegression.#ctor(AI.MathMod.Vector,System.Boolean[])">
+            <summary>
+            Логистическая регрессия
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.LogisticRegression.#ctor(AI.MathMod.Vector[],System.Boolean[])">
+            <summary>
+            Логистическая регрессия
+            </summary>
+            <param name="x">Вектора входов</param>
+            <param name="y">Принадлежность</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.LogisticRegression.Recognition(AI.MathMod.Vector)">
+            <summary>
+            Распознавание вектора
+            </summary>
+            <param name="x">Вектор</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Classifire.LogisticRegression.RecognitionAll(AI.MathMod.Vector)">
+            <summary>
+            Распознавание векторов
+            </summary>
+            <param name="x">Вектора</param>
         </member>
         <member name="T:AI.MathMod.ML.Classifire.SModel">
             <summary>
@@ -2663,6 +3072,21 @@
             Модель компоненты вектора
             </summary>
         </member>
+        <member name="F:AI.MathMod.ML.Classifire.SModelComponent._e">
+            <summary>
+            Мат. ожидаине
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.Classifire.SModelComponent._std">
+            <summary>
+            СКО
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.Classifire.SModelComponent.pr">
+            <summary>
+            Вероятность
+            </summary>
+        </member>
         <member name="M:AI.MathMod.ML.Classifire.SModelComponent.#ctor">
             <summary>
             Стат. модель компонента модели
@@ -2673,7 +3097,7 @@
             Стат. модель компонента модели
             </summary>
             <param name="e">Мат. ожидание</param>
-            <param name="sco">Среднеквадратичное отклонение</param>
+            <param name="std">Среднеквадратичное отклонение</param>
         </member>
         <member name="T:AI.MathMod.ML.Classifire.SimpleFLClassifier">
             <summary>
@@ -2709,6 +3133,11 @@
             Добавление модели
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.GetWeights">
+            <summary>
+            Весовые коэффициенты
+            </summary>
+        </member>
         <member name="M:AI.MathMod.ML.Classifire.SimpleFLClassifier.GetProbability(System.Double[],AI.MathMod.ML.Classifire.SModel)">
             <summary>
             Вероятности принадлежности к классу
@@ -2740,6 +3169,11 @@
             <param name="inp">Вектор</param>
             <returns>Имя класса</returns>
         </member>
+        <member name="P:AI.MathMod.ML.Classifire.SimpleFLClassifier.Threshold">
+            <summary>
+            Порог
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.Classifire.StatisticClassifier">
             <summary>
             Более "мощный" статистический к-тор
@@ -2754,7 +3188,7 @@
             <summary>
             Добавить класс
             </summary>
-            <param name="tViborka">Элементы класса</param>
+            <param name="tDataset">Элементы класса</param>
             <param name="nameClass">Имя класса</param>
         </member>
         <member name="M:AI.MathMod.ML.Classifire.SVM.Open(System.String)">
@@ -2781,6 +3215,87 @@
             Расширение пространства признаков
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Polinomial(System.Double,System.Int32)">
+            <summary>
+            Раширение пространства признаков полиномиальной ф-ей
+            </summary>
+            <param name="x">Вход</param>
+            <param name="n">степень полинома</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Polinomial(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Раширение пространства признаков полиномиальной ф-ей
+            </summary>
+            <param name="inp">Вход</param>
+            <param name="n">степень полинома</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Cos(System.Double,System.Int32)">
+            <summary>
+            Раширение пространства признаков косинусами
+            </summary>
+            <param name="x">Вход</param>
+            <param name="n">Число гармоник</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Sin(System.Double,System.Int32)">
+            <summary>
+            Раширение пространства признаков синусами 
+            </summary>
+            <param name="x">Вход</param>
+            <param name="n">Число гармоник</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.SinCos(System.Double,System.Int32)">
+            <summary>
+            Раширение пространства признаков синусами и косинусами
+            </summary>
+            <param name="x">Вход</param>
+            <param name="n">Число гармоник</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Cos(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Раширение пространства признаков косинусами
+            </summary>
+            <param name="inp">Вход</param>
+            <param name="n">Число гармоник</param>
+            <returns>Новый вектор</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.PoliCos(AI.MathMod.Vector,System.Int32,System.Int32)">
+            <summary>
+            Расширение пространства с помощью полиномиальных ф-й и потом косинусов
+            </summary>
+            <param name="x">Вход</param>
+            <param name="nPolinom">Степень полинома</param>
+            <param name="nCos">Кол-во косинусов</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.PoliCos(System.Double,System.Int32,System.Int32)">
+            <summary>
+            Расширение пространства с помощью полиномиальных ф-й и потом косинусов
+            </summary>
+            <param name="x">Вход</param>
+            <param name="nPolinom">Степень полинома</param>
+            <param name="nCos">Кол-во косинусов</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.GaussRBF(System.Double,AI.MathMod.Vector,System.Double)">
+            <summary>
+            Радиально-базисная ф-я Гаусса
+            </summary>
+            <param name="x">Вход</param>
+            <param name="centers">Массив центров</param>
+            <param name="std">СКО</param>
+            <returns>Вектор значений от 0 до 1</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.Sinc(System.Double,AI.MathMod.Vector)">
+            <summary>
+            Синус Котельникова sin(x)/x
+            </summary>
+            <param name="x"></param>
+            <param name="centers"></param>
+            <returns></returns>
+        </member>
         <member name="M:AI.MathMod.ML.Datasets.ExtensionOfFeatureSpace.ImportanceSign(AI.MathMod.Vector[])">
             <summary>
             
@@ -2792,6 +3307,20 @@
             <summary>
             Представляет структуру вектор-класс
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeClass.#ctor(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Пример решетка/метка
+            </summary>
+            <param name="vector">Вектор</param>
+            <param name="mark">Метка</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeClass.#ctor(AI.MathMod.SparseData.Lattice1DDouble,System.Int32)">
+            <summary>
+            Пример решетка/метка
+            </summary>
+            <param name="lat">Одномерная решетка</param>
+            <param name="mark">Метка</param>
         </member>
         <member name="P:AI.MathMod.ML.Datasets.LatticeClass.InpLat">
             <summary>
@@ -2835,15 +3364,27 @@
             </summary>
             <param name="path">Путь до датасета</param>
         </member>
-        <member name="T:AI.MathMod.ML.Datasets.Mnist">
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.GetLat">
             <summary>
-            Description of Mnist.
+            Массив решеток
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.LatticeIntDataset.GetInts">
+            <summary>
+            Массив меток
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.Datasets.VectorClass">
             <summary>
             Представляет структуру вектор-класс
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorClass.#ctor(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Представляет структуру вектор-класс
+            </summary>
+            <param name="vector">Вектор</param>
+            <param name="mark">Метка класса</param>
         </member>
         <member name="P:AI.MathMod.ML.Datasets.VectorClass.InpVector">
             <summary>
@@ -2860,11 +3401,26 @@
             Датасет
             </summary>
         </member>
+        <member name="F:AI.MathMod.ML.Datasets.VectorIntDataset.mean">
+            <summary>
+            Средний вектор
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.Datasets.VectorIntDataset.disp">
+            <summary>
+            Дисперсия по выборке
+            </summary>
+        </member>
         <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.#ctor(System.String)">
             <summary>
             Загрузка датасета из файла
             </summary>
             <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.#ctor">
+            <summary>
+            Датасет
+            </summary>
         </member>
         <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.GetRandomData">
             <summary>
@@ -2905,6 +3461,12 @@
             Нормализация датасета
             </summary>
             <returns>Датасет</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.GetDatasetDelSim(System.Double)">
+            <summary>
+            Удаление похожих векторов из разных классов
+            </summary>
+            <param name="simCoef">Коэффициент схожести</param>
         </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
@@ -3036,6 +3598,21 @@
             Скрытая марковская модель
             </summary>
         </member>
+        <member name="F:AI.MathMod.HMM.HiMaMoWords.stateMatrix">
+            <summary>
+            Матрица состояний
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.HMM.HiMaMoWords.stateAlter">
+            <summary>
+            Матрица состояний
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.HMM.HiMaMoWords.#ctor">
+            <summary>
+            Скрытая марковская модель
+            </summary>
+        </member>
         <member name="M:AI.MathMod.HMM.HiMaMoWords.Train(System.String)">
             <summary>
             Обучение
@@ -3076,9 +3653,51 @@
             Линейный автокодировщик
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.LinearAutocoder.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Линейный автокодировщик
+            </summary>
+            <param name="inputs">Размерность исходного пространства</param>
+            <param name="outps">Размерность нового пространства</param>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearAutocoder.Train(AI.MathMod.Vector)">
+            <summary>
+            Обучение
+            </summary>
+            <param name="input">Вектор входа/выхода</param>
+            <returns>Ошибка MSE</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearAutocoder.Output(AI.MathMod.Vector)">
+            <summary>
+            Выход
+            </summary>
+            <param name="input">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearAutocoder.Reconstruct(AI.MathMod.Vector)">
+            <summary>
+            Восстановление вектора
+            </summary>
+            <param name="vect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.LinearAutocoder.GenerateCoderMatrix">
+            <summary>
+            Генерация матрицы(нормированной)
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.LinearAutocoder.Coder">
+            <summary>
+            Матрица отображения пространств
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.MenegerNNW">
             <summary>
             Description of MenegerNNW.
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.MenegerNNW._net">
+            <summary>
+            Нейросеть
             </summary>
         </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.MenegerNNW.#ctor(AI.MathMod.ML.NeuronNetwork.Net,AI.MathMod.ML.Datasets.VectorIntDataset)">
@@ -3124,8 +3743,6 @@
             <summary>
             Тестирование
             </summary>
-            <param name="vidTest">Датасет</param>
-            <returns>Вероятность верного ответа</returns>
         </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.MenegerNNW.Output(AI.MathMod.Vector)">
             <summary>
@@ -3145,6 +3762,56 @@
             <summary>
             Нейронная сеть
             </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.Net._layers">
+            <summary>
+            Список слоев НС
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.#ctor">
+            <summary>
+            Создание сети
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.#ctor(System.Random)">
+            <summary>
+            Создание сети
+            </summary>
+            <param name="rnd">Датчик случ. чисел</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.#ctor(System.String)">
+            <summary>
+            Создание сети
+            </summary>
+            <param name="path">Путь до сохраненной НС</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Add(AI.MathMod.ML.NeuronNetwork.ILayer)">
+            <summary>
+            Добавление слоя
+            </summary>
+            <param name="layer">Слой</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Output(AI.MathMod.Vector)">
+            <summary>
+            Выход сети
+            </summary>
+            <param name="input">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.TrainClassifier(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Обучение классификатора
+            </summary>
+            <param name="inp">Вектор входа</param>
+            <param name="outp">Метка класса</param>
+            <returns>Ошибка на примере</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Train(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Обучение сети
+            </summary>
+            <param name="inp">Вектор входа</param>
+            <param name="output">Вектор выхода</param>
+            <returns>Ошибка на примере</returns>
         </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Save(System.String)">
             <summary>
@@ -3168,6 +3835,11 @@
             Инерционность обучения
             </summary>
         </member>
+        <member name="T:AI.MathMod.ML.NeuronNetwork.FullBipolyareSigmoid">
+            <summary>
+            Гиперболический тангенс
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.FullConLayerBase">
             <summary>
             Полносвязный слой
@@ -3178,14 +3850,247 @@
             Слой нейронной сети
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.Output(AI.MathMod.Vector)">
+            <summary>
+            Прямой проход сети
+            </summary>
+            <param name="input">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.Delt(AI.MathMod.Vector)">
+            <summary>
+            Ошибка на выходе
+            </summary>
+            <param name="ideal">Идеальный вектор</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.DeltH(AI.MathMod.ML.NeuronNetwork.ILayer)">
+            <summary>
+            Ошибка на скрытом слое
+            </summary>
+            <param name="layer">Следующий слой</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.Backwards">
+            <summary>
+             Обратный проход
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.Train">
+            <summary>
+            Обучение НС
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.WGenerate(System.Random)">
+            <summary>
+            Перегенерация для повторяемости результатов
+            </summary>
+            <param name="rnd">ГСПЧ</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.ILayer.SetParam(System.Int32,System.Int32)">
+            <summary>
+            Установка(расчет) параметров НС
+            </summary>
+            <param name="inp">Размерность входа слоя</param>
+            <param name="outp">Число нейронов(размерность выхода)</param>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.ILayer.SizeOut">
+            <summary>
+            Размерность выхода
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.ILayer.Eps">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.ILayer.Delts">
+            <summary>
+            Дельты
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.W">
+            <summary>
+            Матрица весов
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Inp">
+            <summary>
+            Вектор входа
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.norm">
+            <summary>
+            Скорость обучения
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.moment">
+            <summary>
+            Момент
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Last">
+            <summary>
+            Матрица весов на прошлой иттерации обучения
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.#ctor">
+            <summary>
+            Полносвязный слой
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Полносвязный слой
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.SetParam(System.Int32,System.Int32)">
+            <summary>
+            Установка параметров
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Output(AI.MathMod.Vector)">
+            <summary>
+            Прямой проход сети
+            </summary>
+            <param name="input">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Backwards">
+            <summary>
+            Обратный проход сети
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.FActivation(AI.MathMod.Vector)">
+            <summary>
+            Ф-я активации
+            </summary>
+            <param name="inp">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.DfDy">
+            <summary>
+            Производная ф-ии активации
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.DeltH(AI.MathMod.ML.NeuronNetwork.ILayer)">
+            <summary>
+            Ошибка на скрытом слое
+            </summary>
+            <param name="layer">Следующий слой</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Train">
+            <summary>
+            Обучение НС
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.WGenerate(System.Random)">
+            <summary>
+            Перегенерирование весов
+            </summary>
+            <param name="rnd">Случайные числа</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Delt(AI.MathMod.Vector)">
+            <summary>
+            Расчет дельт
+            </summary>
+            <param name="ideal">Идеальный выход</param>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.SizeOut">
+            <summary>
+            Размерность выхода
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Delts">
+            <summary>
+            Дельты
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.OutputLayer">
+            <summary>
+            Выход слоя
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Eps">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullBipolyareSigmoid.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Гиперболический тангенс
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullBipolyareSigmoid.#ctor(System.Int32)">
+            <summary>
+            Гиперболический тангенс
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullBipolyareSigmoid.FActivation(AI.MathMod.Vector)">
+            <summary>
+            Ф-я активации
+            </summary>
+            <param name="inp">Вход</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.FullBipolyareSigmoid.DfDy">
+            <summary>
+            Производная ф-ии активации
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer">
             <summary>
             Description of CasuleLayer.
             </summary>
         </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer._capsules">
+            <summary>
+            Массив капсул
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer.norms">
+            <summary>
+            Массив норм, для каждой капсулы своя
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer.#ctor(AI.MathMod.ML.NeuronNetwork.Capsule[])">
+            <summary>
+            Капсульный линейный слой
+            </summary>
+            <param name="capsules">Капсулы</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer.#ctor">
+            <summary>
+            Капсульный линейный слой
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer.Init(AI.MathMod.ML.NeuronNetwork.Capsule[])">
+            <summary>
+            Инициализация
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleLinearLayer.Train">
+            <summary>
+            Обучение
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.Capsule">
             <summary>
             Капсула
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.Capsule.inputStartInterval">
+            <summary>
+            Начало интервал
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.Capsule.inputEndInterval">
+            <summary>
+            Окончание интервала 
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.Capsule.neuronCount">
+            <summary>
+            Число нейронов в капсуле
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.ML.NeuronNetwork.Capsule.norm">
+            <summary>
+            Скорость обучения
             </summary>
         </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.Capsule.#ctor(System.Int32,System.Int32,System.Int32)">
@@ -3196,9 +4101,40 @@
             <param name="iei">Индекс окончание</param>
             <param name="nc">Количество нейронов в капсуле</param>
         </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Capsule.GetNorms(AI.MathMod.ML.NeuronNetwork.Capsule[])">
+            <summary>
+            Нормы обучения
+            </summary>
+            <param name="capsules">Капсулы</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Capsule.GenerateMatrixW(AI.MathMod.ML.NeuronNetwork.Capsule[])">
+            <summary>
+            Генерарация весов по капсулам
+            </summary>
+            <param name="capsules"></param>
+            <returns></returns>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleRelu">
             <summary>
             Description of CapsulePRelu.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleRelu.#ctor(AI.MathMod.ML.NeuronNetwork.Capsule[])">
+            <summary>
+            Капсульный релу слой
+            </summary>
+            <param name="caps"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleRelu.FActivation(AI.MathMod.Vector)">
+            <summary>
+            Ф-я активации
+            </summary>
+            <param name="inp">Вход</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleRelu.DfDy">
+            <summary>
+            Производная ф-ии активации
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.CapsuleSig">
@@ -3206,17 +4142,32 @@
             Сигмоидальный капсульный слой
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.Convolution">
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleSig.#ctor(AI.MathMod.ML.NeuronNetwork.Capsule[])">
             <summary>
-            Description of Convolution.
+            Капсульный сигмоидальный слой
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.NeuronNetwork.Deconvolution">
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleSig.FActivation(AI.MathMod.Vector)">
             <summary>
-            Description of Deconvolution.
+            Ф-я активации
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.CapsuleSig.DfDy">
+            <summary>
+            Производная ф-ии акт
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.LinearLayer">
+            <summary>
+            Линейный слой
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.LinearLayer.#ctor(System.Int32)">
+            <summary>
+            Линейный слой
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.LinearLayer.#ctor(System.Int32,System.Int32)">
             <summary>
             Линейный слой
             </summary>
@@ -3226,14 +4177,48 @@
             Description of Sigmoid.
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Sigmoid.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Слой с исгмоидальной активацией
+            </summary>
+            <param name="inp">Кол-во входов</param>
+            <param name="outp">Кол-во выходов(нейронов)</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Sigmoid.#ctor(System.Int32)">
+            <summary>
+            Слой с исгмоидальной активацией
+            </summary>
+            <param name="neuronCount">Кол-во нейронов</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Sigmoid.FActivation(AI.MathMod.Vector)">
+            <summary>
+            Функция активации
+            </summary>
+            <param name="inp">Выход линейного слоя</param>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Sigmoid.DfDy">
+            <summary>
+            Производная функции активации
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.NeuronNetwork.Softmax">
             <summary>
             Description of Sofmax.
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.PCA">
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Softmax.#ctor(System.Int32,System.Int32)">
             <summary>
-            Description of PCA.
+            Софтмакс
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Softmax.#ctor(System.Int32)">
+            <summary>
+            Софтмакс
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Softmax.FActivation(AI.MathMod.Vector)">
+            <summary>
+            Ф-я активации
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.Regression.CosRegression">
@@ -3241,9 +4226,46 @@
             Description of PolynomialRegression.
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Regression.CosRegression.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Регрессия по косинусам
+            </summary>
+            <param name="inp">Вектор входа</param>
+            <param name="outp">Вектор входа</param>
+            <param name="cos"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.CosRegression.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">Значение незав. переменной</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.CosRegression.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Значения незав. переменных</param>
+        </member>
         <member name="T:AI.MathMod.ML.Regression.ExpMean">
             <summary>
             Description of ExpMean.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.ExpMean.#ctor(AI.MathMod.Vector,System.Double)">
+            <summary>
+            Прогнозирование на основе скользящего среднего
+            </summary>
+            <param name="inp">Вход</param>
+            <param name="oldPart">Старая часть(коэф. сглаживания)</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.ExpMean.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.ExpMean.Predict(System.Int32)">
+            <summary>
+            Прогноз
             </summary>
         </member>
         <member name="T:AI.MathMod.ML.Regression.LinearRegressionModel">
@@ -3330,6 +4352,26 @@
             Множественная регрессия на базе нейронной сети
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegressionNNW.#ctor(AI.MathMod.Vector[],AI.MathMod.Vector)">
+            <summary>
+            Множественная регрессия
+            </summary>
+            <param name="vectsInp"></param>
+            <param name="vectOutp"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegressionNNW.Train(System.Double)">
+            <summary>
+            Обучение
+            </summary>
+            <param name="ep"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegressionNNW.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="x">Вектор входа</param>
+            <returns>выход</returns>
+        </member>
         <member name="M:AI.MathMod.ML.Regression.MultipleRegressionNNW.Predict(AI.MathMod.Vector[])">
             <summary>
             Прогноз
@@ -3342,20 +4384,106 @@
             Description of PolinomialRegressionNNW.
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Regression.PolinomialRegressionNNW.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Полиноминаяльная регрессия нейросеть
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolinomialRegressionNNW.Train(System.Double)">
+            <summary>
+            Обучение
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolinomialRegressionNNW.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">Значение незав. переменной</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolinomialRegressionNNW.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Значения незав. переменных</param>
+        </member>
         <member name="T:AI.MathMod.ML.Regression.PolynomialRegression">
             <summary>
             Description of PolynomialRegression.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolynomialRegression.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Полиномиальная регрессия
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolynomialRegression.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">Значение незав. переменной</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.PolynomialRegression.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Значения незав. переменных</param>
         </member>
         <member name="T:AI.MathMod.ML.Regression.RBFGauss">
             <summary>
             Description of RegressionLagrang.
             </summary>
         </member>
-        <member name="T:AI.MathMod.ML.Regression.RegressionLagrang">
+        <member name="F:AI.MathMod.ML.Regression.RBFGauss.param">
+            <summary>
+            Параметры
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RBFGauss.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Регрессия
+            </summary>
+            <param name="X">Вектор входа</param>
+            <param name="Y">Вектор выхода</param>
+            <param name="nRBF">Кол-во ядер</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RBFGauss.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">Значение незав. переменной</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RBFGauss.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Значения незав. переменных</param>
+        </member>
+        <member name="T:AI.MathMod.ML.Regression.RegressionPoly">
             <summary>
             Description of RegressionLagrang.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RegressionPoly.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Полиномиальная регрессия
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="nPoly"></param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RegressionPoly.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">вход</param>
+            <returns>выход</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.RegressionPoly.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Вектор входа</param>
+            <returns>Вектор выхода</returns>
         </member>
         <member name="T:AI.MathMod.ML.Regression.SinApproximation">
             <summary>
@@ -3434,14 +4562,49 @@
             Description of RegressionLagrang.
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Regression.SincRegression.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Регрессия на базе синуса котельникова
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.SincRegression.Predict(System.Double)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="inp">Значение незав. переменной</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.SincRegression.Predict(AI.MathMod.Vector)">
+            <summary>
+            Прогноз
+            </summary>
+            <param name="vect">Значение незав. переменных</param>
+        </member>
         <member name="T:AI.MathMod.ML.Simplex">
             <summary>
             Симплекс-метод
             </summary>
         </member>
+        <member name="M:AI.MathMod.ML.Simplex.#ctor(AI.MathMod.Matrix)">
+            <summary>
+            Симплекс-метод
+            </summary>
+            <param name="source">Матрица входа</param>
+        </member>
         <member name="M:AI.MathMod.ML.Simplex.Run">
             <summary>
             Запуск метода
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Simplex.ToString">
+            <summary>
+            Вывод строки
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Simplex.ToString(System.Int32)">
+            <summary>
+            Вывод строки
             </summary>
             <returns></returns>
         </member>
@@ -3459,6 +4622,17 @@
             <summary>
             Description of PhasePortrait.
             </summary>
+        </member>
+        <member name="M:AI.MathMod.NonLinearDynamic.PhasePortrait.#ctor">
+            <summary>
+            Фазовый портрет
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.NonLinearDynamic.PhasePortrait.GetPhasePor(AI.MathMod.Vector)">
+            <summary>
+            Фазовый портрет, метод не реализован
+            </summary>
+            <param name="sempels">Отсчеты</param>
         </member>
         <member name="T:AI.MathMod.Signals.DCT">
             <summary>
@@ -3544,6 +4718,11 @@
             </summary>
             <param name="st">Входной сигнал</param>
         </member>
+        <member name="M:AI.MathMod.Signals.FastHilbert.OgibNew(AI.MathMod.Vector,AI.MathMod.Vector,System.Double)">
+            <summary>
+            Выделение огибающей на базе квадратурн. сост
+            </summary>
+        </member>
         <member name="T:AI.MathMod.Signals.Filters">
             <summary>
             Класс для реализации цифровых фильтров
@@ -3620,6 +4799,21 @@
             <param name="f">Вектор частот</param>
             <param name="param">Параметры</param>
             <returns>Возвращает АЧХ</returns>
+        </member>
+        <member name="M:AI.MathMod.Signals.Filters.ExpAv(AI.MathMod.Vector,System.Double)">
+            <summary>
+            Эспоненциональное скользящее среднее
+            </summary>
+            <param name="inp">Вход</param>
+            <param name="oldPart">Коэффициент сглаживания</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Signals.Filters.GetEnvelope(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Получение огибающей
+            </summary>
+            <param name="inp"></param>
+            <param name="dec">Прореживание</param>
         </member>
         <member name="T:AI.MathMod.Signals.AFHType">
             <summary>
@@ -3703,6 +4897,24 @@
         <member name="T:AI.MathMod.Signals.OptimalFilter">
             <summary>
             Description of OptimalFilter.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Signals.OptimalFilter.#ctor(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Оптимальный (согласованный) фильтр
+            </summary>
+            <param name="signal"></param>
+            <param name="n"></param>
+        </member>
+        <member name="M:AI.MathMod.Signals.OptimalFilter.Result(AI.MathMod.Vector)">
+            <summary>
+            Прохождение фильтра
+            </summary>
+            <param name="signal">Сигнал на входе</param>
+        </member>
+        <member name="M:AI.MathMod.Signals.OptimalFilter.SpectrCompressLFM(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Сжатие ЛЧМ по спектру
             </summary>
         </member>
         <member name="T:AI.MathMod.Signals.Signal">
@@ -3966,6 +5178,25 @@
             <param name="fd">Частота дискретизация</param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.Signals.Signal.LFMRectNP(System.Double,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Пачка ЛЧМ
+            </summary>
+            <param name="f"></param>
+            <param name="f0"></param>
+            <param name="fd"></param>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Signals.Signal.LFM(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            ЛЧМ
+            </summary>
+            <param name="df"></param>
+            <param name="f0"></param>
+            <param name="fd"></param>
+            <param name="time"></param>
+        </member>
         <member name="M:AI.MathMod.Signals.Signal.Perediscr(AI.MathMod.Vector,System.Int32,System.Int32)">
             <summary>
             Передискретизация сигнала
@@ -3987,10 +5218,16 @@
         </member>
         <member name="T:AI.MathMod.Signals.Wavelet">
             <summary>
-            Description of Wavelet.
+            Вейвлеты
             </summary>
         </member>
-        <member name="M:AI.MathMod.Signals.Wavelet.SerchPatern(AI.MathMod.Vector,System.Int32)">
+        <member name="M:AI.MathMod.Signals.Wavelet.#ctor(AI.MathMod.Signals.PerentWavelet)">
+            <summary>
+            Непрерывное вейвлет преобразование
+            </summary>
+            <param name="pw">Порождение вейвлетов</param>
+        </member>
+        <member name="M:AI.MathMod.Signals.Wavelet.SerchPatern(AI.MathMod.Vector)">
             <summary>
             Поиск патернов в сигнале
             </summary>
@@ -4011,10 +5248,135 @@
             <param name="inp">Входной вектор</param>
             <returns>Результат</returns>
         </member>
+        <member name="T:AI.MathMod.Signals.PerentWavelet">
+            <summary>
+            Ф-я порождения вейвлетов
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Signals.PerentWavelet.waveletSpectrs">
+            <summary>
+            Спектры ф-й
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Signals.PerentWavelet.fur">
+            <summary>
+            Фурье
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Signals.PerentWavelet.std">
+            <summary>
+            Вектор СКО
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Signals.PerentWavelet.scals">
+            <summary>
+            Масштабы
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Signals.PerentWavelet.#ctor(System.Func{System.Double,AI.MathMod.Vector},AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Порождения вейвлетов
+            </summary>
+            <param name="wavelet">Порождающая функция</param>
+            <param name="scales">Масштабы</param>
+            <param name="n">Размерность входа</param>
+        </member>
         <member name="T:AI.MathMod.Sound">
             <summary>
             Description of Sound.
             </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.chunkID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fileSize">
+            <summary>
+            Размер файла
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.riffType">
+            <summary>
+            Тип
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fmtID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fmtSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fmtCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.channels">
+            <summary>
+            Каналы (число)
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.sampleRate">
+            <summary>
+            Частота дискретизации
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fmtAvgBPS">
+            <summary>
+            средний битрейт
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.fmtBlockAlign">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.bitDepth">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.dataID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Sound.dataSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Sound.#ctor">
+            <summary>
+            Звук
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Sound.SoundLoad(System.String)">
+            <summary>
+            Загрузка звука
+            </summary>
+            <param name="path">Путь до файла</param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Sound.SaveVector(System.String,AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Сохранение вектора как звука
+            </summary>
+            <param name="path"></param>
+            <param name="vector"></param>
+            <param name="fd"></param>
+        </member>
+        <member name="M:AI.MathMod.Sound.PlayVector(AI.MathMod.Vector,System.Int32)">
+            <summary>
+            Вопроизведение
+            </summary>
+            <param name="vector"></param>
+            <param name="fd"></param>
         </member>
         <member name="T:AI.MathMod.SparseData.Cell1D`1">
             <summary>
@@ -4026,9 +5388,72 @@
             Description of ICell.
             </summary>
         </member>
+        <member name="P:AI.MathMod.SparseData.ICell`1.Value">
+            <summary>
+            Значение
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.ICell`1.Coordinats">
+            <summary>
+            Координаты
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.SparseData.Cell1D`1.coordinate">
+            <summary>
+            Коорд.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Cell1D`1.#ctor">
+            <summary>
+            одномерная клетка
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Cell1D`1.#ctor(`0,System.Int32)">
+            <summary>
+            одномерная клетка
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell1D`1.Value">
+            <summary>
+            Значение
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell1D`1.Coordinats">
+            <summary>
+            Коорд.
+            </summary>
+        </member>
         <member name="T:AI.MathMod.SparseData.Cell2D`1">
             <summary>
             Description of Cell2D.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Cell2D`1.#ctor(System.Int32,System.Int32,`0)">
+            <summary>
+            Клетка решетки
+            </summary>
+            <param name="x"> Коорд. X</param>
+            <param name="y">Коорд. Y</param>
+            <param name="value">Значение клетки</param>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell2D`1.Value">
+            <summary>
+            Значение клетки
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell2D`1.Coordinats">
+            <summary>
+            Координаты
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell2D`1.X">
+            <summary>
+            Коорд. X
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Cell2D`1.Y">
+            <summary>
+            Коорд. Y
             </summary>
         </member>
         <member name="T:AI.MathMod.SparseData.ILattice`1">
@@ -4046,6 +5471,16 @@
             Description of Lattice1D.
             </summary>
         </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1D`1.#ctor">
+            <summary>
+            Одномерная решетка
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1D`1.#ctor(AI.MathMod.SparseData.Cell1D{`0}[])">
+            <summary>
+            Одномерная решетка
+            </summary>
+        </member>
         <member name="M:AI.MathMod.SparseData.Lattice1D`1.op_Multiply(AI.MathMod.SparseData.Lattice1D{`0},AI.MathMod.Matrix)">
             <summary>
             Умножение решетки матрицу 
@@ -4054,9 +5489,30 @@
             <param name="B"></param>
             <returns></returns>
         </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1D`1.ToString">
+            <summary>
+            Одномерная решетка в строку
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.SparseData.Lattice1D`1.Cells">
+            <summary>
+            Ячейки
+            </summary>
+        </member>
         <member name="T:AI.MathMod.SparseData.Lattice1DDouble">
             <summary>
             Description of Lattice1DDouble.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1DDouble.#ctor(AI.MathMod.SparseData.Cell1D{System.Double}[])">
+            <summary>
+            Одномерная решетка double
+            </summary>
+            <param name="cels"></param>
+        </member>
+        <member name="M:AI.MathMod.SparseData.Lattice1DDouble.#ctor(AI.MathMod.Vector)">
+            <summary>
+            Одномерная решетка double
             </summary>
         </member>
         <member name="M:AI.MathMod.SparseData.Lattice1DDouble.op_Multiply(AI.MathMod.SparseData.Lattice1DDouble,AI.MathMod.Matrix)">
@@ -4090,7 +5546,7 @@
             Дисперсия
             </summary>
         </member>
-        <member name="M:AI.MathMod.Statistic.Sco">
+        <member name="M:AI.MathMod.Statistic.Std">
             <summary>
             СКО
             </summary>
@@ -4102,7 +5558,7 @@
             <param name="vector">Входной вектор</param>
             <returns></returns>
         </member>
-        <member name="M:AI.MathMod.Statistic.Sco(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Statistic.Std(AI.MathMod.Vector)">
             <summary>
             Среднеквадратичное отклонение
             </summary>
@@ -4197,6 +5653,7 @@
             </summary>
             <param name="m">Количество строк</param>
             <param name="n">Количество столбцов</param>
+            <param name="rnd">Генератор случ чисел</param>
         </member>
         <member name="M:AI.MathMod.Statistic.randNorm(System.Int16)">
             <summary>
@@ -4308,6 +5765,7 @@
             Средняя частота (не нормированная, зависит от кол-ва точек)
             </summary>
             <param name="signal">Сигнал</param>
+            <param name="oldPart">Сглаживание</param>
             <returns></returns>
         </member>
         <member name="M:AI.MathMod.Statistic.MeanFreq(AI.MathMod.Vector,System.Double,System.Double)">
@@ -4316,6 +5774,7 @@
             </summary>
             <param name="signal">Сигнал</param>
             <param name="fd">Частота дискретизации</param>
+            <param name="oldPart">Коэффициент сглаживания</param>
             <returns>Средняя частота [Гц]</returns>
         </member>
         <member name="M:AI.MathMod.Statistic.DivFreq(AI.MathMod.Vector)">
@@ -4323,7 +5782,6 @@
             Изменение частоты
             </summary>
             <param name="signal">Сигнал</param>
-            <param name="fd">Частота дискретизации</param>
             <returns>Дивиация средней частоты</returns>
         </member>
         <member name="P:AI.MathMod.Statistic.SCO">
@@ -4403,6 +5861,26 @@
                 Представляет тензор 3-го ранга, как базовый клас нейронной сети
             </summary>
         </member>
+        <member name="F:AI.MathMod.Tensor.Depth">
+            <summary>
+            Глубина
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Tensor.Height">
+            <summary>
+            Высота
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Tensor.DataInTensor">
+            <summary>
+            Значения
+            </summary>
+        </member>
+        <member name="F:AI.MathMod.Tensor.Width">
+            <summary>
+            Ширина
+            </summary>
+        </member>
         <member name="M:AI.MathMod.Tensor.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
                 Заполнение тензора случайными числами
@@ -4420,7 +5898,82 @@
             <param name="depth">Глубина</param>
             <param name="c">Величина которой инициализируется тензор</param>
         </member>
-        <!-- Некорректный комментарий в формате XML для члена "M:AI.MathMod.Tensor.#ctor(System.Collections.Generic.IList{System.Double})" проигнорирован -->
+        <member name="M:AI.MathMod.Tensor.#ctor(System.Collections.Generic.IList{System.Double})">
+            <summary>
+            Инициализация с помощь интерфейса IList
+            </summary>
+            <param name="weights">Значения</param>
+        </member>
+        <member name="M:AI.MathMod.Tensor.Copy">
+            <summary>
+            Копирует значения
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Addition(AI.MathMod.Tensor,System.Double)">
+            <summary>
+            Сложение
+            </summary>
+            <param name="A"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Addition(System.Double,AI.MathMod.Tensor)">
+            <summary>
+            Сложение
+            </summary>
+            <param name="A"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Multiply(AI.MathMod.Tensor,System.Double)">
+            <summary>
+            Умножение
+            </summary>
+            <param name="A"></param>
+            <param name="k"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Subtraction(AI.MathMod.Tensor,System.Double)">
+            <summary>
+            Вычитание
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Division(AI.MathMod.Tensor,System.Double)">
+            <summary>
+            Деление
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.Get(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Выдает значение с заданной позиции
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.Set(System.Int32,System.Int32,System.Int32,System.Double)">
+            <summary>
+            Устанавливает значение на заданную позицию
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.Normalise">
+            <summary>
+            Нормализация
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.ToVector">
+            <summary>
+            Преобразование в вектор
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.op_Subtraction(System.Double,AI.MathMod.Tensor)">
+            <summary>
+            Вычитание
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Tensor.SetConst(System.Double)">
+            <summary>
+            Установка константы
+            </summary>
+            <param name="c">Константа</param>
+        </member>
         <member name="T:AI.MathMod.Vector">
             <summary>
             Класс реализующий вектора и операции над ними
@@ -4662,6 +6215,13 @@
             </summary>
             <param name="index">Индекс</param>
         </member>
+        <member name="M:AI.MathMod.Vector.Round(System.Int32)">
+            <summary>
+            Округление
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
         <member name="M:AI.MathMod.Vector.ElementDel(System.Double)">
             <summary>
             Удаление выбранного элемента
@@ -4679,6 +6239,12 @@
             Удаление выбранных элементов
             </summary>
             <param name="elements">Элементы</param>
+        </member>
+        <member name="M:AI.MathMod.Vector.PhaseUnwrap">
+            <summary>
+            Устранение разрыров фазы(метод не работает)
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:AI.MathMod.Vector.ElementsDel(System.Double[])">
             <summary>
@@ -4741,7 +6307,7 @@
             Визуализация вектора
             </summary>
         </member>
-        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector,AI.MathMod.Graphiks.Descrintion)">
+        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
             <summary>
             Визуализация вектора
             </summary>
