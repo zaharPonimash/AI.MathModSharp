@@ -8,19 +8,33 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class CapsuleLinearLayer:FullConLayerBase
 	{
-		
+		/// <summary>
+		/// Массив капсул
+		/// </summary>
 		protected Capsule[] _capsules;
+		/// <summary>
+		/// Массив норм, для каждой капсулы своя
+		/// </summary>
 		protected double[] norms;
 		
-		
+		/// <summary>
+		/// Капсульный линейный слой
+		/// </summary>
+		/// <param name="capsules">Капсулы</param>
 		public CapsuleLinearLayer(Capsule[] capsules)
 		{
 			Init(capsules);
 		}
 		
+		
+		/// <summary>
+		/// Капсульный линейный слой
+		/// </summary>
 		public CapsuleLinearLayer(){}
 		
-		
+		/// <summary>
+		/// Инициализация
+		/// </summary>
 		public virtual void Init(Capsule[] caps)
 		{
 			_capsules = caps;
@@ -33,7 +47,9 @@ namespace AI.MathMod.ML.NeuronNetwork
 			norm = 0.1/(W.M+W.N);
 		}
 		
-		
+		/// <summary>
+		/// Обучение
+		/// </summary>
 		public override void Train()
 		{
 			for (int i = 0; i < OutputLayer.N; i++) 
@@ -52,9 +68,21 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class Capsule
 	{
+		/// <summary>
+		/// Начало интервал
+		/// </summary>
 		public int inputStartInterval;
+		/// <summary>
+		/// Окончание интервала 
+		/// </summary>
 		public int inputEndInterval;
+		/// <summary>
+		/// Число нейронов в капсуле
+		/// </summary>
 		public int neuronCount;
+		/// <summary>
+		/// Скорость обучения
+		/// </summary>
 		public double norm;
 		
 		
@@ -72,7 +100,10 @@ namespace AI.MathMod.ML.NeuronNetwork
 			norm = .03/(iei-isi);
 		}
 		
-		// Нормы обучения
+		/// <summary>
+		/// Нормы обучения
+		/// </summary>
+		/// <param name="capsules">Капсулы</param>
 		public static double[] GetNorms(Capsule[] capsules)
 		{
 			var matrixNdim = 0;
@@ -97,7 +128,11 @@ namespace AI.MathMod.ML.NeuronNetwork
 			return norms;
 		}
 		
-		// Генерарация весов по капсулам
+		/// <summary>
+		/// Генерарация весов по капсулам
+		/// </summary>
+		/// <param name="capsules"></param>
+		/// <returns></returns>
 		public static Matrix GenerateMatrixW(Capsule[] capsules)
 		{
 			var rnd = new Random();

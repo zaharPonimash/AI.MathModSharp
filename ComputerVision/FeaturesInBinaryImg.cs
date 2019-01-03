@@ -49,13 +49,21 @@ namespace AI.MathMod.ComputerVision
 			return GenFeature();
 		}
 		
-		
+		/// <summary>
+		/// Кепстральные коэффициенты
+		/// </summary>
+		/// <param name="img">Изображение</param>
 		public Vector KepstrFeatures(Matrix img)
 		{
 			GenVectorPoint(img);
 			return Kepstral();
 		}
 		
+		
+		/// <summary>
+		/// Выдает точки
+		/// </summary>
+		/// <param name="img">Матрица серого изображения</param>
 		public Vector GetPoints(Matrix img)
 		{
 			GenVectorPoint(img);

@@ -160,7 +160,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
 		public static Vector Rect(Vector t, double A, double f, double fi)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
 		}
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector A, double f, double fi)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
 		}
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, Vector f, double fi)
 		{
-			return A*NeuroFunc.Porog(Sin(t,A,1,fi),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,A,1,fi),0.1);
 		}
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, double f, Vector fi)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f,fi),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
 		}
 
 
@@ -212,7 +212,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, double f)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
 		}
 
 
@@ -225,7 +225,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, Vector f)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
 		}
 
 
@@ -238,7 +238,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector A, double f)
 		{
-			return A*NeuroFunc.Porog(Sin(t,1,f),0.1);
+			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
 		}
 
 
@@ -250,7 +250,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double f)
 		{
-			return NeuroFunc.Porog(Sin(t,f),0.1);
+			return NeuroFunc.Threshold(Sin(t,f),0.1);
 		}
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace AI.MathMod.Signals
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector f)
 		{
-			return NeuroFunc.Porog(Sin(t,f),0.1);
+			return NeuroFunc.Threshold(Sin(t,f),0.1);
 		}
         #endregion
 
@@ -390,20 +390,16 @@ namespace AI.MathMod.Signals
         
         
                 
+       
         
-        public static Vector LFMRect(double f, int f0, int fd, double time)
-        {
-        	Vector[] v = new Vector[(int)(f*time+0.99)];
-        	Vector v1 = OneLFM(f,f0,fd), v0 = new Vector(v1.N);// ZeroLFM(f,f0,fd);
-        	
-        	for(int i = 0; i<v.Length; i++)
-        		if(i%2 == 0) v[i] = v1;
-        		else v[i] = v0;
-        		
-        	return Vector.Concatinate(v);
-        }
-        
-        
+        /// <summary>
+        /// Пачка ЛЧМ
+        /// </summary>
+        /// <param name="f"></param>
+        /// <param name="f0"></param>
+        /// <param name="fd"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
         public static Vector LFMRectNP(double f, int f0, int fd, double time)
         {
         	Vector[] v = new Vector[(int)(f*time+0.99)];
@@ -433,8 +429,14 @@ namespace AI.MathMod.Signals
         }
 		
 		
-		
-		public static Vector LFM(double df, double f0, double fd, double time)
+	 /// <summary>
+        /// ЛЧМ
+        /// </summary>
+        /// <param name="df"></param>
+        /// <param name="f0"></param>
+        /// <param name="fd"></param>
+        /// <param name="time"></param>
+	public static Vector LFM(double df, double f0, double fd, double time)
         {
         	double dt = 1.0/fd;
         	Vector t = MathFunc.GenerateTheSequence(0, dt, time);
@@ -470,13 +472,7 @@ namespace AI.MathMod.Signals
         
         
         
-        public static Vector LPhMRect(double f, int f0, int fd, double time)
-        {
-        	double dt = 1.0/fd;
-        	Vector t = MathFunc.GenerateTheSequence(0, dt, time);
-        	Vector sig = Rect(t, f);
-        	return MathFunc.sin(2*Math.PI*(f0*t+sig*t^2));
-        }
+     
         
         /// <summary>
         /// Передискретизация сигнала
@@ -494,13 +490,16 @@ namespace AI.MathMod.Signals
 			int len = inp.N*(k-1), lenFull = inp.N*k;
 			int i = 0;
 			ComplexVector cV = new ComplexVector(lenFull);
+			int end = inp.N/2;
 			
-			for (int end = inp.N/2; i < end; i++) 
+			for ( ; i < end; i++)
 			{
 				cV[i] = inputSpectr[i];
 			}
 			
-			for (int j = 0, end = lenFull-inp.N/2; i < end; i++)
+			end = lenFull-inp.N/2;
+			
+			for (; i < end; i++)
 			{
 				cV[i] = new System.Numerics.Complex(0,0);
 			}

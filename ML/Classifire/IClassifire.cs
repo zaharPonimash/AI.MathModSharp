@@ -14,9 +14,9 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
         /// Добавление класса
         /// </summary>
-        /// <param name="tViborka">Выборка</param>
+        /// <param name="tDataset">Выборка</param>
         /// <param name="nameClass">Имя класса</param>
-        void AddClass(Vector[] tViborka, string nameClass);
+        void AddClass(Vector[] tDataset, string nameClass);
 
         /// <summary>
         /// Сохранение классификатора

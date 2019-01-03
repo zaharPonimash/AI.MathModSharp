@@ -29,7 +29,11 @@ namespace AI.MathMod.ML.Datasets
 		/// </summary>
 		public Int32 ClassMark{get; set;}
 		
-		
+		/// <summary>
+		/// Представляет структуру вектор-класс
+		/// </summary>
+		/// <param name="vector">Вектор</param>
+		/// <param name="mark">Метка класса</param>
 		public VectorClass(Vector vector, int mark)
 		{
 			InpVector = vector;
@@ -43,7 +47,14 @@ namespace AI.MathMod.ML.Datasets
 	public class VectorIntDataset : List<VectorClass>
 	{
 		Random rnd = new Random();
-		public Vector mean, disp;
+		/// <summary>
+		/// Средний вектор
+		/// </summary>
+		public Vector mean; 
+		/// <summary>
+		/// Дисперсия по выборке
+		/// </summary>
+		public Vector disp;
 	
 		/// <summary>
 		/// Загрузка датасета из файла
@@ -65,7 +76,9 @@ namespace AI.MathMod.ML.Datasets
 		}
 		
 		
-		
+		/// <summary>
+		/// Датасет
+		/// </summary>
 		public VectorIntDataset(){}
 		
 		/// <summary>
@@ -220,13 +233,13 @@ namespace AI.MathMod.ML.Datasets
 	    	DispMeanResult();
 	    	
 	    	VectorIntDataset vid = new VectorIntDataset();
-	    	Vector sco = MathFunc.sqrt(disp);
+	    	Vector std = MathFunc.sqrt(disp);
 	    	
 	    	for (int i = 0; i < Count; i++) 
 	    	{
 	    		vid.Add(new VectorClass
 	    		        (
-	    		        	(this[i].InpVector-mean)/sco,
+	    		        	(this[i].InpVector-mean)/std,
 	    		        	this[i].ClassMark
 	    		        )
 	    		       );
@@ -235,7 +248,10 @@ namespace AI.MathMod.ML.Datasets
 	    	return vid;
 	    }
 	    
-	    
+	    /// <summary>
+	    /// Удаление похожих векторов из разных классов
+	    /// </summary>
+	    /// <param name="simCoef">Коэффициент схожести</param>
 	    public VectorIntDataset GetDatasetDelSim(double simCoef = 0.9)
 	    {
 	    	VectorIntDataset vid = new VectorIntDataset();
@@ -268,7 +284,7 @@ namespace AI.MathMod.ML.Datasets
 	    }
 	    
 	    
-	    public static bool IsNotSerch(List<int> simIndex, int i)
+	   static bool IsNotSerch(List<int> simIndex, int i)
 	    {
 	   		 	for (int j = 0; j < simIndex.Count; j++)
 	    		{

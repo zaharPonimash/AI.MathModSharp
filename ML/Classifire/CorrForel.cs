@@ -18,9 +18,7 @@ namespace AI.MathMod.ML
 	
 	
 	
-	/// <summary>
-	/// Пространство имен кластеризатора
-	/// </summary>
+
 	namespace Clasterisators
 	{
 		
@@ -34,18 +32,17 @@ namespace AI.MathMod.ML
 		public class CorrForel
 		{
 			
-			Vector[] _viborca, _vibNeClaster, _nowVib; // Выборка
+			Vector[] _dataset, _datasetNotClasteris, _nowDataset; // Выборка
 			List<Claster> _clasters = new List<Claster>(); // Кластеры в выборке
 			Claster _claster = new Claster(); 
 			double R0 = 0,Rn = 0;
 			Vector _mainCentr;
-			bool flag = true;
 			Random rng = new Random();
 			
 			
 			/// <summary>
-            /// Кластеры
-            /// </summary>
+         		/// Кластеры
+            		/// </summary>
 			public Claster[] Clasters
 			{
 				get{return _clasters.ToArray();}
@@ -58,44 +55,43 @@ namespace AI.MathMod.ML
 			
 
 			/// <summary>
-			/// Конструктор класса
+			/// Корреляционный форель
 			/// </summary>
-			/// <param name="viborca"></param>
-			public CorrForel(Vector[] viborca)
+			public CorrForel(Vector[] dataset)
 			{
 				Vector _old = new Vector(), _new= new Vector(); // Центры гиперсфер
 					
-				_vibNeClaster = _viborca = viborca; // Загрузка выборки
-				_old =  _mainCentr = GetCentr(_viborca); // Получение центра
-				Rn = R0 = Max(_viborca, _mainCentr);// Начальный радиус гиперсферы
+				_datasetNotClasteris = _dataset = dataset; // Загрузка выборки
+				_old =  _mainCentr = GetCentr(_dataset); // Получение центра
+				Rn = R0 = Max(_dataset, _mainCentr);// Начальный радиус гиперсферы
 				
 				
 				
 				
 				// Кластеризация
-				while(_vibNeClaster.Length != 0)
+				while(_datasetNotClasteris.Length != 0)
 				{
 					Rn = 0.9*R0; // Уменьшение радиуса гиперсферы
-					_nowVib = GetGipersfer(Rn,_vibNeClaster[rng.Next(_vibNeClaster.Length)],_vibNeClaster); // обводка гиперсферой
-					_new = GetCentr(_nowVib);// новый центр
+					_nowDataset = GetGipersfer(Rn,_datasetNotClasteris[rng.Next(_datasetNotClasteris.Length)],_datasetNotClasteris); // обводка гиперсферой
+					_new = GetCentr(_nowDataset);// новый центр
 					
 					//Центр кластера
 					while(_old != _new)
 					{
 						Rn *= 0.9; //Уменьшение радиуса гиперсферы
 						_old = _new; // сохранение старого радиуса
-						_nowVib = GetGipersfer(Rn,_old,_vibNeClaster);	// обводка гиперсферой	
+						_nowDataset = GetGipersfer(Rn,_old,_datasetNotClasteris);	// обводка гиперсферой	
 						try{
-						_new = GetCentr(_nowVib);// новый центр
+						_new = GetCentr(_nowDataset);// новый центр
 						}
 						catch{break;}
 					}
 					
 					_claster = new Claster();// Новый кластер
 					_claster.Centr = _new;// Добавление центра
-					_claster.Viborka = _nowVib;// выборка
+					_claster.Dataset = _nowDataset;// выборка
 					_clasters.Add(_claster);// Добавление кластера в коллекцию
-					_vibNeClaster = AWithOutB(_vibNeClaster, _nowVib); // Удаление кластеризированных данных
+					_datasetNotClasteris = AWithOutB(_datasetNotClasteris, _nowDataset); // Удаление кластеризированных данных
 					
 				}
 				
@@ -107,41 +103,40 @@ namespace AI.MathMod.ML
 			
 			
 			/// <summary>
-			/// Конструктор класса
+			/// Корреляционный форель
 			/// </summary>
-			/// <param name="viborca"></param>
-			public CorrForel(Vector[] viborca, int minR)
+			public CorrForel(Vector[] dataset, int minR)
 			{
 				Vector _old = new Vector(), _new= new Vector(); // Центры гиперсфер
 					
-				_vibNeClaster = _viborca = viborca; // Загрузка выборки
-				_old =  _mainCentr = GetCentr(_viborca); // Получение центра
-				Rn = R0 = Max(_viborca, _mainCentr);// Начальный радиус гиперсферы
+				_datasetNotClasteris = _dataset = dataset; // Загрузка выборки
+				_old =  _mainCentr = GetCentr(_dataset); // Получение центра
+				Rn = R0 = Max(_dataset, _mainCentr);// Начальный радиус гиперсферы
 				
 				
 				
 				
 				// Кластеризация
-				while(_vibNeClaster.Length != 0)
+				while(_datasetNotClasteris.Length != 0)
 				{
 					Rn = 0.9*R0; // Уменьшение радиуса гиперсферы
-					_nowVib = GetGipersfer(Rn,_vibNeClaster[0],_vibNeClaster); // обводка гиперсферой
-					_new = GetCentr(_nowVib);// новый центр
+					_nowDataset = GetGipersfer(Rn,_datasetNotClasteris[0],_datasetNotClasteris); // обводка гиперсферой
+					_new = GetCentr(_nowDataset);// новый центр
 					
 					//Центр кластера
 					while((_old != _new)&&(Rn>=minR))
 					{
 						Rn *= 0.9; //Уменьшение радиуса гиперсферы
 						_old = _new; // сохранение старого радиуса
-						_nowVib = GetGipersfer(Rn,_old,_vibNeClaster);	// обводка гиперсферой					
-						_new = GetCentr(_nowVib);// новый центр
+						_nowDataset = GetGipersfer(Rn,_old,_datasetNotClasteris);	// обводка гиперсферой					
+						_new = GetCentr(_nowDataset);// новый центр
 					}
 					
 					_claster = new Claster();// Новый кластер
 					_claster.Centr = _new;// Добавление центра
-					_claster.Viborka = _nowVib;// выборка
+					_claster.Dataset = _nowDataset;// выборка
 					_clasters.Add(_claster);// Добавление кластера в коллекцию
-					_vibNeClaster = AWithOutB(_vibNeClaster, _nowVib); // Удаление кластеризированных данных
+					_datasetNotClasteris = AWithOutB(_datasetNotClasteris, _nowDataset); // Удаление кластеризированных данных
 					
 				}
 				

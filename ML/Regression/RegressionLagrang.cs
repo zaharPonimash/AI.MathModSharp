@@ -16,15 +16,20 @@ namespace AI.MathMod.ML.Regression
 	/// <summary>
 	/// Description of RegressionLagrang.
 	/// </summary>
-	public class RegressionLagrang
+	public class RegressionPoly
 	{
 		Matrix A;
 		Vector param;
 		
 		int len, len05, n;
 		Vector newX, newY;
-		
-		public RegressionLagrang(Vector X, Vector Y, int nPoly)
+		/// <summary>
+		/// Полиномиальная регрессия
+		/// </summary>
+		/// <param name="X"></param>
+		/// <param name="Y"></param>
+		/// <param name="nPoly"></param>
+		public RegressionPoly(Vector X, Vector Y, int nPoly)
 		{
 			
 			n = nPoly+1;
@@ -66,7 +71,11 @@ namespace AI.MathMod.ML.Regression
 			param = kram.GetAnswer(A, newY);
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="inp">вход</param>
+		/// <returns>выход</returns>
 		public double Predict(double inp)
 		{
 			Vector X = ExtensionOfFeatureSpace.Polinomial(inp, n-1);
@@ -74,7 +83,11 @@ namespace AI.MathMod.ML.Regression
 		}
 		
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="vect">Вектор входа</param>
+		/// <returns>Вектор выхода</returns>
 		public Vector Predict(Vector vect)
 		{
 			Vector outp = new Vector(vect.N);

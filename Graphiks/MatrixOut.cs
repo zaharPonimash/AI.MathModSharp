@@ -19,6 +19,10 @@ namespace AI.MathMod.Graphiks
 	{
 		Matrix mtr;
 		
+		/// <summary>
+		/// Отображение Матрицы
+		/// </summary>
+		/// <param name="matr">Матрица</param>
 		public MatrixOut(Matrix matr)
 		{
 			//

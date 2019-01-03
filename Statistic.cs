@@ -25,7 +25,7 @@ namespace AI.MathMod
 		Vector _vector;
 		double _expectedValue,
 				_dispers,
-				_sco, 
+				_std, 
 				_max,
 				_min;
 		int _n;
@@ -39,7 +39,7 @@ namespace AI.MathMod
 				/// </summary>
 				public double SCO
 				{
-					get{return _sco;}
+					get{return _std;}
 				}
 				
 				/// <summary>
@@ -89,7 +89,7 @@ namespace AI.MathMod
 			_n = _vector.N;
 			ExpectedValue();
 			Dispers();
-			Sco();
+			Std();
 			MaxMinValue();
 		}
 		
@@ -120,9 +120,9 @@ namespace AI.MathMod
 		/// <summary>
 		/// СКО
 		/// </summary>
-		void Sco()
+		void Std()
 		{
-			_sco = Math.Sqrt(_dispers);
+			_std = Math.Sqrt(_dispers);
 		}
 		
 		/// <summary>
@@ -143,7 +143,7 @@ namespace AI.MathMod
 		/// </summary>
 		/// <param name="vector">Входной вектор</param>
 		/// <returns></returns>
-		public static double Sco(Vector vector)
+		public static double Std(Vector vector)
 		{
 			return Math.Sqrt(Dispers(vector));
 		}
@@ -373,6 +373,7 @@ namespace AI.MathMod
 		/// </summary>
 		/// <param name="m">Количество строк</param>
 		/// <param name="n">Количество столбцов</param>
+		/// <param name="rnd">Генератор случ чисел</param>
 		public static Matrix randNorm(int m, int n, Random rnd)
 		{
 			Matrix C = new Matrix(m,n);
@@ -472,7 +473,7 @@ namespace AI.MathMod
 		/// <returns>Возвращает коэффициент асимметрии, число типа Double</returns>
 		public double Asymmetry()
 		{
-			return CentrMoment(3)/(_sco*_sco*_sco);
+			return CentrMoment(3)/(_std*_std*_std);
 		}
 		
 		/// <summary>
@@ -481,7 +482,7 @@ namespace AI.MathMod
 		/// <returns>Возвращает коэффициент эксцесса, число типа Double</returns>
 		public double Excess()
 		{
-			return CentrMoment(4)/(_sco*_sco*_sco*_sco)-3;
+			return CentrMoment(4)/(_std*_std*_std*_std)-3;
 		}
 		
 		
@@ -518,13 +519,7 @@ namespace AI.MathMod
 		
 		
 		
-		
-		public static double Pirson(Vector histY, Vector histX, Func<Vector, Vector> teoritecalDistrib)
-		{
-			Vector summ = ((histY - teoritecalDistrib(histX))^2)/teoritecalDistrib(histX);
-			double hi2 =  histY.N*Functions.Summ(summ);
-			return hi2;
-		}
+	
 		
 		
 		
@@ -696,6 +691,7 @@ namespace AI.MathMod
 		/// Средняя частота (не нормированная, зависит от кол-ва точек)
 		/// </summary>
 		/// <param name="signal">Сигнал</param>
+		/// <param name="oldPart">Сглаживание</param>
 		/// <returns></returns>
 		public static double SimpleMeanFreq(Vector signal, double oldPart = 0.001)
 		{
@@ -722,6 +718,7 @@ namespace AI.MathMod
 		/// </summary>
 		/// <param name="signal">Сигнал</param>
 		/// <param name="fd">Частота дискретизации</param>
+		/// <param name="oldPart">Коэффициент сглаживания</param>
 		/// <returns>Средняя частота [Гц]</returns>
 		public static double MeanFreq(Vector signal, double fd, double oldPart = 0.001)
 		{
@@ -737,7 +734,6 @@ namespace AI.MathMod
 		/// Изменение частоты
 		/// </summary>
 		/// <param name="signal">Сигнал</param>
-		/// <param name="fd">Частота дискретизации</param>
 		/// <returns>Дивиация средней частоты</returns>
 		public static double DivFreq(Vector signal)
 		{

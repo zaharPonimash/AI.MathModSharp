@@ -15,13 +15,21 @@ using AI.MathMod.ML.Regression;
 namespace AI.MathMod.ML.Classifire
 {
 	/// <summary>
-	/// Description of LogisticRegression.
+	/// Логистическая регрессия
 	/// </summary>
 	public class LogisticRegression
 	{
 		MultipleRegression _lr;
+		/// <summary>
+		/// Вектор замены
+		/// </summary>
 		public Vector t;
 		
+		/// <summary>
+		/// Логистическая регрессия
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
 		public LogisticRegression(Vector x, bool[] y)
 		{
 			t = new Vector(y.Length);
@@ -48,7 +56,11 @@ namespace AI.MathMod.ML.Classifire
 		}
 		
 		
-		
+		/// <summary>
+		/// Логистическая регрессия
+		/// </summary>
+		/// <param name="x">Вектора входов</param>
+		/// <param name="y">Принадлежность</param>
 		public LogisticRegression(Vector[] x, bool[] y)
 		{
 			t = new Vector(y.Length);
@@ -67,7 +79,10 @@ namespace AI.MathMod.ML.Classifire
 		}
 		
 		
-		
+		/// <summary>
+		/// Распознавание вектора
+		/// </summary>
+		/// <param name="x">Вектор</param>
 		public double Recognition(Vector x)
 		{	
 			double outp = _lr.Predict(x.AddOne());
@@ -75,7 +90,10 @@ namespace AI.MathMod.ML.Classifire
 		}
 		
 		
-		
+		/// <summary>
+		/// Распознавание векторов
+		/// </summary>
+		/// <param name="x">Вектора</param>
 		public Vector RecognitionAll(Vector x)
 		{
 			

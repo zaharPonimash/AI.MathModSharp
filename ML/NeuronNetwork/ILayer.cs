@@ -15,28 +15,57 @@ namespace AI.MathMod.ML.NeuronNetwork
 	/// </summary>
 	public interface ILayer
 	{ 
+		/// <summary>
+		/// Размерность выхода
+		/// </summary>
 		int SizeOut{set; get;}
-		
+		/// <summary>
+		/// Ошибка
+		/// </summary>
 		double Eps{set; get;}
 		
-		//Дельты
+		/// <summary>
+		/// Дельты
+		/// </summary>
 		Vector Delts{set; get;}
 		
-		// Прямой проход сети
+		/// <summary>
+		/// Прямой проход сети
+		/// </summary>
+		/// <param name="input">Вход</param>
 		Vector Output(Vector input);
 		
-		// Ошибка на выходе
+		/// <summary>
+		/// Ошибка на выходе
+		/// </summary>
+		/// <param name="ideal">Идеальный вектор</param>
 		void Delt(Vector ideal);
 		
+		/// <summary>
+		/// Ошибка на скрытом слое
+		/// </summary>
+		/// <param name="layer">Следующий слой</param>
 		void DeltH(ILayer layer);
 		
-		// Обратный проход
+		/// <summary>
+		///  Обратный проход
+		/// </summary>
 		Vector Backwards();
-		
+		/// <summary>
+		/// Обучение НС
+		/// </summary>
 		void Train();
-		
+		/// <summary>
+		/// Перегенерация для повторяемости результатов
+		/// </summary>
+		/// <param name="rnd">ГСПЧ</param>
 		void WGenerate(Random rnd);
 		
+		/// <summary>
+		/// Установка(расчет) параметров НС
+		/// </summary>
+		/// <param name="inp">Размерность входа слоя</param>
+		/// <param name="outp">Число нейронов(размерность выхода)</param>
 		void SetParam(int inp, int outp);		
 	}
 }

@@ -19,6 +19,9 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class Net
 	{
+		/// <summary>
+		/// Список слоев НС
+		/// </summary>
 		public List<ILayer> _layers = new List<ILayer>();
 		int countNeuronsForLastLayer;
 		Random _rnd = new Random();
@@ -61,25 +64,37 @@ namespace AI.MathMod.ML.NeuronNetwork
 		}
 		
 		
-		// Создание сети
+		/// <summary>
+		/// Создание сети
+		/// </summary>
 		public Net()
 		{
 			
 		}
 		
 		
-		// Создание сети
+		/// <summary>
+		/// Создание сети
+		/// </summary>
+		/// <param name="rnd">Датчик случ. чисел</param>
 		public Net(Random rnd)
 		{
 			_rnd = rnd;
 		}
 		
+		/// <summary>
+		/// Создание сети
+		/// </summary>
+		/// <param name="path">Путь до сохраненной НС</param>
 		public Net(string path)
 		{
 			Open(path);
 		}
 		
-		
+		/// <summary>
+		/// Добавление слоя
+		/// </summary>
+		/// <param name="layer">Слой</param>
 		public void Add(ILayer layer)
 		{
 			if(_layers.Count == 0||layer is CapsuleLinearLayer)
@@ -100,7 +115,10 @@ namespace AI.MathMod.ML.NeuronNetwork
 		}
 		
 		
-		
+		/// <summary>
+		/// Выход сети
+		/// </summary>
+		/// <param name="input">Вход</param>
 		public Vector Output(Vector input)
 		{
 			Vector outp = _layers[0].Output(input);
@@ -111,7 +129,12 @@ namespace AI.MathMod.ML.NeuronNetwork
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Обучение классификатора
+		/// </summary>
+		/// <param name="inp">Вектор входа</param>
+		/// <param name="outp">Метка класса</param>
+		/// <returns>Ошибка на примере</returns>
 		public double TrainClassifier(Vector inp, int outp)
 		{
 			Vector output = new Vector(countNeuronsForLastLayer);
@@ -131,7 +154,12 @@ namespace AI.MathMod.ML.NeuronNetwork
 		}
 		
 		
-		
+		/// <summary>
+		/// Обучение сети
+		/// </summary>
+		/// <param name="inp">Вектор входа</param>
+		/// <param name="output">Вектор выхода</param>
+		/// <returns>Ошибка на примере</returns>
 		public double Train(Vector inp, Vector output)
 		{
 			Output(inp);

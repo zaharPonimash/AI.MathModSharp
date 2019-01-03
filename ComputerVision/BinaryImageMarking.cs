@@ -41,9 +41,9 @@ namespace AI.MathMod.ComputerVision
 			Matrix matr = ImgConverter.BmpToMatr(bm);
 			Matrix filter = new Matrix()-1;
 			filter[1,1] = 8;
-			matr = NeuroFunc.Porog(matr, 0.5);
+			matr = NeuroFunc.Threshold(matr, 0.5);
 			matr = 1-ImgFilters.SpaceFilter(matr, filter);
-			matr = NeuroFunc.Porog(matr, 0.9);
+			matr = NeuroFunc.Threshold(matr, 0.9);
 			
 			BinaryImg bi = new BinaryImg(1-matr);
 			Matrix img = bi.ToMatrixInvers();
@@ -126,7 +126,7 @@ namespace AI.MathMod.ComputerVision
 			return false;
 		}
 		
-		public int nX(int ox)
+		int nX(int ox)
 		{
 			int nx;
 			if(ox <0) nx = 0;
@@ -135,7 +135,7 @@ namespace AI.MathMod.ComputerVision
 			return nx;
 		}
 		
-		public int nY(int oy)
+		int nY(int oy)
 		{
 			int ny;
 			if(oy <0) ny = 0;

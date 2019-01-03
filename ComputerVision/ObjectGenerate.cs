@@ -22,6 +22,12 @@ namespace AI.MathMod.ComputerVision
 		int _w, _h;
 		Random rnd = new Random();
 		
+		
+		/// <summary>
+		///  Генерация объектов
+		/// </summary>
+		/// <param name="w">Ширина холста</param>
+		/// <param name="h">Высота холста</param>
 		public ObjectGenerate(int w = 100, int h = 100)
 		{
 			_w = w;
@@ -37,7 +43,7 @@ namespace AI.MathMod.ComputerVision
 			bmp = new Bitmap(_w, _h);
 			
 			Graphics gr = Graphics.FromImage(bmp);
-			int x = 10, y = 10, h = _h/count, w = _w/count, randForm;
+			int h = _h/count, w = _w/count, randForm;
 			
 			SolidBrush[] br = new SolidBrush[3];
 			br[0] = new SolidBrush(Color.Red);

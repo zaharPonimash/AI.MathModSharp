@@ -24,6 +24,9 @@ namespace AI.MathMod.ML.Regression
 		int len, len05, n;
 		Vector newX, newY;
 		
+		/// <summary>
+		/// Регрессия на базе синуса котельникова
+		/// </summary>
 		public SincRegression(Vector X, Vector Y, int nRBF)
 		{
 			
@@ -66,7 +69,10 @@ namespace AI.MathMod.ML.Regression
 			param = kram.GetAnswer(A, newY);
 		}
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="inp">Значение незав. переменной</param>
 		public double Predict(double inp)
 		{
 			Vector X = ExtensionOfFeatureSpace.Sinc(inp, newX);
@@ -74,7 +80,10 @@ namespace AI.MathMod.ML.Regression
 		}
 		
 		
-		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="vect">Значение незав. переменных</param>
 		public Vector Predict(Vector vect)
 		{
 			Vector outp = new Vector(vect.N);

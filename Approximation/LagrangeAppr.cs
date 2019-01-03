@@ -14,16 +14,22 @@ using AI.MathMod.ML.Datasets;
 namespace AI.MathMod.Approximation
 {
 	/// <summary>
-	/// Description of RBFAppr.
+	/// Полиномиальная аппроксимация
 	/// </summary>
-	public class LagrangeAppr
+	public class PolyAppr
 	{
-		
+		/// <summary>
+		/// Новый вектор иксов, больше точек
+		/// </summary>
 		public Vector newX;
 		double min, max, sig;
 		Vector Y, X, param;
 		
-		public LagrangeAppr(Vector x, Vector y)
+		
+		/// <summary>
+		/// Полиномиальная аппроксимация
+		/// </summary>
+		public PolyAppr(Vector x, Vector y)
 		{
 			min = x[0];
 			max = x[x.N-1];
@@ -34,7 +40,11 @@ namespace AI.MathMod.Approximation
 			param.SaveAsText("params.txt");
 		}
 		
-		
+		/// <summary>
+		/// Расчет одного значения
+		/// </summary>
+		/// <param name="inp">Независимая переменная</param>
+		/// <returns>Прогноз</returns>
 		public double Predict(double inp)
 		{
 			Vector data = ExtensionOfFeatureSpace.Polinomial(inp, X.N-1);
@@ -42,7 +52,11 @@ namespace AI.MathMod.Approximation
 			return outp;
 		}
 		
-		
+		/// <summary>
+		/// Перерасчет интервала значения
+		/// </summary>
+		/// <param name="step">Шаг</param>
+		/// <returns>Прогноз</returns>
 		public Vector Prediction(double step)
 		{
 			newX = MathFunc.GenerateTheSequence(min, step, max);

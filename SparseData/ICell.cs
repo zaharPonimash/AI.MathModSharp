@@ -13,10 +13,15 @@ namespace AI.MathMod.SparseData
 	/// <summary>
 	/// Description of ICell.
 	/// </summary>
-	
 	public interface ICell<T>
 	{
+		/// <summary>
+		/// Значение
+		/// </summary>
 		T Value {get; set;}
+		/// <summary>
+		/// Координаты
+		/// </summary>
 		int[] Coordinats{get; set;}
 	}
 }

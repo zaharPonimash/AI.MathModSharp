@@ -64,11 +64,14 @@ namespace AI.MathMod.ML.Classifire
 	[Serializable]
 	public class StructClassesCorr
 	{
+		/// <summary>
+        	/// Список классов
+        	/// </summary>
 		public List<StructClassCorr> _classes = new List<StructClassCorr>(); // набор классов
 		
-        /// <summary>
-        /// Список классов
-        /// </summary>
+      	 	 /// <summary>
+      	 	 /// Список классов
+        	/// </summary>
 		public List<StructClassCorr> Classes
 		{
 				 get{return _classes;}
@@ -108,8 +111,8 @@ namespace AI.MathMod.ML.Classifire
 		
 		
 		/// <summary>
-        /// Корреляционный классификатор
-        /// </summary>
+        	/// Корреляционный классификатор
+        	/// </summary>
 		public CorrelationClassifier()
 		{
 			_classes = new StructClassesCorr();
@@ -220,13 +223,13 @@ namespace AI.MathMod.ML.Classifire
 		/// <summary>
 		/// Обучение одного элеменнта класса
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
 		/// <returns></returns>
-		 Vector Teach1(Vector[] tViborka, string nameClass)
+		 Vector Teach1(Vector[] tDataset, string nameClass)
 		{
 		 	_class = new StructClassCorr();
-		 	Vector a  = GetCentr(tViborka);
+		 	Vector a  = GetCentr(tDataset);
 		 	_class._centGiperSfer = a;
 		 	_class._strName = nameClass;
 		 	return a;
@@ -238,17 +241,17 @@ namespace AI.MathMod.ML.Classifire
 		 /// <summary>
 		/// Обучение одного элеменнта класса
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
 		/// <returns></returns>
-		public Vector AddClasses(Vector[] tViborka, string nameClass)
+		public Vector AddClasses(Vector[] tDataset, string nameClass)
 		{
 		 	_class = new StructClassCorr();
-		 	Vector a  = GetCentr(tViborka);
+		 	Vector a  = GetCentr(tDataset);
 		 	
 		 	Claster[] clasters;
 		 	
-		 	_forel = new Forel(tViborka);
+		 	_forel = new Forel(tDataset);
 		 	clasters = _forel.Clasters;
 		 	
 		 	
@@ -267,12 +270,12 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
         /// Добавление класса в классификатор
         /// </summary>
-        /// <param name="tViborka">Выборка</param>
+        /// <param name="tDataset">Выборка</param>
         /// <param name="nameClass">Имя класса</param>
         /// <returns></returns>
-        public Vector AddClass1(Vector[] tViborka, string nameClass)
+        public Vector AddClass1(Vector[] tDataset, string nameClass)
         {
-            Vector a = Teach1(tViborka, nameClass);
+            Vector a = Teach1(tDataset, nameClass);
             _classes._classes.Add(_class);
             return a;
         }
@@ -281,11 +284,11 @@ namespace AI.MathMod.ML.Classifire
         /// <summary>
 		/// Добавление класса в классификатор
 		/// </summary>
-		/// <param name="tViborka">Выборка</param>
+		/// <param name="tDataset">Выборка</param>
 		/// <param name="nameClass">Имя класса</param>
-		public void AddClass(Vector[] tViborka, string nameClass)
+		public void AddClass(Vector[] tDataset, string nameClass)
         {
-            Vector a = Teach1(tViborka, nameClass);
+            Vector a = Teach1(tDataset, nameClass);
             _classes._classes.Add(_class);
         }
 

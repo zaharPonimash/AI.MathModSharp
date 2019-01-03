@@ -16,12 +16,18 @@ namespace AI.MathMod.ML.NeuronNetwork
 	[Serializable]
 	public class LinearLayer : FullConLayerBase
 	{
+		/// <summary>
+		/// Линейный слой
+		/// </summary>
 		public LinearLayer(int neuronCount)
 		{
 			OutputLayer = new Vector(neuronCount);
 			SizeOut = neuronCount;
 		}
 		
+		/// <summary>
+		/// Линейный слой
+		/// </summary>
 		public LinearLayer(int inp, int outp)
 		{
 			SetParam(inp, outp);

@@ -43,8 +43,13 @@ namespace AI.MathMod.Graphiks
 			GraphicsView.Plot(zedGraphControl1, y, x, nameX, nameY, colorLine);
 		}
 
-		
-		public VisualPlot(Vector y, Vector x, Descrintion desc)
+		/// <summary>
+		/// Отображение графика
+		/// </summary>
+		/// <param name="y">Y</param>
+		/// <param name="x">X</param>
+		/// <param name="desc">Описание</param>
+		public VisualPlot(Vector y, Vector x, Description desc)
 		{
 			InitializeComponent();
 			GraphicsView.Plot(zedGraphControl1, y, x, desc.Name, desc.X, desc.Y, Color.Black);

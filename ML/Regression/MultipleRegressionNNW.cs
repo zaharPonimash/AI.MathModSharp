@@ -19,7 +19,11 @@ namespace AI.MathMod.ML.Regression
 		Net net = new Net();
 		Vector[] _Xs;
 		Vector _Ys;
-		
+		/// <summary>
+		/// Множественная регрессия
+		/// </summary>
+		/// <param name="vectsInp"></param>
+		/// <param name="vectOutp"></param>
 		public MultipleRegressionNNW(Vector[] vectsInp, Vector vectOutp)
 		{
 			net.Add(new LinearLayer(vectsInp[0].N, 1));
@@ -33,7 +37,10 @@ namespace AI.MathMod.ML.Regression
 			
 		}
 		
-		
+		/// <summary>
+		/// Обучение
+		/// </summary>
+		/// <param name="ep"></param>
 		public void Train(double ep = 1)
 		{
 			Random rnd = new Random();
@@ -49,6 +56,11 @@ namespace AI.MathMod.ML.Regression
 		}
 		
 		
+		/// <summary>
+		/// Прогноз
+		/// </summary>
+		/// <param name="x">Вектор входа</param>
+		/// <returns>выход</returns>
 		public double Predict(Vector x)
 		{
 			return net.Output(x)[0];

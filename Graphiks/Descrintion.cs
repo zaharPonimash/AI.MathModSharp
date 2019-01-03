@@ -11,15 +11,30 @@ using System;
 namespace AI.MathMod.Graphiks
 {
 	/// <summary>
-	/// Description of Descrintion.
+	/// Описание для графика
 	/// </summary>
-	public class Descrintion
+	public class Description
 	{
+		/// <summary>
+		/// Название оси X
+		/// </summary>
 		public string X;
+		/// <summary>
+		/// Название оси Y
+		/// </summary>
 		public string Y;
+		/// <summary>
+		/// Название графика
+		/// </summary>
 		public string Name;
 		
-		public Descrintion(string xL, string yL, string name)
+		/// <summary>
+		/// Описание графика
+		/// </summary>
+		/// <param name="xL">Название оси X</param>
+		/// <param name="yL">Название оси Y</param>
+		/// <param name="name">Название графика</param>
+		public Description(string xL, string yL, string name)
 		{
 			X = xL;
 			Y = yL;

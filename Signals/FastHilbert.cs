@@ -91,7 +91,9 @@ namespace AI.MathMod.Signals
 			}
 			
 			
-			
+			/// <summary>
+			/// Выделение огибающей на базе квадратурн. сост
+			/// </summary>
 			public static Vector OgibNew(Vector t,Vector st, double f0)
 			{
 				ComplexVector cV = new ComplexVector(t.N);

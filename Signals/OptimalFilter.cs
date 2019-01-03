@@ -20,6 +20,11 @@ namespace AI.MathMod.Signals
 		ComplexVector corFunc;
 		Furie fur;
 		
+		/// <summary>
+		/// Оптимальный (согласованный) фильтр
+		/// </summary>
+		/// <param name="signal"></param>
+		/// <param name="n"></param>
 		public OptimalFilter(Vector signal, int n)
 		{
 			fur = new Furie(n);
@@ -28,14 +33,19 @@ namespace AI.MathMod.Signals
 			
 		}
 		
-		
+		/// <summary>
+		/// Прохождение фильтра
+		/// </summary>
+		/// <param name="signal">Сигнал на входе</param>
 		public Vector Result(Vector signal)
 		{
 			ComplexVector signalFFT = fur.FFT(signal);
 			return fur.RealIFFT(signalFFT*corFunc);
 		}
 		
-		
+		/// <summary>
+		/// Сжатие ЛЧМ по спектру
+		/// </summary>
 		public Vector SpectrCompressLFM(Vector signal, int fd)
 		{
 			Vector signal2 = signal*signal;
