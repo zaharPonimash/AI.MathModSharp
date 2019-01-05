@@ -11,7 +11,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using AI.MathMod.AdditionalFunctions;
-using AI.MathMod.Graphiks;
+using AI.MathMod.Charts;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -32,7 +32,7 @@ namespace AI.MathMod
 		/// <summary>
 		/// Массив типа double содержащий отсчеты вектора
 		/// </summary>
-		public Double[] Vecktor {
+		public Double[] DataInVector {
 			get{ return _vector; }
 			set {
 				_vector = value;
@@ -570,7 +570,6 @@ namespace AI.MathMod
 			lD.RemoveAt(index);
 			return ListToVector(lD);
 		}
-		
 		/// <summary>
 		/// Округление
 		/// </summary>
@@ -586,7 +585,6 @@ namespace AI.MathMod
 			
 			return outp;
 		}
-	
 		/// <summary>
 		/// Удаление выбранного элемента
 		/// </summary>
@@ -621,13 +619,12 @@ namespace AI.MathMod
 			List<double> lD = new List<double>();
 			lD.AddRange(Copy()._vector);
 		
-			foreach (var element in elements.Vecktor) {
+			foreach (var element in elements.DataInVector) {
 				lD.Remove(element);	
 			}
 		
 			return ListToVector(lD);
-		}
-		
+		}	
 		/// <summary>
 		/// Устранение разрыров фазы(метод не работает)
 		/// </summary>
@@ -648,18 +645,14 @@ namespace AI.MathMod
 			      
 					for (int j = i; j < dif.N; j++)
 					if(dif[i] > treshHold)
-							outp[j] = Vecktor[j-1]+dif[i];
+							outp[j] = DataInVector[j-1]+dif[i];
 					
-				if(dif[i] <= treshHold) outp[i] = Vecktor[i];
+				if(dif[i] <= treshHold) outp[i] = DataInVector[i];
 					dif = Functions.Diff(outp);
 				}
 				
 				return outp;
 			}
-			
-		
-	
-	
 		/// <summary>
 		/// Удаление выбранных элементов
 		/// </summary>
@@ -675,7 +668,6 @@ namespace AI.MathMod
 		
 			return ListToVector(lD);
 		}
-	
 		/// <summary>
 		/// Удаление выбранных элементов
 		/// </summary>
@@ -691,9 +683,7 @@ namespace AI.MathMod
 		
 			return ListToVector(lD);
 		}
-	
-	
-	
+		
 		void StrInit(string[] strVector)
 		{
 			_n = strVector.Length;
@@ -731,14 +721,14 @@ namespace AI.MathMod
 		/// Вставляет значение в начало
 		/// </summary>
 		/// <param name="data"></param>
-		/// <param name="nach"></param>
+		/// <param name="vect"></param>
 		/// <returns></returns>
-		public Vector BiganData(double data, Vector nach)
+		public Vector InsertDataInTheBeginning(double data, Vector vect)
 		{
-			int N = nach._n;
-			Vector C = nach.Copy();
+			int N = vect._n;
+			Vector C = vect.Copy();
 			C = C.Shift(1).CutAndZero(N);
-			C.Vecktor[0] = data;
+			C.DataInVector[0] = data;
 			return C;
 		}
 	
@@ -863,29 +853,6 @@ namespace AI.MathMod
 			return new Vector(newVect);
 		}
 
-
-
-		/// <summary>
-		/// Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
-		/// вектора.
-		/// </summary>
-		/// <param name="n">Новый размер</param>
-		public Vector CutAndZeroB(int n)
-		{
-			double[] newVect = new double[n];
-
-			/*if (n > _n)
-            {
-                for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
-                for (int i = _n; i < n; i++) newVect[i] = 0;
-            }
-            else
-            {
-                for (int i = 0; i < n; i++) newVect[i] = _vector[i];
-            }
-            */
-			return new Vector(newVect);
-		}
 
 
 
@@ -1029,8 +996,7 @@ namespace AI.MathMod
 		/// <param name="path">Путь</param>
 		public void Save(string path)
 		{
-			Matrix A = ToMatrix();
-			A.Save(path);
+			SaveAsBinary(path, this);
 		}
 		
 		/// <summary>
@@ -1039,9 +1005,9 @@ namespace AI.MathMod
 		/// <param name="path">Путь</param>
 		public void Open(string path)
 		{
-			Matrix A = new Matrix();
-			A.Open(path);
-			_vector = A.ToVector()._vector;
+			Vector vect = LoadAsBinary(path);
+			_n = vect._n;
+			_vector = vect._vector;
 		}
 		
 		
@@ -1058,28 +1024,6 @@ namespace AI.MathMod
 		}
 		
 		
-		/// <summary>
-		/// Преобразование List в вектор
-		/// </summary>
-		/// <returns></returns>
-		public static Vector ListToVector(List<double> list)
-		{
-			return new Vector(list.ToArray());
-		}
-		
-		/// <summary>
-		/// Вставляет отсчеты второго вектора, после отсчетов первого
-		/// </summary>
-		/// <param name="nach">куда вставлять</param>
-		/// <param name="dop">что вставлять</param>
-		/// <returns>вектор размерности nach.N+dop.N</returns>
-		public static Vector AddVector(Vector nach, Vector dop)
-		{
-			List<double> list = nach.ToList();
-			list.AddRange(dop.Vecktor);
-				
-			return new Vector(list.ToArray());
-		}
 		
 		
 		/// <summary>
@@ -1364,11 +1308,11 @@ namespace AI.MathMod
 		
 		
 		
-	/// <summary>
-	/// Загрузка вектора из массива double
-	/// </summary>
-	/// <param name="path">Путь</param>
-	public static Vector LoadAsBinary(string path)
+		/// <summary>
+		/// Загрузка вектора из массива double
+		/// </summary>
+		/// <param name="path">Путь</param>
+		public static Vector LoadAsBinary(string path)
 	{
             Vector vect = new Vector();
             int len;
@@ -1411,11 +1355,91 @@ namespace AI.MathMod
 		}
 		
 		
+		/// <summary>
+		/// Преобразование List в вектор
+		/// </summary>
+		/// <returns></returns>
+		public static Vector ListToVector(List<double> list)
+		{
+			return new Vector(list.ToArray());
+		}
+		
+		/// <summary>
+		/// Вставляет отсчеты второго вектора, после отсчетов первого
+		/// </summary>
+		/// <param name="startVector">куда вставлять</param>
+		/// <param name="addedVector">что вставлять</param>
+		/// <returns>вектор размерности nach.N+dop.N</returns>
+		public static Vector AddVector(Vector startVector, Vector addedVector)
+		{
+			return Vector.Concatinate(new Vector[]{startVector, addedVector});
+		}
+		
+		
 		#endregion
 		
 		
+	}
+	
+	/// <summary>
+	/// Данные интервалов
+	/// </summary>
+	[Serializable]
+	public class IntervalData
+	{
+		List<int> bIntervals = new List<int>();
+		List<int> endIntervals = new List<int>();
 		
 		
+		/// <summary>
+		/// Данные интервалов
+		/// </summary>
+		public IntervalData(){}
+		
+		/// <summary>
+		/// Добавление интервала
+		/// </summary>
+		/// <param name="bI">Начало</param>
+		/// <param name="eI">Конец</param>
+		public void Add(int bI, int eI)
+		{
+			bIntervals.Add(bI);
+			endIntervals.Add(eI);
+		}
+		
+		
+		/// <summary>
+		/// Нарезка вектора по интервалам
+		/// </summary>
+		/// <param name="inputVector">Вектор входа</param>
+		public Vector[] GetVects(Vector inputVector)
+		{
+			Vector[] outps = new Vector[bIntervals.Count];
+			
+			for (int i = 0; i < outps.Length; i++) 
+			{
+				outps[i] = inputVector.GetInterval(bIntervals[i], endIntervals[i]);
+			}
+			
+			return outps;
+		}
+		
+		/// <summary>
+		/// Нарезка вектора по интервалам + преобразование
+		/// </summary>
+		/// <param name="vect2doub">Функция для преобразования вектора в число</param>
+		/// <param name="input">Вектор входа</param>
+		public Vector GetVect(Func<Vector, double> vect2doub, Vector input)
+		{
+			Vector outps = new Vector(bIntervals.Count);
+			
+			for (int i = 0; i < outps.N; i++) 
+			{
+				outps[i] = vect2doub(input.GetInterval(bIntervals[i], endIntervals[i]));
+			}
+			
+			return outps;
+		}
 		
 	}
 	

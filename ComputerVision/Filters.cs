@@ -197,7 +197,7 @@ namespace AI.MathMod.ComputerVision
             {
                 for (int j = 0; j < filter.N; j++)
                 {
-                    vect.Vecktor[k++] = img.Matr[dy + i, dx + j] * filter.Matr[i, j];
+                    vect.DataInVector[k++] = img.Matr[dy + i, dx + j] * filter.Matr[i, j];
                 }
             }
 

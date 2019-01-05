@@ -62,7 +62,7 @@ namespace AI.MathMod.ML.Classifire
         {
             Probability = 0;
             for (int i = 0; i < Count; i++)
-                Probability += Weights.Vecktor[i] * this[i].pr;
+                Probability += Weights.DataInVector[i] * this[i].pr;
 
             Probability /= Functions.Summ(Weights);
             
@@ -162,7 +162,7 @@ namespace AI.MathMod.ML.Classifire
         		
             foreach (var sMod in models)
             {
-                GetProbability(inp.Vecktor, sMod);
+                GetProbability(inp.DataInVector, sMod);
             }
 
             models.Sort((a, b) => a.Probability.CompareTo(b.Probability) * -1);
@@ -187,7 +187,7 @@ namespace AI.MathMod.ML.Classifire
 
                 for (int j = 0; j < vectors.Length; j++)
                 {
-                    components[i].Vecktor[j] = vectors[j].Vecktor[i];
+                    components[i].DataInVector[j] = vectors[j].DataInVector[i];
                 }
 
                 sMode.Add(new SModelComponent(Statistic.ExpectedValue(components[i]), Statistic.Std(components[i])));

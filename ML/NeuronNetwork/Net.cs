@@ -177,7 +177,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 		}
 		
 		/// <summary>
-		/// Сохранение матрицы
+		/// Сохранение нейронной сети
 		/// </summary>
 		/// <param name="path">Путь до файла</param>
 		public void Save(string path)
@@ -228,7 +228,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 			
 			catch
 			{
-				throw new ArgumentException("Ошибка загрузки", "Загрузка");
+				throw new ArgumentException("Ошибка загрузки");
 			}
 			
 		}

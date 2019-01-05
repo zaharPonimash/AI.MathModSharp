@@ -27,7 +27,7 @@ namespace AI.MathMod.Algebra
 		
 		void Loop(int i)
 		{
-			_x.Vecktor[i] = NewDet(i)/_detA;
+			_x.DataInVector[i] = NewDet(i)/_detA;
 		}
 		
 		
@@ -57,7 +57,7 @@ namespace AI.MathMod.Algebra
 			
 			for(int i = 0; i<_b.N; i++)
 			{
-				newA.Matr[i,index] = _b.Vecktor[i];
+				newA.Matr[i,index] = _b.DataInVector[i];
 			}
 			
 			return newA.Determinant();

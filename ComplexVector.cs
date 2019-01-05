@@ -30,7 +30,7 @@ namespace AI.MathMod
 		/// <summary>
 		/// Массив типа Complex содержащий отсчеты вектора
 		/// </summary>
-		public  Complex[] Vecktor
+		public  Complex[] DataInVector
 		{
 			get{return _vector;}
 			set{ _vector = value; _n = _vector.Length;}
@@ -102,7 +102,7 @@ namespace AI.MathMod
 		/// <param name="vectorImg">Мнимая часть</param>
 		public ComplexVector(Vector vectorReal, Vector vectorImg)
 		{
-			Init(vectorReal.Vecktor, vectorImg.Vecktor);
+			Init(vectorReal.DataInVector, vectorImg.DataInVector);
 		}
 		
 		/// <summary>
@@ -112,7 +112,7 @@ namespace AI.MathMod
 		public ComplexVector(Vector vectorReal)
 		{
 			Vector vectorImg = new Vector(vectorReal.N);
-			Init(vectorReal.Vecktor, vectorImg.Vecktor);
+			Init(vectorReal.DataInVector, vectorImg.DataInVector);
 		}
 		
 		#endregion	
@@ -254,7 +254,7 @@ namespace AI.MathMod
 			string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
 			if(n1!=n2)throw new ArgumentException(exceptionStr, "Вычитание");
 			ComplexVector C = new ComplexVector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B.Vecktor[i];
+			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B.DataInVector[i];
 			return C;
 		}
 		
@@ -272,7 +272,7 @@ namespace AI.MathMod
 			string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
 			if(n1!=n2)throw new ArgumentException(exceptionStr, "Вычитание");
 			ComplexVector C = new ComplexVector(n1);
-			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B.Vecktor[i];
+			for(int i = 0; i<n1; i++) C._vector[i] = A._vector[i]*B.DataInVector[i];
 			return C;
 		}
 
@@ -618,7 +618,7 @@ namespace AI.MathMod
 		{
 			Vector A = new Vector(_n);
 			
-			for(int i = 0; i<_n; i++) A.Vecktor[i] = _vector[i].Imaginary;
+			for(int i = 0; i<_n; i++) A.DataInVector[i] = _vector[i].Imaginary;
 			
 			return A;
 		}
@@ -632,7 +632,7 @@ namespace AI.MathMod
 		{
 			Vector A = new Vector(_n);
 			
-			for(int i = 0; i<_n; i++) A.Vecktor[i] = _vector[i].Real;
+			for(int i = 0; i<_n; i++) A.DataInVector[i] = _vector[i].Real;
 			
 			return A;
 		}
@@ -663,7 +663,7 @@ namespace AI.MathMod
 		{
 			Vector A = new Vector(_n);
 			
-			for(int i = 0; i<_n; i++) A.Vecktor[i] = _vector[i].Magnitude;
+			for(int i = 0; i<_n; i++) A.DataInVector[i] = _vector[i].Magnitude;
 			
 			return A;
 		}

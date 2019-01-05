@@ -86,7 +86,7 @@ namespace AI.MathMod
 		
 		
 		for(int i = 0; i<n; i++)
-			summ += vect.Vecktor[i];
+			summ += vect.DataInVector[i];
 		
 		return summ;
 	}
@@ -101,7 +101,7 @@ namespace AI.MathMod
 		
 		
 		for(int i = 0; i<n; i++)
-			summ += vect.Vecktor[i];
+			summ += vect.DataInVector[i];
 		
 		return summ;
 	}
@@ -140,7 +140,7 @@ namespace AI.MathMod
 		for(int i = 0; i<B.N; i++)
 		{
 			C = D.CutAndZero(i+1);
-			B.Vecktor[i] = Summ(C/kRasshR);
+			B.DataInVector[i] = Summ(C/kRasshR);
 		}
 			
 		return B.Decim(kRasshR);
@@ -184,18 +184,18 @@ namespace AI.MathMod
 		
 		for(int i = 0; i<B.N; i++,beg++)
 		{
-			if(A.Vecktor[i] >= a) break;
+			if(A.DataInVector[i] >= a) break;
 		}
 		
 		
 		for(int i = beg; i<B.N; i++)
 		{
 			C = A.CutAndZero(i+1);
-			B.Vecktor[i] = Summ(C);
-			if(A.Vecktor[i] >= b) break;
+			B.DataInVector[i] = Summ(C);
+			if(A.DataInVector[i] >= b) break;
 		}
 			
-		return B.Vecktor[B.N-1]-B.Vecktor[0];
+		return B.DataInVector[B.N-1]-B.DataInVector[0];
 	}
 	
 	
@@ -223,9 +223,9 @@ namespace AI.MathMod
 					{
 						data = new double[window];
 						input = vect1.CutAndZero(i+window);
-						Array.Copy(input.Vecktor,i,data,0,window);
+						Array.Copy(input.DataInVector,i,data,0,window);
 						input = new Vector(data);
-						DoubList.AddRange(Function(input).Vecktor);
+						DoubList.AddRange(Function(input).DataInVector);
 					}
 			
 				return Vector.ListToVector(DoubList);
@@ -258,7 +258,7 @@ namespace AI.MathMod
 					{
 						data = new double[window];
 						input = vect1.CutAndZero(i+window);
-						Array.Copy(input.Vecktor,i,data,0,window);
+						Array.Copy(input.DataInVector,i,data,0,window);
 						input = new Vector(data);
 						DoubList.Add(Function(input));
 						
@@ -294,7 +294,7 @@ namespace AI.MathMod
             {
                 data = new double[window];
                 input = vect1.CutAndZero(i + window);
-                Array.Copy(input.Vecktor, i, data, 0, window);
+                Array.Copy(input.DataInVector, i, data, 0, window);
                 input = new Vector(data);
                 DoubList.Add(Function(input));
 
@@ -322,11 +322,11 @@ namespace AI.MathMod
 		for(int i = 0; i<B.N; i++)
 		{
 			C = A.CutAndZero(i+1);
-			B.Vecktor[i] = Summ(C);
-			if(A.Vecktor[i] >= b) break;
+			B.DataInVector[i] = Summ(C);
+			if(A.DataInVector[i] >= b) break;
 		}
 			
-		return B.Vecktor[B.N-1]-B.Vecktor[0];
+		return B.DataInVector[B.N-1]-B.DataInVector[0];
 	}
 	
 	
@@ -341,11 +341,11 @@ namespace AI.MathMod
 	{
 		Vector B = new Vector(A.N);
 		
-		B.Vecktor[0] = A.Vecktor[0];
+		B.DataInVector[0] = A.DataInVector[0];
 		
 		for(int i = 1; i<B.N; i++)
 		{
-			B.Vecktor[i] = A.Vecktor[i] - A.Vecktor[i-1];
+			B.DataInVector[i] = A.DataInVector[i] - A.DataInVector[i-1];
 		}
 			
 		return B;
@@ -360,11 +360,11 @@ namespace AI.MathMod
 	{
 		ComplexVector B = new ComplexVector(A.N);
 		
-		B.Vecktor[0] = A.Vecktor[0];
+		B.DataInVector[0] = A.DataInVector[0];
 		
 		for(int i = 1; i<B.N; i++)
 		{
-			B.Vecktor[i] = A.Vecktor[i] - A.Vecktor[i-1];
+			B.DataInVector[i] = A.DataInVector[i] - A.DataInVector[i-1];
 		}
 			
 		return B;
@@ -450,7 +450,7 @@ namespace AI.MathMod
 		for(int i = 0; i<A.N; i++)
 		{
 			C = A.CutAndZero(i);
-			B.Vecktor[i] = Summ(C);
+			B.DataInVector[i] = Summ(C);
 		}
 			
 		return B;
@@ -489,7 +489,7 @@ namespace AI.MathMod
 		
 		
 		for(int i = 0; i<n; i++)
-			multipl *= vect.Vecktor[i];
+			multipl *= vect.DataInVector[i];
 		
 		return multipl;
 	}

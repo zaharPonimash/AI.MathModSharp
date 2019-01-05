@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AI.MathMod.AdditionalFunctions;
-using AI.MathMod.Graphiks;
+using AI.MathMod.Charts;
 using AI.MathMod.ML.NeuronNetwork;
 
 namespace AI.MathMod.ML.Datasets

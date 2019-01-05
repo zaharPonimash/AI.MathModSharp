@@ -133,7 +133,7 @@ namespace AI.MathMod.Signals
 			
 			for (int i = 0; i < st.N; i++)
 			{
-				if((f.Vecktor[i]>=sr1)&&(f.Vecktor[i]<=sr2)) kw.Vecktor[i] = 0;
+				if((f.DataInVector[i]>=sr1)&&(f.DataInVector[i]<=sr2)) kw.DataInVector[i] = 0;
 			}
 			
 			//kw.Visual(f);
@@ -158,8 +158,8 @@ namespace AI.MathMod.Signals
 					
 					for (int i = 0; i < f.N; i++)
 					{
-						if ((f.Vecktor[i] >= param[0]) && (f.Vecktor[i] <= param[1]))
-							kw.Vecktor[i] = 1;
+						if ((f.DataInVector[i] >= param[0]) && (f.DataInVector[i] <= param[1]))
+							kw.DataInVector[i] = 1;
 					}
 					
 				}
@@ -171,7 +171,7 @@ namespace AI.MathMod.Signals
 				
 				if (afh == AFHType.Low)
 				{
-				double srNew = f.Vecktor[f.N-1]-param[0];
+				double srNew = f.DataInVector[f.N-1]-param[0];
 				kw = NeuroFunc.Threshold(f,srNew).Revers();
 				}
 				
@@ -181,8 +181,8 @@ namespace AI.MathMod.Signals
 				kw += 1;
 			
 				for (int i = 0; i < f.N; i++) {
-					if ((f.Vecktor[i] >= param[0]) && (f.Vecktor[i] <= param[1]))
-						kw.Vecktor[i] = 0;
+					if ((f.DataInVector[i] >= param[0]) && (f.DataInVector[i] <= param[1]))
+						kw.DataInVector[i] = 0;
 				}
 				}
 				

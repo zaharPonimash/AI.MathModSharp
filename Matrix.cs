@@ -12,7 +12,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using AI.MathMod.AdditionalFunctions;
-using AI.MathMod.Graphiks;
+using AI.MathMod.Charts;
 
 
 namespace AI.MathMod
@@ -549,7 +549,7 @@ namespace AI.MathMod
 				for(int i = 0; i<_n; i++)
 				 for(int j = 0; j<_m; j++)
 					{
-					vect.Vecktor[index] = Matr[j,i];
+					vect.DataInVector[index] = Matr[j,i];
 					index++;
 				    }
 				

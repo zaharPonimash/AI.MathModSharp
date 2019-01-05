@@ -41,11 +41,11 @@ namespace AI.MathMod.ML.Regression
 		{
 			_n = n+1;
 			_param = new Vector(_n);
-			_param.Vecktor[0] = 0.1;
+			_param.DataInVector[0] = 0.1;
 			
 			for(int i = 0; i<X.N; i++)
 			{
-				_gdd.Add(X.Vecktor[i], Y.Vecktor[i]);
+				_gdd.Add(X.DataInVector[i], Y.DataInVector[i]);
 			}
 			
 			
@@ -67,7 +67,7 @@ namespace AI.MathMod.ML.Regression
 			
 			for(int i = 1; i<_n; i++)
 			{
-				outp += param.Vecktor[i]*Math.Sin(x*i/param.Vecktor[0]);
+				outp += param.DataInVector[i]*Math.Sin(x*i/param.DataInVector[0]);
 			}
 			
 			return outp;
@@ -87,7 +87,7 @@ namespace AI.MathMod.ML.Regression
 			
 			for(int i = 0; i<X.N; i++)
 			{
-				Y.Vecktor[i] = Work(X.Vecktor[i], param);
+				Y.DataInVector[i] = Work(X.DataInVector[i], param);
 			}
 			
 			return Y;
@@ -123,8 +123,8 @@ namespace AI.MathMod.ML.Regression
 			
 			for(int i = 0; i<X.N; i++)
 			{
-				X.Vecktor[i] = inp[i].Vecktor[0];
-				Y.Vecktor[i] = ideal[i].Vecktor[0];
+				X.DataInVector[i] = inp[i].DataInVector[0];
+				Y.DataInVector[i] = ideal[i].DataInVector[0];
 			}
 			
 			E = (Y-Work(X, param))^2;

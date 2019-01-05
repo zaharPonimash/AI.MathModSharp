@@ -170,8 +170,6 @@ namespace AI.MathMod
 			SaveVector("ss", vector, fd);
 			SoundPlayer sp = new SoundPlayer("ss");
 			sp.Play();
-			
-			
 		}
 		
 	}

@@ -39,8 +39,8 @@ namespace AI.MathMod.Approximation
 		/// <returns></returns>
 		public static double PowerError(Vector real, Vector approcs)
 		{
-			double realSpE =  Functions.Integral(Furie.DPF(real).MagnitudeToVector()).Vecktor[real.N-1],
-			appSpE = Functions.Integral(Furie.DPF(approcs).MagnitudeToVector()).Vecktor[real.N-1];
+			double realSpE =  Functions.Integral(Furie.DPF(real).MagnitudeToVector()).DataInVector[real.N-1],
+			appSpE = Functions.Integral(Furie.DPF(approcs).MagnitudeToVector()).DataInVector[real.N-1];
 			return (realSpE > appSpE)? (realSpE/appSpE)*(realSpE/appSpE) : (appSpE/realSpE)*(appSpE/realSpE);
 		}
 		

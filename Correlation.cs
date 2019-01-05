@@ -37,7 +37,7 @@ namespace AI.MathMod
 						st = A.CutAndZero(N);
 						s2t = B.Shift(n);
 						s2t = s2t.CutAndZero(N);
-						C.Vecktor[n] = Functions.Summ(st*s2t);
+						C.DataInVector[n] = Functions.Summ(st*s2t);
 						}
 					
 					Statistic stat = new Statistic(A);
@@ -85,7 +85,7 @@ namespace AI.MathMod
 						st = (!A).CutAndZero(N);
 						s2t = B.Shift(n);
 						s2t = s2t.CutAndZero(N);
-						C.Vecktor[n] = Functions.Summ(st*s2t);
+						C.DataInVector[n] = Functions.Summ(st*s2t);
 						}
 					
 					return C;
@@ -154,9 +154,9 @@ namespace AI.MathMod
 					{
 						data = new double[window];
 						input = vect1.CutAndZero(i+window);
-						Array.Copy(input.Vecktor,i,data,0,window);
+						Array.Copy(input.DataInVector,i,data,0,window);
 						input = new Vector(data);
-						DoubList.AddRange(CrossCorrelationF(input,pattern).Vecktor);
+						DoubList.AddRange(CrossCorrelationF(input,pattern).DataInVector);
 					}
 			
 				return Vector.ListToVector(DoubList);
@@ -185,9 +185,9 @@ namespace AI.MathMod
 					{
 						data = new double[window];
 						input = vect.CutAndZero(i+window);
-						Array.Copy(input.Vecktor,i,data,0,window);
+						Array.Copy(input.DataInVector,i,data,0,window);
 						input = new Vector(data);
-						DoubList.AddRange(CrossCorrelationF(input,pattern).Vecktor);
+						DoubList.AddRange(CrossCorrelationF(input,pattern).DataInVector);
 					}
 			
 				return Vector.ListToVector(DoubList);

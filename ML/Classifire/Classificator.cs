@@ -226,7 +226,7 @@ namespace AI.MathMod.ML.Classifire
             {
                 for (int i = 0; i < W; i++)
                 {
-                	color = (int)Math.Abs(vect.Vecktor[k]*200);
+                	color = (int)Math.Abs(vect.DataInVector[k]*200);
                 	
                 	fotoBmp.SetPixel(i,j,Color.FromArgb(color,color,color));
                 	k++;

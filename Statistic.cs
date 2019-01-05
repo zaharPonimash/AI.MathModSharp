@@ -158,7 +158,7 @@ namespace AI.MathMod
 		{
 			double[] img = new double[_n];
 			
-			ComplexVector fnc = new ComplexVector(_vector.Vecktor, img);
+			ComplexVector fnc = new ComplexVector(_vector.DataInVector, img);
 			 
 			return Furie.fft(fnc).MagnitudeToVector();
 		}
@@ -172,7 +172,7 @@ namespace AI.MathMod
 		{
 			double[] img = new double[_n];
 			
-			ComplexVector fnc = new ComplexVector(_vector.Vecktor, img);
+			ComplexVector fnc = new ComplexVector(_vector.DataInVector, img);
 			 
 			return new Statistic(Furie.fft(fnc).MagnitudeToVector());
 		}
@@ -188,7 +188,7 @@ namespace AI.MathMod
 		{
 			Random A = new Random();
 			Vector vect = new Vector(n);
-			for(int i = 0; i<n; i++) vect.Vecktor[i] = A.NextDouble();
+			for(int i = 0; i<n; i++) vect.DataInVector[i] = A.NextDouble();
 			return vect;
 		}
 		
@@ -227,7 +227,7 @@ namespace AI.MathMod
 		{
 			Random A = new Random();
 			Vector vect = new Vector(n);
-			for(int i = 0; i<n; i++) vect.Vecktor[i] = Gauss(A);
+			for(int i = 0; i<n; i++) vect.DataInVector[i] = Gauss(A);
 			return vect;
 		}
 		
@@ -242,7 +242,7 @@ namespace AI.MathMod
 		public static Vector randNorm(int n, Random rnd)
 		{
 			Vector vect = new Vector(n);
-			for(int i = 0; i<n; i++) vect.Vecktor[i] = Gauss(rnd);
+			for(int i = 0; i<n; i++) vect.DataInVector[i] = Gauss(rnd);
 			return vect;
 		}
 		
@@ -252,12 +252,12 @@ namespace AI.MathMod
 		// Минимальное и макимальное значения
 		void MaxMinValue()
 		{
-			_max = _vector.Vecktor[0];
-			_min = _vector.Vecktor[0];
+			_max = _vector.DataInVector[0];
+			_min = _vector.DataInVector[0];
 			for(int i = 1; i<_n; i++)
 			{
-				if(_vector.Vecktor[i]> _max) _max = _vector.Vecktor[i];
-				if(_vector.Vecktor[i]< _min) _min = _vector.Vecktor[i];
+				if(_vector.DataInVector[i]> _max) _max = _vector.DataInVector[i];
+				if(_vector.DataInVector[i]< _min) _min = _vector.DataInVector[i];
 			}
 			
 			
@@ -291,11 +291,11 @@ namespace AI.MathMod
 		/// <param name="vect">Вектор</param>
 		public static double MaximalValue(Vector vect)
 		{
-			double max = vect.Vecktor[0];
+			double max = vect.DataInVector[0];
 			
 			for(int i = 1; i<vect.N; i++)
 			{
-				if(vect.Vecktor[i]> max) max = vect.Vecktor[i];
+				if(vect.DataInVector[i]> max) max = vect.DataInVector[i];
 			}
 			
 			return max;
@@ -309,11 +309,11 @@ namespace AI.MathMod
 		public static double MinimalValue(Vector vect)
 		{
 			
-			double min = vect.Vecktor[0];
+			double min = vect.DataInVector[0];
 			
 			for(int i = 1; i<vect.N; i++)
 			{
-				if(vect.Vecktor[i]< min) min = vect.Vecktor[i];
+				if(vect.DataInVector[i]< min) min = vect.DataInVector[i];
 			}
 			
 			return min;
@@ -428,11 +428,11 @@ namespace AI.MathMod
 			
 			for(int i = 0; i< nRazr; i++){
 				ht = 0;
-				foreach(double element in _vector.Vecktor)
+				foreach(double element in _vector.DataInVector)
 				if( element >= (_min + i*shag) && element < _min + (i+1)*shag)// попадение в интервал					
 				ht++;
-				x.Vecktor[i]=((_min + i*shag)+_min + (i+1)*shag)/2.0;
-				histogr.Vecktor[i] = ht;
+				x.DataInVector[i]=((_min + i*shag)+_min + (i+1)*shag)/2.0;
+				histogr.DataInVector[i] = ht;
 			}
 			
 			Histogramma A = new Histogramma();
