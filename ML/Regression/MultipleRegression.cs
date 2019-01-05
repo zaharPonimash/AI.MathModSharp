@@ -8,6 +8,8 @@
  */
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using AI.MathMod.AdditionalFunctions;
 using AI.MathMod.Algebra;
 
@@ -17,32 +19,88 @@ namespace AI.MathMod.ML.Regression
 	/// <summary>
 	/// Множественная регрессия
 	/// </summary>
+	[Serializable]
 	public class MultipleRegression
 	{
 		
-		Matrix A;
-		Vector B;
-		Vector _param;
-		Vector[] _x;
-		double[] _y;
 		
-		int n, m;
+		Vector _param, std, mean;
+		
+		[NonSerialized]
+		Vector[] _x;
+		[NonSerialized]
+		double[] _y;
+		[NonSerialized]
+		Matrix A;
+		[NonSerialized]
+		Vector B;
+		[NonSerialized]
+		int n;
+		[NonSerialized]
+		int m;
+		
+		/// <summary>
+		/// Параметры модели
+		/// </summary>
+		public Vector Parammetrs
+		{
+			get;
+			private set;
+		}
+		
+		
 		
 		/// <summary>
 		/// Множественная линейная регрессия
 		/// </summary>
 		/// <param name="X">Вектора входа</param>
 		/// <param name="Y">Выходы</param>
-		public MultipleRegression(Vector[] X, double[] Y)
+		/// <param name="isScale">Стоит ли применить масштабирование к данным</param>
+		public MultipleRegression(Vector[] X, Vector Y, bool isScale = false)
 		{
 			n = X.Length;
-			m = X[0].N;
-			_x = X;
-			_y = Y;
-			//Xadd1();
+			m = X[0].N+1;
+			
+			if(isScale)
+			{
+				_x = Vector.ScaleData(X);
+				std = MathFunc.sqrt(Statistic.EnsembleDispersion(X));
+				mean = Statistic.MeanVector(X);
+				std = std.AddOne();
+				mean = mean.Shift(1);
+			}
+			else	
+			{
+				std = new Vector(m)+1;
+				mean = new Vector(m);
+				_x = new Vector[n];
+				
+				for (int i = 0; i < n; i++) 
+				{
+					_x[i] = X[i].Copy();
+				}
+			}
+			
+			// Добавление единицы
+			for (int i = 0; i < n; i++) 
+			{
+				_x[i] = _x[i].AddOne();
+			}
+			
+			_y = Y.DataInVector;
 			GenA();
 			GenB();
 			GenParam();
+		}
+		
+		
+		/// <summary>
+		/// Множественная линейная регрессия
+		/// </summary>
+		/// <param name="path">Путь до модели</param>
+		public MultipleRegression(string path)
+		{
+			LoadModel(path);
 		}
 		
 		// Составление матрицы
@@ -61,20 +119,8 @@ namespace AI.MathMod.ML.Regression
 					
 					A[i,j] = c;
 				}
-			
-			//A.Visual();
 		}
 		
-		
-		void Xadd1()
-		{
-			for (int i = 0; i < _x.Length; i++)
-			{
-				_x[i] = _x[i].Shift(1);
-				_x[i][0] = 1;
-			}
-		
-		}
 		
 		
 		// Вектор ответа
@@ -93,7 +139,6 @@ namespace AI.MathMod.ML.Regression
 				B[i] = c;
 			}
 			
-			//B.Visual();
 		}
 		
 		// Генерация параметров системы
@@ -101,7 +146,7 @@ namespace AI.MathMod.ML.Regression
 		{
 			Kramer kram = new Kramer();
 			_param = kram.GetAnswer(A, B);
-//			_param.Visual();
+			_param.Visual();
 		}
 		
 		/// <summary>
@@ -111,9 +156,11 @@ namespace AI.MathMod.ML.Regression
 		/// <returns>Выход</returns>
 		public double Predict(Vector vect)
 		{
-			return GeomFunc.ScalarProduct(vect, _param);
+			Vector inp = vect.AddOne();
+			inp -= mean;
+			inp /= std;
+			return GeomFunc.ScalarProduct(inp, _param);
 		}
-		
 		
 		
 		/// <summary>
@@ -131,6 +178,56 @@ namespace AI.MathMod.ML.Regression
 			}
 			
 			return outp;
+		}
+		
+		
+		/// <summary>
+		/// Сохранение модели
+		/// </summary>
+		/// <param name="path">Путь</param>
+		public void SaveModel(string path)
+		{
+			try 
+			{
+				BinaryFormatter binFormat = new BinaryFormatter();
+			
+				using (Stream fStream = new FileStream(path,
+					                       FileMode.Create, FileAccess.Write, FileShare.None)) 
+				{
+					binFormat.Serialize(fStream, this);
+				}
+			} 
+			catch 
+			{
+				throw new ArgumentException("Ошибка сохранения");
+			}
+		}
+		
+		/// <summary>
+		/// Загрузка модели
+		/// </summary>
+		/// <param name="path">Путь</param>
+		public void LoadModel(string path)
+		{
+			try
+			{
+				 MultipleRegression mR;
+				 BinaryFormatter binFormat = new BinaryFormatter();
+			
+				using(Stream fStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.None))
+				{
+			 		mR =(MultipleRegression)binFormat.Deserialize(fStream);
+				}
+			
+			 	std = mR.std;
+			 	mean = mR.mean;
+			 	_param = mR._param;
+			}
+			
+			catch
+			{
+				throw new ArgumentException("Ошибка загрузки");
+			}
 		}
 	}
 }

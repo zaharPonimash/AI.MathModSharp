@@ -105,26 +105,26 @@
     <Compile Include="Funtions.cs" />
     <Compile Include="Furie.cs" />
     <Compile Include="FuzzyLogic.cs" />
-    <Compile Include="Graphiks\Descrintion.cs" />
-    <Compile Include="Graphiks\GraphicsView.cs" />
-    <Compile Include="Graphiks\MatrixOut.cs" />
-    <Compile Include="Graphiks\MatrixOut.Designer.cs">
+    <Compile Include="Charts\Description.cs" />
+    <Compile Include="Charts\GraphicsView.cs" />
+    <Compile Include="Charts\MatrixOut.cs" />
+    <Compile Include="Charts\MatrixOut.Designer.cs">
       <DependentUpon>MatrixOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphiks\MatrixVisual.cs">
+    <Compile Include="Charts\MatrixVisual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphiks\MatrixVisual.Designer.cs">
+    <Compile Include="Charts\MatrixVisual.Designer.cs">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphiks\VisualData.cs" />
-    <Compile Include="Graphiks\VisualData.Designer.cs">
+    <Compile Include="Charts\VisualData.cs" />
+    <Compile Include="Charts\VisualData.Designer.cs">
       <DependentUpon>VisualData.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphiks\VisualPlot.cs">
+    <Compile Include="Charts\VisualPlot.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphiks\VisualPlot.Designer.cs">
+    <Compile Include="Charts\VisualPlot.Designer.cs">
       <DependentUpon>VisualPlot.cs</DependentUpon>
     </Compile>
     <Compile Include="IMathStruct.cs" />
@@ -175,6 +175,7 @@
     <Compile Include="Signals\DCT.cs" />
     <Compile Include="Signals\FastHilbert.cs" />
     <Compile Include="Signals\Filters.cs" />
+    <Compile Include="Signals\GetSpectrEnerge.cs" />
     <Compile Include="Signals\Hilbert.cs" />
     <Compile Include="Signals\Kepstr.cs" />
     <Compile Include="Signals\OptimalFilter.cs" />
@@ -202,16 +203,16 @@
     <Folder Include="NonLinearDynamic" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Graphiks\MatrixOut.resx">
+    <EmbeddedResource Include="Charts\MatrixOut.resx">
       <DependentUpon>MatrixOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphiks\MatrixVisual.resx">
+    <EmbeddedResource Include="Charts\MatrixVisual.resx">
       <DependentUpon>MatrixVisual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphiks\VisualData.resx">
+    <EmbeddedResource Include="Charts\VisualData.resx">
       <DependentUpon>VisualData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphiks\VisualPlot.resx">
+    <EmbeddedResource Include="Charts\VisualPlot.resx">
       <DependentUpon>VisualPlot.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

@@ -59,7 +59,7 @@ namespace AI.MathMod.AdditionalFunctions
         public static Vector erf(Vector Inp)
         {
             Vector A = new Vector(Inp.N);
-            for (int i = 0; i < Inp.N; i++) A.Vecktor[i] = erf(Inp.Vecktor[i]);
+            for (int i = 0; i < Inp.N; i++) A.DataInVector[i] = erf(Inp.DataInVector[i]);
             return A;
         }
 
@@ -80,7 +80,7 @@ namespace AI.MathMod.AdditionalFunctions
 			Vector sequen = new Vector(N);
 			
 			for(int i = 0; i<N; i++)
-				sequen.Vecktor[i] = began + i*step;
+				sequen.DataInVector[i] = began + i*step;
 			
 			return sequen;
 		}
@@ -107,7 +107,7 @@ namespace AI.MathMod.AdditionalFunctions
 			Vector sequen = new Vector(N);
 			
 			for(int i = 0; i<N; i++)
-				sequen.Vecktor[i] = began + i;
+				sequen.DataInVector[i] = began + i;
 			
 			return sequen;
 		}
@@ -131,7 +131,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector GradToRad(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = GradToRad(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = GradToRad(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -155,7 +155,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector RadToGrad(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = RadToGrad(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = RadToGrad(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -196,7 +196,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector factorial(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = factorial(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = factorial(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -214,7 +214,7 @@ namespace AI.MathMod.AdditionalFunctions
 		{
 			Vector A = new Vector(Inp.N);
 			for(int i = 0; i<Inp.N; i++)
-				A.Vecktor[i] = Math.Sin(Inp.Vecktor[i]);
+				A.DataInVector[i] = Math.Sin(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -230,7 +230,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector round(Vector Inp, int digits)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Round(Inp.Vecktor[i], digits);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Round(Inp.DataInVector[i], digits);
 			return A;
 		}
 		
@@ -243,7 +243,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector cos(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Cos(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Cos(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -257,7 +257,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector tg(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Tan(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Tan(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -281,7 +281,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector arcsin(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Asin(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Asin(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -293,7 +293,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector arccos(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Acos(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Acos(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -305,7 +305,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector arctg(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Atan(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Atan(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -316,7 +316,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector lg(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Log10(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Log10(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -329,7 +329,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector ln(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Log(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Log(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -360,7 +360,7 @@ namespace AI.MathMod.AdditionalFunctions
 			public static Vector exp(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Exp(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Exp(Inp.DataInVector[i]);
 			return A;
 		}
 			
@@ -373,7 +373,7 @@ namespace AI.MathMod.AdditionalFunctions
 			public static Vector tanh(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Tanh(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Tanh(Inp.DataInVector[i]);
 			return A;
 		}
 			
@@ -385,7 +385,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector sign(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Sign(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Sign(Inp.DataInVector[i]);
 			return A;
 		}
 			
@@ -398,7 +398,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector sqrt(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Sqrt(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Sqrt(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -589,7 +589,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector sin(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Sin(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Sin(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -601,7 +601,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector exp(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Exp(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Exp(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -612,7 +612,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector tanh(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Tanh(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Tanh(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -624,7 +624,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector sqrt(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Sqrt(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Sqrt(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -635,7 +635,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector cos(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Cos(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Cos(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -646,7 +646,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector lg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Log10(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Log10(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -657,7 +657,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector ln(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Log(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Log(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -668,7 +668,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector tg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Tan(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Tan(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -689,7 +689,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector arcsin(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Asin(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Asin(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -701,7 +701,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector arccos(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Acos(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Acos(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -712,7 +712,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static ComplexVector arctg(ComplexVector Inp)
 		{
 			ComplexVector A = new ComplexVector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Atan(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Atan(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -741,7 +741,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector abs(Vector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Math.Abs(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Math.Abs(Inp.DataInVector[i]);
 			return A;
 		}
 		
@@ -753,7 +753,7 @@ namespace AI.MathMod.AdditionalFunctions
 		public static Vector abs(ComplexVector Inp)
 		{
 			Vector A = new Vector(Inp.N);
-			for(int i = 0; i<Inp.N; i++) A.Vecktor[i] = Complex.Abs(Inp.Vecktor[i]);
+			for(int i = 0; i<Inp.N; i++) A.DataInVector[i] = Complex.Abs(Inp.DataInVector[i]);
 			return A;
 		}
 
@@ -831,8 +831,8 @@ namespace AI.MathMod.AdditionalFunctions
 		{
 			Vector A = new Vector(Inp.N);
 			for(int i = 0; i<Inp.N; i++)
-				if(Inp.Vecktor[i] >= threshold)A.Vecktor[i] = 1;
-				else A.Vecktor[i] = 0;
+				if(Inp.DataInVector[i] >= threshold)A.DataInVector[i] = 1;
+				else A.DataInVector[i] = 0;
 			return A;
 		}
 
@@ -848,8 +848,8 @@ namespace AI.MathMod.AdditionalFunctions
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if ((Inp.Vecktor[i] >= thresholdDoun)&& (Inp.Vecktor[i] <= thresholdUp)) A.Vecktor[i] = 1;
-                else A.Vecktor[i] = 0;
+                if ((Inp.DataInVector[i] >= thresholdDoun)&& (Inp.DataInVector[i] <= thresholdUp)) A.DataInVector[i] = 1;
+                else A.DataInVector[i] = 0;
             return A;
         }
 
@@ -863,8 +863,8 @@ namespace AI.MathMod.AdditionalFunctions
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if (Inp.Vecktor[i] >= threshold) A.Vecktor[i] = Inp.Vecktor[i];
-                else A.Vecktor[i] = 0;
+                if (Inp.DataInVector[i] >= threshold) A.DataInVector[i] = Inp.DataInVector[i];
+                else A.DataInVector[i] = 0;
             return A;
         }
 
@@ -879,8 +879,8 @@ namespace AI.MathMod.AdditionalFunctions
         {
             Vector A = new Vector(Inp.N);
             for (int i = 0; i < Inp.N; i++)
-                if ((Inp.Vecktor[i] >= thresholdDoun) && (Inp.Vecktor[i] <= thresholdUp)) A.Vecktor[i] = Inp.Vecktor[i];
-                else A.Vecktor[i] = 0;
+                if ((Inp.DataInVector[i] >= thresholdDoun) && (Inp.DataInVector[i] <= thresholdUp)) A.DataInVector[i] = Inp.DataInVector[i];
+                else A.DataInVector[i] = 0;
             return A;
         }
 

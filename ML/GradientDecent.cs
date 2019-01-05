@@ -214,9 +214,9 @@ namespace AI.MathMod.ML
 			for(int i = 0; i<param.N; i++)
 			{
 				Vector newParam = param.Copy();
-				newParam.Vecktor[i] += Step;
+				newParam.DataInVector[i] += Step;
 				double out2 = function(newParam, inp, ideal);
-				partialDerivatives.Vecktor[i] = (out2-out1)/Step;
+				partialDerivatives.DataInVector[i] = (out2-out1)/Step;
 			}
 			
 			return partialDerivatives;

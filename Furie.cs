@@ -128,7 +128,7 @@ namespace AI.MathMod
     	public ComplexVector IFFT(ComplexVector inp)
         {
         	ComplexVector cV = !inp.CutAndZero(_n); // Комплексно-сопряженный вектор
-        	return new ComplexVector(FFT(cV.Vecktor));
+        	return new ComplexVector(FFT(cV.DataInVector));
         }
     	
     #region БПФ
@@ -197,7 +197,7 @@ namespace AI.MathMod
         public static Complex[] ifft(Complex[] inp)
         {
         	ComplexVector cV = !new ComplexVector(inp); // Комплексно-сопряженный вектор
-        	return fft(cV.Vecktor);
+        	return fft(cV.DataInVector);
         }
         
         
@@ -210,7 +210,7 @@ namespace AI.MathMod
         public static ComplexVector fft(ComplexVector inp)
         {
         	ComplexVector inpV = inp.CutAndZero(Functions.NextPow2(inp.N));
-        	return new ComplexVector(fft(inpV.Vecktor));
+        	return new ComplexVector(fft(inpV.DataInVector));
         }
         
         
@@ -242,7 +242,7 @@ namespace AI.MathMod
         static ComplexVector ifft1(ComplexVector inp)
         {
         	ComplexVector inpV = inp.CutAndZero(Functions.NextPow2(inp.N));
-        	return new ComplexVector(ifft(inpV.Vecktor));
+        	return new ComplexVector(ifft(inpV.DataInVector));
         }
         
         
@@ -302,10 +302,10 @@ namespace AI.MathMod
 		for(int k =0; k<N; k++){
 			
 			for(int n =0; n<N; n++)
-			x1.Vecktor[n] = x.Vecktor[n]*Complex.Exp((-2*Math.PI*i*k*n)/N);
+			x1.DataInVector[n] = x.DataInVector[n]*Complex.Exp((-2*Math.PI*i*k*n)/N);
 			
 			
-			Out.Vecktor[k] = Functions.Summ(x1);
+			Out.DataInVector[k] = Functions.Summ(x1);
 		}
 		
 		return Out;
@@ -327,10 +327,10 @@ namespace AI.MathMod
 		
 		for(int k =0; k<N; k++){
 			for(int n =0; n<N; n++){
-			x1.Vecktor[n] = x.Vecktor[n]*Complex.Exp((-2*Math.PI*i*k*n)/N);
+			x1.DataInVector[n] = x.DataInVector[n]*Complex.Exp((-2*Math.PI*i*k*n)/N);
 			}
 			
-			Out.Vecktor[k] = Functions.Summ(x1);
+			Out.DataInVector[k] = Functions.Summ(x1);
 		}
 		
 		return Out;
@@ -352,10 +352,10 @@ namespace AI.MathMod
 		for(int k =0; k<N; k++){
 			
 			for(int n =0; n<N; n++)
-			x1.Vecktor[n] = x.Vecktor[n]*Complex.Exp((2*Math.PI*i*k*n)/N);
+			x1.DataInVector[n] = x.DataInVector[n]*Complex.Exp((2*Math.PI*i*k*n)/N);
 			
 			
-			Out.Vecktor[k] = Functions.Summ(x1);
+			Out.DataInVector[k] = Functions.Summ(x1);
 		}
 		
 		return Out/N;
@@ -377,10 +377,10 @@ namespace AI.MathMod
 		
 		for(int k =0; k<N; k++){
 			for(int n =0; n<N; n++){
-			x1.Vecktor[n] = x.Vecktor[n]*Complex.Exp((2*Math.PI*i*k*n)/N);
+			x1.DataInVector[n] = x.DataInVector[n]*Complex.Exp((2*Math.PI*i*k*n)/N);
 			}
 			
-			Out.Vecktor[k] = Functions.Summ(x1);
+			Out.DataInVector[k] = Functions.Summ(x1);
 		}
 		
 		return Out/N;

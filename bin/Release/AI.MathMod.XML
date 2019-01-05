@@ -517,7 +517,7 @@
             </summary>
             <param name="path">Путь до файла</param>		
         </member>
-        <member name="P:AI.MathMod.ComplexVector.Vecktor">
+        <member name="P:AI.MathMod.ComplexVector.DataInVector">
             <summary>
             Массив типа Complex содержащий отсчеты вектора
             </summary>
@@ -1822,27 +1822,27 @@
             Нечеткая логическая переменная
             </summary>
         </member>
-        <member name="T:AI.MathMod.Graphiks.Description">
+        <member name="T:AI.MathMod.Charts.Description">
             <summary>
             Описание для графика
             </summary>
         </member>
-        <member name="F:AI.MathMod.Graphiks.Description.X">
+        <member name="F:AI.MathMod.Charts.Description.X">
             <summary>
             Название оси X
             </summary>
         </member>
-        <member name="F:AI.MathMod.Graphiks.Description.Y">
+        <member name="F:AI.MathMod.Charts.Description.Y">
             <summary>
             Название оси Y
             </summary>
         </member>
-        <member name="F:AI.MathMod.Graphiks.Description.Name">
+        <member name="F:AI.MathMod.Charts.Description.Name">
             <summary>
             Название графика
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.Description.#ctor(System.String,System.String,System.String)">
+        <member name="M:AI.MathMod.Charts.Description.#ctor(System.String,System.String,System.String)">
             <summary>
             Описание графика
             </summary>
@@ -1850,26 +1850,26 @@
             <param name="yL">Название оси Y</param>
             <param name="name">Название графика</param>
         </member>
-        <member name="T:AI.MathMod.Graphiks.GraphicsView">
+        <member name="T:AI.MathMod.Charts.GraphicsView">
             <summary>
             Description of GraphicsView.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
             <summary>
             Строит график в контроле graph, по отсчетам funcItemClass
             </summary>
             <param name="graph">Элемент интерфейса для вывода графика</param>
             <param name="funcItemClass">Значения y</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector)">
             <summary>
             Строит график в контроле graph, по отсчетам funcItemClass
             </summary>
             <param name="graph">Элемент интерфейса для вывода графика</param>
             <param name="funcItemClass">Значения y</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector)">
             <summary>
             Строит график в контроле graph, по отсчетам funcItemClass
             </summary>
@@ -1877,7 +1877,7 @@
             <param name="funcItemClass">Значения y</param>
             <param name="xV">Значение по Y</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Bar(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Строит график из столбцов в контроле graph, по отсчетам funcItemClass
             </summary>
@@ -1889,7 +1889,7 @@
             <param name="yN">Имя Y</param>
             <param name="col">Цвет</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Вывод графика
             </summary>
@@ -1901,7 +1901,7 @@
             <param name="nameY">Имя оси Y</param>
             <param name="colorLine">Цвет линии</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.ScatterPlot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.ScatterPlot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color,System.Drawing.Color)">
             <summary>
             Скатерограмма и график
             </summary>
@@ -1915,7 +1915,7 @@
             <param name="colorLine"></param>
             <param name="colorC"></param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Scatter(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Scatter(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Вывод графика
             </summary>
@@ -1927,59 +1927,59 @@
             <param name="nameY">Имя оси Y</param>
             <param name="colorLine">Цвет линии</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(ZedGraph.ZedGraphControl,AI.MathMod.Vector,AI.MathMod.Vector)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.PlotD(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.PlotD(AI.MathMod.Vector)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Charts.Description)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
             <summary>
             График от одной переменной
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.Plot(AI.MathMod.Vector,AI.MathMod.Vector)">
             <summary>
             График от одной переменной
             </summary>
             <param name="y"></param>
             <param name="x"></param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.GraphicsView.ScattersVis(ZedGraph.ZedGraphControl,AI.MathMod.Vector[],System.Drawing.Color[],System.String,System.String)">
+        <member name="M:AI.MathMod.Charts.GraphicsView.ScattersVis(ZedGraph.ZedGraphControl,AI.MathMod.Vector[],System.Drawing.Color[],System.String,System.String)">
             <summary>
             Визуализация точек
             </summary>
@@ -1989,109 +1989,109 @@
             <param name="nameX"></param>
             <param name="nameY"></param>
         </member>
-        <member name="T:AI.MathMod.Graphiks.MatrixOut">
+        <member name="T:AI.MathMod.Charts.MatrixOut">
             <summary>
             Description of MatrixOut.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixOut.#ctor(AI.MathMod.Matrix)">
+        <member name="M:AI.MathMod.Charts.MatrixOut.#ctor(AI.MathMod.Matrix)">
             <summary>
             Отображение Матрицы
             </summary>
             <param name="matr">Матрица</param>
         </member>
-        <member name="F:AI.MathMod.Graphiks.MatrixOut.components">
+        <member name="F:AI.MathMod.Charts.MatrixOut.components">
             <summary>
             Designer variable used to keep track of non-visual components.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixOut.Dispose(System.Boolean)">
+        <member name="M:AI.MathMod.Charts.MatrixOut.Dispose(System.Boolean)">
             <summary>
             Disposes resources used by the form.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixOut.InitializeComponent">
+        <member name="M:AI.MathMod.Charts.MatrixOut.InitializeComponent">
             <summary>
             This method is required for Windows Forms designer support.
             Do not change the method contents inside the source code editor. The Forms designer might
             not be able to load this method if it was changed manually.
             </summary>
         </member>
-        <member name="T:AI.MathMod.Graphiks.MatrixVisual">
+        <member name="T:AI.MathMod.Charts.MatrixVisual">
             <summary>
             Description of MatrixVisual.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixVisual.#ctor(AI.MathMod.Matrix)">
+        <member name="M:AI.MathMod.Charts.MatrixVisual.#ctor(AI.MathMod.Matrix)">
             <summary>
             Визуализация матриц
             </summary>
             <param name="matr"></param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixVisual.Visualiz">
+        <member name="M:AI.MathMod.Charts.MatrixVisual.Visualiz">
             <summary>
             Визуализация матрицы
             </summary>
         </member>
-        <member name="F:AI.MathMod.Graphiks.MatrixVisual.components">
+        <member name="F:AI.MathMod.Charts.MatrixVisual.components">
             <summary>
             Designer variable used to keep track of non-visual components.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixVisual.Dispose(System.Boolean)">
+        <member name="M:AI.MathMod.Charts.MatrixVisual.Dispose(System.Boolean)">
             <summary>
             Disposes resources used by the form.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.MatrixVisual.InitializeComponent">
+        <member name="M:AI.MathMod.Charts.MatrixVisual.InitializeComponent">
             <summary>
             This method is required for Windows Forms designer support.
             Do not change the method contents inside the source code editor. The Forms designer might
             not be able to load this method if it was changed manually.
             </summary>
         </member>
-        <member name="T:AI.MathMod.Graphiks.VisualData">
+        <member name="T:AI.MathMod.Charts.VisualData">
             <summary>
             Description of VisualData.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualData.#ctor(AI.MathMod.ML.Datasets.VectorIntDataset)">
+        <member name="M:AI.MathMod.Charts.VisualData.#ctor(AI.MathMod.ML.Datasets.VectorIntDataset)">
             <summary>
             Форма для визуализации данных
             </summary>
             <param name="vid">Выборка где вектору сопоставлена метка класса</param>
         </member>
-        <member name="F:AI.MathMod.Graphiks.VisualData.components">
+        <member name="F:AI.MathMod.Charts.VisualData.components">
             <summary>
             Designer variable used to keep track of non-visual components.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualData.Dispose(System.Boolean)">
+        <member name="M:AI.MathMod.Charts.VisualData.Dispose(System.Boolean)">
             <summary>
             Disposes resources used by the form.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualData.InitializeComponent">
+        <member name="M:AI.MathMod.Charts.VisualData.InitializeComponent">
             <summary>
             This method is required for Windows Forms designer support.
             Do not change the method contents inside the source code editor. The Forms designer might
             not be able to load this method if it was changed manually.
             </summary>
         </member>
-        <member name="T:AI.MathMod.Graphiks.VisualPlot">
+        <member name="T:AI.MathMod.Charts.VisualPlot">
             <summary>
             Description of VisualPlot.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector)">
             <summary>
             Инициализация формы
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.Drawing.Color)">
             <summary>
             Инициализация формы
             </summary>
@@ -2101,7 +2101,7 @@
             <param name="nameY"></param>
             <param name="colorLine"></param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,AI.MathMod.Charts.Description)">
             <summary>
             Отображение графика
             </summary>
@@ -2109,33 +2109,33 @@
             <param name="x">X</param>
             <param name="desc">Описание</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.String,System.String,System.String,System.Drawing.Color)">
             <summary>
             Инициализация формы
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector,System.Drawing.Color)">
             <summary>
             Инициализация формы
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.#ctor(AI.MathMod.Vector,AI.MathMod.Vector)">
             <summary>
             Инициализация формы
             </summary>
         </member>
-        <member name="F:AI.MathMod.Graphiks.VisualPlot.components">
+        <member name="F:AI.MathMod.Charts.VisualPlot.components">
             <summary>
             Designer variable used to keep track of non-visual components.
             </summary>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.Dispose(System.Boolean)">
+        <member name="M:AI.MathMod.Charts.VisualPlot.Dispose(System.Boolean)">
             <summary>
             Disposes resources used by the form.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:AI.MathMod.Graphiks.VisualPlot.InitializeComponent">
+        <member name="M:AI.MathMod.Charts.VisualPlot.InitializeComponent">
             <summary>
             This method is required for Windows Forms designer support.
             Do not change the method contents inside the source code editor. The Forms designer might
@@ -3815,7 +3815,7 @@
         </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.Net.Save(System.String)">
             <summary>
-            Сохранение матрицы
+            Сохранение нейронной сети
             </summary>
             <param name="path">Путь до файла</param>
         </member>
@@ -4326,12 +4326,19 @@
             Множественная регрессия
             </summary>
         </member>
-        <member name="M:AI.MathMod.ML.Regression.MultipleRegression.#ctor(AI.MathMod.Vector[],System.Double[])">
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegression.#ctor(AI.MathMod.Vector[],AI.MathMod.Vector,System.Boolean)">
             <summary>
             Множественная линейная регрессия
             </summary>
             <param name="X">Вектора входа</param>
             <param name="Y">Выходы</param>
+            <param name="isScale">Стоит ли применить масштабирование к данным</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegression.#ctor(System.String)">
+            <summary>
+            Множественная линейная регрессия
+            </summary>
+            <param name="path">Путь до модели</param>
         </member>
         <member name="M:AI.MathMod.ML.Regression.MultipleRegression.Predict(AI.MathMod.Vector)">
             <summary>
@@ -4346,6 +4353,23 @@
             </summary>
             <param name="inp">Вектора входа</param>
             <returns>Вектор выхода</returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegression.SaveModel(System.String)">
+            <summary>
+            Сохранение модели
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="M:AI.MathMod.ML.Regression.MultipleRegression.LoadModel(System.String)">
+            <summary>
+            Загрузка модели
+            </summary>
+            <param name="path">Путь</param>
+        </member>
+        <member name="P:AI.MathMod.ML.Regression.MultipleRegression.Parammetrs">
+            <summary>
+            Параметры модели
+            </summary>
         </member>
         <member name="T:AI.MathMod.ML.Regression.MultipleRegressionNNW">
             <summary>
@@ -4839,6 +4863,31 @@
             <summary>
             Полосовой
             </summary>
+        </member>
+        <member name="T:AI.MathMod.Signals.GetSpectrEnerge">
+            <summary>
+            Description of GetSpectrEnerge.
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.Signals.GetSpectrEnerge.#ctor(System.Double)">
+            <summary>
+            Анализ формант
+            </summary>
+            <param name="fd">Частота дискретизации</param>
+        </member>
+        <member name="M:AI.MathMod.Signals.GetSpectrEnerge.Add(System.Double,System.Double)">
+            <summary>
+            Добавление диапозона частот
+            </summary>
+            <param name="b">Начальная частота форманты</param>
+            <param name="e">Конечная частота форманты</param>
+        </member>
+        <member name="M:AI.MathMod.Signals.GetSpectrEnerge.GetAmplFreq(AI.MathMod.Vector)">
+            <summary>
+             Возвращает суммарные амплитуды в формантах
+            </summary>
+            <param name="inp">Входной вектор</param>
+            <returns>Вектор амплитуд</returns>
         </member>
         <member name="T:AI.MathMod.Signals.Hilbert">
             <summary>
@@ -6264,12 +6313,12 @@
             </summary>
             <param name="path">Путь до файла</param>
         </member>
-        <member name="M:AI.MathMod.Vector.BiganData(System.Double,AI.MathMod.Vector)">
+        <member name="M:AI.MathMod.Vector.InsertDataInTheBeginning(System.Double,AI.MathMod.Vector)">
             <summary>
             Вставляет значение в начало
             </summary>
             <param name="data"></param>
-            <param name="nach"></param>
+            <param name="vect"></param>
             <returns></returns>
         </member>
         <member name="M:AI.MathMod.Vector.GetInterval(System.Int32,System.Int32)">
@@ -6307,7 +6356,7 @@
             Визуализация вектора
             </summary>
         </member>
-        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector,AI.MathMod.Graphiks.Description)">
+        <member name="M:AI.MathMod.Vector.Visual(AI.MathMod.Vector,AI.MathMod.Charts.Description)">
             <summary>
             Визуализация вектора
             </summary>
@@ -6320,13 +6369,6 @@
         <member name="M:AI.MathMod.Vector.CutAndZero(System.Int32)">
             <summary>
             Дополнение нулями или обрезание до нужного размера 
-            вектора.
-            </summary>
-            <param name="n">Новый размер</param>
-        </member>
-        <member name="M:AI.MathMod.Vector.CutAndZeroB(System.Int32)">
-            <summary>
-            Дополнение нулями в начало или обрезание до нужного размера(Метод не реализован) 
             вектора.
             </summary>
             <param name="n">Новый размер</param>
@@ -6393,20 +6435,6 @@
             <summary>
             Преобразование вектора в структуру типа List"double" 
             </summary>
-        </member>
-        <member name="M:AI.MathMod.Vector.ListToVector(System.Collections.Generic.List{System.Double})">
-            <summary>
-            Преобразование List в вектор
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.AddVector(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Вставляет отсчеты второго вектора, после отсчетов первого
-            </summary>
-            <param name="nach">куда вставлять</param>
-            <param name="dop">что вставлять</param>
-            <returns>вектор размерности nach.N+dop.N</returns>
         </member>
         <member name="M:AI.MathMod.Vector.ToString">
             <summary>
@@ -6554,7 +6582,21 @@
             <param name="path">Путь до файла</param>
             <param name="vect">Вектор</param>
         </member>
-        <member name="P:AI.MathMod.Vector.Vecktor">
+        <member name="M:AI.MathMod.Vector.ListToVector(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Преобразование List в вектор
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.Vector.AddVector(AI.MathMod.Vector,AI.MathMod.Vector)">
+            <summary>
+            Вставляет отсчеты второго вектора, после отсчетов первого
+            </summary>
+            <param name="startVector">куда вставлять</param>
+            <param name="addedVector">что вставлять</param>
+            <returns>вектор размерности nach.N+dop.N</returns>
+        </member>
+        <member name="P:AI.MathMod.Vector.DataInVector">
             <summary>
             Массив типа double содержащий отсчеты вектора
             </summary>
@@ -6570,6 +6612,36 @@
             </summary>
             <param name="i">Индекс</param>
             <returns>Значение вектора</returns>
+        </member>
+        <member name="T:AI.MathMod.IntervalData">
+            <summary>
+            Данные интервалов
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.IntervalData.#ctor">
+            <summary>
+            Данные интервалов
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.IntervalData.Add(System.Int32,System.Int32)">
+            <summary>
+            Добавление интервала
+            </summary>
+            <param name="bI">Начало</param>
+            <param name="eI">Конец</param>
+        </member>
+        <member name="M:AI.MathMod.IntervalData.GetVects(AI.MathMod.Vector)">
+            <summary>
+            Нарезка вектора по интервалам
+            </summary>
+            <param name="inputVector">Вектор входа</param>
+        </member>
+        <member name="M:AI.MathMod.IntervalData.GetVect(System.Func{AI.MathMod.Vector,System.Double},AI.MathMod.Vector)">
+            <summary>
+            Нарезка вектора по интервалам + преобразование
+            </summary>
+            <param name="vect2doub">Функция для преобразования вектора в число</param>
+            <param name="input">Вектор входа</param>
         </member>
         <member name="T:AI.MathMod.Convolution">
             <summary>

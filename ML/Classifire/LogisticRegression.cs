@@ -49,7 +49,7 @@ namespace AI.MathMod.ML.Classifire
 			}
 			t*=30;
 			
-			_lr = new MultipleRegression(vecs,t.Vecktor);
+			_lr = new MultipleRegression(vecs,t);
 			
 			
 			
@@ -75,7 +75,7 @@ namespace AI.MathMod.ML.Classifire
 			
 			t*=3000;
 			
-			_lr = new MultipleRegression(vecs,t.Vecktor);	
+			_lr = new MultipleRegression(vecs,t);	
 		}
 		
 		

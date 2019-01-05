@@ -112,7 +112,7 @@ namespace AI.MathMod.Signals
 		{
 			Vector inpNew = inp.CutAndZero(Functions.NextPow2(inp.N));
 			List<double> sourceData = new List<double>();
-			sourceData.AddRange(inpNew.Vecktor);
+			sourceData.AddRange(inpNew.DataInVector);
 			double[] outp = DirectTransform(sourceData).ToArray();
 			return new Vector(outp);
 		}
@@ -126,7 +126,7 @@ namespace AI.MathMod.Signals
 		{
 			Vector inpNew = inp.CutAndZero(Functions.NextPow2(inp.N));
 			List<double> sourceData = new List<double>();
-			sourceData.AddRange(inpNew.Vecktor);
+			sourceData.AddRange(inpNew.DataInVector);
 			double[] outp = InverseTransform(sourceData).ToArray();
 			return new Vector(outp);
 		}

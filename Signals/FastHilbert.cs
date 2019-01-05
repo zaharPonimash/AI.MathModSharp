@@ -31,13 +31,13 @@ namespace AI.MathMod.Signals
 				
 				for (int i = 0; i < n1; i++) 
 				{
-					cv.Vecktor[i] = cv.Vecktor[i]*(-j);
+					cv.DataInVector[i] = cv.DataInVector[i]*(-j);
 				}
 				
 				
 				for (int i = n1; i < n2; i++) 
 				{
-					cv.Vecktor[i] = cv.Vecktor[i]*j;
+					cv.DataInVector[i] = cv.DataInVector[i]*j;
 				}
 				
 				cv = Furie.ifft(cv).CutAndZero(st.N);
@@ -56,7 +56,7 @@ namespace AI.MathMod.Signals
 				
 				for (int i = 0; i < st.N; i++) 
 				{
-					cv.Vecktor[i] = new Complex(st.Vecktor[i], stH.Vecktor[i]);
+					cv.DataInVector[i] = new Complex(st.DataInVector[i], stH.DataInVector[i]);
 				}
 				
 				return cv;

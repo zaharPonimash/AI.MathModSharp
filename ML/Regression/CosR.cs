@@ -38,7 +38,7 @@ namespace AI.MathMod.ML.Regression
 				vects[i] = vects[i].AddOne();
 			}
 			
-			mR = new MultipleRegression(vects, outp.Vecktor);
+			mR = new MultipleRegression(vects, outp);
 		}
 		
 		

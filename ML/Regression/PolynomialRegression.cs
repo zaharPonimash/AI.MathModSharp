@@ -31,7 +31,7 @@ namespace AI.MathMod.ML.Regression
 			for (int i = 0; i < inp.N; i++) 
 				vects[i] = ExtensionOfFeatureSpace.Polinomial(inp[i], nPoly);
 			
-			mR = new MultipleRegression(vects, outp.Vecktor);
+			mR = new MultipleRegression(vects, outp);
 		}
 		
 		

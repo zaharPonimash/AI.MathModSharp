@@ -25,16 +25,14 @@ namespace AI.MathMod.ML.Datasets
 		/// <returns>Новый вектор</returns>
 		public static Vector Polinomial(double x, int n = 2)
 		{
-			Vector outp = new Vector(n+1);
-			
-			outp[0] = 1;
+			Vector outp = new Vector(n);
 			
 			if(n >= 1)
 			{
-				outp[1] = x;
+				outp[0] = x;
 			
-				for (int i = 2; i <= n; i++)
-					outp[i] = Math.Pow(x, i);
+				for (int i = 1; i < n; i++)
+					outp[i] = Math.Pow(x, i+1);
 			
 			}
 			
@@ -49,13 +47,12 @@ namespace AI.MathMod.ML.Datasets
 		/// <returns>Новый вектор</returns>
 		public static Vector Polinomial(Vector inp, int n = 2)
 		{
-			Vector[] vectors = new Vector[n+1];
+			Vector[] vectors = new Vector[n];
 		
-			vectors[0] = new Vector(1.0);
 			
-			for (int i = 1; i <= n; i++)
+			for (int i = 0; i < n; i++)
 			{
-				vectors[i] = inp^i;
+				vectors[i] = inp^(i+1);
 			}
 			
 			
