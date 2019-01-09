@@ -52,7 +52,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 		public override Vector DfDy()
 		{
 			Vector A = FActivation(OutputLayer);
-			return OutputLayer*(1-OutputLayer);
+			return A*(1-A);
 		}
 		
 	}

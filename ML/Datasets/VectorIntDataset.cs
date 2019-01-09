@@ -114,20 +114,18 @@ namespace AI.MathMod.ML.Datasets
 		public Vector[] DataVisual(int n)
 		{
 			
-			
-			
 			Net net = new Net(rnd);
 			
 			
 			net.Add(new LinearLayer(this[0].InpVector.N, 2));
 			net.Add(new Softmax(n));
 			
-			net.LerningRate = 0.01;
+			net.LerningRate = 0.0001;
 			net.Moment = 0;
 			
 			
 			MenegerNNW mnnw = new MenegerNNW(net, this);
-			mnnw.Train(40);
+			mnnw.Train(2);
 			
 			Vector[] vects = new Vector[2*n];
 			Vector nnwOut;
@@ -232,6 +230,8 @@ namespace AI.MathMod.ML.Datasets
 	    	
 	    	DispMeanResult();
 	    	
+	    	disp = disp.TransformVector(d => (d==0)?1e-109:d);
+	    	
 	    	VectorIntDataset vid = new VectorIntDataset();
 	    	Vector std = MathFunc.sqrt(disp);
 	    	
@@ -293,5 +293,78 @@ namespace AI.MathMod.ML.Datasets
 	   		 	
 	   		 	return true;
 	    }
+	   
+	   
+	   /// <summary>
+	   /// 
+	   /// </summary>
+	   /// <param name="path"></param>
+	   /// <param name="separator"></param>
+	   /// <returns></returns>
+	   public static VectorIntDataset CsvToVid(string path, char separator = ',')
+	   {
+	   		string[] content = File.ReadAllLines(path);
+			VectorClass[] vC = new VectorClass[content.Length];
+			string[] vectorData = new string[1], data;
+		
+			
+			
+			for (int i = 0; i < content.Length; i++)
+			{
+				data = content[i].Split(separator);
+				Array.Copy(data, vectorData, data.Length - 1);
+				
+				vC[i] = new VectorClass(
+					new Vector(vectorData),
+					Convert.ToInt32(data[data.Length - 1]));
+			}
+			
+			VectorIntDataset vid = new VectorIntDataset();
+			
+			 vid.AddRange(vC); 
+			 
+			 return vid;
+	   }
+	   
+	   
+	   
+	   /// <summary>
+	   /// 
+	   /// </summary>
+	   public static VectorIntDataset CsvToVid(string path, int leng, char separator = ',')
+	   {
+	   		string[] content = File.ReadAllLines(path);
+			VectorClass[] vC = new VectorClass[leng];
+			string[] vectorData , data;
+			Vector vect;
+			
+			
+			for (int i = 0; i <leng; i++)
+			{
+				
+				data = content[i].Split(separator);
+				vectorData  = new string[data.Length - 1];
+				Array.Copy(data, vectorData, data.Length - 1);
+				vect = new Vector(vectorData);
+				vect[29] = 1;
+				
+				vect = vect.TransformVector(d => (double.IsNaN(d)? 0:d));
+				
+				vC[i] = new VectorClass(
+					vect,
+					Convert.ToInt32(data[data.Length - 1])-1);
+				
+			}
+			
+			VectorIntDataset vid = new VectorIntDataset();
+			
+			 vid.AddRange(vC); 
+			 
+			 return vid;
+	   }
+	   
+	   
+	
+	   
 	}
 }

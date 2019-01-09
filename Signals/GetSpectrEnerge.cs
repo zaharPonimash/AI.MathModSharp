@@ -48,9 +48,9 @@ namespace AI.MathMod.Signals
 		/// <returns>Вектор амплитуд</returns>
 		public Vector GetAmplFreq(Vector inp)
 		{
-			Vector vect = Furie.fft(inp).MagnitudeToVector();
-			vect /= (vect.N/2);
-			GetIntervalData(vect.N);
+			Furie fft = new Furie(inp.N);
+			Vector vect = fft.GetSpectr(inp, WindowForFFT.BlackmanWindow);
+			GetIntervalData(vect.N*2);
 			return iD.GetVect(Functions.Summ, vect);
 		}
 		
