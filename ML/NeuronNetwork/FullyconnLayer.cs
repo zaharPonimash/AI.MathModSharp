@@ -28,7 +28,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 		/// <summary>
 		/// Матрица весов
 		/// </summary>
-		public Matrix W;
+		public Matrix W{set; get;}
 		/// <summary>
 		/// Вектор входа
 		/// </summary>

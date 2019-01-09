@@ -26,9 +26,7 @@ namespace AI.MathMod
 	{
 		#region Поля
 		double[,] _matr; // Матрица
-		[NonSerialized]
 		int _m = 3; // колво строк
-		[NonSerialized]
 		int _n = 3; // колво столбцов
 		#endregion
 		#region Свойства	

@@ -1691,6 +1691,14 @@
             </summary>
             <param name="cInp">Комплексный вектор</param>
         </member>
+        <member name="M:AI.MathMod.Furie.GetSpectr(AI.MathMod.Vector,System.Func{System.Int32,AI.MathMod.Vector})">
+            <summary>
+            Выдает спектр сигнала от 0 до fd/2
+            </summary>
+            <param name="input">Вектор входа</param>
+            <param name="window">Оконная ф-я</param>
+            <returns>Спектр сигнала</returns>
+        </member>
         <member name="M:AI.MathMod.Furie.IFFT(AI.MathMod.ComplexVector)">
             <summary>
             ОБПФ
@@ -1786,6 +1794,41 @@
             <summary>
             Вектор поворота
             </summary>
+        </member>
+        <member name="T:AI.MathMod.WindowForFFT">
+            <summary>
+            Оконные ф-ии БПФ
+            </summary>
+        </member>
+        <member name="M:AI.MathMod.WindowForFFT.HannWindow(System.Int32)">
+            <summary>
+            Окно ханна дает уровень боковых лепестков -31.5 db
+            </summary>
+            <param name="windowSize">Размер окна</param>
+        </member>
+        <member name="M:AI.MathMod.WindowForFFT.HammingWindow(System.Int32)">
+            <summary>
+            Окно Хэмминга дает уровень боковых лепестков -42 db
+            </summary>
+            <param name="windowSize">Размер окна</param>
+        </member>
+        <member name="M:AI.MathMod.WindowForFFT.RectWindow(System.Int32)">
+            <summary>
+            Прямоугольное окно дает уровень боковых лепестков -13 db
+            </summary>
+            <param name="windowSize">Размер окна</param>
+        </member>
+        <member name="M:AI.MathMod.WindowForFFT.BlackmanWindow(System.Int32)">
+            <summary>
+            Окно Блэкмана дает уровень боковых лепестков -58 db
+            </summary>
+            <param name="windowSize">Размер окна</param>
+        </member>
+        <member name="M:AI.MathMod.WindowForFFT.KaiserWindow(System.Int32)">
+            <summary>
+            Окно Кайзера дает уровень боковых лепестков -90 db (Не реализован)
+            </summary>
+            <param name="windowSize">Размер окна</param>
         </member>
         <member name="T:AI.MathMod.FLV">
             <summary>
@@ -3468,6 +3511,19 @@
             </summary>
             <param name="simCoef">Коэффициент схожести</param>
         </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.CsvToVid(System.String,System.Char)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <param name="separator"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AI.MathMod.ML.Datasets.VectorIntDataset.CsvToVid(System.String,System.Int32,System.Char)">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:AI.MathMod.ML.GradientDecentDataset">
             <summary>
             Класс для хранения обучающей выборки для градиентного спуска
@@ -3797,6 +3853,12 @@
             </summary>
             <param name="input">Вход</param>
         </member>
+        <member name="M:AI.MathMod.ML.NeuronNetwork.Net.OutputClass(AI.MathMod.Vector)">
+            <summary>
+            Выход сети (Класс)
+            </summary>
+            <param name="input">Вход</param>
+        </member>
         <member name="M:AI.MathMod.ML.NeuronNetwork.Net.TrainClassifier(AI.MathMod.Vector,System.Int32)">
             <summary>
             Обучение классификатора
@@ -3906,11 +3968,6 @@
             Дельты
             </summary>
         </member>
-        <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.W">
-            <summary>
-            Матрица весов
-            </summary>
-        </member>
         <member name="F:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Inp">
             <summary>
             Вектор входа
@@ -3994,6 +4051,11 @@
         <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.SizeOut">
             <summary>
             Размерность выхода
+            </summary>
+        </member>
+        <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.W">
+            <summary>
+            Матрица весов
             </summary>
         </member>
         <member name="P:AI.MathMod.ML.NeuronNetwork.FullConLayerBase.Delts">

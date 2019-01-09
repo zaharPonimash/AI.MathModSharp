@@ -129,6 +129,17 @@ namespace AI.MathMod.ML.NeuronNetwork
 			return outp;
 		}
 		
+		
+		/// <summary>
+		/// Выход сети (Класс)
+		/// </summary>
+		/// <param name="input">Вход</param>
+		public int OutputClass(Vector input)
+		{
+			Vector outp = Output(input);
+			return (int)outp.IndexValue(outp.Max());
+		}
+		
 		/// <summary>
 		/// Обучение классификатора
 		/// </summary>

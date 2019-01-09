@@ -15,6 +15,9 @@ namespace AI.MathMod.ML.NeuronNetwork
 	/// </summary>
 	public interface ILayer
 	{ 
+		
+		Matrix W{set; get;}
+		
 		/// <summary>
 		/// Размерность выхода
 		/// </summary>

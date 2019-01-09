@@ -1,16 +1,9 @@
-﻿/*
- * Created by SharpDevelop.
- * User: 01
- * Date: 02.02.2016
- * Time: 2:00
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-
+﻿
 using System;
 using System.Numerics;
 using System.Threading;
 using System.Collections.Generic;
+using AI.MathMod.AdditionalFunctions;
 
 
 namespace AI.MathMod
@@ -80,7 +73,18 @@ namespace AI.MathMod
     		return IFFT(cInp).RealToVector();
     	}
     	
-    	
+    	/// <summary>
+    	/// Выдает спектр сигнала от 0 до fd/2
+    	/// </summary>
+    	/// <param name="input">Вектор входа</param>
+    	/// <param name="window">Оконная ф-я</param>
+    	/// <returns>Спектр сигнала</returns>
+    	public Vector GetSpectr(Vector input, Func<int, Vector> window)
+    	{
+    		Vector vect = input*window(input.N); // Применение оконной функции
+    		vect = FFT(vect).MagnitudeToVector()/(_n/2.0); // Амплитуды
+    		return vect.CutAndZero(_n/2); // Половина вектора
+    	}
     	
     	
     	
@@ -416,6 +420,70 @@ namespace AI.MathMod
 	}
 	
 	
+    }
+    
+    /// <summary>
+    /// Оконные ф-ии БПФ
+    /// </summary>
+    public static class WindowForFFT
+    {
+    	
+    		/// <summary>
+    		/// Окно ханна дает уровень боковых лепестков -31.5 db
+    		/// </summary>
+    		/// <param name="windowSize">Размер окна</param>
+    		public static Vector HannWindow(int windowSize)
+    		{
+    			Vector n = Vector.Seq0(1, windowSize);
+    			Vector w = 0.5*(1-MathFunc.cos(Math.PI*2.0*n/(windowSize-1)));
+    			return w;
+    		}
+    		
+    		/// <summary>
+    		/// Окно Хэмминга дает уровень боковых лепестков -42 db
+    		/// </summary>
+    		/// <param name="windowSize">Размер окна</param>
+    		public static Vector HammingWindow(int windowSize)
+    		{
+    			Vector n = Vector.Seq0(1, windowSize);
+    			Vector w = 0.53836-0.46164*MathFunc.cos(Math.PI*2.0*n/(windowSize-1));
+    			return w;
+    		}
+    		
+    		/// <summary>
+    		/// Прямоугольное окно дает уровень боковых лепестков -13 db
+    		/// </summary>
+    		/// <param name="windowSize">Размер окна</param>
+    		public static Vector RectWindow(int windowSize)
+    		{
+    			return new Vector(windowSize)+1;
+    		}
+    		
+    		/// <summary>
+    		/// Окно Блэкмана дает уровень боковых лепестков -58 db
+    		/// </summary>
+    		/// <param name="windowSize">Размер окна</param>
+    		public static Vector BlackmanWindow(int windowSize)
+    		{
+    			Vector n = Vector.Seq0(1, windowSize);
+			const double a = 0.16, a1 = 0.5;
+			double a0 = (1-a)/2.0, a2 = a/2.0;
+    			
+    			Vector cos1 = MathFunc.cos(Math.PI*2.0*n/(windowSize-1)), cos2 = MathFunc.cos(Math.PI*4.0*n/(windowSize-1));
+    			Vector w = a0-a1*cos1+a2*cos2;
+    			return w;
+    		}
+    		
+    		/// <summary>
+    		/// Окно Кайзера дает уровень боковых лепестков -90 db (Не реализован)
+    		/// </summary>
+    		/// <param name="windowSize">Размер окна</param>
+    		public static Vector KaiserWindow(int windowSize)
+    		{
+    			Vector n = Vector.Seq0(1, windowSize);
+			
+    			return n;
+    		}
     }
 }
 
