@@ -1,3 +1,5 @@
+Link: https://github.com/ZedGraph/ZedGraph 
+
 		  GNU LESSER GENERAL PUBLIC LICENSE
 		       Version 2.1, February 1999
 

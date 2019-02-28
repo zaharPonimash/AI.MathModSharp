@@ -105,7 +105,20 @@ namespace AI.MathMod
 			_vector = vector;
 			_n = _vector.Length;
 		}
-		
+
+        /// <summary>
+		/// Создает вектор на основе массива
+		/// </summary>
+        public Vector(float[] vector)
+        {
+            _vector = new double[vector.Length];
+            _n = vector.Length;
+
+            for (int i = 0; i < _n; i++)
+            {
+                _vector[i] = (double)vector[i];
+            }
+        }
 		
 		/// <summary>
 		/// Создает вектор на основе строк, где каждая строка представляет число double
@@ -1374,17 +1387,316 @@ namespace AI.MathMod
 		{
 			return Vector.Concatinate(new Vector[]{startVector, addedVector});
 		}
-		
-		
-		#endregion
-		
-		
-	}
-	
-	/// <summary>
-	/// Данные интервалов
-	/// </summary>
-	[Serializable]
+
+
+        #endregion
+
+        #region Поиск индексов
+
+
+        /// <summary>
+        /// Индекс элемента с максимальным значением
+        /// </summary>
+        public int IndexMax()
+        {
+            int indMax = 0;
+
+            for (int i = 1; i < _n; i++)
+            {
+                if (_vector[i] > _vector[indMax])
+                {
+                    indMax = i;
+                }
+            }
+
+            return indMax;
+        }
+
+        /// <summary>
+        /// Индекс элемента с максимальным абсолютным значением
+        /// </summary>
+        public int IndexMaxAbs()
+        {
+            int indMax = 0;
+            Vector vector = TransformVector(x => Math.Abs(x));
+
+
+            for (int i = 1; i < _n; i++)
+            {
+                if (vector[i] > vector[indMax])
+                {
+                    indMax = i;
+                }
+            }
+
+            return indMax;
+        }
+
+        /// <summary>
+        /// Индекс элемента с минимальным значением
+        /// </summary>
+        public int IndexMin()
+        {
+            int indMin = 0;
+
+            for (int i = 1; i < _n; i++)
+            {
+                if (_vector[i] < _vector[indMin])
+                {
+                    indMin = i;
+                }
+            }
+
+            return indMin;
+        }
+
+        /// <summary>
+        /// Индекс элемента с минимальным абсолютным значением
+        /// </summary>
+        public int IndexMinAbs()
+        {
+            int indMin = 0;
+            Vector vector = TransformVector(x => Math.Abs(x));
+
+
+            for (int i = 1; i < _n; i++)
+            {
+                if (vector[i] < vector[indMin])
+                {
+                    indMin = i;
+                }
+            }
+
+            return indMin;
+        }
+
+        /// <summary>
+        /// Индекс элемента с максимальным значением
+        /// </summary>
+        /// <param name="a">Индекс начала региона(включительно)</param>
+        /// <param name="b">Индекс конца региона(включительно)</param>
+        public int IndexMaxRegion(int a, int b)
+        {
+            int end = (b < _n) ? b + 1 : _n;
+
+            int indMax = a;
+
+            for (int i = a; i < end; i++)
+            {
+                if (_vector[i] > _vector[indMax])
+                {
+                    indMax = i;
+                }
+            }
+
+            return indMax;
+        }
+
+        /// <summary>
+        /// Индекс элемента с максимальным абсолютным значением в регионе
+        /// </summary>
+        /// <param name="a">Индекс начала региона(включительно)</param>
+        /// <param name="b">Индекс конца региона(включительно)</param>
+        public int IndexMaxAbsRegion(int a, int b)
+        {
+            int end = (b < _n) ? b + 1 : _n;
+
+            int indMax = a;
+            Vector vector = TransformVector(x => Math.Abs(x));
+
+
+            for (int i = 1; i < end; i++)
+            {
+                if (vector[i] > vector[indMax])
+                {
+                    indMax = i;
+                }
+            }
+
+            return indMax;
+        }
+
+        /// <summary>
+        /// Индекс элемента с минимальным значением
+        /// </summary>
+        /// <param name="a">Индекс начала региона(включительно)</param>
+        /// <param name="b">Индекс конца региона(включительно)</param>
+        public int IndexMinRegion(int a, int b)
+        {
+            int end = (b < _n) ? b + 1 : _n;
+
+            int indMin = a;
+
+            for (int i = a; i < end; i++)
+            {
+                if (_vector[i] < _vector[indMin])
+                {
+                    indMin = i;
+                }
+            }
+
+            return indMin;
+        }
+
+        /// <summary>
+        /// Индекс элемента с минимальным абсолютным значением в регионе
+        /// </summary>
+        /// <param name="a">Индекс начала региона(включительно)</param>
+        /// <param name="b">Индекс конца региона(включительно)</param>
+        public int IndexMinAbsRegion(int a, int b)
+        {
+            int end = (b < _n) ? b + 1 : _n;
+
+            int indMin = a;
+            Vector vector = TransformVector(x => Math.Abs(x));
+
+
+            for (int i = 1; i < end; i++)
+            {
+                if (vector[i] < vector[indMin])
+                {
+                    indMin = i;
+                }
+            }
+
+            return indMin;
+        }
+
+
+        /// <summary>
+        /// Индекс  первого вхождения значения удв. усл., что значение отличается от value не более чем на eps, и типом ограничений typeEps
+        /// </summary>
+        /// <param name="value">Значение</param>
+        /// <param name="eps">Окрестность</param>
+        /// <param name="typeEps">Тип ограничений</param>
+        public int IndexValueEps(double value, double eps = 1e-3, TypeEps typeEps = TypeEps.Neighborhood)
+        {
+
+            if (typeEps == TypeEps.Up)
+            {
+                double dif;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = _vector[i] - value;
+                    if (dif >= 0 && dif < eps)
+                        return i;
+                }
+
+                return -1;
+            }
+
+            else if (typeEps == TypeEps.Down)
+            {
+                double dif, mEps = -eps;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = _vector[i] - value;
+                    if (dif <= 0 && dif > mEps)
+                        return i;
+                }
+
+                return -1;
+            }
+
+            else
+            {
+                double dif;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = Math.Abs(_vector[i] - value);
+                    if (dif < eps)
+                        return i;
+                }
+
+                return -1;
+            }
+        }
+
+
+        /// <summary>
+        /// Индексы  всех вхождений значений удв. усл., что значение отличается от value не более чем на eps, и типом ограничений typeEps
+        /// </summary>
+        /// <param name="value">Значение</param>
+        /// <param name="eps">Окрестность</param>
+        /// <param name="typeEps">Тип ограничений</param>
+        public int[] IndexesValueEps(double value, double eps = 1e-3, TypeEps typeEps = TypeEps.Neighborhood)
+        {
+
+            List<int> vs = new List<int>();
+
+            if (typeEps == TypeEps.Up)
+            {
+                double dif;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = _vector[i] - value;
+                    if (dif >= 0 && dif < eps) vs.Add(i);
+                }
+
+            }
+
+            else if (typeEps == TypeEps.Down)
+            {
+                double dif, mEps = -eps;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = _vector[i] - value;
+                    if (dif <= 0 && dif > mEps)
+                        vs.Add(i);
+                }
+
+
+            }
+
+            else
+            {
+                double dif;
+
+                for (int i = 0; i < _n; i++)
+                {
+                    dif = Math.Abs(_vector[i] - value);
+                    if (dif < eps)
+                        vs.Add(i);
+                }
+
+            }
+
+            return vs.Count == 0 ? new int[] { -1 } : vs.ToArray();
+        }
+
+   
+
+        /// <summary>
+        /// тип поиска
+        /// </summary>
+        public enum TypeEps
+        {
+            /// <summary>
+            /// Ограничение сверху от value до value+eps
+            /// </summary>
+            Up,
+            /// <summary>
+            /// Ограничение снизу от value-eps до value
+            /// </summary>
+            Down,
+            /// <summary>
+            /// Поиск в окрестности от value-eps до value+eps
+            /// </summary>
+            Neighborhood
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Данные интервалов
+    /// </summary>
+    [Serializable]
 	public class IntervalData
 	{
 		List<int> bIntervals = new List<int>();

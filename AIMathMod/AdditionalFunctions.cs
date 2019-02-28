@@ -21,6 +21,7 @@ namespace AI.MathMod.AdditionalFunctions
     public static class MathFunc
     {
 
+
         /// <summary>
         /// Квадратный корень из ПИ
         /// </summary>

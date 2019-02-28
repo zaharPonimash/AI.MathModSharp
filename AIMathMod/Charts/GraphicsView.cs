@@ -51,6 +51,32 @@ namespace AI.MathMod.Charts
             }
             catch { }
         }
+        
+        
+                /// <summary>
+        /// Строит график в контроле graph, по отсчетам funcItemClass
+        /// </summary>
+        public static void Plot2(ZedGraphControl graph, Vector funcItemClass, Vector func2)
+        {
+            try
+            {
+                double[] y = funcItemClass.DataInVector;
+                double[] y2 = func2.DataInVector;
+                double[] x = MathFunc.GenerateTheSequence(0, y.Length).DataInVector;
+
+                graph.GraphPane.CurveList.Clear();
+                graph.GraphPane.XAxis.Title.Text = "x";
+                graph.GraphPane.YAxis.Title.Text = "f(x)";
+                graph.GraphPane.Title.Text = "Функция";
+                graph.GraphPane.XAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.YAxis.MajorGrid.IsVisible = true;
+                graph.GraphPane.AddCurve("Функция", x, y, Color.Green, SymbolType.None);
+                graph.GraphPane.AddCurve("Функция 2", x, y2, Color.Red, SymbolType.None);
+                graph.AxisChange();
+                graph.Invalidate();
+            }
+            catch { }
+        }
 
 
 

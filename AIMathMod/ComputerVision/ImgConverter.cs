@@ -112,6 +112,36 @@ namespace AI.MathMod.ComputerVision
 
 
 
+        /// <summary>
+        /// Преобразование картинки в матрицу H компонент
+        /// H принадлежит интервалу [0,1]
+        /// </summary>
+        /// <param name="Bmp">Картинка</param>
+        /// <returns></returns>
+        public static Matrix BmpToHMatr(Bitmap Bmp)
+        {
+            int W = Bmp.Width;
+            int H = Bmp.Height; ;
+            Matrix Out = new Matrix(W, H);
+
+            Tensor tensor = BmpToTensor(Bmp);
+
+            for (int i = 0; i < W; i++)
+            {
+                for (int j = 0; j < H; j++)
+                {
+                    Out[i, j] = HComponent(new int[] 
+                        {
+                            (int)(tensor.Get(i,j,0)*255.0),
+                            (int)(tensor.Get(i,j,1)*255.0),
+                            (int)(tensor.Get(i,j,2)*255.0)
+                        });
+                }
+            }
+
+
+            return Out;
+        }
 
 
 
@@ -122,7 +152,51 @@ namespace AI.MathMod.ComputerVision
 
 
 
+        // Вычисление H
+        static double HComponent(int[] rgb)
+        {
+            int max = rgb.Max();
+            int min = rgb.Min();
+            int indexMax = -1;
+            double H = 0, d = max - min;
 
+            for (int i = 0; i < 3; i++)
+            {
+                if (rgb[i] == max)
+                {
+                    indexMax = i;
+                    break;
+                }
+            }
+
+
+            if (d == 0) H = 0;
+
+            
+
+            else if (indexMax == 0)
+            {
+                d = 60.0 / d;
+                if (rgb[1] >= rgb[2])
+                    H = d * (rgb[1] - rgb[2]);
+                else
+                    H = d * (rgb[1] - rgb[2]) + 360;
+            }
+
+            else if (indexMax == 1)
+            {
+                d = 60.0 / d;
+                H = d * (rgb[2] - rgb[0]) + 120;
+            }
+
+            else
+            {
+                d = 60.0 / d;
+                H = d * (rgb[0] - rgb[1]) + 240;
+            }
+
+            return H / 360.0;
+        }
 
 
 
@@ -203,11 +277,11 @@ namespace AI.MathMod.ComputerVision
             return bmp;
         }
 
-	/// <summary>
-	/// Тензор в картинку
-	/// </summary>
-	/// <param name="tensor">Тензор</param>
-	/// <returns>Bitmap</returns>
+	    /// <summary>
+	    /// Тензор в картинку
+	    /// </summary>
+	    /// <param name="tensor">Тензор</param>
+	    /// <returns>Bitmap</returns>
         public static Bitmap TensorToBitmap(Tensor tensor)
         {
             Bitmap bmp = new Bitmap(tensor.Width, tensor.Height);

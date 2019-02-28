@@ -741,13 +741,22 @@ namespace AI.MathMod
 			
 			return SimpleMeanFreq(dif)/SimpleMeanFreq(signal);
 		}
-		
-		
-		
-		
-		
-		
-	}
+
+
+
+        /// <summary>
+        /// Средний шаг, насколько в среднем отличается x[i] от x[i+1]
+        /// </summary>
+        /// <param name="vector">Последовательность</param>
+        public static double MeanStep(Vector vector)
+        {
+            Vector difVec = Functions.Diff(vector);
+            difVec[0] = 0;
+            return Functions.Summ(difVec) / (difVec.N - 1);
+        }
+
+
+    }
 	
 	
 	
