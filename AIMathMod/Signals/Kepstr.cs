@@ -6,40 +6,39 @@
  * 
  * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
-using System;
 using AI.MathMod.AdditionalFunctions;
 
 namespace AI.MathMod.Signals
 {
-	/// <summary>
-	///Кепстральный анализ
-	/// </summary>
-	public static class Kepstr
-	{
+    /// <summary>
+    ///Кепстральный анализ
+    /// </summary>
+    public static class Kepstr
+    {
         /// <summary>
         /// Быстрое кепстральное преобразование
         /// </summary>
         /// <param name="signal">Сигнал</param>
         /// <returns></returns>
 		public static Vector FKT(Vector signal)
-		{
-			ComplexVector spectr = Furie.fft(signal);
-			Vector  Aspectr = MathFunc.ln(spectr.MagnitudeToVector()^2);
-			return Furie.fft(Aspectr).RealToVector()/Aspectr.N;
-		}
-		
-		
-		
-		/// <summary>
+        {
+            ComplexVector spectr = Furie.fft(signal);
+            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector() ^ 2);
+            return Furie.fft(Aspectr).RealToVector() / Aspectr.N;
+        }
+
+
+
+        /// <summary>
         /// Быстрое кепстральное преобразование
         /// </summary>
         /// <param name="signal">Сигнал</param>
         /// <returns></returns>
-		public static Vector FKT(ComplexVector signal)
-		{
-			ComplexVector spectr = Furie.fft(signal);
-			Vector  Aspectr = MathFunc.ln(spectr.MagnitudeToVector()^2);
-			return Furie.fft(Aspectr).RealToVector()/Aspectr.N;
-		}
-	}
+        public static Vector FKT(ComplexVector signal)
+        {
+            ComplexVector spectr = Furie.fft(signal);
+            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector() ^ 2);
+            return Furie.fft(Aspectr).RealToVector() / Aspectr.N;
+        }
+    }
 }

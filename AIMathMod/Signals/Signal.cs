@@ -6,20 +6,18 @@
  * 
  * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
-using System;
-using System.Collections.Specialized;
 using AI.MathMod.AdditionalFunctions;
-using AI.MathMod;
+using System;
 
 namespace AI.MathMod.Signals
 {
-	/// <summary>
-	/// Description of Signal.
-	/// </summary>
-	public static class Signal
-	{
-		
-		#region Синус
+    /// <summary>
+    /// Description of Signal.
+    /// </summary>
+    public static class Signal
+    {
+
+        #region Синус
         /// <summary>
         /// Синусоидальные колебания
         /// </summary>
@@ -27,10 +25,10 @@ namespace AI.MathMod.Signals
         /// <param name="A">Амплитуда</param>
         /// <param name="f">частота</param>
         /// <param name="fi">Начальная фаза</param>
-		public static Vector Sin(Vector t, double A, double f, double fi)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f+fi);
-		}
+        public static Vector Sin(Vector t, double A, double f, double fi)
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f + fi);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -40,9 +38,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">частота</param>
         /// <param name="fi">Начальная фаза</param>
         public static Vector Sin(Vector t, double A, Vector f, double fi)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f+fi);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f + fi);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -52,9 +50,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">частота</param>
         /// <param name="fi">Начальная фаза</param>
         public static Vector Sin(Vector t, double A, double f, Vector fi)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f+fi);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f + fi);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -64,9 +62,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">частота</param>
         /// <param name="fi">Начальная фаза</param>
         public static Vector Sin(Vector t, Vector A, double f, double fi)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f+fi);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f + fi);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -75,34 +73,34 @@ namespace AI.MathMod.Signals
         /// <param name="A">Амплитуда</param>
         /// <param name="f">частота</param>
         public static Vector Sin(Vector t, double A, double f)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f);
-		}
-		
-		/// <summary>
-		/// Массив частот
-		/// </summary>
-		/// <param name="N">Кол-во значений</param>
-		/// <param name="fd">Частота дискретизации</param>
-		/// <returns>Вектор частот</returns>
-		public static Vector Frequency(int N, double fd)
-		{
-			double dt = 1.0/fd, df = 1/(N*dt);
-			return MathFunc.GenerateTheSequence(0,df,(N)*df).CutAndZero(N);
-		}
-		
-		
-		/// <summary>
-		/// Центрированный массив частот 
-		/// </summary>
-		/// <param name="N">Кол-во значений</param>
-		/// <param name="fd">Частота дискретизации</param>
-		/// <returns>Вектор частот</returns>
-		public static Vector FrequencyCentr(int N, double fd)
-		{
-			double dt = 1.0/fd, df = 1/(N*dt);
-			return MathFunc.GenerateTheSequence((-N/2.0)*df,df,(N/2.0)*df).CutAndZero(N);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f);
+        }
+
+        /// <summary>
+        /// Массив частот
+        /// </summary>
+        /// <param name="N">Кол-во значений</param>
+        /// <param name="fd">Частота дискретизации</param>
+        /// <returns>Вектор частот</returns>
+        public static Vector Frequency(int N, double fd)
+        {
+            double dt = 1.0 / fd, df = 1 / (N * dt);
+            return MathFunc.GenerateTheSequence(0, df, (N) * df).CutAndZero(N);
+        }
+
+
+        /// <summary>
+        /// Центрированный массив частот 
+        /// </summary>
+        /// <param name="N">Кол-во значений</param>
+        /// <param name="fd">Частота дискретизации</param>
+        /// <returns>Вектор частот</returns>
+        public static Vector FrequencyCentr(int N, double fd)
+        {
+            double dt = 1.0 / fd, df = 1 / (N * dt);
+            return MathFunc.GenerateTheSequence((-N / 2.0) * df, df, (N / 2.0) * df).CutAndZero(N);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -111,9 +109,9 @@ namespace AI.MathMod.Signals
         /// <param name="A">Амплитуда</param>
         /// <param name="f">частота</param>
         public static Vector Sin(Vector t, double A, Vector f)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -122,9 +120,9 @@ namespace AI.MathMod.Signals
         /// <param name="A">Амплитуда</param>
         /// <param name="f">частота</param>
         public static Vector Sin(Vector t, Vector A, double f)
-		{
-			return A*MathFunc.sin(t*2*Math.PI*f);
-		}
+        {
+            return A * MathFunc.sin(t * 2 * Math.PI * f);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -132,9 +130,9 @@ namespace AI.MathMod.Signals
         /// <param name="t">Вектор времени</param>
         /// <param name="f">частота</param>
         public static Vector Sin(Vector t, double f)
-		{
-			return MathFunc.sin(t*2*Math.PI*f);
-		}
+        {
+            return MathFunc.sin(t * 2 * Math.PI * f);
+        }
 
         /// <summary>
         /// Синусоидальные колебания
@@ -142,14 +140,14 @@ namespace AI.MathMod.Signals
         /// <param name="t">Вектор времени</param>
         /// <param name="f">частота</param>
         public static Vector Sin(Vector t, Vector f)
-		{
-			return MathFunc.sin(t*2*Math.PI*f);
-		}
-		#endregion
-		
-		
-		#region Прямоугольный
-		
+        {
+            return MathFunc.sin(t * 2 * Math.PI * f);
+        }
+        #endregion
+
+
+        #region Прямоугольный
+
         /// <summary>
         /// Прямоугольный сигнал
         /// </summary>
@@ -158,10 +156,10 @@ namespace AI.MathMod.Signals
         /// <param name="f">Частота</param>
         /// <param name="fi">Фаза</param>
         /// <returns>Отсчеты сигнала</returns>
-		public static Vector Rect(Vector t, double A, double f, double fi)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
-		}
+        public static Vector Rect(Vector t, double A, double f, double fi)
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f, fi), 0.1);
+        }
 
         /// <summary>
         /// Прямоугольный сигнал
@@ -172,9 +170,9 @@ namespace AI.MathMod.Signals
         /// <param name="fi">Фаза</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector A, double f, double fi)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f, fi), 0.1);
+        }
 
         /// <summary>
         /// Прямоугольный сигнал
@@ -185,9 +183,9 @@ namespace AI.MathMod.Signals
         /// <param name="fi">Фаза</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, Vector f, double fi)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,A,1,fi),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, A, 1, fi), 0.1);
+        }
 
         /// <summary>
         /// Прямоугольный сигнал
@@ -198,9 +196,9 @@ namespace AI.MathMod.Signals
         /// <param name="fi">Вектор фаз</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, double f, Vector fi)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f,fi),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f, fi), 0.1);
+        }
 
 
         /// <summary>
@@ -211,9 +209,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">Частота</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, double f)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f), 0.1);
+        }
 
 
         /// <summary>
@@ -224,9 +222,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">Вектор частот</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double A, Vector f)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f), 0.1);
+        }
 
 
         /// <summary>
@@ -237,9 +235,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">Вектор частот</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector A, double f)
-		{
-			return A*NeuroFunc.Threshold(Sin(t,1,f),0.1);
-		}
+        {
+            return A * NeuroFunc.Threshold(Sin(t, 1, f), 0.1);
+        }
 
 
         /// <summary>
@@ -249,9 +247,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">Частота</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, double f)
-		{
-			return NeuroFunc.Threshold(Sin(t,f),0.1);
-		}
+        {
+            return NeuroFunc.Threshold(Sin(t, f), 0.1);
+        }
 
         /// <summary>
         /// Прямоугольный сигнал
@@ -260,9 +258,9 @@ namespace AI.MathMod.Signals
         /// <param name="f">Вектор частот</param>
         /// <returns>Отсчеты сигнала</returns>
         public static Vector Rect(Vector t, Vector f)
-		{
-			return NeuroFunc.Threshold(Sin(t,f),0.1);
-		}
+        {
+            return NeuroFunc.Threshold(Sin(t, f), 0.1);
+        }
         #endregion
 
         #region Радиоимпульс
@@ -279,10 +277,10 @@ namespace AI.MathMod.Signals
         /// <param name="k">Коэффициент модуляции</param>
         /// <returns>Вектор отсчетов</returns>
         public static Vector AmkRect(Vector t, double A, double f1, double fi1, double f2, double fi2, double k)
-		{
-			Vector modul = Rect(t,A,f2,fi2)+k;
-			return Sin(t, modul,f1,fi1);
-		}
+        {
+            Vector modul = Rect(t, A, f2, fi2) + k;
+            return Sin(t, modul, f1, fi1);
+        }
 
         /// <summary>
         /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
@@ -295,10 +293,10 @@ namespace AI.MathMod.Signals
         /// <param name="k">Коэффициент модуляции</param>
         /// <returns>Вектор отсчетов</returns>
         public static Vector AmkRect(Vector t, double A, double f1, double f2, double fi2, double k)
-		{
-			Vector modul = Rect(t,A,f2,fi2)+k;
-			return Sin(t, modul,f1);
-		}
+        {
+            Vector modul = Rect(t, A, f2, fi2) + k;
+            return Sin(t, modul, f1);
+        }
 
         /// <summary>
         /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
@@ -310,10 +308,10 @@ namespace AI.MathMod.Signals
         /// <param name="k">Коэффициент модуляции</param>
         /// <returns>Вектор отсчетов</returns>
         public static Vector AmkRect(Vector t, double A, double f1, double f2, double k)
-		{
-			Vector modul = Rect(t,A,f2)+k;
-			return Sin(t, modul,f1);
-		}
+        {
+            Vector modul = Rect(t, A, f2) + k;
+            return Sin(t, modul, f1);
+        }
 
         /// <summary>
         /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
@@ -324,10 +322,10 @@ namespace AI.MathMod.Signals
         /// <param name="k">Коэффициент модуляции</param>
         /// <returns>Вектор отсчетов</returns>
         public static Vector AmkRectK(Vector t, double f1, double f2, double k)
-		{
-			Vector modul = Rect(t,f2)+k;
-			return Sin(t, modul,f1);
-		}
+        {
+            Vector modul = Rect(t, f2) + k;
+            return Sin(t, modul, f1);
+        }
 
         /// <summary>
         /// Амплитудно-модулированые колебания (прямоугольное модулирующее колебание)
@@ -338,38 +336,38 @@ namespace AI.MathMod.Signals
         /// <param name="f2">Частота модулятора</param>
         /// <returns>Вектор отсчетов</returns>
         public static Vector AmkRectA(Vector t, double A, double f1, double f2)
-		{
-			Vector modul = Rect(t,A,f2);
-			return Sin(t, modul,f1);
-		}
-		
-		/// <summary>
-		/// Амплитудно-модулированые колебания
-		/// </summary>
-		/// <param name="t"></param>
-		/// <param name="f1"></param>
-		/// <param name="f2"></param>
-		/// <returns></returns>
-		public static Vector AmkRect(Vector t, double f1, double f2)
-		{
-			Vector modul = Rect(t,f2);
-			return Sin(t, modul,f1);
-		}
-		#endregion
-		
-		#region Затухающие колебания
-		/// <summary>
-		/// Затухающие колебания
-		/// </summary>
-		/// <param name="t">Время симуляции</param>
-		/// <param name="f">частота</param>
-		/// <param name="kDamp">Коэффициент затухания</param>
-		/// <param name="A">Амплитуда(начальная)</param>
-		/// <param name="fi">Фаза</param>
-		public static Vector DampedOscillations(Vector t, double f=1, double kDamp = -0.01, double A = 1, double fi = 0)
-		{
-			return MathFunc.exp(t*kDamp)*Sin(t,A,f,fi);
-		}
+        {
+            Vector modul = Rect(t, A, f2);
+            return Sin(t, modul, f1);
+        }
+
+        /// <summary>
+        /// Амплитудно-модулированые колебания
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="f1"></param>
+        /// <param name="f2"></param>
+        /// <returns></returns>
+        public static Vector AmkRect(Vector t, double f1, double f2)
+        {
+            Vector modul = Rect(t, f2);
+            return Sin(t, modul, f1);
+        }
+        #endregion
+
+        #region Затухающие колебания
+        /// <summary>
+        /// Затухающие колебания
+        /// </summary>
+        /// <param name="t">Время симуляции</param>
+        /// <param name="f">частота</param>
+        /// <param name="kDamp">Коэффициент затухания</param>
+        /// <param name="A">Амплитуда(начальная)</param>
+        /// <param name="fi">Фаза</param>
+        public static Vector DampedOscillations(Vector t, double f = 1, double kDamp = -0.01, double A = 1, double fi = 0)
+        {
+            return MathFunc.exp(t * kDamp) * Sin(t, A, f, fi);
+        }
         #endregion
 
         #region Параметры сигналов
@@ -382,16 +380,16 @@ namespace AI.MathMod.Signals
         /// <returns></returns>
         public static double Energe(Vector signal, double fd)
         {
-            double energe = Functions.Summ((signal^2));
+            double energe = Functions.Summ((signal ^ 2));
             return energe / fd;
         }
-		
-        
-        
-        
-                
-       
-        
+
+
+
+
+
+
+
         /// <summary>
         /// Пачка ЛЧМ
         /// </summary>
@@ -402,78 +400,80 @@ namespace AI.MathMod.Signals
         /// <returns></returns>
         public static Vector LFMRectNP(double f, int f0, int fd, double time)
         {
-        	Vector[] v = new Vector[(int)(f*time+0.99)];
-        	Vector v1 = OneLFM(f,f0,fd);
-        	
-        	for(int i = 0; i<v.Length; i++)
-        		v[i] = v1;
-        		
-        		
-        	return Vector.Concatinate(v);
+            Vector[] v = new Vector[(int)(f * time + 0.99)];
+            Vector v1 = OneLFM(f, f0, fd);
+
+            for (int i = 0; i < v.Length; i++)
+                v[i] = v1;
+
+
+            return Vector.Concatinate(v);
         }
 
-		static Vector OneLFM(double f, int f0, int fd)
+        private static Vector OneLFM(double f, int f0, int fd)
         {
-        	double dt = 1.0/fd, time = 1.0/f;
-        	Vector t = MathFunc.GenerateTheSequence(0, dt, time/2);
-        	Vector outp = new Vector(t.N);
-        	double arg;
-        	
-        	for (int i = 0; i < t.N; i++) {
-        		
-        		arg = 2*Math.PI*(f0*t[i]+(f0)*f*t[i]*t[i]);
-        		outp[i] = Math.Cos(arg);
-        	}
-        	
-        	return outp;
+            double dt = 1.0 / fd, time = 1.0 / f;
+            Vector t = MathFunc.GenerateTheSequence(0, dt, time / 2);
+            Vector outp = new Vector(t.N);
+            double arg;
+
+            for (int i = 0; i < t.N; i++)
+            {
+
+                arg = 2 * Math.PI * (f0 * t[i] + (f0) * f * t[i] * t[i]);
+                outp[i] = Math.Cos(arg);
+            }
+
+            return outp;
         }
-		
-		
-	 /// <summary>
+
+
+        /// <summary>
         /// ЛЧМ
         /// </summary>
         /// <param name="df"></param>
         /// <param name="f0"></param>
         /// <param name="fd"></param>
         /// <param name="time"></param>
-	public static Vector LFM(double df, double f0, double fd, double time)
+        public static Vector LFM(double df, double f0, double fd, double time)
         {
-        	double dt = 1.0/fd;
-        	Vector t = MathFunc.GenerateTheSequence(0, dt, time);
-        	var outp = new Vector(t.N);
-        	double arg;
-        	
-        	for (int i = 0; i < t.N; i++) {
-        		
-        		arg = 2*Math.PI*(f0*t[i]+(df/time)*t[i]*t[i]);
-        		outp[i] = Math.Cos(arg);
-        	}
-        	
-        	return outp;
+            double dt = 1.0 / fd;
+            Vector t = MathFunc.GenerateTheSequence(0, dt, time);
+            Vector outp = new Vector(t.N);
+            double arg;
+
+            for (int i = 0; i < t.N; i++)
+            {
+
+                arg = 2 * Math.PI * (f0 * t[i] + (df / time) * t[i] * t[i]);
+                outp[i] = Math.Cos(arg);
+            }
+
+            return outp;
         }
-		
-		
-		static Vector ZeroLFM(double f, int f0, int fd)
+
+        private static Vector ZeroLFM(double f, int f0, int fd)
         {
-        	double dt = 1.0/fd, time = 1.0/f;
-        	Vector t = MathFunc.GenerateTheSequence(0, dt, time/2);
-        	Vector outp = new Vector(t.N);
-        	double arg;
-        	
-        	for (int i = 0; i < t.N; i++) {
-        		
-        		arg = 2*Math.PI*(f0*t[i]);
-        		outp[i] = Math.Cos(arg);
-        	}
-        	
-        	return outp;
+            double dt = 1.0 / fd, time = 1.0 / f;
+            Vector t = MathFunc.GenerateTheSequence(0, dt, time / 2);
+            Vector outp = new Vector(t.N);
+            double arg;
+
+            for (int i = 0; i < t.N; i++)
+            {
+
+                arg = 2 * Math.PI * (f0 * t[i]);
+                outp[i] = Math.Cos(arg);
+            }
+
+            return outp;
         }
-        
-        
-        
-        
-     
-        
+
+
+
+
+
+
         /// <summary>
         /// Передискретизация сигнала
         /// (повышение частоты дискретизации в целое число раз)
@@ -482,37 +482,37 @@ namespace AI.MathMod.Signals
         /// <param name="fd">Старая частота дискретизации</param>
         /// <param name="newfd">Новая частота дикретизации</param>
         /// <returns>Вектор тойже длительности, что и входной,
-		/// но с более высокой частотой дискретизации</returns>
+        /// но с более высокой частотой дискретизации</returns>
         public static Vector Perediscr(Vector inp, int fd, int newfd)
-		{
-			int k = newfd/fd;
-			ComplexVector inputSpectr = Furie.fft(inp);
-			int len = inp.N*(k-1), lenFull = inp.N*k;
-			int i = 0;
-			ComplexVector cV = new ComplexVector(lenFull);
-			int end = inp.N/2;
-			
-			for ( ; i < end; i++)
-			{
-				cV[i] = inputSpectr[i];
-			}
-			
-			end = lenFull-inp.N/2;
-			
-			for (; i < end; i++)
-			{
-				cV[i] = new System.Numerics.Complex(0,0);
-			}
-			
-			for (int j = inp.N/2; i < lenFull; i++)
-			{
-				cV[i] = inputSpectr[j];
-			}
-			
-			
-			return Furie.ifft(cV).RealToVector();
-		} 
-       
+        {
+            int k = newfd / fd;
+            ComplexVector inputSpectr = Furie.fft(inp);
+            int len = inp.N * (k - 1), lenFull = inp.N * k;
+            int i = 0;
+            ComplexVector cV = new ComplexVector(lenFull);
+            int end = inp.N / 2;
+
+            for (; i < end; i++)
+            {
+                cV[i] = inputSpectr[i];
+            }
+
+            end = lenFull - inp.N / 2;
+
+            for (; i < end; i++)
+            {
+                cV[i] = new System.Numerics.Complex(0, 0);
+            }
+
+            for (int j = inp.N / 2; i < lenFull; i++)
+            {
+                cV[i] = inputSpectr[j];
+            }
+
+
+            return Furie.ifft(cV).RealToVector();
+        }
+
 
         /// <summary>
         /// Норма сигнала
@@ -530,7 +530,7 @@ namespace AI.MathMod.Signals
 
 
     }
-	
-	
-	
+
+
+
 }

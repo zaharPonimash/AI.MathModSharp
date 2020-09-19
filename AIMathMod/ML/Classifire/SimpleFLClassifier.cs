@@ -2,10 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AI.MathMod.ML.Classifire
 {
@@ -20,7 +17,7 @@ namespace AI.MathMod.ML.Classifire
         /// Вероятность
         /// </summary>
         public double Probability { get; set; }
-        
+
         /// <summary>
         /// Имя класса
         /// </summary>
@@ -36,24 +33,24 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         public double ProbabilityApriory { get; set; }
 
-		/// <summary>
-		/// Задание модели по умолчанию
-		/// </summary>
+        /// <summary>
+        /// Задание модели по умолчанию
+        /// </summary>
         public SModel()
         {
-        	ProbabilityApriory = 1.0;
+            ProbabilityApriory = 1.0;
         }
-        
-        
-//        
-//        internal void CalculateProb()
-//        {
-//            Probability = 0;
-//            for (int i = 0; i < Count; i++)
-//                Probability += this[i].pr;
-//
-//            Probability /= Count;
-//        }
+
+
+        //        
+        //        internal void CalculateProb()
+        //        {
+        //            Probability = 0;
+        //            for (int i = 0; i < Count; i++)
+        //                Probability += this[i].pr;
+        //
+        //            Probability /= Count;
+        //        }
 
         /// <summary>
         /// Рассчет вероятностей с учетом весов
@@ -65,7 +62,7 @@ namespace AI.MathMod.ML.Classifire
                 Probability += Weights.DataInVector[i] * this[i].pr;
 
             Probability /= Functions.Summ(Weights);
-            
+
             Probability *= ProbabilityApriory;
         }
 
@@ -78,9 +75,9 @@ namespace AI.MathMod.ML.Classifire
     [Serializable]
     public class SModelComponent
     {
-    	/// <summary>
-    	/// Мат. ожидаине
-    	/// </summary>
+        /// <summary>
+        /// Мат. ожидаине
+        /// </summary>
         public double _e = 0;
         /// <summary>
     	/// СКО
@@ -98,7 +95,7 @@ namespace AI.MathMod.ML.Classifire
         {
 
         }
-        
+
 
         /// <summary>
         /// Стат. модель компонента модели
@@ -120,15 +117,14 @@ namespace AI.MathMod.ML.Classifire
     [Serializable]
     public class SimpleFLClassifier : IClassifire
     {
-
-        List<SModel> models = new List<SModel>();
+        private List<SModel> models = new List<SModel>();
         /// <summary>
         /// Порог
         /// </summary>
-        public Double Threshold { get; set; } 
-        
+        public double Threshold { get; set; }
 
-        
+
+
         /// <summary>
         /// Простой статистический классификатор, 
         /// который предполагает, что у величины 
@@ -158,9 +154,9 @@ namespace AI.MathMod.ML.Classifire
         /// <returns>Максимально похожая модель</returns>
         public SModel Output(Vector inp)
         {
-        	
-        		
-            foreach (var sMod in models)
+
+
+            foreach (SModel sMod in models)
             {
                 GetProbability(inp.DataInVector, sMod);
             }
@@ -175,13 +171,15 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         public void AddModel(Vector[] vec, string name)
         {
-        	Vector[] vectors = vec;
-        	
-            Vector[] components = new Vector[vectors[0].N];
-            SModel sMode = new SModel();
-            sMode.NameClass = name;
+            Vector[] vectors = vec;
 
-            for(int i = 0; i<components.Length; i++)
+            Vector[] components = new Vector[vectors[0].N];
+            SModel sMode = new SModel
+            {
+                NameClass = name
+            };
+
+            for (int i = 0; i < components.Length; i++)
             {
                 components[i] = new Vector(vectors.Length);
 
@@ -192,50 +190,49 @@ namespace AI.MathMod.ML.Classifire
 
                 sMode.Add(new SModelComponent(Statistic.ExpectedValue(components[i]), Statistic.Std(components[i])));
             }
-			
-            sMode.Weights = new Vector(sMode.Count)+0.0001;
+
+            sMode.Weights = new Vector(sMode.Count) + 0.0001;
             models.Add(sMode);
         }
-        
-        
-       /// <summary>
-       /// Весовые коэффициенты
-       /// </summary>
+
+
+        /// <summary>
+        /// Весовые коэффициенты
+        /// </summary>
         public void GetWeights()
         {
-        	for (int i = 0; i < models.Count; i++)
-        	{
-        		for (int j = 0; j < models.Count; j++)
-        		{
-        			models[i].Weights += GW(models[i], models[j]);
-        		}
-        		
-        		models[i].Weights /= models.Count;
-        	}
-        }
-        	
+            for (int i = 0; i < models.Count; i++)
+            {
+                for (int j = 0; j < models.Count; j++)
+                {
+                    models[i].Weights += GW(models[i], models[j]);
+                }
 
-        Vector GW(SModel model1, SModel model2)
-        {
-        	Vector w = new Vector(model1.Count);
-        	
-        	for (int i = 0; i < model1.Count; i++)
-        		{
-        			w[i] =  Math.Abs(model1[i]._e-model2[i]._e);
-        		}
-        	
-        	return w;
+                models[i].Weights /= models.Count;
+            }
         }
-        
+
+        private Vector GW(SModel model1, SModel model2)
+        {
+            Vector w = new Vector(model1.Count);
+
+            for (int i = 0; i < model1.Count; i++)
+            {
+                w[i] = Math.Abs(model1[i]._e - model2[i]._e);
+            }
+
+            return w;
+        }
+
 
         /// <summary>
         /// Вероятности принадлежности к классу
         /// </summary>
         /// <param name="vect"></param>
         /// <param name="sm"></param>
-        void GetProbability(double[] vect, SModel sm)
+        private void GetProbability(double[] vect, SModel sm)
         {
-            for (int i = 0; i<vect.Length; i++)
+            for (int i = 0; i < vect.Length; i++)
             {
                 sm[i].pr = DistributionFunc.GaussNorm1(vect[i], sm[i]._e, sm[i]._std);
             }
@@ -252,7 +249,7 @@ namespace AI.MathMod.ML.Classifire
         {
             try
             {
-                
+
                 BinaryFormatter binFormat = new BinaryFormatter();
 
                 using (Stream fStream = new FileStream(path,
@@ -279,16 +276,16 @@ namespace AI.MathMod.ML.Classifire
             try
             {
 
-                    
+
                 BinaryFormatter binFormat = new BinaryFormatter();
 
                 using (Stream fStream = new FileStream(path,
                   FileMode.Open, FileAccess.Read, FileShare.None))
                 {
-                   models = (List<SModel>)binFormat.Deserialize(fStream);
+                    models = (List<SModel>)binFormat.Deserialize(fStream);
                 }
 
-              
+
             }
 
             catch
@@ -315,8 +312,8 @@ namespace AI.MathMod.ML.Classifire
         /// <returns>Имя класса</returns>
         public string RecognizeVector(Vector inp)
         {
-        	Vector input = inp;
-        	
+            Vector input = inp;
+
             SModel model = Output(input);
             return model.Probability >= Threshold ? model.NameClass : "none";
         }

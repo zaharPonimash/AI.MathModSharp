@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 namespace AI.MathMod
 {
@@ -26,7 +25,7 @@ namespace AI.MathMod
         /// Ширина
         /// </summary>
         public int Width;
-        Random rnd = new Random();
+        private readonly Random rnd = new Random();
 
         /// <summary>
         ///     Заполнение тензора случайными числами
@@ -36,23 +35,23 @@ namespace AI.MathMod
         /// <param name="depth">глубина</param>
         public Tensor(int width, int height, int depth)
         {
-            
-            this.Width = width;
-            this.Height = height;
-            this.Depth = depth;
-            
+
+            Width = width;
+            Height = height;
+            Depth = depth;
+
             //Количество элементов в тензоре
-            var n = width * height * depth;
-            this.DataInTensor = new double[n];
+            int n = width * height * depth;
+            DataInTensor = new double[n];
 
             // Нормализация веса выполняется для выравнивания дисперсии
             // выхода каждого нейрона, иначе нейроны с большим количеством
             // входов будут иметь выходы большей дисперсии
-            var scale = Math.Sqrt(1.0 / (width * height * depth));
+            double scale = Math.Sqrt(1.0 / (width * height * depth));
 
-            for (var i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-            	this.DataInTensor[i] = Statistic.Gauss(rnd)*scale;
+                DataInTensor[i] = Statistic.Gauss(rnd) * scale;
             }
         }
 
@@ -65,19 +64,19 @@ namespace AI.MathMod
         /// <param name="c">Величина которой инициализируется тензор</param>
         public Tensor(int width, int height, int depth, double c)
         {
-            
-            this.Width = width;
-            this.Height = height;
-            this.Depth = depth;
 
-            var n = width * height * depth;
-            this.DataInTensor = new double[n];
+            Width = width;
+            Height = height;
+            Depth = depth;
+
+            int n = width * height * depth;
+            DataInTensor = new double[n];
 
             if (c != 0)
             {
-                for (var i = 0; i < n; i++)
+                for (int i = 0; i < n; i++)
                 {
-                    this.DataInTensor[i] = c;
+                    DataInTensor[i] = c;
                 }
             }
         }
@@ -89,41 +88,41 @@ namespace AI.MathMod
         /// <param name="weights">Значения</param>
         public Tensor(IList<double> weights)
         {
-            this.Width = 1;
-            this.Height = 1;
-            this.Depth = weights.Count;
+            Width = 1;
+            Height = 1;
+            Depth = weights.Count;
 
-            this.DataInTensor = new double[this.Depth];
+            DataInTensor = new double[Depth];
 
-            for (var i = 0; i < this.Depth; i++)
+            for (int i = 0; i < Depth; i++)
             {
-                this.DataInTensor[i] = weights[i];
+                DataInTensor[i] = weights[i];
             }
         }
 
-   	/// <summary>
-   	/// Копирует значения
-   	/// </summary>
+        /// <summary>
+        /// Копирует значения
+        /// </summary>
         public Tensor Copy()
         {
-            var Tensor3 = new Tensor(this.Width, this.Height, this.Depth, 0.0);
-            var n = this.DataInTensor.Length;
+            Tensor Tensor3 = new Tensor(Width, Height, Depth, 0.0);
+            int n = DataInTensor.Length;
 
-            for (var i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
-               Tensor3.DataInTensor[i] = this.DataInTensor[i];
+                Tensor3.DataInTensor[i] = DataInTensor[i];
             }
 
             return Tensor3;
         }
 
-       
-	/// <summary>
-	/// Сложение
-	/// </summary>
-	/// <param name="A"></param>
-	/// <param name="b"></param>
-	/// <returns></returns>
+
+        /// <summary>
+        /// Сложение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static Tensor operator +(Tensor A, double b)
         {
             Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
@@ -136,16 +135,16 @@ namespace AI.MathMod
             return newTensor;
         }
 
-        
-        
-        
+
+
+
         /// <summary>
-	/// Сложение
-	/// </summary>
-	/// <param name="A"></param>
-	/// <param name="b"></param>
-	/// <returns></returns>
-        public static Tensor operator+ (double b, Tensor A)
+        /// Сложение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Tensor operator +(double b, Tensor A)
         {
             Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
@@ -158,115 +157,115 @@ namespace AI.MathMod
         }
 
 
-	/// <summary>
-	/// Умножение
-	/// </summary>
-	/// <param name="A"></param>
-	/// <param name="k"></param>
-	/// <returns></returns>
-		public static Tensor operator * (Tensor A, double k)
-		{
-			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
-		
-			for(int i = 0; i < A.DataInTensor.Length; i++)
-				 C.DataInTensor[i] = A.DataInTensor[i]*k;
-			
-			return C;
-		}
-        
-		/// <summary>
-		/// Вычитание
-		/// </summary>
-		public static Tensor operator - (Tensor A, double k)
-		{
-			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
-		
-			for(int i = 0; i < A.DataInTensor.Length; i++)
-				 C.DataInTensor[i] = A.DataInTensor[i]-k;
-			
-			return C;
-		}
-		
-		/// <summary>
-		/// Деление
-		/// </summary>
-		public static Tensor operator / (Tensor A, double k)
-		{
-			Tensor C = new Tensor(A.Width, A.Height, A.Depth);
-		
-			for(int i = 0; i < A.DataInTensor.Length; i++)
-				 C.DataInTensor[i] = A.DataInTensor[i]/k;
-			
-			return C;
-		}
-        
-	/// <summary>
-	/// Выдает значение с заданной позиции
-	/// </summary>
-	 public double Get(int x, int y, int d)
+        /// <summary>
+        /// Умножение
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        public static Tensor operator *(Tensor A, double k)
         {
-            var ix = ((Width * y) + x) * Depth + d;
+            Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.DataInTensor.Length; i++)
+                C.DataInTensor[i] = A.DataInTensor[i] * k;
+
+            return C;
+        }
+
+        /// <summary>
+        /// Вычитание
+        /// </summary>
+        public static Tensor operator -(Tensor A, double k)
+        {
+            Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.DataInTensor.Length; i++)
+                C.DataInTensor[i] = A.DataInTensor[i] - k;
+
+            return C;
+        }
+
+        /// <summary>
+        /// Деление
+        /// </summary>
+        public static Tensor operator /(Tensor A, double k)
+        {
+            Tensor C = new Tensor(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.DataInTensor.Length; i++)
+                C.DataInTensor[i] = A.DataInTensor[i] / k;
+
+            return C;
+        }
+
+        /// <summary>
+        /// Выдает значение с заданной позиции
+        /// </summary>
+        public double Get(int x, int y, int d)
+        {
+            int ix = ((Width * y) + x) * Depth + d;
             return DataInTensor[ix];
         }
 
 
 
-	/// <summary>
-	/// Устанавливает значение на заданную позицию
-	/// </summary>
+        /// <summary>
+        /// Устанавливает значение на заданную позицию
+        /// </summary>
         public void Set(int x, int y, int d, double v)
         {
-            var ix = ((Width * y) + x) *Depth + d;
+            int ix = ((Width * y) + x) * Depth + d;
             DataInTensor[ix] = v;
         }
-		
-		
-		/// <summary>
-		/// Нормализация
-		/// </summary>
-		public Tensor Normalise()
-		{
-			Vector vec = new Vector(DataInTensor);
-			
-			Statistic stat = new Statistic(vec);
-			
-			Tensor Out = (this-stat.MinValue)/(stat.MaxValue-stat.MinValue);
-			
-			return Out;
-		}
-		
-		/// <summary>
-		/// Преобразование в вектор
-		/// </summary>
-		public Vector ToVector()
-		{
-			return new Vector(DataInTensor);
-		}
-		
-		/// <summary>
-		/// Вычитание
-		/// </summary>
-       	 	public static Tensor operator- (double b, Tensor A)
-        	{
-           	 	Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
 
-           		 for (int i = 0; i < A.DataInTensor.Length; i++)
-            		{
-                		newTensor.DataInTensor[i] = b - A.DataInTensor[i];
-            		}
 
-            		return newTensor;
-        	}
+        /// <summary>
+        /// Нормализация
+        /// </summary>
+        public Tensor Normalise()
+        {
+            Vector vec = new Vector(DataInTensor);
 
-	/// <summary>
-	/// Установка константы
-	/// </summary>
-	/// <param name="c">Константа</param>
+            Statistic stat = new Statistic(vec);
+
+            Tensor Out = (this - stat.MinValue) / (stat.MaxValue - stat.MinValue);
+
+            return Out;
+        }
+
+        /// <summary>
+        /// Преобразование в вектор
+        /// </summary>
+        public Vector ToVector()
+        {
+            return new Vector(DataInTensor);
+        }
+
+        /// <summary>
+        /// Вычитание
+        /// </summary>
+        public static Tensor operator -(double b, Tensor A)
+        {
+            Tensor newTensor = new Tensor(A.Width, A.Height, A.Depth);
+
+            for (int i = 0; i < A.DataInTensor.Length; i++)
+            {
+                newTensor.DataInTensor[i] = b - A.DataInTensor[i];
+            }
+
+            return newTensor;
+        }
+
+        /// <summary>
+        /// Установка константы
+        /// </summary>
+        /// <param name="c">Константа</param>
         public void SetConst(double c)
         {
-            for (var i = 0; i < this.DataInTensor.Length; i++)
+            for (int i = 0; i < DataInTensor.Length; i++)
             {
-            	this.DataInTensor[i] += c;
+                DataInTensor[i] += c;
             }
         }
     }

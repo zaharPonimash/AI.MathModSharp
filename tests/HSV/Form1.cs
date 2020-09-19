@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using AI.MathMod;
+﻿using AI.MathMod;
 using AI.MathMod.ComputerVision;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HSV
 {
@@ -22,7 +16,7 @@ namespace HSV
 
         }
 
-        Bitmap bitmap = new Bitmap("4.jpg");
+        private readonly Bitmap bitmap = new Bitmap("4.jpg");
 
         private void button1_Click(object sender, EventArgs e)
         {

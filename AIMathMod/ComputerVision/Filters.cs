@@ -1,9 +1,5 @@
-﻿using System;
+﻿using AI.MathMod.AdditionalFunctions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AI.MathMod.AdditionalFunctions;
 
 namespace AI.MathMod.ComputerVision
 {
@@ -36,8 +32,8 @@ namespace AI.MathMod.ComputerVision
             return NeuroFunc.Relu((newMatr * coef + dx / 255.0), 1, 0);
 
         }
-        
-        
+
+
         /// <summary>
         /// Контрастирование
         /// </summary>
@@ -50,15 +46,16 @@ namespace AI.MathMod.ComputerVision
             int H = img.M - x, W = img.N - y;
             Matrix newMatr = new Matrix(img.M, img.N);
 
-            for (int i = 0; i < H; i+=x)
+            for (int i = 0; i < H; i += x)
             {
-                for (int j = 0; j < W; j+=y)
+                for (int j = 0; j < W; j += y)
                 {
-                	for (int k = 0; k < x; k++) {
-                		for (int z = 0; z < y; z++)
-                	
-                		newMatr.Matr[z+i, k+j] = FilterContrast(img, x, y, j, i)[z,k];
-                	}
+                    for (int k = 0; k < x; k++)
+                    {
+                        for (int z = 0; z < y; z++)
+
+                            newMatr.Matr[z + i, k + j] = FilterContrast(img, x, y, j, i)[z, k];
+                    }
                 }
             }
 
@@ -73,17 +70,17 @@ namespace AI.MathMod.ComputerVision
         /// <returns></returns>
         public static Matrix FC(Matrix img)
         {
-        	Matrix newMatr = new Matrix(img.M, img.N);
-        		
-        		for (int i = 1; i < 5; i++)
-        			newMatr += ContrastFilter(img, 4*(i+6), 4*(i+6));
-				        		
-        		newMatr += FilterContrast(img, img.N, img.M, 0, 0);
-        		
-        		return newMatr/5;
+            Matrix newMatr = new Matrix(img.M, img.N);
+
+            for (int i = 1; i < 5; i++)
+                newMatr += ContrastFilter(img, 4 * (i + 6), 4 * (i + 6));
+
+            newMatr += FilterContrast(img, img.N, img.M, 0, 0);
+
+            return newMatr / 5;
         }
-        
-        
+
+
         /// <summary>
         /// Медианный фильтр полутонового изображения
         /// </summary>
@@ -105,7 +102,7 @@ namespace AI.MathMod.ComputerVision
                 }
             }
 
-            newMatr = MathFunc.abs((newMatr * coef + dx / 255.0)-Statistic.ExpectedValue(newMatr.Spagetiz()));
+            newMatr = MathFunc.abs((newMatr * coef + dx / 255.0) - Statistic.ExpectedValue(newMatr.Spagetiz()));
 
             return NeuroFunc.Relu(newMatr, 1, 0);
 
@@ -151,7 +148,7 @@ namespace AI.MathMod.ComputerVision
 
 
         // Элемент фильтра
-        static double Filter(Matrix img, Matrix filter, int dx, int dy)
+        private static double Filter(Matrix img, Matrix filter, int dx, int dy)
         {
             double akkum = 0;
 
@@ -167,7 +164,7 @@ namespace AI.MathMod.ComputerVision
         }
 
         // Элемент медианного фильтра
-        static double FilterMedian(Matrix img, Matrix filter, int dx, int dy)
+        private static double FilterMedian(Matrix img, Matrix filter, int dx, int dy)
         {
 
             List<double> ld = new List<double>();
@@ -187,13 +184,13 @@ namespace AI.MathMod.ComputerVision
 
 
         // Элемент СКО фильтра
-        static double FilterSCO(Matrix img, Matrix filter, int dx, int dy)
+        private static double FilterSCO(Matrix img, Matrix filter, int dx, int dy)
         {
 
             Vector vect = new Vector(filter.N * filter.M);
 
 
-            for (int i = 0, k =0; i < filter.M; i++)
+            for (int i = 0, k = 0; i < filter.M; i++)
             {
                 for (int j = 0; j < filter.N; j++)
                 {
@@ -204,32 +201,32 @@ namespace AI.MathMod.ComputerVision
             return Statistic.Std(vect);
         }
 
-		//Элемент контрасного фильтра
-		static Matrix FilterContrast(Matrix img, int x, int y, int dx, int dy)
+        //Элемент контрасного фильтра
+        private static Matrix FilterContrast(Matrix img, int x, int y, int dx, int dy)
         {
 
             Vector vect;
-            Matrix matr = new Matrix(y,x);
+            Matrix matr = new Matrix(y, x);
 
             for (int i = 0; i < y; i++)
             {
                 for (int j = 0; j < x; j++)
                 {
-                	matr[i,j] = img.Matr[dy + i, dx + j];
+                    matr[i, j] = img.Matr[dy + i, dx + j];
                 }
             }
-			
-            
-            matr = MathFunc.lg(matr*255+1);
+
+
+            matr = MathFunc.lg(matr * 255 + 1);
             vect = matr.Spagetiz();
-            double cko = 3*Statistic.Std(vect), m = Statistic.ExpectedValue(vect);
-           
-            return NeuroFunc.Sigmoid((matr-m)/(cko+0.01), 3);
+            double cko = 3 * Statistic.Std(vect), m = Statistic.ExpectedValue(vect);
+
+            return NeuroFunc.Sigmoid((matr - m) / (cko + 0.01), 3);
         }
-		
-		
-		
-		
+
+
+
+
 
 
     }

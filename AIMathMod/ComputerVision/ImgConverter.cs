@@ -1,12 +1,9 @@
 ﻿using AI.MathMod.AdditionalFunctions;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AI.MathMod.ComputerVision
 {
@@ -29,8 +26,7 @@ namespace AI.MathMod.ComputerVision
                 return new Bitmap(fs);
         }
 
-
-        unsafe static byte[,,] BaseTransformBmp(Bitmap bmp)
+        private static unsafe byte[,,] BaseTransformBmp(Bitmap bmp)
         {
             int width = bmp.Width,
                 height = bmp.Height;
@@ -93,7 +89,7 @@ namespace AI.MathMod.ComputerVision
         {
 
             int W = Bmp.Width;
-            int H = Bmp.Height;;
+            int H = Bmp.Height; ;
             Matrix Out = new Matrix(W, H);
 
             byte[,,] b = BaseTransformBmp(Bmp);
@@ -102,7 +98,7 @@ namespace AI.MathMod.ComputerVision
             {
                 for (int j = 0; j < H; j++)
                 {
-                    Out.Matr[i, j] = (double)(b[0, j, i] + b[1, j, i] + b[2, j, i]) / 3.0;
+                    Out.Matr[i, j] = (b[0, j, i] + b[1, j, i] + b[2, j, i]) / 3.0;
                 }
             }
 
@@ -130,7 +126,7 @@ namespace AI.MathMod.ComputerVision
             {
                 for (int j = 0; j < H; j++)
                 {
-                    Out[i, j] = HComponent(new int[] 
+                    Out[i, j] = HComponent(new int[]
                         {
                             (int)(tensor.Get(i,j,0)*255.0),
                             (int)(tensor.Get(i,j,1)*255.0),
@@ -153,7 +149,7 @@ namespace AI.MathMod.ComputerVision
 
 
         // Вычисление H
-        static double HComponent(int[] rgb)
+        private static double HComponent(int[] rgb)
         {
             int max = rgb.Max();
             int min = rgb.Min();
@@ -172,7 +168,7 @@ namespace AI.MathMod.ComputerVision
 
             if (d == 0) H = 0;
 
-            
+
 
             else if (indexMax == 0)
             {
@@ -198,15 +194,12 @@ namespace AI.MathMod.ComputerVision
             return H / 360.0;
         }
 
-
-
-
-        static int BiueInt(double intensiv)
+        private static int BiueInt(double intensiv)
         {
             return 120 / ((int)intensiv + 1);
         }
 
-        static int RedInt(double intensiv)
+        private static int RedInt(double intensiv)
         {
             try
             {
@@ -262,10 +255,10 @@ namespace AI.MathMod.ComputerVision
             {
                 for (int j = 0; j < matr.N; j++)
                 {
-                    
+
                     try
                     {
-                    	intensiv = (int)Math.Abs(255 * matr.Matr[i, j]);
+                        intensiv = (int)Math.Abs(255 * matr.Matr[i, j]);
                         color = Color.FromArgb(intensiv, intensiv, intensiv);
                     }
                     catch { color = Color.Coral; }
@@ -277,11 +270,11 @@ namespace AI.MathMod.ComputerVision
             return bmp;
         }
 
-	    /// <summary>
-	    /// Тензор в картинку
-	    /// </summary>
-	    /// <param name="tensor">Тензор</param>
-	    /// <returns>Bitmap</returns>
+        /// <summary>
+        /// Тензор в картинку
+        /// </summary>
+        /// <param name="tensor">Тензор</param>
+        /// <returns>Bitmap</returns>
         public static Bitmap TensorToBitmap(Tensor tensor)
         {
             Bitmap bmp = new Bitmap(tensor.Width, tensor.Height);
@@ -295,7 +288,7 @@ namespace AI.MathMod.ComputerVision
 
                     try
                     {
-                        color = Color.FromArgb((int)(255*tensor.Get(i,j,0)), (int)(255 * tensor.Get(i, j, 1)), (int)(255 * tensor.Get(i, j, 2)));
+                        color = Color.FromArgb((int)(255 * tensor.Get(i, j, 0)), (int)(255 * tensor.Get(i, j, 1)), (int)(255 * tensor.Get(i, j, 2)));
                     }
                     catch { color = Color.Coral; }
                     bmp.SetPixel(i, j, color);

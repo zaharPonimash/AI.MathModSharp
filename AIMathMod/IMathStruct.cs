@@ -6,15 +6,14 @@
  * 
  * Для изменения этого шаблона используйте меню "Инструменты | Параметры | Кодирование | Стандартные заголовки".
  */
-using System;
 
 namespace AI.MathMod
 {
-	/// <summary>
-	/// Интерфейс математической структуры
-	/// </summary>
-	public interface IMathStruct
-	{
-		
-	}
+    /// <summary>
+    /// Интерфейс математической структуры
+    /// </summary>
+    public interface IMathStruct
+    {
+
+    }
 }

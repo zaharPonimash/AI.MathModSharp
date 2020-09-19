@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AI.MathMod.ML.Classifire
+﻿namespace AI.MathMod.ML.Classifire
 {
     /// <summary>
     /// Интерфейс для работы классификаторов
