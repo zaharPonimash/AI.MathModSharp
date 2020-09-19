@@ -182,7 +182,10 @@ namespace AI.MathMod.ML
         /// </summary>
         public void Decent()
         {
-            for (int i = 0; i < Itterations; i++) DecentIter();
+            for (int i = 0; i < Itterations; i++)
+            {
+                DecentIter();
+            }
         }
 
 

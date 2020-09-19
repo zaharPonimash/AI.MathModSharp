@@ -225,11 +225,17 @@ namespace AI.MathMod.Charts
                 myCurve.Line.IsVisible = false;
 
                 if (x.N < 20)
+                {
                     myCurve.Symbol.Size = (int)(100.0 / x.N);
+                }
                 else if (x.N < 2000)
+                {
                     myCurve.Symbol.Size = (int)(100.0 / Math.Sqrt(x.N));
+                }
                 else
+                {
                     myCurve.Symbol.Size = 2;
+                }
 
                 graph.AxisChange();
                 graph.Invalidate();

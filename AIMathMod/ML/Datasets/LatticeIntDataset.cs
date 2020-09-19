@@ -131,7 +131,9 @@ namespace AI.MathMod.ML.Datasets
             Lattice1DDouble[] outp = new Lattice1DDouble[Count];
 
             for (int i = 0; i < Count; i++)
+            {
                 outp[i] = this[i].InpLat;
+            }
 
             return outp;
         }
@@ -145,7 +147,9 @@ namespace AI.MathMod.ML.Datasets
             int[] outp = new int[Count];
 
             for (int i = 0; i < Count; i++)
+            {
                 outp[i] = this[i].ClassMark;
+            }
 
             return outp;
         }

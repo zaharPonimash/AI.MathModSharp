@@ -380,7 +380,7 @@ namespace AI.MathMod.Signals
         /// <returns></returns>
         public static double Energe(Vector signal, double fd)
         {
-            double energe = Functions.Summ((signal ^ 2));
+            double energe = Functions.Summ((signal*signal));
             return energe / fd;
         }
 
@@ -404,8 +404,9 @@ namespace AI.MathMod.Signals
             Vector v1 = OneLFM(f, f0, fd);
 
             for (int i = 0; i < v.Length; i++)
+            {
                 v[i] = v1;
-
+            }
 
             return Vector.Concatinate(v);
         }

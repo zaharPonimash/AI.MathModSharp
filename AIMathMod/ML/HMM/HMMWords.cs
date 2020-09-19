@@ -57,6 +57,7 @@ namespace AI.MathMod.HMM
             for (int i = 0; i < trainText.Length - 1; i++)
             {
                 for (int j = 0; j < stateNames.Length; j++)
+                {
                     for (int k = 0; k < stateNames.Length; k++)
                     {
                         if (trainText[i] == stateNames[j]
@@ -67,18 +68,21 @@ namespace AI.MathMod.HMM
                             break;
                         }
                     }
+                }
             }
 
 
             double max = GetMax(_stateAlter);
 
             for (int j = 0; j < stateNames.Length; j++)
+            {
                 for (int k = 0; k < stateNames.Length; k++)
                 {
                     _stateMatrix[j, k] /= trainText.Length;
                     _stateAlter[j, k] /= max;
                     _stateAlter[j, k] = (1 - _stateAlter[j, k]) * 0.9999;
                 }
+            }
 
             stateAlter = new Matrix(_stateAlter);
             stateMatrix = new Matrix(_stateMatrix);
@@ -97,10 +101,15 @@ namespace AI.MathMod.HMM
             double max = matrix[0, 0];
 
             for (int j = 0; j < stateNames.Length; j++)
+            {
                 for (int k = 0; k < stateNames.Length; k++)
                 {
-                    if (matrix[j, k] > max) max = matrix[j, k];
+                    if (matrix[j, k] > max)
+                    {
+                        max = matrix[j, k];
+                    }
                 }
+            }
 
             return max;
         }
@@ -191,7 +200,10 @@ namespace AI.MathMod.HMM
 
                 }
 
-                if (flag) words.Add(strs[i]);
+                if (flag)
+                {
+                    words.Add(strs[i]);
+                }
             }
 
             return words.ToArray();

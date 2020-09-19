@@ -94,7 +94,7 @@ namespace AI.MathMod
         /// </summary>
         private void Dispers()
         {
-            _dispers = Functions.Summ((_vector - _expectedValue) ^ 2) / (_n - 1);
+            _dispers = Functions.Summ((_vector - _expectedValue).TransformVector(x => x*x)) / (_n - 1);
         }
 
 
@@ -114,7 +114,7 @@ namespace AI.MathMod
         public static double Dispers(Vector vector)
         {
             double dispers, eV = ExpectedValue(vector);
-            dispers = Functions.Summ((vector - eV) ^ 2) / (vector.N - 1);
+            dispers = Functions.Summ((vector - eV).TransformVector(x => x*x)) / (vector.N - 1);
             return dispers;
         }
 
@@ -169,7 +169,11 @@ namespace AI.MathMod
         {
             Random A = new Random();
             Vector vect = new Vector(n);
-            for (int i = 0; i < n; i++) vect.DataInVector[i] = A.NextDouble();
+            for (int i = 0; i < n; i++)
+            {
+                vect.DataInVector[i] = A.NextDouble();
+            }
+
             return vect;
         }
 
@@ -181,7 +185,7 @@ namespace AI.MathMod
         /// Гауссовское распределение
         /// </summary>
         /// <returns>Возвращает норм. распред величину СКО = 1, M = 0</returns>
-        static public double Gauss(Random A)
+        public static double Gauss(Random A)
         {
             double a = 2 * A.NextDouble() - 1,
             b = 2 * A.NextDouble() - 1,
@@ -208,7 +212,11 @@ namespace AI.MathMod
         {
             Random A = new Random();
             Vector vect = new Vector(n);
-            for (int i = 0; i < n; i++) vect.DataInVector[i] = Gauss(A);
+            for (int i = 0; i < n; i++)
+            {
+                vect.DataInVector[i] = Gauss(A);
+            }
+
             return vect;
         }
 
@@ -223,7 +231,11 @@ namespace AI.MathMod
         public static Vector randNorm(int n, Random rnd)
         {
             Vector vect = new Vector(n);
-            for (int i = 0; i < n; i++) vect.DataInVector[i] = Gauss(rnd);
+            for (int i = 0; i < n; i++)
+            {
+                vect.DataInVector[i] = Gauss(rnd);
+            }
+
             return vect;
         }
 
@@ -237,8 +249,15 @@ namespace AI.MathMod
             _min = _vector.DataInVector[0];
             for (int i = 1; i < _n; i++)
             {
-                if (_vector.DataInVector[i] > _max) _max = _vector.DataInVector[i];
-                if (_vector.DataInVector[i] < _min) _min = _vector.DataInVector[i];
+                if (_vector.DataInVector[i] > _max)
+                {
+                    _max = _vector.DataInVector[i];
+                }
+
+                if (_vector.DataInVector[i] < _min)
+                {
+                    _min = _vector.DataInVector[i];
+                }
             }
 
 
@@ -259,7 +278,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(m, n);
 
             for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++) C.Matr[i, j] = rn.NextDouble();
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    C.Matr[i, j] = rn.NextDouble();
+                }
+            }
 
             return C;
         }
@@ -276,7 +300,10 @@ namespace AI.MathMod
 
             for (int i = 1; i < vect.N; i++)
             {
-                if (vect.DataInVector[i] > max) max = vect.DataInVector[i];
+                if (vect.DataInVector[i] > max)
+                {
+                    max = vect.DataInVector[i];
+                }
             }
 
             return max;
@@ -294,7 +321,10 @@ namespace AI.MathMod
 
             for (int i = 1; i < vect.N; i++)
             {
-                if (vect.DataInVector[i] < min) min = vect.DataInVector[i];
+                if (vect.DataInVector[i] < min)
+                {
+                    min = vect.DataInVector[i];
+                }
             }
 
             return min;
@@ -314,7 +344,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(n, n);
 
             for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++) C.Matr[i, j] = rn.NextDouble();
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    C.Matr[i, j] = rn.NextDouble();
+                }
+            }
 
             return C;
         }
@@ -342,7 +377,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(m, n);
 
             for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++) C.Matr[i, j] = Gauss(rn);
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    C.Matr[i, j] = Gauss(rn);
+                }
+            }
 
             return C;
         }
@@ -360,7 +400,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(m, n);
 
             for (int i = 0; i < m; i++)
-                for (int j = 0; j < n; j++) C.Matr[i, j] = Gauss(rnd);
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    C.Matr[i, j] = Gauss(rnd);
+                }
+            }
 
             return C;
         }
@@ -378,7 +423,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(n, n);
 
             for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++) C.Matr[i, j] = rn.NextDouble();
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    C.Matr[i, j] = rn.NextDouble();
+                }
+            }
 
             return C;
         }
@@ -411,8 +461,13 @@ namespace AI.MathMod
             {
                 ht = 0;
                 foreach (double element in _vector.DataInVector)
+                {
                     if (element >= (_min + i * shag) && element < _min + (i + 1) * shag)// попадение в интервал					
+                    {
                         ht++;
+                    }
+                }
+
                 x.DataInVector[i] = ((_min + i * shag) + _min + (i + 1) * shag) / 2.0;
                 histogr.DataInVector[i] = ht;
             }
@@ -436,7 +491,7 @@ namespace AI.MathMod
         /// <returns>Возвращает число типа Double</returns>
         public double InitialMoment(int n)
         {
-            return ExpectedValue(_vector ^ n);
+            return ExpectedValue(_vector.TransformVector(x => Math.Pow(x, n)));
         }
 
 
@@ -448,7 +503,7 @@ namespace AI.MathMod
         /// <returns>Возвращает число типа Double</returns>
         public double CentrMoment(int n)
         {
-            return ExpectedValue((_vector - _expectedValue) ^ n);
+            return ExpectedValue((_vector - _expectedValue).TransformVector(x => Math.Pow(x, n)));
         }
 
         /// <summary>
@@ -482,7 +537,11 @@ namespace AI.MathMod
             int n1 = X.N;
             int n2 = Y.N;
             string exceptionStr = string.Format("Невозможно выполнить ковариацию, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Ковариация");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Ковариация");
+            }
+
             double Mx = 0, My = 0, cov = 0;
 
             for (int i = 0; i < X.N; i++)
@@ -495,7 +554,9 @@ namespace AI.MathMod
             My /= n1;
 
             for (int i = 0; i < X.N; i++)
+            {
                 cov += (X[i] - Mx) * (Y[i] - My);
+            }
 
             cov /= n1 - 1;
 
@@ -569,7 +630,10 @@ namespace AI.MathMod
 
             for (int i = 0; i < vect.N; i++)
             {
-                if (vect[i] < 0) numMinus++;
+                if (vect[i] < 0)
+                {
+                    numMinus++;
+                }
             }
 
             Vector res = MathFunc.ln(MathFunc.abs(vect));
@@ -605,7 +669,7 @@ namespace AI.MathMod
         /// <returns></returns>
         public static double RMS(Vector vect)
         {
-            Vector res = vect ^ 2;
+            Vector res = vect.TransformVector(x => x * x);
             double summ = Functions.Summ(res);
             return Math.Sqrt(summ / vect.N);
         }
@@ -622,7 +686,7 @@ namespace AI.MathMod
 
             for (int i = 0; i < ensemble.Length; i++)
             {
-                res += (ensemble[i] - mean) ^ 2;
+                res += (ensemble[i] - mean).TransformVector(x => x * x);
             }
 
             res /= ensemble.Length - 1;
@@ -686,9 +750,9 @@ namespace AI.MathMod
         {
 
             Vector signal2 = Signals.Filters.ExpAv(signal, oldPart);
-            signal2 -= Statistic.ExpectedValue(signal2);
-            Vector signalQR = signal2 ^ 2;
-            Vector signalDQR = Functions.Diff(signal2) ^ 2;
+            signal2 -= ExpectedValue(signal2);
+            Vector signalQR = signal2*signal2;
+            Vector signalDQR = Functions.Diff(signal2).TransformVector(x => x*x);
 
             double mq1 = 0, mq2 = 0;
 

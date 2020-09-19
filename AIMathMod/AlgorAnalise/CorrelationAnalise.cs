@@ -40,10 +40,13 @@ namespace AI.MathMod.AlgorAnalise
             double mean = 0;
 
             for (int i = 0; i < CorMatrNorm.M; i++)
+            {
                 for (int j = 0; j < CorMatrNorm.N; j++)
                 {
                     mean += Math.Abs(CorMatrNorm[i, j]);
                 }
+            }
+
             mean = (mean - CorMatrNorm.M) / (CorMatrNorm.M * CorMatrNorm.M - CorMatrNorm.M);
             return 1.0 - mean;
         }

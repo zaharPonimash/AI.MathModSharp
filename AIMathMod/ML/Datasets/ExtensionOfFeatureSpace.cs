@@ -32,8 +32,9 @@ namespace AI.MathMod.ML.Datasets
                 outp[0] = x;
 
                 for (int i = 1; i < n; i++)
+                {
                     outp[i] = Math.Pow(x, i + 1);
-
+                }
             }
 
             return outp;
@@ -52,7 +53,7 @@ namespace AI.MathMod.ML.Datasets
 
             for (int i = 0; i < n; i++)
             {
-                vectors[i] = inp ^ (i + 1);
+                vectors[i] = inp.TransformVector(x => Math.Pow(x, i + 1));
             }
 
 
@@ -70,7 +71,9 @@ namespace AI.MathMod.ML.Datasets
             Vector outp = new Vector(n + 1);
 
             for (int i = 0; i <= n; i++)
+            {
                 outp[i] = Math.Cos(x * i);
+            }
 
             return outp;
         }
@@ -86,7 +89,9 @@ namespace AI.MathMod.ML.Datasets
             Vector outp = new Vector(n);
 
             for (int i = 0; i <= n; i++)
+            {
                 outp[i] = Math.Sin(x * i);
+            }
 
             return outp;
         }

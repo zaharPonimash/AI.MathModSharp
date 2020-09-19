@@ -23,7 +23,9 @@ namespace AI.MathMod.ComputerVision
         public static Bitmap LoadBitmap(string fileName)
         {
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
                 return new Bitmap(fs);
+            }
         }
 
         private static unsafe byte[,,] BaseTransformBmp(Bitmap bmp)
@@ -69,13 +71,14 @@ namespace AI.MathMod.ComputerVision
             byte[,,] b = BaseTransformBmp(Bmp);
 
             for (int i = 0; i < Bmp.Width; i++)
+            {
                 for (int j = 0; j < Bmp.Height; j++)
                 {
                     Out.Set(i, j, 0, b[0, j, i] / 255.0);
                     Out.Set(i, j, 1, b[1, j, i] / 255.0);
                     Out.Set(i, j, 2, b[2, j, i] / 255.0);
                 }
-
+            }
 
             return Out;
 
@@ -166,17 +169,23 @@ namespace AI.MathMod.ComputerVision
             }
 
 
-            if (d == 0) H = 0;
-
+            if (d == 0)
+            {
+                H = 0;
+            }
 
 
             else if (indexMax == 0)
             {
                 d = 60.0 / d;
                 if (rgb[1] >= rgb[2])
+                {
                     H = d * (rgb[1] - rgb[2]);
+                }
                 else
+                {
                     H = d * (rgb[1] - rgb[2]) + 360;
+                }
             }
 
             else if (indexMax == 1)

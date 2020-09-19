@@ -1436,13 +1436,6 @@
             <param name="m">Мат. ожидание</param>
             <param name="std">СКО</param>
         </member>
-        <member name="M:AI.MathMod.AdditionalFunctions.DistributionFunc.Puasson(AI.MathMod.Vector,System.Double)">
-            <summary>
-            Функция распределения Пуасона 
-            </summary>
-            <param name="Inp">Входной вектор</param>
-            <param name="m">Мат. ожидание от 0 до +inf</param>
-        </member>
         <member name="T:AI.MathMod.AdditionalFunctions.GeomFunc">
             <summary>
             Аналитическая геометрия
@@ -6233,77 +6226,6 @@
             </summary>
             <param name="A"></param>
             <param name="k"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_ExclusiveOr(AI.MathMod.Vector,System.Double)">
-            <summary>
-            Возведение в степень
-            </summary>
-            <param name="A"></param>
-            <param name="k"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_ExclusiveOr(System.Double,AI.MathMod.Vector)">
-            <summary>
-            Возведение в степень
-            </summary>
-            <param name="A"></param>
-            <param name="k"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_ExclusiveOr(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Возведение в степень
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_Modulus(AI.MathMod.Vector,System.Double)">
-            <summary>
-            Остаток от деления
-            </summary>
-            <param name="k"></param>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_Modulus(System.Double,AI.MathMod.Vector)">
-            <summary>
-            Остаток от деления
-            </summary>
-            <param name="k"></param>
-            <param name="A"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_Modulus(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Остаток от деления поэлементно
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_BitwiseAnd(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Свертка
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_BitwiseOr(AI.MathMod.Vector,AI.MathMod.Vector)">
-            <summary>
-            Корреляция
-            </summary>
-            <param name="A"></param>
-            <param name="B"></param>
-            <returns></returns>
-        </member>
-        <member name="M:AI.MathMod.Vector.op_LogicalNot(AI.MathMod.Vector)">
-            <summary>
-            Автокорреляция
-            </summary>
-            <param name="A"></param>
             <returns></returns>
         </member>
         <member name="M:AI.MathMod.Vector.op_Equality(AI.MathMod.Vector,AI.MathMod.Vector)">

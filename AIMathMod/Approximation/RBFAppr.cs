@@ -76,7 +76,9 @@ namespace AI.MathMod.Approximation
 
             Vector[] vect = new Vector[X.N];
             for (int i = 0; i < X.N; i++)
+            {
                 vect[i] = ExtensionOfFeatureSpace.GaussRBF(X[i], X, sig);
+            }
 
             for (int i = 0; i < X.N; i++)
             {

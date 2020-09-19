@@ -263,8 +263,15 @@ namespace AI.MathMod.ML.Datasets
                 for (int j = i + 1; j < Count; j++)
                 {
                     if (this[i].ClassMark != this[j].ClassMark)
+                    {
                         if (Statistic.CorrelationCoefficient(this[i].InpVector, this[j].InpVector) > simCoef)
-                            if (IsNotSerch(simIndex, j)) simIndex.Add(j);
+                        {
+                            if (IsNotSerch(simIndex, j))
+                            {
+                                simIndex.Add(j);
+                            }
+                        }
+                    }
                 }
 
             }
@@ -275,7 +282,9 @@ namespace AI.MathMod.ML.Datasets
             for (int i = 0, k = 0; i < Count; i++)
             {
                 if (IsNotSerch(simIndex, i))
+                {
                     vc[k++] = this[i];
+                }
             }
 
             vid.AddRange(vc);
@@ -287,7 +296,10 @@ namespace AI.MathMod.ML.Datasets
         {
             for (int j = 0; j < simIndex.Count; j++)
             {
-                if (i == simIndex[j]) return false;
+                if (i == simIndex[j])
+                {
+                    return false;
+                }
             }
 
             return true;

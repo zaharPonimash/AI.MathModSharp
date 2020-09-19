@@ -55,15 +55,18 @@ namespace AI.MathMod.ComputerVision
                 randForm = rnd.Next(2);
 
                 if (randForm == 0)
+                {
                     gr.FillEllipse(br[rnd.Next(3)],
                                      rnd.Next(_w - (w + 1)), rnd.Next(_h - (h + 1)),
                                      w, h);
+                }
 
                 if (randForm == 1)
+                {
                     gr.FillRectangle(br[rnd.Next(3)],
                                      rnd.Next(_w - (w + 1)), rnd.Next(_h - (h + 1)),
                                      w, h);
-
+                }
             }
 
             return new Bitmap(bmp, _w, _h);

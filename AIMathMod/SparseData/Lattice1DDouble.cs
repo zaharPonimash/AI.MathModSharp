@@ -33,7 +33,10 @@ namespace AI.MathMod.SparseData
             Cells = new List<Cell1D<double>>();
             for (int i = 0; i < vect.N; i++)
             {
-                if (vect[i] != 0) Cells.Add(new Cell1D<double>(vect[i], i));
+                if (vect[i] != 0)
+                {
+                    Cells.Add(new Cell1D<double>(vect[i], i));
+                }
             }
 
         }

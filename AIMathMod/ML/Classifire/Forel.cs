@@ -190,8 +190,13 @@ namespace AI.MathMod.ML
                 List<Vector> OUT = new List<Vector>();
 
                 foreach (Vector i in mass)
-                    if (GeomFunc.DistanceFromAToB(m, i) <= R) OUT.Add(i); // проведение окружности
-                                                                          //	if(Distance.ManhattanDistance(m,i) <= R) OUT.Add(i); // проведение окружности
+                {
+                    if (GeomFunc.DistanceFromAToB(m, i) <= R)
+                    {
+                        OUT.Add(i); // проведение окружности
+                    }
+                }
+                //	if(Distance.ManhattanDistance(m,i) <= R) OUT.Add(i); // проведение окружности
 
                 return OUT.ToArray();
             }
@@ -210,7 +215,10 @@ namespace AI.MathMod.ML
                     d = GeomFunc.DistanceFromAToB(mass[i], m);
 
                     //d = Distance.ManhattanDistance(mass[i],m);
-                    if (max < d) max = d;
+                    if (max < d)
+                    {
+                        max = d;
+                    }
                 }
                 return max;
             }
@@ -243,7 +251,10 @@ namespace AI.MathMod.ML
                         }
                     }
 
-                    if (flag) C.Add(A[i]);
+                    if (flag)
+                    {
+                        C.Add(A[i]);
+                    }
                 }
 
                 return C.ToArray();
@@ -264,7 +275,10 @@ namespace AI.MathMod.ML
                 int N = vectors.Length;
                 output = vectors[0];
                 for (int i = 1; i < N; i++)
+                {
                     output += vectors[i];
+                }
+
                 return output / N;
             }
 
@@ -294,7 +308,7 @@ namespace AI.MathMod.ML
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        static public double ManhattanDistance(Vector a, Vector b)
+        public static double ManhattanDistance(Vector a, Vector b)
         {
             return Functions.Summ(MathFunc.abs(a - b));
         }
@@ -305,7 +319,7 @@ namespace AI.MathMod.ML
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        static public double CorrDist(Vector a, Vector b)
+        public static double CorrDist(Vector a, Vector b)
         {
             double coef = Statistic.CorrelationCoefficient(a, b);
             return coef != 0 ? 1.0 / coef : 1e+200;

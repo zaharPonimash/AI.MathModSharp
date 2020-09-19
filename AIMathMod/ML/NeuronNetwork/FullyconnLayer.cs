@@ -98,7 +98,9 @@ namespace AI.MathMod.ML.NeuronNetwork
             Inp = new Vector(input.N);
 
             for (int i = 0; i < input.N; i++)
+            {
                 Inp[i] = input[i];
+            }
 
             OutputLayer = FActivation(Inp * W);
             return OutputLayer;
@@ -146,12 +148,14 @@ namespace AI.MathMod.ML.NeuronNetwork
         public virtual void Train()
         {
             for (int i = 0; i < OutputLayer.N; i++)
+            {
                 for (int j = 0; j < Inp.N; j++)
                 {
                     double c = moment * Last.Matr[j, i] + norm * Inp[j] * Delts[i];
                     W.Matr[j, i] -= c;
                     Last.Matr[j, i] = c;
                 }
+            }
         }
 
 

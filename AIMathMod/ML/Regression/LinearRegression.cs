@@ -90,7 +90,9 @@ namespace AI.MathMod.ML.Regression
             Vector outp = new Vector(X.N);
 
             for (int i = 0; i < X.N; i++)
+            {
                 outp[i] = Predict(X[i]);
+            }
 
             return outp;
         }

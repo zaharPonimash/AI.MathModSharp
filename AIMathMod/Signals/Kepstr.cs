@@ -23,7 +23,7 @@ namespace AI.MathMod.Signals
 		public static Vector FKT(Vector signal)
         {
             ComplexVector spectr = Furie.fft(signal);
-            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector() ^ 2);
+            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector().TransformVector(x => x * x));
             return Furie.fft(Aspectr).RealToVector() / Aspectr.N;
         }
 
@@ -37,7 +37,7 @@ namespace AI.MathMod.Signals
         public static Vector FKT(ComplexVector signal)
         {
             ComplexVector spectr = Furie.fft(signal);
-            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector() ^ 2);
+            Vector Aspectr = MathFunc.ln(spectr.MagnitudeToVector().TransformVector(x => x*x));
             return Furie.fft(Aspectr).RealToVector() / Aspectr.N;
         }
     }

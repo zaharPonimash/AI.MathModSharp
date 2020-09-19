@@ -168,7 +168,9 @@ namespace AI.MathMod
             Tensor C = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.DataInTensor.Length; i++)
+            {
                 C.DataInTensor[i] = A.DataInTensor[i] * k;
+            }
 
             return C;
         }
@@ -181,7 +183,9 @@ namespace AI.MathMod
             Tensor C = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.DataInTensor.Length; i++)
+            {
                 C.DataInTensor[i] = A.DataInTensor[i] - k;
+            }
 
             return C;
         }
@@ -194,7 +198,9 @@ namespace AI.MathMod
             Tensor C = new Tensor(A.Width, A.Height, A.Depth);
 
             for (int i = 0; i < A.DataInTensor.Length; i++)
+            {
                 C.DataInTensor[i] = A.DataInTensor[i] / k;
+            }
 
             return C;
         }

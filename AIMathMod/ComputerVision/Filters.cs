@@ -53,8 +53,9 @@ namespace AI.MathMod.ComputerVision
                     for (int k = 0; k < x; k++)
                     {
                         for (int z = 0; z < y; z++)
-
+                        {
                             newMatr.Matr[z + i, k + j] = FilterContrast(img, x, y, j, i)[z, k];
+                        }
                     }
                 }
             }
@@ -73,7 +74,9 @@ namespace AI.MathMod.ComputerVision
             Matrix newMatr = new Matrix(img.M, img.N);
 
             for (int i = 1; i < 5; i++)
+            {
                 newMatr += ContrastFilter(img, 4 * (i + 6), 4 * (i + 6));
+            }
 
             newMatr += FilterContrast(img, img.N, img.M, 0, 0);
 

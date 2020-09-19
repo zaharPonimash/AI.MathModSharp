@@ -100,7 +100,9 @@ namespace AI.MathMod.ML.NeuronNetwork
             for (int i = 0; i < vidTest.Count; i++)
             {
                 if (vidTest[i].ClassMark == GetClass(vidTest[i].InpVector))
+                {
                     corr++;
+                }
             }
 
             return corr / vidTest.Count;
@@ -122,7 +124,9 @@ namespace AI.MathMod.ML.NeuronNetwork
             {
                 index = vidTest[i].ClassMark;
                 if (index == GetClass(vidTest[i].InpVector))
+                {
                     corr[index]++;
+                }
 
                 N[index]++;
 

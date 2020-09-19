@@ -57,11 +57,14 @@ namespace AI.MathMod.Signals
             Vector f = Signal.Frequency(kw.N, fd);
 
             for (int i = 1; i < f.N / 2; i++)
+            {
                 kw[i] = 1.0 / (1 + j * Q * (f[i] / f0 - f0 / f[i]));
+            }
 
             for (int i = f.N / 2; i < f.N - 1; i++)
+            {
                 kw[i] = 1.0 / (1 + j * Q * (f[i] / (2 * f0) - (2 * f0) / f[i]));
-
+            }
 
             Sw = Sw * kw;
             newSt = Furie.ifft(Sw).RealToVector();
@@ -133,7 +136,10 @@ namespace AI.MathMod.Signals
 
             for (int i = 0; i < st.N; i++)
             {
-                if ((f.DataInVector[i] >= sr1) && (f.DataInVector[i] <= sr2)) kw.DataInVector[i] = 0;
+                if ((f.DataInVector[i] >= sr1) && (f.DataInVector[i] <= sr2))
+                {
+                    kw.DataInVector[i] = 0;
+                }
             }
 
             //kw.Visual(f);
@@ -159,7 +165,9 @@ namespace AI.MathMod.Signals
                 for (int i = 0; i < f.N; i++)
                 {
                     if ((f.DataInVector[i] >= param[0]) && (f.DataInVector[i] <= param[1]))
+                    {
                         kw.DataInVector[i] = 1;
+                    }
                 }
 
             }
@@ -183,7 +191,9 @@ namespace AI.MathMod.Signals
                 for (int i = 0; i < f.N; i++)
                 {
                     if ((f.DataInVector[i] >= param[0]) && (f.DataInVector[i] <= param[1]))
+                    {
                         kw.DataInVector[i] = 0;
+                    }
                 }
             }
 

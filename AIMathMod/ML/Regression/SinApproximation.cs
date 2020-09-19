@@ -128,7 +128,7 @@ namespace AI.MathMod.ML.Regression
                 Y.DataInVector[i] = ideal[i].DataInVector[0];
             }
 
-            E = (Y - Work(X, param)) ^ 2;
+            E = (Y - Work(X, param)).TransformVector(x => x * x);
             return Functions.Summ(E) / E.N;
         }
 

@@ -23,7 +23,7 @@ namespace AI.MathMod.Approximation
         /// <returns></returns>
         public static double SQE(Vector real, Vector approcs)
         {
-            Vector err = (real - approcs) ^ 2;
+            Vector err = (real - approcs).TransformVector(x => x * x);
             return Math.Sqrt(Functions.Summ(err) / err.N);
         }
 

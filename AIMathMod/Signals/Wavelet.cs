@@ -56,7 +56,9 @@ namespace AI.MathMod.Signals
         private static List<double> DirectTransform(List<double> SourceList)
         {
             if (SourceList.Count == 1)
+            {
                 return SourceList;
+            }
 
             List<double> RetVal = new List<double>();
             List<double> TmpArr = new List<double>();
@@ -75,13 +77,17 @@ namespace AI.MathMod.Signals
         private static List<double> InverseTransform(List<double> SourceList)
         {
             if (SourceList.Count == 1)
+            {
                 return SourceList;
+            }
 
             List<double> RetVal = new List<double>();
             List<double> TmpPart = new List<double>();
 
             for (int i = SourceList.Count / 2; i < SourceList.Count; i++)
+            {
                 TmpPart.Add(SourceList[i]);
+            }
 
             List<double> SecondPart = InverseTransform(TmpPart);
 

@@ -22,7 +22,7 @@ namespace AI.MathMod
         /// <summary>
         /// Прямая свертка 
         /// </summary>
-        static public Vector DirectConvolution(Vector A, Vector B)
+        public static Vector DirectConvolution(Vector A, Vector B)
         {
             int nMax = A.N + B.N - 1;
             Vector st, ht;
@@ -45,7 +45,7 @@ namespace AI.MathMod
         /// <summary>
         /// Прямая свертка комплексный вектор
         /// </summary>
-        static public ComplexVector DirectConvolution(ComplexVector A, ComplexVector B)
+        public static ComplexVector DirectConvolution(ComplexVector A, ComplexVector B)
         {
             int nMax = A.N + B.N - 1;
             ComplexVector st, ht;
@@ -66,7 +66,7 @@ namespace AI.MathMod
         /// <summary>
         /// Прямая свертка комплексный и реальный вектор
         /// </summary>
-        static public ComplexVector DirectConvolution(ComplexVector A, Vector B)
+        public static ComplexVector DirectConvolution(ComplexVector A, Vector B)
         {
             int nMax = A.N + B.N - 1;
             ComplexVector st;
@@ -89,7 +89,7 @@ namespace AI.MathMod
         /// <summary>
         /// Круговая свертка 
         /// </summary>
-        static public Vector СircularConvolution(Vector A, Vector B)
+        public static Vector СircularConvolution(Vector A, Vector B)
         {
             if (A.N == B.N)
             {
@@ -117,7 +117,7 @@ namespace AI.MathMod
         /// <summary>
         /// Круговая свертка комплексный вектор
         /// </summary>
-        static public ComplexVector СircularConvolution(ComplexVector A, ComplexVector B)
+        public static ComplexVector СircularConvolution(ComplexVector A, ComplexVector B)
         {
             if (A.N == B.N)
             {

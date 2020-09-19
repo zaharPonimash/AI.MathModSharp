@@ -190,7 +190,9 @@ namespace AI.MathMod.ML.Classifire
             output = vectors[0];
 
             for (int i = 1; i < N; i++)
+            {
                 output += vectors[i];
+            }
 
             return output / N;
         }
@@ -378,7 +380,10 @@ namespace AI.MathMod.ML.Classifire
         {
 
             for (int i = 0; i < _classes._classes.Count; i++)
+            {
                 _classes._classes[i].Probability = CorrelationMetric(inp, _classes._classes[i]._centGiperSfer); // Вычисление билжайшего центра	
+            }
+
             _classes._classes.Sort((a, b) => a.Probability.CompareTo(b.Probability) * -1);
             return _classes._classes[0].StrName;
         }
@@ -392,7 +397,10 @@ namespace AI.MathMod.ML.Classifire
         {
 
             for (int i = 0; i < _classes._classes.Count; i++)
+            {
                 _classes._classes[i].Probability = CorrelationMetric(inp, _classes._classes[i]._centGiperSfer); // Вычисление билжайшего центра	
+            }
+
             _classes._classes.Sort((a, b) => a.Probability.CompareTo(b.Probability) * -1);
             return _classes._classes[0];
         }

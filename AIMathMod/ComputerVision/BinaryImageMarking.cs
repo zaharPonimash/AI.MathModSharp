@@ -106,6 +106,7 @@ namespace AI.MathMod.ComputerVision
             int nxa, nya;
 
             for (int i = -4; i < 8; i++)
+            {
                 for (int j = -4; j < 8; j++)
                 {
                     if (i != 0 && j != 0)
@@ -123,6 +124,7 @@ namespace AI.MathMod.ComputerVision
                         }
                     }
                 }
+            }
 
             return false;
         }
@@ -130,18 +132,38 @@ namespace AI.MathMod.ComputerVision
         private int nX(int ox)
         {
             int nx;
-            if (ox < 0) nx = 0;
-            else if (ox >= m) nx = m - 1;
-            else nx = ox;
+            if (ox < 0)
+            {
+                nx = 0;
+            }
+            else if (ox >= m)
+            {
+                nx = m - 1;
+            }
+            else
+            {
+                nx = ox;
+            }
+
             return nx;
         }
 
         private int nY(int oy)
         {
             int ny;
-            if (oy < 0) ny = 0;
-            else if (oy >= m) ny = m - 1;
-            else ny = oy;
+            if (oy < 0)
+            {
+                ny = 0;
+            }
+            else if (oy >= m)
+            {
+                ny = m - 1;
+            }
+            else
+            {
+                ny = oy;
+            }
+
             return ny;
         }
 

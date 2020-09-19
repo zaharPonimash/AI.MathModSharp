@@ -34,7 +34,10 @@ namespace AI.MathMod
             for (int i = 1; i < 40; i++)
             {
                 pow = (int)Math.Pow(2, i);
-                if (n <= pow) return pow;
+                if (n <= pow)
+                {
+                    return pow;
+                }
             }
 
             return -1;
@@ -52,7 +55,9 @@ namespace AI.MathMod
             double summ = 0;
 
             for (int i = 0; i < mass.Length; i++)
+            {
                 summ += mass[i];
+            }
 
             return summ;
         }
@@ -86,7 +91,9 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < n; i++)
+            {
                 summ += vect.DataInVector[i];
+            }
 
             return summ;
         }
@@ -101,7 +108,9 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < n; i++)
+            {
                 summ += vect.DataInVector[i];
+            }
 
             return summ;
         }
@@ -115,7 +124,9 @@ namespace AI.MathMod
             int summ = 0;
 
             for (int i = 0; i < mass.Length; i++)
+            {
                 summ += mass[i];
+            }
 
             return summ;
         }
@@ -184,7 +195,10 @@ namespace AI.MathMod
 
             for (int i = 0; i < B.N; i++, beg++)
             {
-                if (A.DataInVector[i] >= a) break;
+                if (A.DataInVector[i] >= a)
+                {
+                    break;
+                }
             }
 
 
@@ -192,7 +206,10 @@ namespace AI.MathMod
             {
                 C = A.CutAndZero(i + 1);
                 B.DataInVector[i] = Summ(C);
-                if (A.DataInVector[i] >= b) break;
+                if (A.DataInVector[i] >= b)
+                {
+                    break;
+                }
             }
 
             return B.DataInVector[B.N - 1] - B.DataInVector[0];
@@ -323,7 +340,10 @@ namespace AI.MathMod
             {
                 C = A.CutAndZero(i + 1);
                 B.DataInVector[i] = Summ(C);
-                if (A.DataInVector[i] >= b) break;
+                if (A.DataInVector[i] >= b)
+                {
+                    break;
+                }
             }
 
             return B.DataInVector[B.N - 1] - B.DataInVector[0];
@@ -382,7 +402,10 @@ namespace AI.MathMod
         {
             Vector B = A.Copy();
             for (int i = 0; i < k; i++)
+            {
                 B = Integral(B);
+            }
+
             return B;
         }
 
@@ -398,7 +421,10 @@ namespace AI.MathMod
         {
             ComplexVector B = A.Copy();
             for (int i = 0; i < k; i++)
+            {
                 B = Integral(B);
+            }
+
             return B;
         }
 
@@ -414,7 +440,10 @@ namespace AI.MathMod
         {
             ComplexVector B = A.Copy();
             for (int j = 0; j < i; j++)
+            {
                 B = Diff(B);
+            }
+
             return B;
         }
 
@@ -429,7 +458,10 @@ namespace AI.MathMod
         {
             Vector B = A.Copy();
             for (int j = 0; j < i; j++)
+            {
                 B = Diff(B);
+            }
+
             return B;
         }
 
@@ -472,7 +504,9 @@ namespace AI.MathMod
             double multipl = 1;
 
             for (int i = 0; i < mass.Length; i++)
+            {
                 multipl *= mass[i];
+            }
 
             return multipl;
         }
@@ -489,7 +523,9 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < n; i++)
+            {
                 multipl *= vect.DataInVector[i];
+            }
 
             return multipl;
         }
@@ -503,7 +539,9 @@ namespace AI.MathMod
             int multipl = 1;
 
             for (int i = 0; i < mass.Length; i++)
+            {
                 multipl *= mass[i];
+            }
 
             return multipl;
         }

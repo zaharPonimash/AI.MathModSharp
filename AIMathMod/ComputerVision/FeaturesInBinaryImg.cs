@@ -127,7 +127,9 @@ namespace AI.MathMod.ComputerVision
                 {
 
                     if (img[i, j] < 0.5)
+                    {
                         pointList.Add(new Complex(j, i));
+                    }
                 }
             }
 

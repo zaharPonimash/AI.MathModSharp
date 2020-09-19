@@ -123,7 +123,11 @@ namespace AI.MathMod
             int n2 = vectorReal.Length;
 
             string exceptionStr = string.Format("Длины массивов не совпадают, n1 = {0}, n2 = {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Остаток от деления");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Остаток от деления");
+            }
+
             _vector = new Complex[n1];
 
 
@@ -148,12 +152,22 @@ namespace AI.MathMod
 
             if (n > _n)
             {
-                for (int i = 0; i < _n; i++) newVect[i] = _vector[i];
-                for (int i = _n; i < n; i++) newVect[i] = new Complex(0, 0);
+                for (int i = 0; i < _n; i++)
+                {
+                    newVect[i] = _vector[i];
+                }
+
+                for (int i = _n; i < n; i++)
+                {
+                    newVect[i] = new Complex(0, 0);
+                }
             }
             else
             {
-                for (int i = 0; i < n; i++) newVect[i] = _vector[i];
+                for (int i = 0; i < n; i++)
+                {
+                    newVect[i] = _vector[i];
+                }
             }
 
             return new ComplexVector(newVect);
@@ -177,9 +191,16 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно перемножить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Перемножение");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Перемножение");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] * B._vector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] * B._vector[i];
+            }
 
             return C;
         }
@@ -195,9 +216,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно сложить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Сложение");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Сложение");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] + B._vector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] + B._vector[i];
+            }
+
             return C;
         }
 
@@ -214,9 +243,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно деление векторов, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Деление");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Деление");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] / B._vector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] / B._vector[i];
+            }
+
             return C;
         }
 
@@ -231,9 +268,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Вычитание");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Вычитание");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] - B._vector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] - B._vector[i];
+            }
+
             return C;
         }
 
@@ -251,9 +296,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B.N;
             string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Вычитание");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Вычитание");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] * B.DataInVector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] * B.DataInVector[i];
+            }
+
             return C;
         }
 
@@ -269,9 +322,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B.N;
             string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Вычитание");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Вычитание");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = A._vector[i] * B.DataInVector[i];
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = A._vector[i] * B.DataInVector[i];
+            }
+
             return C;
         }
 
@@ -286,7 +347,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k * A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k * A._vector[i];
+            }
+
             return C;
         }
 
@@ -301,7 +366,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k - A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k - A._vector[i];
+            }
+
             return C;
         }
 
@@ -315,7 +384,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = A._vector[i] - k;
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = A._vector[i] - k;
+            }
+
             return C;
         }
 
@@ -330,7 +403,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k - A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k - A._vector[i];
+            }
+
             return C;
         }
 
@@ -344,7 +421,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = A._vector[i] - k;
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = A._vector[i] - k;
+            }
+
             return C;
         }
 
@@ -358,7 +439,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k + A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k + A._vector[i];
+            }
+
             return C;
         }
 
@@ -372,7 +457,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = A._vector[i] + k;
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = A._vector[i] + k;
+            }
+
             return C;
         }
 
@@ -387,7 +476,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k + A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k + A._vector[i];
+            }
+
             return C;
         }
 
@@ -401,7 +494,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = A._vector[i] - k;
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = A._vector[i] - k;
+            }
+
             return C;
         }
 
@@ -427,7 +524,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k * A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k * A._vector[i];
+            }
+
             return C;
         }
 
@@ -443,7 +544,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = k / A._vector[i];
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = k / A._vector[i];
+            }
+
             return C;
         }
 
@@ -457,7 +562,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = A._vector[i] / k;
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = A._vector[i] / k;
+            }
+
             return C;
         }
 
@@ -475,7 +584,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = Complex.Pow(A._vector[i], k);
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = Complex.Pow(A._vector[i], k);
+            }
+
             return C;
         }
 
@@ -490,7 +603,11 @@ namespace AI.MathMod
         {
             int n = A._n;
             ComplexVector C = new ComplexVector(n);
-            for (int i = 0; i < n; i++) C._vector[i] = Complex.Conjugate(A._vector[i]);
+            for (int i = 0; i < n; i++)
+            {
+                C._vector[i] = Complex.Conjugate(A._vector[i]);
+            }
+
             return C;
         }
 
@@ -507,9 +624,17 @@ namespace AI.MathMod
             int n1 = A._n;
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно выполнить операцию A^B, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2) throw new ArgumentException(exceptionStr, "Степень");
+            if (n1 != n2)
+            {
+                throw new ArgumentException(exceptionStr, "Степень");
+            }
+
             ComplexVector C = new ComplexVector(n1);
-            for (int i = 0; i < n1; i++) C._vector[i] = Complex.Pow(A._vector[i], B._vector[i]);
+            for (int i = 0; i < n1; i++)
+            {
+                C._vector[i] = Complex.Pow(A._vector[i], B._vector[i]);
+            }
+
             return C;
         }
 
@@ -553,7 +678,11 @@ namespace AI.MathMod
         {
             ComplexVector A = new ComplexVector(_n);
 
-            for (int i = 0; i < _n; i++) A._vector[i] = _vector[i];
+            for (int i = 0; i < _n; i++)
+            {
+                A._vector[i] = _vector[i];
+            }
+
             return A;
         }
 
@@ -565,7 +694,11 @@ namespace AI.MathMod
         public ComplexVector Revers()
         {
             Complex[] newVect = new Complex[_n];
-            for (int i = 0; i < _n; i++) newVect[i] = _vector[_n - i - 1];
+            for (int i = 0; i < _n; i++)
+            {
+                newVect[i] = _vector[_n - i - 1];
+            }
+
             return new ComplexVector(newVect);
         }
 
@@ -586,9 +719,15 @@ namespace AI.MathMod
             int N = _n + valueShift;
             Complex[] newVect = new Complex[N];
 
-            for (int i = 0; i < valueShift; i++) newVect[i] = new Complex(0, 0);
-            for (int i = valueShift; i < N; i++) newVect[i] = _vector[i - valueShift];
+            for (int i = 0; i < valueShift; i++)
+            {
+                newVect[i] = new Complex(0, 0);
+            }
 
+            for (int i = valueShift; i < N; i++)
+            {
+                newVect[i] = _vector[i - valueShift];
+            }
 
             return new ComplexVector(newVect);
         }
@@ -617,7 +756,10 @@ namespace AI.MathMod
         {
             Vector A = new Vector(_n);
 
-            for (int i = 0; i < _n; i++) A.DataInVector[i] = _vector[i].Imaginary;
+            for (int i = 0; i < _n; i++)
+            {
+                A.DataInVector[i] = _vector[i].Imaginary;
+            }
 
             return A;
         }
@@ -631,7 +773,10 @@ namespace AI.MathMod
         {
             Vector A = new Vector(_n);
 
-            for (int i = 0; i < _n; i++) A.DataInVector[i] = _vector[i].Real;
+            for (int i = 0; i < _n; i++)
+            {
+                A.DataInVector[i] = _vector[i].Real;
+            }
 
             return A;
         }
@@ -647,7 +792,10 @@ namespace AI.MathMod
         {
             Vector A = new Vector(_n);
 
-            for (int i = 0; i < _n; i++) A[i] = _vector[i].Phase;
+            for (int i = 0; i < _n; i++)
+            {
+                A[i] = _vector[i].Phase;
+            }
 
             return A;
         }
@@ -662,7 +810,10 @@ namespace AI.MathMod
         {
             Vector A = new Vector(_n);
 
-            for (int i = 0; i < _n; i++) A.DataInVector[i] = _vector[i].Magnitude;
+            for (int i = 0; i < _n; i++)
+            {
+                A.DataInVector[i] = _vector[i].Magnitude;
+            }
 
             return A;
         }
@@ -679,8 +830,14 @@ namespace AI.MathMod
         {
             ComplexVector C;
 
-            if (_n % kDecim == 0) C = new ComplexVector(_n / kDecim);
-            else C = new ComplexVector(_n / kDecim + 1);
+            if (_n % kDecim == 0)
+            {
+                C = new ComplexVector(_n / kDecim);
+            }
+            else
+            {
+                C = new ComplexVector(_n / kDecim + 1);
+            }
 
             int k = 0;
 

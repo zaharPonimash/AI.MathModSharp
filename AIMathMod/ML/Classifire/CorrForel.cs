@@ -157,7 +157,12 @@ namespace AI.MathMod.ML
                 List<Vector> OUT = new List<Vector>();
 
                 foreach (Vector i in mass)
-                    if (Distance.CorrDist(m, i) <= R) OUT.Add(i); // проведение окружности
+                {
+                    if (Distance.CorrDist(m, i) <= R)
+                    {
+                        OUT.Add(i); // проведение окружности
+                    }
+                }
 
                 return OUT.ToArray();
             }
@@ -176,7 +181,10 @@ namespace AI.MathMod.ML
                     d = Distance.CorrDist(mass[i], m);
 
                     //d = Distance.ManhattanDistance(mass[i],m);
-                    if (max < d) max = d;
+                    if (max < d)
+                    {
+                        max = d;
+                    }
                 }
                 return max;
             }
@@ -209,7 +217,10 @@ namespace AI.MathMod.ML
                         }
                     }
 
-                    if (flag) C.Add(A[i]);
+                    if (flag)
+                    {
+                        C.Add(A[i]);
+                    }
                 }
 
                 return C.ToArray();
@@ -230,7 +241,10 @@ namespace AI.MathMod.ML
                 int N = vectors.Length;
                 output = vectors[0];
                 for (int i = 1; i < N; i++)
+                {
                     output += vectors[i];
+                }
+
                 return output / N;
             }
 

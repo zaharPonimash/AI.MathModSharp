@@ -53,12 +53,14 @@ namespace AI.MathMod.ML.NeuronNetwork
         public override void Train()
         {
             for (int i = 0; i < OutputLayer.N; i++)
+            {
                 for (int j = 0; j < Inp.N; j++)
                 {
                     double c = (W[j, i] == 0) ? 0 : moment * Last[j, i] + (1 - moment) * norms[i] * Inp[j] * Delts[i];
                     W[j, i] -= c;
                     Last.Matr[j, i] = c;
                 }
+            }
         }
     }
 
@@ -108,14 +110,18 @@ namespace AI.MathMod.ML.NeuronNetwork
         {
             int matrixNdim = 0;
             for (int i = 0; i < capsules.Length; i++)
+            {
                 matrixNdim += capsules[i].neuronCount;
+            }
 
             double[] norms = new double[matrixNdim];
 
             for (int i = 0, k = 0, acc = 0; i < matrixNdim; i++)
             {
                 if (i < acc + capsules[k].neuronCount)
+                {
                     norms[i] = capsules[k].norm;
+                }
                 else
                 {
                     acc += capsules[k].neuronCount;
@@ -141,7 +147,9 @@ namespace AI.MathMod.ML.NeuronNetwork
             double scale = 0.0;
 
             for (int i = 0; i < capsules.Length; i++)
+            {
                 matrixNdim += capsules[i].neuronCount;
+            }
 
             Matrix w = new Matrix
             (capsules[capsules.Length - 1].inputEndInterval + 1, matrixNdim);
@@ -149,6 +157,7 @@ namespace AI.MathMod.ML.NeuronNetwork
 
             // Заполнение весами
             for (int i = 0, k = 0, acc = 0; i < w.M; i++)
+            {
                 for (int j = 0; j < w.N; j++)
                 {
                     if (j < acc + capsules[k].neuronCount)
@@ -157,8 +166,9 @@ namespace AI.MathMod.ML.NeuronNetwork
                         scale = 1.0 / (capsules[k].inputEndInterval - capsules[k].inputStartInterval);
 
                         if (i >= capsules[k].inputStartInterval && i <= capsules[k].inputEndInterval)
+                        {
                             w[i, j] = (sempl != 0) ? sempl * scale : rnd.NextDouble() * scale;
-
+                        }
                     }
                     else
                     {
@@ -168,10 +178,12 @@ namespace AI.MathMod.ML.NeuronNetwork
                         scale = 1.0 / (capsules[k].inputEndInterval - capsules[k].inputStartInterval);
 
                         if (i >= capsules[k].inputStartInterval && i <= capsules[k].inputEndInterval)
+                        {
                             w[i, j] = (sempl != 0) ? sempl * scale : rnd.NextDouble() * scale;
+                        }
                     }
                 }
-
+            }
 
             return w;
         }

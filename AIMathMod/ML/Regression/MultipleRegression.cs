@@ -107,16 +107,20 @@ namespace AI.MathMod.ML.Regression
             double c = 0;
 
             for (int i = 0; i < m; i++)
+            {
                 for (int j = 0; j < m; j++)
                 {
 
                     c = 0;
 
                     for (int k = 0; k < n; k++)
+                    {
                         c += _x[k][i] * _x[k][j];
+                    }
 
                     A[i, j] = c;
                 }
+            }
         }
 
 
@@ -133,7 +137,9 @@ namespace AI.MathMod.ML.Regression
                 c = 0;
 
                 for (int j = 0; j < n; j++)
+                {
                     c += _x[j][i] * _y[j];
+                }
 
                 B[i] = c;
             }

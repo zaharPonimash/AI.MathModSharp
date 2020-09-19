@@ -118,7 +118,9 @@ namespace AI.MathMod.ML.NeuronNetwork
             Vector outp = _layers[0].Output(input);
 
             for (int i = 1; i < _layers.Count; i++)
+            {
                 outp = _layers[i].Output(outp);
+            }
 
             return outp;
         }
@@ -149,11 +151,14 @@ namespace AI.MathMod.ML.NeuronNetwork
 
 
             for (int i = _layers.Count - 2; i >= 0; i--)
+            {
                 _layers[i].DeltH(_layers[i + 1]);
-
+            }
 
             for (int i = 0; i < _layers.Count; i++)
+            {
                 _layers[i].Train();
+            }
 
             return _layers[_layers.Count - 1].Eps;
         }
@@ -172,11 +177,14 @@ namespace AI.MathMod.ML.NeuronNetwork
 
 
             for (int i = _layers.Count - 2; i >= 0; i--)
+            {
                 _layers[i].DeltH(_layers[i + 1]);
-
+            }
 
             for (int i = 0; i < _layers.Count; i++)
+            {
                 _layers[i].Train();
+            }
 
             return _layers[_layers.Count - 1].Eps;
         }

@@ -53,7 +53,8 @@ namespace AI.MathMod
         /// </summary>
         /// <param name="i">Индекс</param>
         /// <returns>Значение вектора</returns>
-        public double this[int i] {
+        public double this[int i]
+        {
             get => _vector[i];
             set => _vector[i] = value;
         }
@@ -145,7 +146,9 @@ namespace AI.MathMod
                 strs = File.ReadAllText(textPath).Replace("\0", "").Split(separator);
             }
             else
+            {
                 strs = File.ReadAllLines(textPath);
+            }
 
             StrInit(strs);
         }
@@ -182,10 +185,15 @@ namespace AI.MathMod
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно перемножить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
             if (n1 != n2)
+            {
                 throw new ArgumentException(exceptionStr, "Перемножение");
+            }
+
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] * B._vector[i];
+            }
 
             return C;
         }
@@ -202,10 +210,16 @@ namespace AI.MathMod
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно сложить вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
             if (n1 != n2)
+            {
                 throw new ArgumentException(exceptionStr, "Сложение");
+            }
+
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] + B._vector[i];
+            }
+
             return C;
         }
 
@@ -222,7 +236,10 @@ namespace AI.MathMod
             int n1 = A._n;
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] + k;
+            }
+
             return C;
         }
 
@@ -238,7 +255,10 @@ namespace AI.MathMod
             int n1 = A._n;
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] + k;
+            }
+
             return C;
         }
 
@@ -258,7 +278,10 @@ namespace AI.MathMod
             int n1 = A._n;
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = k - A._vector[i];
+            }
+
             return C;
         }
 
@@ -275,7 +298,10 @@ namespace AI.MathMod
             int n1 = A._n;
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] - k;
+            }
+
             return C;
         }
 
@@ -303,10 +329,16 @@ namespace AI.MathMod
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно деление векторов, длинна одного вектора {0}, а второго {1}", n1, n2);
             if (n1 != n2)
+            {
                 throw new ArgumentException(exceptionStr, "Деление");
+            }
+
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] / B._vector[i];
+            }
+
             return C;
         }
 
@@ -322,10 +354,16 @@ namespace AI.MathMod
             int n2 = B._n;
             string exceptionStr = string.Format("Невозможно вычесть вектора, длинна одного вектора {0}, а второго {1}", n1, n2);
             if (n1 != n2)
+            {
                 throw new ArgumentException(exceptionStr, "Вычитание");
+            }
+
             Vector C = new Vector(n1);
             for (int i = 0; i < n1; i++)
+            {
                 C._vector[i] = A._vector[i] - B._vector[i];
+            }
+
             return C;
         }
 
@@ -341,7 +379,10 @@ namespace AI.MathMod
             int n = A._n;
             Vector C = new Vector(n);
             for (int i = 0; i < n; i++)
+            {
                 C._vector[i] = k * A._vector[i];
+            }
+
             return C;
         }
 
@@ -356,7 +397,10 @@ namespace AI.MathMod
             int n = A._n;
             Vector C = new Vector(n);
             for (int i = 0; i < n; i++)
+            {
                 C._vector[i] = k * A._vector[i];
+            }
+
             return C;
         }
 
@@ -373,7 +417,10 @@ namespace AI.MathMod
             int n = A._n;
             Vector C = new Vector(n);
             for (int i = 0; i < n; i++)
+            {
                 C._vector[i] = k / A._vector[i];
+            }
+
             return C;
         }
 
@@ -388,153 +435,13 @@ namespace AI.MathMod
             int n = A._n;
             Vector C = new Vector(n);
             for (int i = 0; i < n; i++)
+            {
                 C._vector[i] = A._vector[i] / k;
+            }
+
             return C;
         }
 
-
-
-
-
-        /// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator ^(Vector A, double k)
-        {
-            int n = A._n;
-            Vector C = new Vector(n);
-            for (int i = 0; i < n; i++)
-                C._vector[i] = Math.Pow(A._vector[i], k);
-            return C;
-        }
-
-
-
-        /// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
-        public static Vector operator ^(double k, Vector A)
-        {
-            int n = A._n;
-            Vector C = new Vector(n);
-            for (int i = 0; i < n; i++)
-                C._vector[i] = Math.Pow(k, A._vector[i]);
-            return C;
-        }
-
-
-
-        /// <summary>
-        /// Возведение в степень
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator ^(Vector A, Vector B)
-        {
-            int n1 = A._n;
-            int n2 = B._n;
-            string exceptionStr = string.Format("Невозможно выполнить операцию A^B, длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2)
-                throw new ArgumentException(exceptionStr, "Степень");
-            Vector C = new Vector(n1);
-            for (int i = 0; i < n1; i++)
-                C._vector[i] = Math.Pow(A._vector[i], B._vector[i]);
-            return C;
-        }
-
-
-
-        /// <summary>
-        /// Остаток от деления
-        /// </summary>
-        /// <param name="k"></param>
-        /// <param name="A"></param>
-        /// <returns></returns>
-        public static Vector operator %(Vector A, double k)
-        {
-            int n = A._n;
-            Vector C = new Vector(n);
-            for (int i = 0; i < n; i++)
-                C._vector[i] = A._vector[i] % k;
-            return C;
-        }
-
-        /// <summary>
-        /// Остаток от деления
-        /// </summary>
-        /// <param name="k"></param>
-        /// <param name="A"></param>
-        /// <returns></returns>
-        public static Vector operator %(double k, Vector A)
-        {
-            int n = A._n;
-            Vector C = new Vector(n);
-            for (int i = 0; i < n; i++)
-                C._vector[i] = k % A._vector[i];
-            return C;
-        }
-
-
-
-        /// <summary>
-        /// Остаток от деления поэлементно
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator %(Vector A, Vector B)
-        {
-            int n1 = A._n;
-            int n2 = B._n;
-            string exceptionStr = string.Format("Длинна одного вектора {0}, а второго {1}", n1, n2);
-            if (n1 != n2)
-                throw new ArgumentException(exceptionStr, "Остаток от деления");
-            Vector C = new Vector(n1);
-            for (int i = 0; i < n1; i++)
-                C._vector[i] = A._vector[i] % B._vector[i];
-            return C;
-        }
-
-
-
-        /// <summary>
-        /// Свертка
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator &(Vector A, Vector B)
-        {
-            return Convolution.DirectConvolution(A, B);
-        }
-
-        /// <summary>
-        /// Корреляция
-        /// </summary>
-        /// <param name="A"></param>
-        /// <param name="B"></param>
-        /// <returns></returns>
-        public static Vector operator |(Vector A, Vector B)
-        {
-            return Correlation.CrossCorrelation(A, B);
-        }
-
-        /// <summary>
-        /// Автокорреляция
-        /// </summary>
-        /// <param name="A"></param>
-        /// <returns></returns>
-        public static Vector operator !(Vector A)
-        {
-            return Correlation.AutoCorrelation(A);
-        }
 
         /// <summary>
         /// Проверка равенства
@@ -545,7 +452,9 @@ namespace AI.MathMod
         public static bool operator ==(Vector A, Vector B)
         {
             if (A._n != B._n)
+            {
                 return false;
+            }
 
             bool flag = true;
 
@@ -624,7 +533,9 @@ namespace AI.MathMod
             for (int i = 0; i < _n; i++)
             {
                 if (Math.Abs(_vector[i] - value) < value / 1e+7)
+                {
                     return i;
+                }
             }
 
             return -1;
@@ -664,10 +575,18 @@ namespace AI.MathMod
 
 
                 for (int j = i; j < dif.N; j++)
+                {
                     if (dif[i] > treshHold)
+                    {
                         outp[j] = DataInVector[j - 1] + dif[i];
+                    }
+                }
 
-                if (dif[i] <= treshHold) outp[i] = DataInVector[i];
+                if (dif[i] <= treshHold)
+                {
+                    outp[i] = DataInVector[i];
+                }
+
                 dif = Functions.Diff(outp);
             }
 
@@ -783,7 +702,10 @@ namespace AI.MathMod
             Vector A = new Vector(_n);
 
             for (int i = 0; i < _n; i++)
+            {
                 A._vector[i] = _vector[i];
+            }
+
             return A;
         }
 
@@ -814,10 +736,14 @@ namespace AI.MathMod
             Vector newVector = new Vector(n2);
 
             for (int i = 0; i < _n; i++)
+            {
                 newVector[i] = _vector[i];
+            }
 
             for (int i = _n; i < n2; i++)
+            {
                 newVector[i] = _vector[n2 - i - 1];
+            }
 
             return newVector;
         }
@@ -846,7 +772,10 @@ namespace AI.MathMod
         {
             double[] newVect = new double[_n];
             for (int i = 0; i < _n; i++)
+            {
                 newVect[i] = _vector[_n - i - 1];
+            }
+
             return new Vector(newVect);
         }
 
@@ -868,14 +797,21 @@ namespace AI.MathMod
             if (n > _n)
             {
                 for (int i = 0; i < _n; i++)
+                {
                     newVect[i] = _vector[i];
+                }
+
                 for (int i = _n; i < n; i++)
+                {
                     newVect[i] = 0;
+                }
             }
             else
             {
                 for (int i = 0; i < n; i++)
+                {
                     newVect[i] = _vector[i];
+                }
             }
 
             return new Vector(newVect);
@@ -898,10 +834,14 @@ namespace AI.MathMod
             double[] newVect = new double[N];
 
             for (int i = 0; i < valueShift; i++)
+            {
                 newVect[i] = 0.0;
-            for (int i = valueShift; i < N; i++)
-                newVect[i] = _vector[i - valueShift];
+            }
 
+            for (int i = valueShift; i < N; i++)
+            {
+                newVect[i] = _vector[i - valueShift];
+            }
 
             return new Vector(newVect);
         }
@@ -918,7 +858,10 @@ namespace AI.MathMod
             //if(_n>=32760)throw new ArgumentException("размерность не позволяет преобразовать вектор в матрицу", "Преобразование");
             double[,] matrix = new double[1, _n];
             for (int i = 0; i < _n; i++)
+            {
                 matrix[0, i] = _vector[i];
+            }
+
             return new Matrix(matrix);
         }
 
@@ -935,9 +878,13 @@ namespace AI.MathMod
             Vector C;
 
             if (_n % kDecim == 0)
+            {
                 C = new Vector(_n / kDecim);
+            }
             else
+            {
                 C = new Vector(_n / kDecim + 1);
+            }
 
             int k = 0;
 
@@ -997,7 +944,9 @@ namespace AI.MathMod
             for (int i = 0; i < _n; i++)
             {
                 if (Math.Abs(_vector[i]) > 1e-300)
+                {
                     is0 = false;
+                }
             }
 
             return is0;
@@ -1015,7 +964,9 @@ namespace AI.MathMod
             for (int i = 0; i < _n; i++)
             {
                 if (Math.Abs(_vector[i]) < 1e-300)
+                {
                     count++;
+                }
             }
 
             return count > n;
@@ -1065,7 +1016,10 @@ namespace AI.MathMod
         {
             string str = "";
             foreach (double i in _vector)
+            {
                 str += " " + i;
+            }
+
             return str.Trim();
         }
 
@@ -1205,7 +1159,9 @@ namespace AI.MathMod
             int n = 0;
 
             for (int i = 0; i < vectors.Length; i++)
+            {
                 n += vectors[i].N;
+            }
 
             Vector resultVector = new Vector(n);
 
@@ -1601,7 +1557,9 @@ namespace AI.MathMod
                 {
                     dif = _vector[i] - value;
                     if (dif >= 0 && dif < eps)
+                    {
                         return i;
+                    }
                 }
 
                 return -1;
@@ -1615,7 +1573,9 @@ namespace AI.MathMod
                 {
                     dif = _vector[i] - value;
                     if (dif <= 0 && dif > mEps)
+                    {
                         return i;
+                    }
                 }
 
                 return -1;
@@ -1629,7 +1589,9 @@ namespace AI.MathMod
                 {
                     dif = Math.Abs(_vector[i] - value);
                     if (dif < eps)
+                    {
                         return i;
+                    }
                 }
 
                 return -1;
@@ -1655,7 +1617,10 @@ namespace AI.MathMod
                 for (int i = 0; i < _n; i++)
                 {
                     dif = _vector[i] - value;
-                    if (dif >= 0 && dif < eps) vs.Add(i);
+                    if (dif >= 0 && dif < eps)
+                    {
+                        vs.Add(i);
+                    }
                 }
 
             }
@@ -1668,7 +1633,9 @@ namespace AI.MathMod
                 {
                     dif = _vector[i] - value;
                     if (dif <= 0 && dif > mEps)
+                    {
                         vs.Add(i);
+                    }
                 }
 
 
@@ -1682,7 +1649,9 @@ namespace AI.MathMod
                 {
                     dif = Math.Abs(_vector[i] - value);
                     if (dif < eps)
+                    {
                         vs.Add(i);
+                    }
                 }
 
             }

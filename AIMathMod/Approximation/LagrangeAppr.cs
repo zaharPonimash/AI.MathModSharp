@@ -77,7 +77,9 @@ namespace AI.MathMod.Approximation
 
             Vector[] vect = new Vector[X.N];
             for (int i = 0; i < X.N; i++)
+            {
                 vect[i] = ExtensionOfFeatureSpace.Polinomial(X[i], X.N - 1);
+            }
 
             for (int i = 0; i < X.N; i++)
             {

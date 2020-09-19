@@ -27,7 +27,9 @@ namespace AI.MathMod.ML.Regression
             Vector[] vects = new Vector[inp.N];
 
             for (int i = 0; i < inp.N; i++)
+            {
                 vects[i] = ExtensionOfFeatureSpace.Polinomial(inp[i], nPoly);
+            }
 
             mR = new MultipleRegression(vects, outp);
         }
@@ -51,7 +53,10 @@ namespace AI.MathMod.ML.Regression
         {
             Vector outp = new Vector(vect.N);
 
-            for (int i = 0; i < vect.N; i++) outp[i] = Predict(vect[i]);
+            for (int i = 0; i < vect.N; i++)
+            {
+                outp[i] = Predict(vect[i]);
+            }
 
             return outp;
         }

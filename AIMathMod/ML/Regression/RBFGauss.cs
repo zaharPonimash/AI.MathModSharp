@@ -64,7 +64,9 @@ namespace AI.MathMod.ML.Regression
 
             Vector[] vect = new Vector[n];
             for (int i = 0; i < n; i++)
+            {
                 vect[i] = ExtensionOfFeatureSpace.GaussRBF(newX[i], newX, sigma);
+            }
 
             for (int i = 0; i < n; i++)
             {
@@ -98,7 +100,10 @@ namespace AI.MathMod.ML.Regression
         {
             Vector outp = new Vector(vect.N);
 
-            for (int i = 0; i < vect.N; i++) outp[i] = Predict(vect[i]);
+            for (int i = 0; i < vect.N; i++)
+            {
+                outp[i] = Predict(vect[i]);
+            }
 
             return outp;
         }

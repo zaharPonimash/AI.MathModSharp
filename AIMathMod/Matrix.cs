@@ -115,10 +115,19 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             if (A._m == B._m && A._n == B._n)
+            {
                 for (int i = 0; i < A._m; i++)
-                    for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] + B._matr[i, j];
-
-            else throw new ArgumentException("Размерности матриц не совпадают", "Сложение матриц");
+                {
+                    for (int j = 0; j < A._n; j++)
+                    {
+                        C._matr[i, j] = A._matr[i, j] + B._matr[i, j];
+                    }
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Размерности матриц не совпадают", "Сложение матриц");
+            }
 
             return C;
         }
@@ -137,7 +146,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] + k;
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] + k;
+                }
+            }
 
             return C;
         }
@@ -150,7 +164,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] + k;
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] + k;
+                }
+            }
 
             return C;
         }
@@ -167,7 +186,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] - k;
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] - k;
+                }
+            }
 
             return C;
         }
@@ -185,7 +209,12 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = k - A._matr[i, j];
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = k - A._matr[i, j];
+                }
+            }
 
             return C;
         }
@@ -204,10 +233,19 @@ namespace AI.MathMod
             Matrix C = new Matrix(A._m, A._n);
 
             if (A._m == B._m && A._n == B._n)
+            {
                 for (int i = 0; i < A._m; i++)
-                    for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] - B._matr[i, j];
-
-            else throw new ArgumentException("Размерности матриц не совпадают", "Вычитание матриц");
+                {
+                    for (int j = 0; j < A._n; j++)
+                    {
+                        C._matr[i, j] = A._matr[i, j] - B._matr[i, j];
+                    }
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Размерности матриц не совпадают", "Вычитание матриц");
+            }
 
             return C;
         }
@@ -223,8 +261,12 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] * k;
-
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] * k;
+                }
+            }
 
             return C;
         }
@@ -241,8 +283,12 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] / k;
-
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] / k;
+                }
+            }
 
             return C;
         }
@@ -262,8 +308,12 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = k / A._matr[i, j];
-
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = k / A._matr[i, j];
+                }
+            }
 
             return C;
         }
@@ -283,8 +333,12 @@ namespace AI.MathMod
 
 
             for (int i = 0; i < A._m; i++)
-                for (int j = 0; j < A._n; j++) C._matr[i, j] = A._matr[i, j] * k;
-
+            {
+                for (int j = 0; j < A._n; j++)
+                {
+                    C._matr[i, j] = A._matr[i, j] * k;
+                }
+            }
 
             return C;
         }
@@ -359,14 +413,23 @@ namespace AI.MathMod
             double[] umn = new double[n];
 
             if (A._n == B._m)
+            {
                 for (int i = 0; i < A._m; i++)
+                {
                     for (int j = 0; j < B._n; j++)
                     {
-                        for (int k = 0; k < n; k++) C._matr[i, j] += A._matr[i, k] * B._matr[k, j];
+                        for (int k = 0; k < n; k++)
+                        {
+                            C._matr[i, j] += A._matr[i, k] * B._matr[k, j];
+                        }
                     }
+                }
+            }
 
-
-            else throw new ArgumentException("Матрицы не возможно умножить", "Умножение матриц");
+            else
+            {
+                throw new ArgumentException("Матрицы не возможно умножить", "Умножение матриц");
+            }
 
             return C;
         }
@@ -384,9 +447,14 @@ namespace AI.MathMod
             for (int i = 1; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < n; j++)
+                {
                     result[i - 1, j] = matrix[i, j];
+                }
+
                 for (int j = n + 1; j < matrix.GetLength(0); j++)
+                {
                     result[i - 1, j - 1] = matrix[i, j];
+                }
             }
             return result;
         }
@@ -423,7 +491,9 @@ namespace AI.MathMod
         public double Determ()
         {
             if (_matr.GetLength(0) != _matr.GetLength(1))
+            {
                 throw new InvalidOperationException("Матрица не квадратная");
+            }
 
             return DetermN(_matr);
         }
@@ -446,10 +516,17 @@ namespace AI.MathMod
         /// </summary>
         public Vector ToVector()
         {
-            if (_m != 1) throw new ArgumentException("Невозможно преобразовать матрицу в вектор", "Преобразование");
+            if (_m != 1)
+            {
+                throw new ArgumentException("Невозможно преобразовать матрицу в вектор", "Преобразование");
+            }
+
             double[] vector = new double[_n];
 
-            for (int i = 0; i < _n; i++) vector[i] = _matr[0, i];
+            for (int i = 0; i < _n; i++)
+            {
+                vector[i] = _matr[0, i];
+            }
 
             return new Vector(vector);
         }
@@ -465,12 +542,12 @@ namespace AI.MathMod
             double[,] T = new double[_n, _m];
 
             for (int i = 0; i < _m; i++)
+            {
                 for (int j = 0; j < _n; j++)
                 {
                     T[j, i] = _matr[i, j];
                 }
-
-
+            }
 
             return new Matrix(T);
         }
@@ -492,11 +569,14 @@ namespace AI.MathMod
         /// </summary>
         /// <param name="A">Входная матрица</param>
         /// <param name="stepen">Степень</param>
-        static public Matrix Pow(Matrix A, int stepen)
+        public static Matrix Pow(Matrix A, int stepen)
         {
             Matrix B = A.Copy();
 
-            for (int i = 1; i < stepen; i++) B *= A;
+            for (int i = 1; i < stepen; i++)
+            {
+                B *= A;
+            }
 
             return B;
         }
@@ -511,10 +591,13 @@ namespace AI.MathMod
         {
             Matrix B = new Matrix(_m, _n);
             for (int i = 0; i < _m; i++)
+            {
                 for (int j = 0; j < _n; j++)
                 {
                     B.Matr[i, j] = _matr[i, j];
                 }
+            }
+
             return B;
         }
 
@@ -539,11 +622,13 @@ namespace AI.MathMod
             int index = 0;
 
             for (int i = 0; i < _n; i++)
+            {
                 for (int j = 0; j < _m; j++)
                 {
                     vect.DataInVector[index] = Matr[j, i];
                     index++;
                 }
+            }
 
             return vect;
         }
@@ -611,7 +696,9 @@ namespace AI.MathMod
             {
                 columns[i] = new Vector(matr.M);
                 for (int j = 0; j < matr.M; j++)
+                {
                     columns[i][j] = matr[j, i];
+                }
             }
 
             return columns;
@@ -840,12 +927,17 @@ namespace AI.MathMod
                 {
                     double c = matrix[j, i];
                     for (int k = i; k < N; k++)
+                    {
                         matrix[j, k] -= a[k] * c;
+                    }
                 }
             go: { }
             }
             for (int i = 0; i < M; i++)
+            {
                 result *= matrix[i, i];
+            }
+
             return result;
         }
 
@@ -863,12 +955,18 @@ namespace AI.MathMod
                 case 0:
                     result = new Vector(M);
                     for (int i = 0; i < M; i++)
+                    {
                         result[i] = Matr[i, index];
+                    }
+
                     return result;
                 case 1:
                     result = new Vector(N);
                     for (int i = 0; i < N; i++)
+                    {
                         result[i] = Matr[index, i];
+                    }
+
                     return result;
             }
             return null;
@@ -932,9 +1030,14 @@ namespace AI.MathMod
             {
                 for (int j = 0; j < vectors.Length; j++)
                 {
-                    if (i == j) corelationMatrix[i, j] = 1;
+                    if (i == j)
+                    {
+                        corelationMatrix[i, j] = 1;
+                    }
                     else
+                    {
                         corelationMatrix[i, j] = Statistic.CorrelationCoefficient(vectors[i], vectors[j]);
+                    }
                 }
             }
 

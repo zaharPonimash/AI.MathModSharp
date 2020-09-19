@@ -159,7 +159,7 @@ namespace AI.MathMod.ML.Classifire
         /// <param name="Bmp">Картинка</param>
         /// <param name="flag">Реаальный ли размер использовать?</param>
         /// <returns></returns>
-        static public Vector GeneratVector(Bitmap Bmp, bool flag)
+        public static Vector GeneratVector(Bitmap Bmp, bool flag)
         {
 
             int W = 60;
@@ -212,7 +212,7 @@ namespace AI.MathMod.ML.Classifire
         /// </summary>
         /// <param name="vect">Вектор</param>
         /// <returns></returns>
-        static public Bitmap GeneratBmp(Vector vect)
+        public static Bitmap GeneratBmp(Vector vect)
         {
             Bitmap fotoBmp = new Bitmap(60, 60);
 
@@ -267,7 +267,9 @@ namespace AI.MathMod.ML.Classifire
             output = vectors[0];
 
             for (int i = 1; i < N; i++)
+            {
                 output += vectors[i];
+            }
 
             return output / N;
         }
@@ -448,7 +450,10 @@ namespace AI.MathMod.ML.Classifire
             for (int i = 0; i < _classes._classes.Count; i++)
             {
                 _st = Distance.ManhattanDistance(inp, _classes._classes[i]._centGiperSfer); // Вычисление билжайшего центра
-                if (_st < _stMin) _stMin = _st;
+                if (_st < _stMin)
+                {
+                    _stMin = _st;
+                }
             }
 
 

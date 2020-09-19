@@ -30,7 +30,10 @@ namespace AI.MathMod.Charts
 
             for (int i = 0; i < vid.Count; i++)
             {
-                if (n < vid[i].ClassMark) n = vid[i].ClassMark;
+                if (n < vid[i].ClassMark)
+                {
+                    n = vid[i].ClassMark;
+                }
             }
 
             n++;

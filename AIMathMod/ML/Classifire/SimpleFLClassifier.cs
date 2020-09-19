@@ -59,7 +59,9 @@ namespace AI.MathMod.ML.Classifire
         {
             Probability = 0;
             for (int i = 0; i < Count; i++)
+            {
                 Probability += Weights.DataInVector[i] * this[i].pr;
+            }
 
             Probability /= Functions.Summ(Weights);
 

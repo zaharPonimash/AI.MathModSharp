@@ -143,7 +143,11 @@ namespace AI.MathMod
         public static Complex Rotate(int k, int N)
         {
 
-            if (k % N == 0) return 1;
+            if (k % N == 0)
+            {
+                return 1;
+            }
+
             double arg = -2 * Math.PI * k / N;
             return new Complex(Math.Cos(arg), Math.Sin(arg));
         }
@@ -302,8 +306,9 @@ namespace AI.MathMod
             {
 
                 for (int n = 0; n < N; n++)
+                {
                     x1.DataInVector[n] = x.DataInVector[n] * Complex.Exp((-2 * Math.PI * i * k * n) / N);
-
+                }
 
                 Out.DataInVector[k] = Functions.Summ(x1);
             }
@@ -355,8 +360,9 @@ namespace AI.MathMod
             {
 
                 for (int n = 0; n < N; n++)
+                {
                     x1.DataInVector[n] = x.DataInVector[n] * Complex.Exp((2 * Math.PI * i * k * n) / N);
-
+                }
 
                 Out.DataInVector[k] = Functions.Summ(x1);
             }

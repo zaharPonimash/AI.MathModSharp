@@ -25,9 +25,18 @@ namespace AI.MathMod
             get => _flv;
             set
             {
-                if (value > 1) _flv = 1;
-                else if (value < 0) _flv = 0;
-                else _flv = value;
+                if (value > 1)
+                {
+                    _flv = 1;
+                }
+                else if (value < 0)
+                {
+                    _flv = 0;
+                }
+                else
+                {
+                    _flv = value;
+                }
             }
 
         }
